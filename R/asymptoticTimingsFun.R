@@ -1,6 +1,6 @@
 asymptoticTimingsFun <- function(fun.obj, N.seq)
 {
-  data.set.sizes <- c(10^seq(1,N.seq,by=0.5))
+  data.set.sizes <- (10^seq(1,N.seq,by=0.5))
   # total obs. = (N + (N-1))x100. For eg: N=2 -> 300 obs., N=3 -> 500 obs., N=4 -> 700 obs. and so on.
   l <- length(data.set.sizes)
 
