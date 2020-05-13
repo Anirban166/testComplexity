@@ -8,7 +8,7 @@ asymptoticTimingsFun <- function(fun.obj, N.seq)
 
   for(i in 1:l)
   {
-    benchmarked.timings <- as.data.frame(microbenchmark(expr(data.set.sizes[i])))
+    benchmarked.timings <- as.data.frame(microbenchmark(fun.obj(data.set.sizes[i])))
 
     benchmarked.timings$data.set.size <- data.set.sizes[i] # collecting data set sizes at each iteration
 
