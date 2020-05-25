@@ -1,5 +1,5 @@
 Package: testComplexity
-Title: Asymptotic Time complexity classifier
+Title: Asymptotic complexity classifier
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Anirban",
@@ -7,12 +7,11 @@ Authors@R:
            role = c("aut", "cre"),
            email = "bloodraven166@gmail.com",
            comment = c(ORCID = "NA"))
-Description: It classifies the asymptotic time complexity bound/trend (such as linear,quadratic,cubic) 
-             for an algorithm-based function passed to it. Currently it holds one function by the name
-             of 'loglinearvsquadraticClassifier' which distinguishes which of the two functions passed 
-             as parameters to it follows a log-linear/quadratic complexity trend as can be predicted by
-             its name. Note: The functions/algorithms passed to it must have the following parameters:
-             (count.vec, weight.vec=rep(1,length(count.vec)), max.segments). (Eg: as in PeakSegPDPA).
+Description: It classifies the asymptotic time plus memory complexity class/trend (such as linear/log-linear/quadratic) 
+             for an algorithm-based function passed to it with the help of functions asymptoticTimeComplexityClass and
+             asymptoticMemoryComplexityClass, with data frames returned by asymptoticTimings and asymptoticMemoryUsage
+             as parameters. Further, the data frames can be passed onto plotTimings and plotMemoryUsage for visually
+             obtaining the results and identifying potential speed gains.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
