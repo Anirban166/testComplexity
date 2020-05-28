@@ -28,9 +28,9 @@
 <p align="center">
   <a href="#benchmarking">Benchmarking</a> •
   <a href="#testing">Testing</a> 
-</p>             
----
+</p>    
              
+---         
 # Benchmarking
 Among a few [options](https://anirban166.github.io//Benchmarking/), I've opted to go with `microbenchmark` and `bench` packages, for the added convenience of having the benchmarked results as a data frame plus for the precision or time scale it produces the results on, ranging from nanoseconds to milliseconds at the least. 
 - `microbenchmark::microbenchmark()` is used to compute the benchmarks to obtain the time results in `testComplexity::asymptoticTimings()`. 
