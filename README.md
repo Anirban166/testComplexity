@@ -1,5 +1,5 @@
 <p align = "center">
-<img width = "740" height = "200" src = "Images/ProjectLogo.png" >
+<img width = "740" height = "200" src = "Images/TransparentLogo.png" >
 </p>
 
  [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
