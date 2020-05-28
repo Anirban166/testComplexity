@@ -1,1 +1,5 @@
+title: R package : testComplexity
+description: An asymptotic complexity testing framework.
 theme: jekyll-theme-slate
+github:
+  is_project_page: false
