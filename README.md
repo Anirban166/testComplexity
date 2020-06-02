@@ -32,9 +32,7 @@
              
 ---         
 # Benchmarking
-Among a few [options](https://anirban166.github.io//Benchmarking/), I've opted to go with `microbenchmark` and `bench` packages, for the added convenience of having the benchmarked results as a data frame plus for the precision or time scale it produces the results on, ranging from nanoseconds to milliseconds at the least. 
-- `microbenchmark::microbenchmark()` is used to compute the benchmarks to obtain the time results in `testComplexity::asymptoticTimings()`. 
-- `bench::bench_memory()` would be used to compute the memory usage to obtain the memory use metrics in `testComplexity::asymptoticMemoryUsage()`.
+Among a few [options](https://anirban166.github.io//Benchmarking/), `microbenchmark::microbenchmark()` is used to compute the benchmarks to obtain the time results in `testComplexity::asymptoticTimings()`, for the added convenience of having the benchmarked results as a data frame plus for the precision or time scale it produces the results on, ranging from nanoseconds to milliseconds at the least and `bench::bench_memory()` would be used to compute the memory usage to obtain the memory use metrics in `testComplexity::asymptoticMemoryUsage()`.
 
 ---             
 # Testing
