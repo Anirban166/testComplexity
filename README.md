@@ -6,7 +6,7 @@
     <a href="https://www.repostatus.org/#active">
     <img src="https://www.repostatus.org/badges/latest/active.svg"
          alt="GitHub Project Status">
-    <a href="https://github.com/Anirban166/testComplexity">
+    <a href="https://www.tidyverse.org/lifecycle/#experimental">
     <img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg"
          alt="GitHub Lifecycle">
     <a href="https://www.r-project.org/">
@@ -32,7 +32,9 @@
              
 ---         
 # Benchmarking
-Among a few [options](https://anirban166.github.io//Benchmarking/), `microbenchmark::microbenchmark()` is used to compute the benchmarks to obtain the time results in `testComplexity::asymptoticTimings()`, for the added convenience of having the benchmarked results as a data frame plus for the precision or time scale it produces the results on, ranging from nanoseconds to milliseconds at the least and `bench::bench_memory()` would be used to compute the memory usage to obtain the memory use metrics in `testComplexity::asymptoticMemoryUsage()`.
+Among a few [options](https://anirban166.github.io//Benchmarking/), 
+- `microbenchmark::microbenchmark()` is used to compute the benchmarks to obtain the time results in `testComplexity::asymptoticTimings()`, for the added convenience of having the benchmarked results as a data frame plus for the precision or time scale it produces the results on. (usually in nanoseconds, as can be found from [here](https://cran.r-project.org/web/packages/microbenchmark/microbenchmark.pdf))
+- `bench::bench_memory()` would be used to compute the memory usage to obtain the memory use metrics in `testComplexity::asymptoticMemoryUsage()`.
 
 ---             
 # Testing
