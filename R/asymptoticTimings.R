@@ -7,15 +7,9 @@ asymptoticTimings <- function(e, N, max.seconds)
     eval(lang.obj)
   }
 
-  time.limit = ifelse(missing(max.seconds), 10^7, max.seconds*10^9)
+  time.limit = ifelse(missing(max.seconds), 10^8, max.seconds*10^9)
 
-  power.of.ten = 0
-  while(N > 1)
-  { if(N %% 10 == 0)
-    { power.of.ten <- power.of.ten + 1
-      N <- N / 10
-    }
-  }
+  power.of.ten = log(N, 10)
 
   data.set.sizes <- 10^seq(1, power.of.ten, by = 0.5)
 
