@@ -1,5 +1,5 @@
 <p align = "center">
-<img width = "740" height = "200" src = "Images/TransparentLogo.png" >
+<img width = "740" height = "200" src = "Images/TransparentLogo.png">
 </p>
 
 <p align="center">
@@ -13,10 +13,10 @@
     <img src="https://img.shields.io/github/languages/top/Anirban166/testComplexity?label=R"
          alt="GitHub Language">
     <a href="https://github.com/Anirban166/testComplexity/issues">
-    <img src="https://img.shields.io/github/issues-raw/Anirban166/testComplexity?color=important&label=Open%20Issues"
+    <img src="https://img.shields.io/badge/Open%20Issues-3-orange"
          alt="GitHub Open Issues">
     <a href="https://github.com/Anirban166/testComplexity/issues?q=is%3Aissue+is%3Aclosed">
-    <img src="https://img.shields.io/github/issues-closed-raw/Anirban166/testComplexity?color=brightgreen&label=Closed%20Issues"
+    <img src="https://img.shields.io/badge/Closed%20Issues-1-brightgreen"
          alt="GitHub Closed Issues">
          <a href="https://anirban166.github.io/testComplexity/">
     <img src="https://img.shields.io/github/deployments/Anirban166/testComplexity/github-pages?label=Deployments%20%7C%20Github%20Pages"
