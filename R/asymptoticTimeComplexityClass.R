@@ -1,3 +1,14 @@
+#' Function to classify the time complexity of the expression passed onto asymptoticTimings (which outputs a data frame to be used here)
+#'
+#' @title Asymptotic Time Complexity Classifying function
+#'
+#' @param df A data frame composed of columns 'Timings' and 'Data sizes', which can be obtained by asymptoticTimings()
+#'
+#' @return A string specifying the resultant complexity class. (Eg: 'Linear', 'Log-linear','Quadratic')
+#'
+#' @export
+#' @importFrom boot cv.glm
+
 asymptoticTimeComplexityClass = function(model.df)
 {
   constant   <- glm(Timings~1,                                      data = model.df); model.df['constant'] = fitted(constant)

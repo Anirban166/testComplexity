@@ -16,6 +16,6 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
-Imports: microbenchmark
+Imports: boot, microbenchmark
 Suggests: 
     testthat (>= 2.1.0)

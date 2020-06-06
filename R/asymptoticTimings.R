@@ -1,3 +1,22 @@
+#' Function to compute benchmarked timings with different data sizes for an R expression
+#'
+#' @title Asymptotic Timings Quantifying function
+#'
+#' @param e An expression which is in the form of a function operating on the parameter 'data.sizes' given by the user.
+#'
+#' @param data.sizes Set of data sizes, which should preferably be a sequence of powers of ten, with mid-values included.
+#'                   # Eg: data.sizes = 10^(1, 5, by = 0.5)
+#'
+#' @param max.seconds The maximum number of seconds an iteration would be limited upto. (once the limit has been exceeded, further computations on incrementally larger dataset sizes won't be done)
+#'
+#' @return A data frame comprising of the timings computed by microbenchmark and the corresponding
+#'         dataset sizes
+#'
+#' @details For more information regarding its functionality, please check https://anirban166.github.io//Timings-function/
+#'
+#' @export
+#' @import microbenchmark
+
 asymptoticTimings <- function(e, data.sizes, max.seconds)
 {
   lang.obj <- substitute(e)
