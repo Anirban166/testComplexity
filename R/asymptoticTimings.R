@@ -5,12 +5,11 @@
 #' @param e An expression which is in the form of a function operating on the parameter 'data.sizes' given by the user.
 #'
 #' @param data.sizes Set of data sizes, which should preferably be a sequence of powers of ten, with mid-values included.
-#'                   # Eg: data.sizes = 10^(1, 5, by = 0.5)
+#'                 # Example: data.sizes = 10^(1, 5, by = 0.5)
 #'
 #' @param max.seconds The maximum number of seconds an iteration would be limited upto. (once the limit has been exceeded, further computations on incrementally larger dataset sizes won't be done)
 #'
-#' @return A data frame comprising of the timings computed by microbenchmark and the corresponding
-#'         dataset sizes
+#' @return A data frame comprising of the timings computed by microbenchmark and the corresponding dataset sizes.
 #'
 #' @details For more information regarding its functionality, please check https://anirban166.github.io//Timings-function/
 #'
@@ -19,6 +18,16 @@
 
 asymptoticTimings <- function(e, data.sizes, max.seconds)
 {
+  if(!all(!is.infinite(data.sizes) & !is.na(data.sizes) & !is.nan(data.sizes)))
+  {
+    stop("data.sizes must not contain any NA/NaN/Infinite value.")
+  }
+
+  if(length(data.sizes) == 0)
+  {
+    stop("Cannot run on an empty vector for 'data.sizes'.")
+  }
+
   lang.obj <- substitute(e)
 
   fun.obj  <- function(data.sizes)

@@ -2,22 +2,23 @@
 #'
 #' @title Asymptotic Time Complexity Classifying function
 #'
-#' @param df A data frame composed of columns 'Timings' and 'Data sizes', which can be obtained by asymptoticTimings()
+#' @param model.df A data frame composed of columns 'Timings' and 'Data sizes', which can be obtained by asymptoticTimings()
 #'
 #' @return A string specifying the resultant complexity class. (Eg: 'Linear', 'Log-linear','Quadratic')
 #'
 #' @export
 #' @importFrom boot cv.glm
+#' @importFrom stats fitted
 
 asymptoticTimeComplexityClass = function(model.df)
 {
-  constant   <- glm(Timings~1,                                      data = model.df); model.df['constant'] = fitted(constant)
-  linear     <- glm(Timings~`Data sizes`,                       data = model.df); model.df['linear'] = fitted(linear)
-  squareroot <- glm(Timings~sqrt(`Data sizes`),                 data = model.df); model.df['squareroot'] = fitted(squareroot)
-  log        <- glm(Timings~log(`Data sizes`),                  data = model.df); model.df['log'] = fitted(log)
+  constant   <- glm(Timings~1,                              data = model.df); model.df['constant'] = fitted(constant)
+  linear     <- glm(Timings~`Data sizes`,                   data = model.df); model.df['linear'] = fitted(linear)
+  squareroot <- glm(Timings~sqrt(`Data sizes`),             data = model.df); model.df['squareroot'] = fitted(squareroot)
+  log        <- glm(Timings~log(`Data sizes`),              data = model.df); model.df['log'] = fitted(log)
   log.linear <- glm(Timings~`Data sizes`*log(`Data sizes`), data = model.df); model.df['log-linear'] = fitted(log.linear)
-  quadratic  <- glm(Timings~I(`Data sizes`^2),                  data = model.df); model.df['quadratic'] = fitted(quadratic)
-  cubic      <- glm(Timings~I(`Data sizes`^3),                  data = model.df); model.df['cubic'] = fitted(cubic)
+  quadratic  <- glm(Timings~I(`Data sizes`^2),              data = model.df); model.df['quadratic'] = fitted(quadratic)
+  cubic      <- glm(Timings~I(`Data sizes`^3),              data = model.df); model.df['cubic'] = fitted(cubic)
 
   model.list <- list('constant'   = constant,
                      'linear'     = linear,
