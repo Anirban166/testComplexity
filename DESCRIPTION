@@ -18,4 +18,5 @@ LazyData: true
 RoxygenNote: 6.1.1
 Imports: boot, microbenchmark, ggplot2, stats
 Suggests: 
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    covr
