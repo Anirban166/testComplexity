@@ -49,7 +49,7 @@ asymptoticTimings <- function(e, data.sizes, max.seconds)
 
     timings.list[[i]] <- data.frame(benchmarked.timings$time, benchmarked.timings$data.size)
 
-    if(mean(benchmarked.timings$time) > time.limit) break
+    ifelse((mean(benchmarked.timings$time) > time.limit), break, next)
   }
 
   resultant.df <- do.call(rbind, timings.list)
