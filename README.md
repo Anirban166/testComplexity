@@ -6,6 +6,9 @@
     <a href="https://www.repostatus.org/#active">
     <img src="https://www.repostatus.org/badges/latest/active.svg"
          alt="GitHub Project Status">
+    <a href="https://codecov.io/gh/Anirban166/testComplexity?branch=master">    
+    <img src="https://codecov.io/gh/Anirban166/testComplexity/branch/master/graph/badge.svg"
+         alt="Code Coverage (covr/codecov)">    
     <a href="https://www.tidyverse.org/lifecycle/#experimental">
     <img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg"
          alt="GitHub Lifecycle">
@@ -18,9 +21,6 @@
     <a href="https://github.com/Anirban166/testComplexity/issues?q=is%3Aissue+is%3Aclosed">
     <img src="https://img.shields.io/badge/Closed%20Issues-1-brightgreen"
          alt="GitHub Closed Issues">
-         <a href="https://anirban166.github.io/testComplexity/">
-    <img src="https://img.shields.io/github/deployments/Anirban166/testComplexity/github-pages?label=Deployments%20%7C%20Github%20Pages"
-         alt="GitHub Deployments">
          <a href="https://github.com/Anirban166/testComplexity/blob/master/LICENSE.md">
     <img src="https://img.shields.io/github/license/mashape/apistatus.svg"
          alt="GitHub License">
@@ -39,3 +39,6 @@ Among a few [options](https://anirban166.github.io//Benchmarking/),
 ---             
 # Testing
 A list of functions the package will be tested on can be found [here](https://github.com/Anirban166/testComplexity/issues/2#issue-615087634).
+
+
+[![Codecov test coverage](https://codecov.io/gh/Anirban166/testComplexity/branch/master/graph/badge.svg)](https://codecov.io/gh/Anirban166/testComplexity?branch=master)
