@@ -6,6 +6,9 @@
     <a href="https://www.repostatus.org/#active">
     <img src="https://www.repostatus.org/badges/latest/active.svg"
          alt="GitHub Project Status">
+    <a href="https://travis-ci.com/github/Anirban166/testComplexity">
+    <img src="https://travis-ci.com/Anirban166/testComplexity.svg?branch=master"
+         alt="Build status (Travis CI)">      
     <a href="https://codecov.io/gh/Anirban166/testComplexity?branch=master">    
     <img src="https://codecov.io/gh/Anirban166/testComplexity/branch/master/graph/badge.svg"
          alt="Code Coverage (covr/codecov)">    
@@ -39,6 +42,3 @@ Among a few [options](https://anirban166.github.io//Benchmarking/),
 ---             
 # Testing
 A list of functions the package will be tested on can be found [here](https://github.com/Anirban166/testComplexity/issues/2#issue-615087634).
-
-
-[![Codecov test coverage](https://codecov.io/gh/Anirban166/testComplexity/branch/master/graph/badge.svg)](https://codecov.io/gh/Anirban166/testComplexity?branch=master)
