@@ -11,7 +11,9 @@
 
 plotTimings = function(data.df)
 {
-
- ggplot(data.df, aes(x = `Data set sizes`, y = Timings)) + geom_point() + geom_line() + labs(x = "N", y = "Runtime") + scale_x_log10() + scale_y_log10()
-
+ if(class(data.df) == "data.frame" & "Timings" %in% colnames(data.df) & "Data sizes" %in% colnames(data.df))
+ {
+   ggplot(data.df, aes(x = `Data set sizes`, y = Timings)) + geom_point() + geom_line() + labs(x = "Data sizes", y = "Runtime") + scale_x_log10() + scale_y_log10()
+ }
+ else stop("Input parameter must be a data frame with columns 'Timings' and 'Data sizes'")
 }
