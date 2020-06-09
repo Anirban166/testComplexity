@@ -47,8 +47,7 @@
   <a href="#abstract">Abstract</a> •
   <a href="#functional-flow">Functional Flow</a> •
   <a href="#benchmarking">Benchmarking</a> • 
-  <a href="#testing">Testing</a> •    
-  <a href="#author">Author</a> 
+  <a href="#testing">Testing</a>     
 </p>    
         
 ---
@@ -58,15 +57,15 @@ R package developers currently use ad-hoc tests of asymptotic computational comp
 ## Functional Flow
 ```r
 ___________________________ R Files _____________________________
-testComplexity                              @ returns            
-├──> asymptoticTimings                    : data.frame           
-│    ├──> asymptoticTimeComplexityClass   :   ├──> string         
-|    └──> plotTimings                     :   └──> ggplot object 
-├──> asymptoticMemoryUsage                : data.frame           
-│    ├──> asymptoticMemoryComplexityClass :   ├──> string        
-│    └──> plotMemoryUsage                 :   └──> ggplot object 
-└──> testthat                                                    
-     └──> testsfortestComplexity                                 
+testComplexity                              @ returns
+├──> asymptoticTimings                    : data.frame
+│    ├──> asymptoticTimeComplexityClass   :   ├──> string
+|    └──> plotTimings                     :   └──> ggplot object
+├──> asymptoticMemoryUsage                : data.frame
+│    ├──> asymptoticMemoryComplexityClass :   ├──> string
+│    └──> plotMemoryUsage                 :   └──> ggplot object
+└──> testthat
+     └──> testsfortestComplexity
 _________________________________________________________________
 ```
 
@@ -87,14 +86,36 @@ Among a few [options](https://anirban166.github.io//Benchmarking/),
 - [ ] Memory complexity testing.
 - [ ] Classification of user given output (output size is the metric, instead of timings/memory-usage) parameter.
 - [ ] Add testing functions, with optional packages in suggests.
-- [ ] Makes PRs to master, with code-reviewed commits.
+- [ ] Make PRs to master, with code-reviewed commits.
 
 ---
-## Author
-      
-| Genre | Links |
-| :---: | :---: |
-| **Mail** | <a href="mailto:bloodraven166@gmail.com"><img height="40" src="https://img.shields.io/badge/--white?style=flat&logo=gmail"> <a href="mailto:Anirban.code@studentpartner.com"> <img height="40" src="https://img.shields.io/badge/--black?style=flat&logo=Microsoft"> 
-| **Code** | <a href="https://stackoverflow.com/users/11422223/anirban166?tab=profile"> <img height="40" src="https://img.shields.io/badge/--white?style=flat&logo=Stack%20Overflow"> <a href="https://github.com/Anirban166"> <img height="40" src="https://img.shields.io/badge/--black?style=flat&logo=Github"> |
-| **Social** | <a href="https://www.instagram.com/anirban.166/"> <img height="40" src="https://img.shields.io/badge/--white?style=flat&logo=Instagram"> <a href="https://www.linkedin.com/in/anirban166/"> <img height="40" src="https://img.shields.io/badge/--black?style=flat&logo=LinkedIn"> |      
-      
+<h2 align="center">
+Author::Links()    
+</h2>
+
+<p align="center">
+    <a href="mailto:bloodraven166@gmail.com"> 
+    <img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=gmail"
+         alt="Primary Email">      
+    <a href="https://stackoverflow.com/users/11422223/anirban166?tab=profile">    
+    <img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=Stack%20Overflow"
+         alt="Stack Overflow Link">
+    <a href="https://www.hackerrank.com/Bloodraven166">
+    <img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=HackerRank"
+         alt="HackerRank Link">
+    <a href="https://www.instagram.com/anirban.166/">
+    <img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=Instagram"
+         alt="Instagram Link">    
+    <a href="mailto:Anirban.code@studentpartner.com">
+    <img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=Microsoft"
+         alt="Microsoft Student Partner Email">            
+    <a href="https://github.com/Anirban166">
+    <img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=Github"
+         alt="GitHub Link">  
+    <a href="https://anirban166.github.io/posts/">
+    <img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=Google%20messages"
+         alt="Website Link">
+    <a href="https://www.linkedin.com/in/anirban166/">
+    <img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=LinkedIn"
+         alt="LinkedIn Link">
+</p> 
