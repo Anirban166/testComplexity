@@ -2,11 +2,6 @@
 <img width = "740" height = "200" src = "Images/TransparentLogo.png">
 </p>
 
----
-<h2 align="center">
-Project Details
-</h2>    
-
 <p align="center">
     <a href="https://rstudio.com/">
     <img src="https://img.shields.io/badge/RStudio-IDE-black?style=for-the-badge&logo=RStudio"
@@ -62,17 +57,17 @@ R package developers currently use ad-hoc tests of asymptotic computational comp
 
 ## Functional Flow
 ```r
-___________________________ R Files ________________________________
-| testComplexity                              @ returns            |
-| ├──> asymptoticTimings                    : data.frame           |
-| │    ├──> asymptoticTimeComplexityClass   :   ├──> string        | 
-| │    └──> plotTimings                     :   └──> ggplot object |
-| ├──> asymptoticMemoryUsage                : data.frame           |
-| │    ├──> asymptoticMemoryComplexityClass :   ├──> string        |
-| │    └──> plotMemoryUsage                 :   └──> ggplot object |
-| └──> testthat                                                    |
-|      └──> testsfortestComplexity                                 |
-____________________________________________________________________
+___________________________ R Files _____________________________
+testComplexity                              @ returns            
+├──> asymptoticTimings                    : data.frame           
+│    ├──> asymptoticTimeComplexityClass   :   ├──> string         
+|    └──> plotTimings                     :   └──> ggplot object 
+├──> asymptoticMemoryUsage                : data.frame           
+│    ├──> asymptoticMemoryComplexityClass :   ├──> string        
+│    └──> plotMemoryUsage                 :   └──> ggplot object 
+└──> testthat                                                    
+     └──> testsfortestComplexity                                 
+_________________________________________________________________
 ```
 
 ## Benchmarking
@@ -83,8 +78,10 @@ Among a few [options](https://anirban166.github.io//Benchmarking/),
 ## Testing
 - **Functions:** A list of functions the package will be tested on can be found [here](https://github.com/Anirban166/testComplexity/issues/2#issue-615087634).
 - **Unit Testing**: Test cases for testComplexity functions via [testthat](https://cran.r-project.org/web/packages/testthat/index.html) package can be found [here](https://github.com/Anirban166/testComplexity/blob/master/tests/testthat/test-testsfortestComplexity.R).
-- **OS Support**: Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. (additional details will be added later)
-
+- **Code Coverage**: Tested locally by `covr::package_coverage()` and codecov, with 100% code coverage.
+- **OS Support**: Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. <br>
+<a href="https://www.microsoft.com/en-in/windows"> <img src="https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&logo=Windows"> <a href="https://www.linux.org/"> <img src="https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&logo=Linux">
+    
 ---
 ## Author
       
