@@ -122,5 +122,3 @@ Author::Links()
     <img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=LinkedIn"
          alt="LinkedIn Link">
 </p> 
-
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d69a466f4597434e9118ee59ae3307e3)](https://www.codacy.com/manual/bloodraven166/testComplexity?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Anirban166/testComplexity&amp;utm_campaign=Badge_Grade)
