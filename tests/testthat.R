@@ -1,5 +1,2 @@
-library(testthat)
-library(testComplexity)
-
-test_check("testComplexity")
+if(require(testthat))test_check("testComplexity")
 

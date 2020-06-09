@@ -28,7 +28,7 @@ test_that("Return value test for asymptoticTimings", {
 
 # Tests for asymptoticTimeComplexityClass
 
-test_that("model.df parameter tests for asymptoticTimeComplexityClass", {
+test_that("model.df parameter test for asymptoticTimeComplexityClass", {
   expect_error(asymptoticTimeComplexityClass(c(10)))
 })
 
@@ -40,7 +40,7 @@ test_that("Return value test for asymptoticTimeComplexityClass", {
 
 # Tests for plotTimings
 
-test_that("data.df parameter tests for plotTimings", {
+test_that("data.df parameter test for plotTimings", {
   expect_error(plotTimings(c(10)))
 })
 
