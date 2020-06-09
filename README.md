@@ -34,7 +34,7 @@
     <img src="https://img.shields.io/github/languages/top/Anirban166/testComplexity?label=R"
          alt="GitHub Language">
     <a href="https://github.com/Anirban166/testComplexity/issues">
-    <img src="https://img.shields.io/badge/Open%20Issues-3-orange"
+    <img src="https://img.shields.io/badge/Open%20Issues-4-orange"
          alt="GitHub Open Issues">
     <a href="https://github.com/Anirban166/testComplexity/issues?q=is%3Aissue+is%3Aclosed">
     <img src="https://img.shields.io/badge/Closed%20Issues-1-brightgreen"
@@ -82,6 +82,13 @@ Among a few [options](https://anirban166.github.io//Benchmarking/),
 - **OS Support**: Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. <br>
 <a href="https://www.microsoft.com/en-in/windows"> <img src="https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&logo=Windows"> <a href="https://www.linux.org/"> <img src="https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&logo=Linux">
     
+## Task List
+- [x] Time complexity testing.
+- [ ] Memory complexity testing.
+- [ ] Classification of user given output (output size is the metric, instead of timings/memory-usage) parameter.
+- [ ] Add testing functions, with optional packages in suggests.
+- [ ] Makes PRs to master, with code-reviewed commits.
+
 ---
 ## Author
       
