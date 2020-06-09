@@ -15,6 +15,9 @@
     <a href="https://summerofcode.withgoogle.com/projects/#4887653356404736">
     <img src="https://img.shields.io/badge/Google%20Summer%20of%20code-Funded-success?style=for-the-badge&logo=Google"
          alt="GSoC project (Google funded)">
+    <a href="https://github.com/Anirban166/testComplexity/blob/master/LICENSE.md">
+    <img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge"
+         alt="GitHub License">       
 </p> 
 
 <p align="center">
@@ -26,7 +29,10 @@
          alt="Build status (Travis CI)">      
     <a href="https://codecov.io/gh/Anirban166/testComplexity?branch=master">    
     <img src="https://codecov.io/gh/Anirban166/testComplexity/branch/master/graph/badge.svg"
-         alt="Code Coverage (covr/codecov)">    
+         alt="Code Coverage (covr/codecov)">
+    <a href="https://www.codacy.com/manual/bloodraven166/testComplexity?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Anirban166/testComplexity&amp;utm_campaign=Badge_Grade">
+    <img src="https://app.codacy.com/project/badge/Grade/d69a466f4597434e9118ee59ae3307e3"    
+         alt="Codacy Badge">
     <a href="https://www.tidyverse.org/lifecycle/#experimental">
     <img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg"
          alt="GitHub Lifecycle">
@@ -39,9 +45,6 @@
     <a href="https://github.com/Anirban166/testComplexity/issues?q=is%3Aissue+is%3Aclosed">
     <img src="https://img.shields.io/badge/Closed%20Issues-1-brightgreen"
          alt="GitHub Closed Issues">
-         <a href="https://github.com/Anirban166/testComplexity/blob/master/LICENSE.md">
-    <img src="https://img.shields.io/github/license/mashape/apistatus.svg"
-         alt="GitHub License">
 </p> 
 <p align="center">
   <a href="#abstract">Abstract</a> •
@@ -71,13 +74,13 @@ _________________________________________________________________
 
 ## Benchmarking
 Among a few [options](https://anirban166.github.io//Benchmarking/), 
-- `microbenchmark::microbenchmark()` is used to compute the benchmarks to obtain the time results in `testComplexity::asymptoticTimings()`, for the added convenience of having the benchmarked results as a data frame plus for the precision or time scale it produces the results on. (usually in nanoseconds, as can be found from [here](https://cran.r-project.org/web/packages/microbenchmark/microbenchmark.pdf))
-- `bench::bench_memory()` would be used to compute the memory usage to obtain the memory use metrics in `testComplexity::asymptoticMemoryUsage()`.
+- `microbenchmark::microbenchmark()` is used to compute the benchmarks to obtain the time results in `testComplexity::asymptoticTimings()`, for the added convenience of having the benchmarked results as a data frame plus for the precision or time scale it produces the results on. (usually in nanoseconds, as can be found from [here](https://cran.r-project.org/web/packages/microbenchmark/microbenchmark.pdf)) <br>
+- `bench::bench_memory()` would be used to compute the memory usage to obtain the memory use metrics in `testComplexity::asymptoticMemoryUsage()`. <br>
             
 ## Testing
-- **Functions:** A list of functions the package will be tested on can be found [here](https://github.com/Anirban166/testComplexity/issues/2#issue-615087634).
-- **Unit Testing**: Test cases for testComplexity functions via [testthat](https://cran.r-project.org/web/packages/testthat/index.html) package can be found [here](https://github.com/Anirban166/testComplexity/blob/master/tests/testthat/test-testsfortestComplexity.R).
-- **Code Coverage**: Tested locally by `covr::package_coverage()` and codecov, with 100% code coverage.
+- **Functions:** A list of functions the package will be tested on can be found [here](https://github.com/Anirban166/testComplexity/issues/2#issue-615087634). <br>
+- **Unit Testing**: Test cases for testComplexity functions via [testthat](https://cran.r-project.org/web/packages/testthat/index.html) package can be found [here](https://github.com/Anirban166/testComplexity/blob/master/tests/testthat/test-testsfortestComplexity.R). <br>
+- **Code Coverage**: Tested locally by `covr::package_coverage()` and codecov, with 100% code coverage. <br>
 - **OS Support**: Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. <br>
 <a href="https://www.microsoft.com/en-in/windows"> <img src="https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&logo=Windows"> <a href="https://www.linux.org/"> <img src="https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&logo=Linux">
     
@@ -119,3 +122,5 @@ Author::Links()
     <img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=LinkedIn"
          alt="LinkedIn Link">
 </p> 
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d69a466f4597434e9118ee59ae3307e3)](https://www.codacy.com/manual/bloodraven166/testComplexity?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Anirban166/testComplexity&amp;utm_campaign=Badge_Grade)
