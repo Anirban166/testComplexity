@@ -40,7 +40,7 @@
     <img src="https://img.shields.io/github/languages/top/Anirban166/testComplexity?label=R"
          alt="GitHub Language">
     <a href="https://github.com/Anirban166/testComplexity/issues">
-    <img src="https://img.shields.io/badge/Open%20Issues-4-orange"
+    <img src="https://img.shields.io/badge/Open%20Issues-5-orange"
          alt="GitHub Open Issues">
     <a href="https://github.com/Anirban166/testComplexity/issues?q=is%3Aissue+is%3Aclosed">
     <img src="https://img.shields.io/badge/Closed%20Issues-1-brightgreen"
