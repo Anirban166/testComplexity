@@ -9,7 +9,7 @@
 #' @export
 #' @import ggplot2
 
-plotTimings = function(data.df)
+plotMemoryUsage = function(data.df)
 {
   if(class(data.df) == "data.frame" & "Memory usage" %in% colnames(data.df) & "Data sizes" %in% colnames(data.df))
   {
