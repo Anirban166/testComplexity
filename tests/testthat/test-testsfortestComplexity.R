@@ -76,3 +76,14 @@ test_that("Return value test for asymptoticMemoryUsage", {
   expect_equal(attributes(df)$names, c("Memory usage", "Data sizes"))
 })
 
+# Tests for asymptoticMemoryComplexityClass
+
+test_that("model.df parameter test for asymptoticMemoryComplexityClass", {
+  expect_error(asymptoticMemoryComplexityClass(c(10)))
+})
+
+test_that("Return value test for asymptoticMemoryComplexityClass", {
+  df <- asymptoticMemoryUsage(rpois(data.sizes, 10), data.sizes = 10^seq(1, 4, by = 0.1))
+  complexity.classes <- c("constant", "linear", "squareroot", "log", "log-linear", "quadratic", "cubic")
+  expect_true(asymptoticMemoryComplexityClass(df) %in% complexity.classes)
+})
