@@ -63,9 +63,9 @@ R package developers currently use ad-hoc tests of asymptotic computational comp
 ## Objectives
 - Primary objectives include classification of an algorithm’s time complexity trends, quantifying its run timings and plotting the same which helps to visually conceive the complexity results, based upon the initial idea as staged [here](https://github.com/rstats-gsoc/gsoc2020/wiki/Asymptotic-complexity-testing#details-of-your-coding-project). <br>
 - Additionally, I thought of covering memory complexity testing as well, which goes hand-in-hand when we are dealing with the term complexity in computer science. <br>
-- Furthermore, @tdhock suggested classifying complexity for user-defined output parameters (i.e. a measure of a parameter, apart from timings/memory), which could eventually make the package more flexible in terms of use-cases.
+- Furthermore, @tdhock suggested classifying complexity for user-defined output parameters (i.e. a measure of a parameter apart from timings/memory), which would eventually make the package more flexible in terms of use-cases.
 
-Since algorithms are used in every sphere of research, this package potentially caters to all sorts of R-users, following different fields of study. Currently, it is being tested on changepoint detection, constrained optimal segmentation/partitioning algorithms plus a few regular ones (substring/gregexpr).
+Since algorithms are used in every sphere of research, this package potentially caters to all sorts of R-users, following different fields of study. Currently, it is being tested on changepoint detection, constrained optimal segmentation/partitioning algorithms plus a few regular ones such as substring and gregexpr.
 
 ## Installation
 ```r
@@ -115,7 +115,7 @@ Test cases for testComplexity functions via [testthat](https://cran.r-project.or
 Tested locally by `covr::package_coverage()` and codecov, with 100% code coverage. <br>
 - **OS Support** <br>
 Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. <br>
-Note that the use of `bench::bench_memory` successfully overcomes the drawback of windows-only OS limitation for memory complexity testing in GuessCompx and it successfully runs on other operating systems such as Linux. Although not tested yet, the existing functionality should safely run in MacOS as well, since [`bench`](https://cran.r-project.org/web/packages/bench/bench.pdf) uses corresponding APIs for memory extraction.
+Note that the use of `bench::bench_memory` overcomes the drawback of windows-only OS limitation for memory complexity testing in `GuessCompx::CompEst` as it successfully runs on other operating systems such as Linux. Although not tested yet, the existing functionality should safely run in MacOS as well, since [`bench`](https://cran.r-project.org/web/packages/bench/bench.pdf) uses corresponding memory extraction APIs for all the three major operating systems.
 <p align="center">
 <a href="https://www.microsoft.com/en-in/windows"> <img src="https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&logo=Windows"> <a href="https://www.linux.org/"> <img src="https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&logo=Linux"> 
 </p> 
@@ -129,7 +129,7 @@ Note that the use of `bench::bench_memory` successfully overcomes the drawback o
 
 ---
 <h2 align="center">
-Author Links()   
+Author::Links()
 </h2>
 
 <p align="center">
