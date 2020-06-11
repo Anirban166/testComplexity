@@ -1,6 +1,6 @@
 #' Function to plot timings vs data sizes from the data frame returned by asymptoticTimings
 #'
-#' @title Asymptotic Timings plot function
+#' @title Asymptotic Timings Plot function
 #'
 #' @param data.df A data frame composed of columns 'Timings' and 'Data sizes', which can be obtained by asymptoticTimings()
 #'
