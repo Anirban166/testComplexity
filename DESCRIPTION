@@ -16,7 +16,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
-Imports: boot, microbenchmark, ggplot2, stats
+Imports: boot, microbenchmark, bench, ggplot2, stats
 Suggests: 
     testthat (>= 2.1.0),
     covr
