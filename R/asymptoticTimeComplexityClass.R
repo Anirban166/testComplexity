@@ -4,7 +4,7 @@
 #'
 #' @param model.df A data frame composed of columns 'Timings' and 'Data sizes', which can be obtained by asymptoticTimings()
 #'
-#' @return A string specifying the resultant complexity class. (Eg: 'Linear', 'Log-linear','Quadratic')
+#' @return A string specifying the resultant complexity class. (Eg: 'Linear', 'Log-linear', 'Quadratic')
 #'
 #' @export
 #' @importFrom boot cv.glm

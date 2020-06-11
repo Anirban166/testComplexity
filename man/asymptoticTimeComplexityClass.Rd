@@ -10,7 +10,7 @@ asymptoticTimeComplexityClass(model.df)
 \item{model.df}{A data frame composed of columns 'Timings' and 'Data sizes', which can be obtained by asymptoticTimings()}
 }
 \value{
-A string specifying the resultant complexity class. (Eg: 'Linear', 'Log-linear','Quadratic')
+A string specifying the resultant complexity class. (Eg: 'Linear', 'Log-linear', 'Quadratic')
 }
 \description{
 Function to classify the time complexity of the expression passed onto asymptoticTimings (which outputs a data frame to be used here)

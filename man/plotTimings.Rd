@@ -13,5 +13,5 @@ plotTimings(data.df)
 A ggplot object.
 }
 \description{
-Function to plot the timings from the data frame returned by asymptoticTimings
+Function to plot timings vs data sizes from the data frame returned by asymptoticTimings
 }
