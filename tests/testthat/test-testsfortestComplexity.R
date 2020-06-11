@@ -50,3 +50,29 @@ test_that("Return value (ggplot object) test for plotTimings", {
   expect_true("ggplot" %in% attributes(plotTimings(df))$class)
 })
 
+# Tests for asymptoticMemoryUsage
+
+test_that("Empty vector/sequence test for data.sizes", {
+  expect_error(asymptoticMemoryUsage(expression, data.sizes = c()))
+  expect_error(asymptoticMemoryUsage(expression, data.sizes = c(NULL)))
+})
+
+test_that("NA test for data.sizes", {
+  expect_error(asymptoticMemoryUsage(expression, data.sizes = c(NA)))
+})
+
+test_that("NaN test for data.sizes", {
+  expect_error(asymptoticMemoryUsage(expression, data.sizes = sqrt(-1)))
+})
+
+test_that("Inf test for data.sizes", {
+  expect_error(asymptoticMemoryUsage(expression, data.sizes = Inf))
+})
+
+test_that("Return value test for asymptoticMemoryUsage", {
+  df <- asymptoticMemoryUsage(rpois(data.sizes, 10), data.sizes = 10)
+  expect_that(df, is_a("data.frame") )
+  expect_equal(dim(df), c(1, 2))
+  expect_equal(attributes(df)$names, c("Memory usage", "Data sizes"))
+})
+
