@@ -2,7 +2,7 @@
 % Please edit documentation in R/plotTimings.R
 \name{plotTimings}
 \alias{plotTimings}
-\title{Asymptotic Timings plot function}
+\title{Asymptotic Timings Plot function}
 \usage{
 plotTimings(data.df)
 }
