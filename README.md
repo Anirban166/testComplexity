@@ -40,7 +40,7 @@
     <img src="https://img.shields.io/github/languages/top/Anirban166/testComplexity?label=R"
          alt="GitHub Language">
     <a href="https://github.com/Anirban166/testComplexity/issues">
-    <img src="https://img.shields.io/badge/Open%20Issues-4-orange"
+    <img src="https://img.shields.io/badge/Open%20Issues-5-orange"
          alt="GitHub Open Issues">
     <a href="https://github.com/Anirban166/testComplexity/issues?q=is%3Aissue+is%3Aclosed">
     <img src="https://img.shields.io/badge/Closed%20Issues-3-brightgreen"
@@ -51,6 +51,7 @@
   <a href="#objectives">Objectives</a> •
   <a href="#installation">Installation</a> •    
   <a href="#functional-flow">Functional Flow</a> •
+  <a href="#examples">Examples</a> •    
   <a href="#benchmarking">Benchmarking</a> • 
   <a href="#testing">Testing</a> • 
   <a href="#task-list">Task List</a>
@@ -61,7 +62,7 @@
 R package developers currently use ad-hoc tests of asymptotic computational complexity via empirical timings of functions and visual diagnostic plots. However, there is no framework in R for systematically testing the empirical computational complexity of functions, which tends to be a problem because such a testing framework could be essential for identifying big speed gains in R code as well. In response to this, **testComplexity** provides a suite of [functions](https://github.com/Anirban166/testComplexity/tree/master/R) that will be useful for testing and thereby improving the speed of various algorithms/functions in R.
 
 ## Objectives
-- Primary objectives include classification of an algorithm’s time complexity trends, quantifying its run timings and plotting the same which helps to visually conceive the complexity results, based upon the initial idea as staged [here](https://github.com/rstats-gsoc/gsoc2020/wiki/Asymptotic-complexity-testing#details-of-your-coding-project). <br>
+- Primary objectives include classification of an algorithm’s time complexity trends, quantifying the runtimes and plotting the same which helps to visually conceive the complexity results, based upon the initial idea as staged [here](https://github.com/rstats-gsoc/gsoc2020/wiki/Asymptotic-complexity-testing#details-of-your-coding-project). <br>
 - Additionally, I thought of covering memory complexity testing as well, which goes hand-in-hand when we are dealing with the term complexity in computer science. <br>
 - Furthermore, @tdhock suggested classifying complexity for user-defined output parameters (i.e. a measure of a parameter apart from timings/memory), which would eventually make the package more flexible in terms of use-cases.
 
@@ -88,6 +89,27 @@ testComplexity                              @ returns
 └──> testthat
      └──> testsfortestComplexity
 _________________________________________________________________
+```
+
+## Examples
+One example each for the three major complexity classes (linear, log-linear, quadratic) we are concerned with:
+```r
+# Linear case example:
+> library(changepoint)
+# For estimating the time complexity, collect the data frame composed of benchmarked timings from asymptoticTimings() first:
+> df <- asymptoticTimings(changepoint::cpt.mean(rnorm(data.sizes), method = "PELT"), data.sizes = 10^seq(1, 4, by = 0.5))
+# Then pass the obtained data frame onto asymptoticTimeComplexityClass() to obtain the complexity class:
+> asymptoticTimeComplexityClass(df)
+[1] "linear"
+
+# Log-linear case example:
+> library(PeakSegOptimal)
+> asymptoticTimeComplexityClass(asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(data.sizes, 1),rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5))
+[1] "log-linear"
+
+# Quadratic case example:
+> library(PeakSegDP)
+> asymptoticTimeComplexityClass(asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5))
 ```
 
 ## Benchmarking
