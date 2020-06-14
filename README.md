@@ -92,24 +92,27 @@ _________________________________________________________________
 ```
 
 ## Examples
-One example each for the three major complexity classes (linear, log-linear, quadratic) we are concerned with:
+One example each for the three major complexity classes (linear, log-linear, quadratic) we are concerned with: <br>
+- Linear time complexity case <br>
 ```r
-# Linear case example:
 > library(changepoint)
 # For estimating the time complexity, collect the data frame composed of benchmarked timings from asymptoticTimings() first:
 > df <- asymptoticTimings(changepoint::cpt.mean(rnorm(data.sizes), method = "PELT"), data.sizes = 10^seq(1, 4, by = 0.5))
 # Then pass the obtained data frame onto asymptoticTimeComplexityClass() to obtain the complexity class:
 > asymptoticTimeComplexityClass(df)
 [1] "linear"
-
-# Log-linear case example:
+```
+- Log-linear time complexity case <br>
+```r
 > library(PeakSegOptimal)
 > asymptoticTimeComplexityClass(asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(data.sizes, 1),rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5))
 [1] "log-linear"
-
-# Quadratic case example:
+```
+- Quadratic time complexity case <br>
+```r
 > library(PeakSegDP)
 > asymptoticTimeComplexityClass(asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5))
+[1] "quadratic"
 ```
 
 ## Benchmarking
