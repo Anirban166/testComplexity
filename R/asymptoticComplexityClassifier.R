@@ -1,4 +1,4 @@
-#' Function to classify the complexity trend between two selected parameters from the data frame provided as input here
+#' Function to classify the complexity trend between the two parameters as provided by asymptoticComplexityClass
 #'
 #' @title Asymptotic Complexity Classifier function
 #'
