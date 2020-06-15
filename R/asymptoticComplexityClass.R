@@ -2,7 +2,7 @@
 #'
 #' @title Asymptotic Complexity Classification function
 #'
-#' @param model.df A data frame composing for two columns at the least, where one should be the contain the output-parameter sizes and one should contain the data sizes.
+#' @param df A data frame composing for two columns at the least, where one should be the contain the output-parameter sizes and one should contain the data sizes.
 #'
 #' @param output.size A string specifying the column name in the passed data frame to be used as the output size.
 #'
