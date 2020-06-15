@@ -107,7 +107,7 @@ test_that("data.df parameter test for asymptoticComplexityClass", {
 })
 
 test_that("Return value test for asymptoticComplexityClass", {
-  df <- asymptoticTimings(changepoint::cpt.mean(rnorm(data.sizes), method = "PELT"), data.sizes = 10^seq(1,3,by=0.5))
+  df <- asymptoticTimings(substring(paste(rep("A", data.sizes), collapse = ""), 1:data.sizes, 1:data.sizes), data.sizes = 10^seq(1, 3, by = 0.5))
   complexity.classes <- c("constant", "linear", "squareroot", "log", "log-linear", "quadratic", "cubic")
   expect_true(asymptoticComplexityClass(df, output.size = "Timings", data.size = "Data sizes") %in% complexity.classes)
 })
@@ -119,7 +119,7 @@ test_that("data.df parameter test for asymptoticComplexityClassifier", {
 })
 
 test_that("Return value test for asymptoticComplexityClassifier", {
-  df <- asymptoticTimings(changepoint::cpt.mean(rnorm(data.sizes), method = "PELT"), data.sizes = 10^seq(1,3,by=0.5))
+  df <- asymptoticTimings(substring(paste(rep("A", data.sizes), collapse = ""), 1:data.sizes, 1:data.sizes), data.sizes = 10^seq(1, 3, by = 0.5))
   f <- function(df, col1, col2)
   {
     d <- data.frame('output' = df[[col1]], 'size' = df[[col2]])
