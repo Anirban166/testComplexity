@@ -2,7 +2,7 @@
 #'
 #' @title Asymptotic Complexity Classifier function
 #'
-#' @param model.df A data frame returned by asymptoticComplexityClass.
+#' @param df A data frame returned by asymptoticComplexityClass.
 #'
 #' @return A string specifying the resultant complexity class. (Eg: 'Linear', 'Log-linear', 'Quadratic')
 #'

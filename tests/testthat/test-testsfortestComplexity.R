@@ -99,3 +99,33 @@ test_that("Return value (ggplot object) test for plotMemoryUsage", {
   colnames(df) <- c("Memory usage", "Data sizes")
   expect_true("ggplot" %in% attributes(plotMemoryUsage(df))$class)
 })
+
+# Tests for asymptoticComplexityClass()
+
+test_that("data.df parameter test for asymptoticComplexityClass", {
+  expect_error(asymptoticComplexityClass(c(10)))
+})
+
+test_that("Return value test for asymptoticComplexityClass", {
+  df <- asymptoticTimings(changepoint::cpt.mean(rnorm(data.sizes), method = "PELT"), data.sizes = 10^seq(1,3,by=0.5))
+  complexity.classes <- c("constant", "linear", "squareroot", "log", "log-linear", "quadratic", "cubic")
+  expect_true(asymptoticComplexityClass(df, output.size = "Timings", data.size = "Data sizes") %in% complexity.classes)
+})
+
+# Tests for asymptoticComplexityClassifier()
+
+test_that("data.df parameter test for asymptoticComplexityClassifier", {
+  expect_error(asymptoticComplexityClassifier(c(10)))
+})
+
+test_that("Return value test for asymptoticComplexityClassifier", {
+  df <- asymptoticTimings(changepoint::cpt.mean(rnorm(data.sizes), method = "PELT"), data.sizes = 10^seq(1,3,by=0.5))
+  f <- function(df, col1, col2)
+  {
+    d <- data.frame('output' = df[[col1]], 'size' = df[[col2]])
+    return(d)
+  }
+  x <- f(df, "Timings", "Data sizes")
+  complexity.classes <- c("constant", "linear", "squareroot", "log", "log-linear", "quadratic", "cubic")
+  expect_true(asymptoticComplexityClassifier(x) %in% complexity.classes)
+})
