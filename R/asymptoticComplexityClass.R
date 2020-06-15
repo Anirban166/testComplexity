@@ -8,6 +8,9 @@
 #'
 #' @export
 
-
-
+asymptoticComplexityClass = function(df, col1, col2)
+{
+  d <- data.frame('output' = df[[col1]], 'size' = df[[col2]])
+  asymptoticComplexityClassifier(d)
+}
 
