@@ -4,10 +4,16 @@
 \alias{plotTimings}
 \title{Asymptotic Timings Plot function}
 \usage{
-plotTimings(data.df)
+plotTimings(data.df, titles = list("", ""), alpha.value)
 }
 \arguments{
 \item{data.df}{A data frame composed of columns 'Timings' and 'Data sizes', which can be obtained by asymptoticTimings()}
+
+\item{titles}{A list of two elements, consisting of the plot title and subtitle.
+# Optional, with default values set to empty strings. (no titles/subtitles)}
+
+\item{alpha.value}{A value denoting transparency level (in the range 0 to 1) for point and line geometry.
+# Optional, with the default value set to 1. (no transparentness)}
 }
 \value{
 A ggplot object.
