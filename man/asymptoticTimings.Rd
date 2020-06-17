@@ -12,7 +12,8 @@ asymptoticTimings(e, data.sizes, max.seconds)
 \item{data.sizes}{Set of data sizes, which should preferably be a sequence of powers of ten, with mid-values included.
 # Example: data.sizes = 10^(1, 5, by = 0.5)}
 
-\item{max.seconds}{The maximum number of seconds an iteration would be limited upto. (once the limit has been exceeded, further computations on incrementally larger dataset sizes won't be done)}
+\item{max.seconds}{The maximum number of seconds an iteration would be limited upto. (once the limit has been exceeded, further computations on incrementally larger dataset sizes won't be done)
+# Optional, with the default value set to 1 second.}
 }
 \value{
 A data frame comprising of the timings computed by microbenchmark and the corresponding dataset sizes.

@@ -5,9 +5,10 @@
 #' @param e An expression which is in the form of a function operating on the parameter 'data.sizes' given by the user.
 #'
 #' @param data.sizes Set of data sizes, which should preferably be a sequence of powers of ten, with a multitude of mid-values included.
-#'                 # Example: data.sizes = 10^(1, 5, by = 0.1)
+#' # Example: data.sizes = 10^(1, 5, by = 0.1)
 #'
 #' @param max.bytes The maximum number of allocated bytes an iteration would be limited upto for the passed expression. (once the limit has been exceeded, further computations on incrementally larger dataset sizes won't be done)
+#' # Optional, with default value set to 10^6 bytes. (1 Megabyte/MB)
 #'
 #' @return A data frame comprising of the memory usage (in megabytes) computed by bench and the corresponding dataset sizes.
 #'
