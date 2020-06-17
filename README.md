@@ -51,7 +51,7 @@
   <a href="#objectives">Objectives</a> •
   <a href="#installation">Installation</a> •    
   <a href="#functional-flow">Functional Flow</a> •
-  <a href="#examples">Examples</a> •    
+  <a href="#usage">Usage</a> •    
   <a href="#benchmarking">Benchmarking</a> • 
   <a href="#testing">Testing</a> • 
   <a href="#task-list">Task List</a>
@@ -69,46 +69,62 @@ R package developers currently use ad-hoc tests of asymptotic computational comp
 Since algorithms are used in every sphere of research, this package potentially caters to all sorts of R-users, following different fields of study. Currently, it is being tested on changepoint detection, constrained optimal segmentation/partitioning algorithms plus a few regular ones such as substring and gregexpr.
 
 ## Installation
+Use `devtools` or `remotes` to fetch the package from this repository:
 ```r
-if(!require(devtools))install.packages("devtools")
+if(!require(devtools)) install.packages("devtools")
 devtools::install_github("Anirban166/testComplexity")
+```
+```r
+if(!require(remotes)) install.packages("remotes")
+remotes::install_github("Anirban166/testComplexity")
 ```
 
 ## Functional Flow
 ```r
-___________________________ R Files _____________________________
-testComplexity                              @ returns
-├──> asymptoticTimings                    : data.frame
-│    ├──> asymptoticTimeComplexityClass   :   ├──> string
-│    └──> plotTimings                     :   └──> ggplot object
+__________________ R Files _______________________________________ Additional Details _____________________________
+testComplexity                              @ returns              @ type                    @ commit-branch(es) 
+├──> asymptoticTimings                    : data.frame             timings quantifier        master
+│    ├──> asymptoticTimeComplexityClass   :   ├──> string          ↑ complexity classifier   master
+│    └──> plotTimings                     :   └──> ggplot object   ↑ plotter                 master/Plotfunc
 │
-├──> asymptoticMemoryUsage                : data.frame
-│    ├──> asymptoticMemoryComplexityClass :   ├──> string
-│    └──> plotMemoryUsage                 :   └──> ggplot object
+├──> asymptoticMemoryUsage                : data.frame             memory-usage quantifier   Memtest
+│    ├──> asymptoticMemoryComplexityClass :   ├──> string          ↑ complexity classifier   Memtest
+│    └──> plotMemoryUsage                 :   └──> ggplot object   ↑ plotter                 Memtest/Plotfunc
 │
-└──> testthat
-     └──> testsfortestComplexity
-_________________________________________________________________
+├──> asymptoticComplexityClass            : string                 complexity classifier     Generalizedcomplexity
+│    └──> asymptoticComplexityClassifier  :   ↑ string             ↑ complexity classifier   Generalizedcomplexity
+│
+└──> testthat                                                                                All branches
+     └──> testsfortestComplexity                                   unit-tester               All branches
+____________________________________________________________________________________________________________________
 ```
 
-## Examples
-One example each for the three major complexity classes (linear, log-linear, quadratic) we are concerned with: <br>
-- Linear time complexity case <br>
-```r
-> library(changepoint)
-# For estimating the time complexity, collect the data frame composed of benchmarked timings from asymptoticTimings() first:
-> df <- asymptoticTimings(changepoint::cpt.mean(rnorm(data.sizes), method = "PELT"), data.sizes = 10^seq(1, 4, by = 0.5))
-# Then pass the obtained data frame onto asymptoticTimeComplexityClass() to obtain the complexity class:
-> asymptoticTimeComplexityClass(df)
-[1] "linear"
-```
-- Log-linear time complexity case <br>
+## Usage
+For obtaining the benchmarked timings/memory against specified data sizes, pass the required algorithm as a function of `data.sizes` to `asymptoticTimings`/`asymptoticMemoryUsage`: 
 ```r
 > library(PeakSegOptimal)
-> asymptoticTimeComplexityClass(asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(data.sizes, 1),rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5))
+> library(data.table)
+> df <- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(data.sizes, 1),rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5))
+> data.table(df)
+       Timings Data sizes
+  1:    318703     10.000
+  2:    174002     10.000
+  3:    237002     10.000
+  4:    197901     10.000
+  5:    221702     10.000
+ ---                     
+596:  90820902   3162.278
+597:  99308102   3162.278
+598: 102231901   3162.278
+599: 118894800   3162.278
+600: 118237202   3162.278
+```
+To estimate the corresponding time/memory complexity class, pass the obtained data frame onto `asymptoticTimeComplexityClass()`/`asymptoticMemoryComplexityClass()`:
+```r
+> asymptoticTimeComplexityClass(df)
 [1] "log-linear"
 ```
-- Quadratic time complexity case <br>
+Combine the functions if you only require the complexity class:
 ```r
 > library(PeakSegDP)
 > asymptoticTimeComplexityClass(asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5))
@@ -148,13 +164,12 @@ Note that the use of `bench::bench_memory` overcomes the drawback of windows-onl
 ## Task List
 - [x] Time complexity testing.
 - [x] Memory complexity testing.
-- [ ] Classification of user given output (output size is the metric, instead of timings/memory-usage) parameter.
+- [x] Classification of user given output (output size is the metric, instead of timings/memory-usage) parameter.
 - [ ] Add testing functions, with optional packages in suggests.
-- [ ] Make PRs to master, with code-reviewed commits.
 
 ---
 <h2 align="center">
-Author::Links()
+Anirban166 © 2020
 </h2>
 
 <p align="center">
