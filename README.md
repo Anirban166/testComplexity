@@ -40,7 +40,7 @@
     <img src="https://img.shields.io/github/languages/top/Anirban166/testComplexity?label=R"
          alt="GitHub Language">
     <a href="https://github.com/Anirban166/testComplexity/issues">
-    <img src="https://img.shields.io/badge/Open%20Issues-5-orange"
+    <img src="https://img.shields.io/badge/Open%20Issues-7-orange"
          alt="GitHub Open Issues">
     <a href="https://github.com/Anirban166/testComplexity/issues?q=is%3Aissue+is%3Aclosed">
     <img src="https://img.shields.io/badge/Closed%20Issues-3-brightgreen"
@@ -185,6 +185,9 @@ Anirban166 © 2020
     <a href="https://www.instagram.com/anirban.166/">
     <img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=Instagram"
          alt="Instagram Link">    
+    <a href="https://summerofcode.withgoogle.com/projects/4887653356404736"> 
+    <img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=google"
+         alt="Google Summer of Code Project Link">   
     <a href="mailto:Anirban.code@studentpartner.com">
     <img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=Microsoft"
          alt="Microsoft Student Partner Email">            
@@ -197,4 +200,7 @@ Anirban166 © 2020
     <a href="https://www.linkedin.com/in/anirban166/">
     <img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=LinkedIn"
          alt="LinkedIn Link">
+    <a href="https://anirban166.github.io/">
+    <img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=WebStorm"
+         alt="Website Link">        
 </p> 
