@@ -24,7 +24,7 @@ plotTimings = function(data.df, titles = list("",""), alpha.value)
    plot.obj <- ggplot(data.df, aes(x = `Data sizes`, y = Timings)) +
                geom_point(alpha = alpha.value) +
                geom_line(alpha = alpha.value) +
-               labs(x = "Data sizes", y = "Runtime") +
+               labs(x = "Data sizes", y = "Runtime (in nanoseconds)") +
                scale_x_log10() + scale_y_log10() +
                ggtitle(titles[[1]], subtitle = titles[[2]])
 
