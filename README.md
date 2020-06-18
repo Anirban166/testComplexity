@@ -159,34 +159,33 @@ For obtaining a visual description of the trend followed between runtimes/memory
 > plotTimings(df.time, titles = list("Timings plot", "PeakSegDP::cDPA"))
 > plotMemoryUsage(df.memory, titles = list("Memory usage plot", "PeakSegDP::cDPA")) 
 ```
-<img width = "49%" height = "49%" src = "Images/TimetestplotcDPA.png"> <img width = "49%" height = "49%" src = "Images/MemtestplotcDPA.png"> <br>
+<img width = "100%" src = "Images/cDPAplottimememory.png"> <br>
 - **Comparison Plots** <br>
 In order to visually compare different algorithms based on the benchmarked metrics returned as a data frame by the quantifiers, one can appropriately add a third column (to help distinguish by aesthetics based on it) with a unique value for each of the data frames, combine them using an `rbind()` and then plot the resultant data frame using suitable aesthetics, geometry, scale, labels/titles etcetera via a ggplot: <br>
 ```r
-> df.one <- asymptoticTimings(substring(paste(rep("A", data.sizes), collapse = ""), 1:data.sizes, 1:data.sizes), data.sizes = 10^seq(1, 5, by = 0.5))
+> df.one <- asymptoticTimings(substring(paste(rep("A", data.sizes), collapse = ""), 1:data.sizes, 1:data.sizes), data.sizes = 10^seq(1, 4, by = 0.5))
 > asymptoticTimeComplexityClass(df.one)
 [1] "linear"
-> df.two <- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(data.sizes, 1),rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 5, by = 0.5))
+> df.two <- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(data.sizes, 1),rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 1)
 > asymptoticTimeComplexityClass(df.two)
 [1] "log-linear"
-> df.three <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 5, by = 0.5))
+> df.three <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 5)
 > asymptoticTimeComplexityClass(df.three)
 [1] "quadratic"
-> df.one <- head(df.one, -300)
 > df.one$expr = "Substring"
 > df.two$expr = "PeakSegPDPA"
 > df.three$expr = "cDPA"
 > plot.df <- rbind(df.one, df.two, df.three)
-> ggplot(plot.df, aes(x = `Data sizes`, y = Timings)) + geom_point(aes(color = expr)) + geom_line(aes(color = expr)) + labs(x = "Data sizes", y = "Runtime") + scale_x_log10() + scale_y_log10() + ggtitle("Timings comparison plot", subtitle = "Linear vs Log-linear vs Quadratic complexities")
+> ggplot(plot.df, aes(x = `Data sizes`, y = Timings)) + geom_point(aes(color = expr)) + geom_line(aes(color = expr)) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings comparison plot", subtitle = "Linear vs Log-linear vs Quadratic complexities")
 ```
 <img width = "100%" src = "Images/Timingscomparisonplot.png"> <br>
 - **Diagnostic Plots** <br>
 `ggfortify`, an extension of `ggplot2`, can be used to produce diagnostic plots for generalized linear models with the same formulae as used in the complexity classification functions: <br>
 ```r
-library(ggfortify)
-df <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 5, by = 0.5))
-glm.plot.obj <- glm(Timings~`Data sizes`, data = df)
-ggplot2::autoplot(stats::glm(glm.plot.obj))
+> library(ggfortify)
+> df <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 5, by = 0.5))
+> glm.plot.obj <- glm(Timings~`Data sizes`, data = df)
+> ggplot2::autoplot(stats::glm(glm.plot.obj))
 ```
 <img src = "Images/glmQuadratictimecDPAfit.png"> <br>
 
