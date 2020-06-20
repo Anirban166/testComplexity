@@ -8,6 +8,7 @@
 #' # Optional, with default values set to empty strings. (no titles/subtitles)
 #'
 #' @param labels A list of two elements containing strings for x and y labels respectively.
+#' # Optional, with default values set to appropriate labels.
 #'
 #' @param point.alpha A numeric value denoting transparency level (in the range 0 to 1) for point geometry.
 #' # Optional, with the default value set to 1. (no transparentness)
@@ -24,7 +25,7 @@
 #' @param point.size A numeric value denoting the size of point geometry.
 #' # Optional, with the default value set to (1.3).
 #'
-#' @param point.size A numeric value denoting the line geometry.
+#' @param line.size A numeric value denoting the line geometry.
 #' # Optional, with the default value set to (0.7).
 #'
 #' @return A ggplot object.
