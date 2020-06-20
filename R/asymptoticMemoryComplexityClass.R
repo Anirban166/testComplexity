@@ -14,22 +14,20 @@ asymptoticMemoryComplexityClass = function(model.df)
 {
   if(class(model.df) == "data.frame" & "Memory usage" %in% colnames(model.df) & "Data sizes" %in% colnames(model.df))
   {
-    constant   <- glm(`Memory usage`~1,                              data = model.df); model.df['constant'] = fitted(constant)
-    linear     <- glm(`Memory usage`~`Data sizes`,                   data = model.df); model.df['linear'] = fitted(linear)
-    squareroot <- glm(`Memory usage`~sqrt(`Data sizes`),             data = model.df); model.df['squareroot'] = fitted(squareroot)
-    log        <- glm(`Memory usage`~log(`Data sizes`),              data = model.df); model.df['log'] = fitted(log)
-    log.linear <- glm(`Memory usage`~`Data sizes`*log(`Data sizes`), data = model.df); model.df['log-linear'] = fitted(log.linear)
-    quadratic  <- glm(`Memory usage`~I(`Data sizes`^2),              data = model.df); model.df['quadratic'] = fitted(quadratic)
-    cubic      <- glm(`Memory usage`~I(`Data sizes`^3),              data = model.df); model.df['cubic'] = fitted(cubic)
+    constant   <- glm(`Memory usage`~1,                               data = model.df); model.df['constant'] = fitted(constant)
+    linear     <- glm(`Memory usage`~`Data sizes`,                    data = model.df); model.df['linear'] = fitted(linear)
+    squareroot <- glm(`Memory usage`~sqrt(`Data sizes`),              data = model.df); model.df['squareroot'] = fitted(squareroot)
+    log        <- glm(`Memory usage`~log(`Data sizes`),               data = model.df); model.df['log'] = fitted(log)
+    loglinear  <- glm(`Memory usage`~`Data sizes`*log(`Data sizes`),  data = model.df); model.df['loglinear'] = fitted(loglinear)
+    quadratic  <- glm(`Memory usage`~I(`Data sizes`^2),               data = model.df); model.df['quadratic'] = fitted(quadratic)
+    cubic      <- glm(`Memory usage`~I(`Data sizes`^3),               data = model.df); model.df['cubic'] = fitted(cubic)
 
-    model.list <- list('constant'   = constant,
-                       'linear'     = linear,
-                       'squareroot' = squareroot,
-                       'log'        = log,
-                       'log-linear' = log.linear,
-                       'quadratic'  = quadratic,
-                       'cubic'      = cubic
-    )
+    model.list <- list()
+
+    for(complexity.class in c('constant', 'squareroot', 'log', 'linear', 'loglinear', 'quadratic', 'cubic'))
+    {
+      model.list[[complexity.class]] = eval(as.name(complexity.class))
+    }
 
     cross.validated.errors <- lapply(model.list, function(x) cv.glm(model.df, x)$delta[2])
     best.model <- names(which.min(cross.validated.errors))

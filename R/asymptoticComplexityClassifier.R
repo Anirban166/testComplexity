@@ -14,21 +14,20 @@ asymptoticComplexityClassifier = function(df)
 {
   if(class(df) == "data.frame" & 'output' %in% colnames(df) & 'size' %in% colnames(df))
   {
-    constant   <- glm(output~1,                 data = df); df['constant'] = fitted(constant)
-    linear     <- glm(output~size,              data = df); df['linear'] = fitted(linear)
-    squareroot <- glm(output~sqrt(size),        data = df); df['squareroot'] = fitted(squareroot)
-    log        <- glm(output~log(size),         data = df); df['log'] = fitted(log)
-    log.linear <- glm(output~size*log(size),    data = df); df['log-linear'] = fitted(log.linear)
-    quadratic  <- glm(output~I(size^2),         data = df); df['quadratic'] = fitted(quadratic)
-    cubic      <- glm(output~I(size^3),         data = df); df['cubic'] = fitted(cubic)
+    constant   <- glm(output~1,                  data = df); df['constant'] = fitted(constant)
+    linear     <- glm(output~size,               data = df); df['linear'] = fitted(linear)
+    squareroot <- glm(output~sqrt(size),         data = df); df['squareroot'] = fitted(squareroot)
+    log        <- glm(output~log(size),          data = df); df['log'] = fitted(log)
+    loglinear  <- glm(output~size*log(size),     data = df); df['loglinear'] = fitted(loglinear)
+    quadratic  <- glm(output~I(size^2),          data = df); df['quadratic'] = fitted(quadratic)
+    cubic      <- glm(output~I(size^3),          data = df); df['cubic'] = fitted(cubic)
 
-    model.list <- list('constant'   = constant,
-                       'linear'     = linear,
-                       'squareroot' = squareroot,
-                       'log'        = log,
-                       'log-linear' = log.linear,
-                       'quadratic'  = quadratic,
-                       'cubic'      = cubic)
+    model.list <- list()
+
+    for(complexity.class in c('constant', 'squareroot', 'log', 'linear', 'loglinear', 'quadratic', 'cubic'))
+    {
+      model.list[[complexity.class]] = eval(as.name(complexity.class))
+    }
 
     cross.validated.errors <- lapply(model.list, function(x) cv.glm(df, x)$delta[2])
     best.model <- names(which.min(cross.validated.errors))
