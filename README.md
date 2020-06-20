@@ -51,24 +51,34 @@
   <a href="#objectives">Objectives</a> •
   <a href="#installation">Installation</a> •    
   <a href="#functional-flow">Functional Flow</a> •
-  <a href="#usage">Usage</a> •    
+  <a href="#usage">Usage</a> • 
+  <a href="#plotting">Plotting</a> •     
   <a href="#benchmarking">Benchmarking</a> • 
-  <a href="#testing">Testing</a> • 
+  <a href="#testing">Testing</a> •     
   <a href="#task-list">Task List</a>
 </p>    
         
 ---
-## Abstract
+<h2 align="center">
+Abstract
+</h2>
+
 R package developers currently use ad-hoc tests of asymptotic computational complexity via empirical timings of functions and visual diagnostic plots. However, there is no framework in R for systematically testing the empirical computational complexity of functions, which tends to be a problem because such a testing framework could be essential for identifying big speed gains in R code as well. In response to this, **testComplexity** provides a suite of [functions](https://github.com/Anirban166/testComplexity/tree/master/R) that will be useful for testing and thereby improving the speed of various algorithms/functions in R.
 
-## Objectives
+<h2 align="center">
+Objectives
+</h2>
+
 - Primary objectives include classification of an algorithm’s time complexity trends, quantifying the runtimes and plotting the same which helps to visually conceive the complexity results, based upon the initial idea as staged [here](https://github.com/rstats-gsoc/gsoc2020/wiki/Asymptotic-complexity-testing#details-of-your-coding-project). <br>
 - Additionally, I thought of covering memory complexity testing as well, which goes hand-in-hand when we are dealing with the term complexity in computer science. <br>
 - Furthermore, @tdhock suggested classifying complexity for user-defined output parameters (i.e. a measure of a parameter apart from timings/memory), which would eventually make the package more flexible in terms of use-cases.
 
 Since algorithms are used in every sphere of research, this package potentially caters to all sorts of R-users, following different fields of study. Currently, it is being tested on changepoint detection, constrained optimal segmentation/partitioning algorithms plus a few regular ones such as substring and gregexpr.
 
-## Installation
+<h2 align="center">
+Installation
+</h2>
+
 Use `devtools` or `remotes` to fetch the package from this repository:
 ```r
 if(!require(devtools)) install.packages("devtools")
@@ -79,7 +89,10 @@ if(!require(remotes)) install.packages("remotes")
 remotes::install_github("Anirban166/testComplexity")
 ```
 
-## Functional Flow
+<h2 align="center">
+Functional Flow
+</h2>
+
 ```r
 __________________ R Files _______________________________________ Additional Details _____________________________
 testComplexity                              @ returns              @ type                    @ commit-branch(es) 
@@ -99,8 +112,11 @@ testComplexity                              @ returns              @ type       
 ____________________________________________________________________________________________________________________
 ```
 
-## Usage
-For obtaining the benchmarked timings/memory against specified data sizes, pass the required algorithm as a function of `data.sizes` to `asymptoticTimings`/`asymptoticMemoryUsage`: 
+<h2 align="center">
+Usage
+</h2>
+
+For obtaining the benchmarked timings/memory against specified data sizes, pass the required algorithm as a function of `data.sizes` to `asymptoticTimings()`/`asymptoticMemoryUsage()`: <br>
 ```r
 > library(PeakSegOptimal)
 > library(data.table)
@@ -119,24 +135,72 @@ For obtaining the benchmarked timings/memory against specified data sizes, pass 
 599: 118894800   3162.278
 600: 118237202   3162.278
 ```
-To estimate the corresponding time/memory complexity class, pass the obtained data frame onto `asymptoticTimeComplexityClass()`/`asymptoticMemoryComplexityClass()`:
+To estimate the corresponding time/memory complexity class, pass the obtained data frame onto `asymptoticTimeComplexityClass()`/`asymptoticMemoryComplexityClass()`: <br>
 ```r
 > asymptoticTimeComplexityClass(df)
 [1] "log-linear"
 ```
-Combine the functions if you only require the complexity class:
+Combine the functions if you only require the complexity class: <br>
 ```r
 > library(PeakSegDP)
 > asymptoticTimeComplexityClass(asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5))
 [1] "quadratic"
 ```
 
-## Benchmarking
+<h2 align="center">
+Plotting
+</h2>
+
+- **Single Plots** <br>
+For obtaining a visual description of the trend followed between runtimes/memory-usage vs data sizes, simply pass the data frame returned by the quantifying functions to `plotTimings()`/`plotMemoryUsage()` for time/memory cases respectively: <br>
+```r
+> df.time <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 5, by = 0.5))
+> df.memory <- asymptoticMemoryUsage(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 5, by = 0.1))
+> plotTimings(df.time, titles = list("Timings plot", "PeakSegDP::cDPA"))
+> plotMemoryUsage(df.memory, titles = list("Memory usage plot", "PeakSegDP::cDPA")) 
+```
+<img width = "100%" src = "Images/cDPAplottimememory.png"> <br>
+- **Comparison Plots** <br>
+In order to visually compare different algorithms based on the benchmarked metrics returned as a data frame by the quantifiers, one can appropriately add a third column (to help distinguish by aesthetics based on it) with a unique value for each of the data frames, combine them using an `rbind()` and then plot the resultant data frame using suitable aesthetics, geometry, scale, labels/titles etcetera via a ggplot: <br>
+```r
+> df.one <- asymptoticTimings(substring(paste(rep("A", data.sizes), collapse = ""), 1:data.sizes, 1:data.sizes), data.sizes = 10^seq(1, 4, by = 0.5))
+> asymptoticTimeComplexityClass(df.one)
+[1] "linear"
+> df.two <- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(data.sizes, 1),rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 1)
+> asymptoticTimeComplexityClass(df.two)
+[1] "log-linear"
+> df.three <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 5)
+> asymptoticTimeComplexityClass(df.three)
+[1] "quadratic"
+> df.one$expr = "Substring"
+> df.two$expr = "PeakSegPDPA"
+> df.three$expr = "cDPA"
+> plot.df <- rbind(df.one, df.two, df.three)
+> ggplot(plot.df, aes(x = `Data sizes`, y = Timings)) + geom_point(aes(color = expr)) + geom_line(aes(color = expr)) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings comparison plot", subtitle = "Linear vs Log-linear vs Quadratic complexities")
+```
+<img width = "100%" src = "Images/Timingscomparisonplot.png"> <br>
+- **Diagnostic Plots** <br>
+`ggfortify`, an extension of `ggplot2`, can be used to produce diagnostic plots for generalized linear models with the same formulae as used in the complexity classification functions: <br>
+```r
+> library(ggfortify)
+> df <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 5, by = 0.5))
+> glm.plot.obj <- glm(Timings~`Data sizes`, data = df)
+> ggplot2::autoplot(stats::glm(glm.plot.obj))
+```
+<img src = "Images/glmQuadratictimecDPAfit.png"> <br>
+
+<h2 align="center">
+Benchmarking
+</h2>
+
 Among a few [options](https://anirban166.github.io//Benchmarking/), 
 - `microbenchmark::microbenchmark()` is used to compute the benchmarks to obtain the time results in `testComplexity::asymptoticTimings()`, for the added convenience of having the benchmarked results as a data frame plus for the precision or time scale it produces the results on. (usually in nanoseconds, as can be found from [here](https://cran.r-project.org/web/packages/microbenchmark/microbenchmark.pdf)) <br>
 - `bench::bench_memory()` is used to compute the allocated memory size in order to obtain the memory use metrics in `testComplexity::asymptoticMemoryUsage()`. <br>
             
-## Testing
+<h2 align="center">
+Testing
+</h2>
+
 - **Functions** <br>
 Current set of functions taken into consideration for testing our functionality: 
 ```r
@@ -160,12 +224,15 @@ Note that the use of `bench::bench_memory` overcomes the drawback of windows-onl
 <p align="center">
 <a href="https://www.microsoft.com/en-in/windows"> <img src="https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&logo=Windows"> <a href="https://www.linux.org/"> <img src="https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&logo=Linux"> 
 </p> 
-    
-## Task List
+
+<h2 align="center">
+Task List
+</h2>
+
 - [x] Time complexity testing.
 - [x] Memory complexity testing.
 - [x] Classification of user given output (output size is the metric, instead of timings/memory-usage) parameter.
-- [ ] Add testing functions, with optional packages in suggests.
+- [ ] Add testing functions, with optional packages as suggests.
 
 ---
 <h2 align="center">
