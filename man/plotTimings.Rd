@@ -40,7 +40,7 @@ plotTimings(
 \item{point.size}{A numeric value denoting the size of point geometry.
 # Optional, with the default value set to (1.3).}
 
-\item{line.size}{A numeric value denoting the line geometry.
+\item{line.size}{A numeric value denoting the size of line geometry.
 # Optional, with the default value set to (0.7).}
 }
 \value{

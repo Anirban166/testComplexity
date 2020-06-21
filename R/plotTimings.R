@@ -25,7 +25,7 @@
 #' @param point.size A numeric value denoting the size of point geometry.
 #' # Optional, with the default value set to (1.3).
 #'
-#' @param line.size A numeric value denoting the line geometry.
+#' @param line.size A numeric value denoting the size of line geometry.
 #' # Optional, with the default value set to (0.7).
 #'
 #' @return A ggplot object.
