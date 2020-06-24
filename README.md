@@ -1,5 +1,5 @@
 <p align = "center">
-<img width = "90%" height = "auto" src = "Images/TransparentLogo.png">
+<img width = "100%" height = "auto" src = "Images/TransparentLogo.png">
 </p>
 
 <p align="center">
@@ -21,9 +21,6 @@
 </p> 
 
 <p align="center">
-    <a href="https://www.repostatus.org/#active">
-    <img src="https://www.repostatus.org/badges/latest/active.svg"
-         alt="GitHub Project Status">
     <a href="https://travis-ci.com/github/Anirban166/testComplexity">
     <img src="https://travis-ci.com/Anirban166/testComplexity.svg?branch=master"
          alt="Build status (Travis CI)">      
