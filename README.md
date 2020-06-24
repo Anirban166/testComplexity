@@ -1,17 +1,17 @@
 <p align = "center">
-<img width = "75%" height = "auto" src = "Images/TransparentLogo.png">
+<img width = "90%" height = "auto" src = "Images/TransparentLogo.png">
 </p>
 
 <p align="center">
+    <a href="https://www.r-project.org/">
+    <img src="https://img.shields.io/badge/100%25--blue?style=flat&logo=R"
+         alt="The R project for statistical computing">
     <a href="https://rstudio.com/">
-    <img src="https://img.shields.io/badge/RStudio--black?style=flat&logo=RStudio"
+    <img src="https://img.shields.io/badge/RStudio-IDE-black?style=flat&logo=RStudio"
          alt="RStudio IDE">    
     <a href="https://git-scm.com/">
     <img src="https://img.shields.io/badge/Git-VCS-orange?style=flate&logo=git"
          alt="Git Version Control System">
-    <a href="https://www.r-project.org/">
-    <img src="https://img.shields.io/badge/100%25--blue?style=flat&logo=R"
-         alt="The R project for statistical computing">
     <a href="https://summerofcode.withgoogle.com/projects/#4887653356404736">
     <img src="https://img.shields.io/badge/Google%20Summer%20of%20code-Project-success?style=flat&logo=Google"
          alt="GSoC project">
