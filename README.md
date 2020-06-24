@@ -1,20 +1,20 @@
 <p align = "center">
-<img width = "500" height = "130" src = "Images/TransparentLogo.png">
+<img width = "75%" height = "auto" src = "Images/TransparentLogo.png">
 </p>
 
 <p align="center">
     <a href="https://rstudio.com/">
-    <img src="https://img.shields.io/badge/RStudio-IDE-black?style=flat&logo=RStudio"
+    <img src="https://img.shields.io/badge/RStudio--black?style=flat&logo=RStudio"
          alt="RStudio IDE">    
     <a href="https://git-scm.com/">
     <img src="https://img.shields.io/badge/Git-VCS-orange?style=flate&logo=git"
          alt="Git Version Control System">
     <a href="https://www.r-project.org/">
-    <img src="https://img.shields.io/badge/Project-Org-blue?style=flat&logo=R"
+    <img src="https://img.shields.io/badge/100%25--blue?style=flat&logo=R"
          alt="The R project for statistical computing">
     <a href="https://summerofcode.withgoogle.com/projects/#4887653356404736">
-    <img src="https://img.shields.io/badge/Google%20Summer%20of%20code-Funded-success?style=flat&logo=Google"
-         alt="GSoC project (Google funded)">
+    <img src="https://img.shields.io/badge/Google%20Summer%20of%20code-Project-success?style=flat&logo=Google"
+         alt="GSoC project">
     <a href="https://github.com/Anirban166/testComplexity/blob/master/LICENSE.md">
     <img src="https://img.shields.io/badge/License-MIT-black?style=flat"
          alt="GitHub License">       
@@ -33,9 +33,6 @@
     <a href="https://www.codacy.com/manual/bloodraven166/testComplexity?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Anirban166/testComplexity&amp;utm_campaign=Badge_Grade">
     <img src="https://app.codacy.com/project/badge/Grade/d69a466f4597434e9118ee59ae3307e3"    
          alt="Codacy Badge">
-    <a href="https://www.r-project.org/">
-    <img src="https://img.shields.io/github/languages/top/Anirban166/testComplexity?label=R"
-         alt="GitHub Language">
     <a href="https://github.com/Anirban166/testComplexity/issues">
     <img src="https://img.shields.io/badge/Open%20Issues-7-orange"
          alt="GitHub Open Issues">
