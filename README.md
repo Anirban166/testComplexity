@@ -1,22 +1,22 @@
 <p align = "center">
-<img width = "740" height = "200" src = "Images/TransparentLogo.png">
+<img width = "500" height = "130" src = "Images/TransparentLogo.png">
 </p>
 
 <p align="center">
     <a href="https://rstudio.com/">
-    <img src="https://img.shields.io/badge/RStudio-IDE-black?style=for-the-badge&logo=RStudio"
+    <img src="https://img.shields.io/badge/RStudio-IDE-black?style=flat&logo=RStudio"
          alt="RStudio IDE">    
     <a href="https://git-scm.com/">
-    <img src="https://img.shields.io/badge/Git-VCS-orange?style=for-the-badge&logo=git"
+    <img src="https://img.shields.io/badge/Git-VCS-orange?style=flate&logo=git"
          alt="Git Version Control System">
     <a href="https://www.r-project.org/">
-    <img src="https://img.shields.io/badge/Project-Org-blue?style=for-the-badge&logo=R"
+    <img src="https://img.shields.io/badge/Project-Org-blue?style=flat&logo=R"
          alt="The R project for statistical computing">
     <a href="https://summerofcode.withgoogle.com/projects/#4887653356404736">
-    <img src="https://img.shields.io/badge/Google%20Summer%20of%20code-Funded-success?style=for-the-badge&logo=Google"
+    <img src="https://img.shields.io/badge/Google%20Summer%20of%20code-Funded-success?style=flat&logo=Google"
          alt="GSoC project (Google funded)">
     <a href="https://github.com/Anirban166/testComplexity/blob/master/LICENSE.md">
-    <img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge"
+    <img src="https://img.shields.io/badge/License-MIT-black?style=flat"
          alt="GitHub License">       
 </p> 
 
@@ -33,9 +33,6 @@
     <a href="https://www.codacy.com/manual/bloodraven166/testComplexity?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Anirban166/testComplexity&amp;utm_campaign=Badge_Grade">
     <img src="https://app.codacy.com/project/badge/Grade/d69a466f4597434e9118ee59ae3307e3"    
          alt="Codacy Badge">
-    <a href="https://www.tidyverse.org/lifecycle/#experimental">
-    <img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg"
-         alt="GitHub Lifecycle">
     <a href="https://www.r-project.org/">
     <img src="https://img.shields.io/github/languages/top/Anirban166/testComplexity?label=R"
          alt="GitHub Language">
@@ -71,7 +68,7 @@ Objectives
 
 - Primary objectives include classification of an algorithm’s time complexity trends, quantifying the runtimes and plotting the same which helps to visually conceive the complexity results, based upon the initial idea as staged [here](https://github.com/rstats-gsoc/gsoc2020/wiki/Asymptotic-complexity-testing#details-of-your-coding-project). <br>
 - Additionally, I thought of covering memory complexity testing as well, which goes hand-in-hand when we are dealing with the term complexity in computer science. <br>
-- Furthermore, @tdhock suggested classifying complexity for user-defined output parameters (i.e. a measure of a parameter apart from timings/memory), which would eventually make the package more flexible in terms of use-cases.
+- Furthermore, [@tdhock](https://github.com/tdhock) suggested classifying complexity for user-defined output parameters (i.e. a measure of a parameter apart from timings/memory), which would eventually make the package more flexible in terms of use-cases.
 
 Since algorithms are used in every sphere of research, this package potentially caters to all sorts of R-users, following different fields of study. Currently, it is being tested on changepoint detection, constrained optimal segmentation/partitioning algorithms plus a few regular ones such as substring and gregexpr.
 
