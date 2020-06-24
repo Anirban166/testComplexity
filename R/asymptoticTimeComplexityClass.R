@@ -16,17 +16,14 @@ asymptoticTimeComplexityClass = function(model.df)
 {
   if(class(model.df) == "data.frame" & "Timings" %in% colnames(model.df) & "Data sizes" %in% colnames(model.df))
   {
-    constant   <- glm(Timings~1,                              data = model.df); model.df['constant'] = fitted(constant)
     linear     <- glm(Timings~`Data sizes`,                   data = model.df); model.df['linear'] = fitted(linear)
-    squareroot <- glm(Timings~sqrt(`Data sizes`),             data = model.df); model.df['squareroot'] = fitted(squareroot)
     log        <- glm(Timings~log(`Data sizes`),              data = model.df); model.df['log'] = fitted(log)
     loglinear  <- glm(Timings~`Data sizes`*log(`Data sizes`), data = model.df); model.df['loglinear'] = fitted(loglinear)
     quadratic  <- glm(Timings~I(`Data sizes`^2),              data = model.df); model.df['quadratic'] = fitted(quadratic)
-    cubic      <- glm(Timings~I(`Data sizes`^3),              data = model.df); model.df['cubic'] = fitted(cubic)
 
     model.list <- list()
 
-    for(complexity.class in c('constant', 'squareroot', 'log', 'linear', 'loglinear', 'quadratic', 'cubic'))
+    for(complexity.class in c('log', 'linear', 'loglinear', 'quadratic'))
     {
       model.list[[complexity.class]] = eval(as.name(complexity.class))
     }
