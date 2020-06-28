@@ -1,5 +1,5 @@
 <p align = "center">
-<img width = "100%" height = "auto" src = "Images/TransparentLogo.png">
+<img width = "95%" height = "auto" src = "Images/TransparentLogo.png">
 </p>
 
 <p align="center">
@@ -35,19 +35,11 @@
          alt="GitHub Open Issues">
     <a href="https://github.com/Anirban166/testComplexity/issues?q=is%3Aissue+is%3Aclosed">
     <img src="https://img.shields.io/badge/Closed%20Issues-3-brightgreen"
-         alt="GitHub Closed Issues">
+         alt="GitHub Closed Issues"> </a>
 </p> 
-<p align="center">
-  <a href="#abstract">Abstract</a> •
-  <a href="#objectives">Objectives</a> •
-  <a href="#installation">Installation</a> •    
-  <a href="#functional-flow">Functional Flow</a> •
-  <a href="#usage">Usage</a> • 
-  <a href="#plotting">Plotting</a> •     
-  <a href="#benchmarking">Benchmarking</a> • 
-  <a href="#testing">Testing</a> •     
-  <a href="#task-list">Task List</a>
-</p>    
+
+| <a href="#abstract">Abstract</a> | <a href="#objectives">Objectives</a> | <a href="#installation">Installation</a> | <a href="#functional-flow">Functions</a> | <a href="#usage">Usage</a> | <a href="#plotting">Plotting</a> | <a href="#benchmarking">Benchmarking</a> | <a href="#testing">Testing</a> | <a href="#resources">Resources</a> |
+|---|---|---|---|---|---|---|---|---|
         
 ---
 <h2 align="center">
@@ -217,6 +209,20 @@ Note that the use of `bench::bench_memory` overcomes the drawback of windows-onl
 </p> 
 
 <h2 align="center">
+Resources
+</h2>
+
+<p align="center">
+<a href="https://anirban166.github.io//Test-functions/"> <img width = "13%" src = "/Images/testfunctionslogo.png"> 
+<a href="https://anirban166.github.io//Timings-quantifying-function/"> <img width = "13%" src = "/Images/timingsquantifierlogo.png"> 
+<a href="https://anirban166.github.io//Time-complexity-classifier/"> <img width = "13%" src = "/Images/timecomplexityclassifierlogo.png"> 
+<a href="https://anirban166.github.io//Timings-plotting-function/"> <img width = "13%" src = "/Images/timingsplotterlogo.png"> 
+<a href="https://anirban166.github.io//Memory-usage-quantifier/"> <img width = "13%" src = "/Images/memoryquantifierlogo.png"> 
+<a href="https://anirban166.github.io/Upcoming/"> <img width = "13%" src = "/Images/memoryclassifierlogo.png">
+<a href="https://anirban166.github.io/Upcoming/"> <img width = "13%" src = "/Images/memoryplotterlogo.png"> <br>
+</p>
+
+<h2 align="center">
 Task List
 </h2>
 
@@ -224,7 +230,7 @@ Task List
 - [x] Memory complexity testing.
 - [x] Classification of user given output (output size is the metric, instead of timings/memory-usage) parameter.
 - [ ] Add testing functions, with optional packages as suggests.
-
+    
 ---
 <h2 align="center">
 Anirban166 © 2020
