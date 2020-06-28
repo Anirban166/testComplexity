@@ -49,3 +49,6 @@ A ggplot object.
 \description{
 Function to plot timings vs data sizes from the data frame returned by asymptoticTimings
 }
+\details{
+For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Timings-plotting-function/
+}

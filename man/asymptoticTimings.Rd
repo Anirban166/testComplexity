@@ -22,5 +22,5 @@ A data frame comprising of the timings computed by microbenchmark and the corres
 Function to compute benchmarked timings with different data sizes for an R expression
 }
 \details{
-For more information regarding its functionality, please check https://anirban166.github.io//Timings-function/
+For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Timings-function/
 }

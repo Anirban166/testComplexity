@@ -21,3 +21,6 @@ A data frame comprising of the memory usage (in megabytes) computed by bench and
 \description{
 Function to compute benchmarked memory allocation with different data sizes for an R expression
 }
+\details{
+For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Memory-usage-quantifier/
+}

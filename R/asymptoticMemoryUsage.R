@@ -12,6 +12,8 @@
 #'
 #' @return A data frame comprising of the memory usage (in megabytes) computed by bench and the corresponding dataset sizes.
 #'
+#' @details For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Memory-usage-quantifier/
+#'
 #' @export
 #' @import bench
 

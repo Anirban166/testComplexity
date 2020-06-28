@@ -12,7 +12,7 @@
 #'
 #' @return A data frame comprising of the timings computed by microbenchmark and the corresponding dataset sizes.
 #'
-#' @details For more information regarding its functionality, please check https://anirban166.github.io//Timings-function/
+#' @details For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Timings-function/
 #'
 #' @export
 #' @import microbenchmark
