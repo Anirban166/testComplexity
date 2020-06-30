@@ -3,6 +3,15 @@
 </p>
 
 <p align="center">
+    <a href="https://travis-ci.com/github/Anirban166/testComplexity">
+    <img src="https://travis-ci.com/Anirban166/testComplexity.svg?branch=master"
+         alt="Build status (Travis CI)">      
+    <a href="https://codecov.io/gh/Anirban166/testComplexity?branch=master">    
+    <img src="https://codecov.io/gh/Anirban166/testComplexity/branch/master/graph/badge.svg"
+         alt="Code Coverage (covr/codecov)">
+    <a href="https://www.codacy.com/manual/bloodraven166/testComplexity?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Anirban166/testComplexity&amp;utm_campaign=Badge_Grade">
+    <img src="https://app.codacy.com/project/badge/Grade/d69a466f4597434e9118ee59ae3307e3"    
+         alt="Codacy Badge">
     <a href="https://www.r-project.org/">
     <img src="https://img.shields.io/badge/100%25--blue?style=flat&logo=R"
          alt="The R project for statistical computing">
@@ -13,29 +22,11 @@
     <img src="https://img.shields.io/badge/Git-VCS-orange?style=flate&logo=git"
          alt="Git Version Control System">
     <a href="https://summerofcode.withgoogle.com/projects/#4887653356404736">
-    <img src="https://img.shields.io/badge/Google%20Summer%20of%20code-Project-success?style=flat&logo=Google"
+    <img src="https://img.shields.io/badge/Google-Funded-success?style=flat&logo=Google"
          alt="GSoC project">
     <a href="https://github.com/Anirban166/testComplexity/blob/master/LICENSE.md">
     <img src="https://img.shields.io/badge/License-MIT-black?style=flat"
          alt="GitHub License">       
-</p> 
-
-<p align="center">
-    <a href="https://travis-ci.com/github/Anirban166/testComplexity">
-    <img src="https://travis-ci.com/Anirban166/testComplexity.svg?branch=master"
-         alt="Build status (Travis CI)">      
-    <a href="https://codecov.io/gh/Anirban166/testComplexity?branch=master">    
-    <img src="https://codecov.io/gh/Anirban166/testComplexity/branch/master/graph/badge.svg"
-         alt="Code Coverage (covr/codecov)">
-    <a href="https://www.codacy.com/manual/bloodraven166/testComplexity?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Anirban166/testComplexity&amp;utm_campaign=Badge_Grade">
-    <img src="https://app.codacy.com/project/badge/Grade/d69a466f4597434e9118ee59ae3307e3"    
-         alt="Codacy Badge">
-    <a href="https://github.com/Anirban166/testComplexity/issues">
-    <img src="https://img.shields.io/badge/Open%20Issues-7-orange"
-         alt="GitHub Open Issues">
-    <a href="https://github.com/Anirban166/testComplexity/issues?q=is%3Aissue+is%3Aclosed">
-    <img src="https://img.shields.io/badge/Closed%20Issues-3-brightgreen"
-         alt="GitHub Closed Issues"> </a>
 </p> 
 
 | <a href="#abstract">Abstract</a> | <a href="#objectives">Objectives</a> | <a href="#installation">Installation</a> | <a href="#functional-flow">Functions</a> | <a href="#usage">Usage</a> | <a href="#plotting">Plotting</a> | <a href="#benchmarking">Benchmarking</a> | <a href="#testing">Testing</a> | <a href="#resources">Resources</a> |
