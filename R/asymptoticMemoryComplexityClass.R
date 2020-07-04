@@ -14,6 +14,7 @@ asymptoticMemoryComplexityClass = function(model.df)
 {
   if(class(model.df) == "data.frame" & "Memory usage" %in% colnames(model.df) & "Data sizes" %in% colnames(model.df))
   {
+    constant   <- glm(`Memory usage`~1,                               data = model.df); model.df['constant'] = fitted(constant)
     linear     <- glm(`Memory usage`~`Data sizes`,                    data = model.df); model.df['linear'] = fitted(linear)
     log        <- glm(`Memory usage`~log(`Data sizes`),               data = model.df); model.df['log'] = fitted(log)
     loglinear  <- glm(`Memory usage`~`Data sizes`*log(`Data sizes`),  data = model.df); model.df['loglinear'] = fitted(loglinear)
@@ -21,7 +22,7 @@ asymptoticMemoryComplexityClass = function(model.df)
 
     model.list <- list()
 
-    for(complexity.class in c('log', 'linear', 'loglinear', 'quadratic'))
+    for(complexity.class in c('constant', 'log', 'linear', 'loglinear', 'quadratic'))
     {
       model.list[[complexity.class]] = eval(as.name(complexity.class))
     }

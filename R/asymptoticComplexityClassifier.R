@@ -14,6 +14,7 @@ asymptoticComplexityClassifier = function(df)
 {
   if(class(df) == "data.frame" & 'output' %in% colnames(df) & 'size' %in% colnames(df))
   {
+    constant   <- glm(output~1,                  data = df); df['constant'] = fitted(constant)
     linear     <- glm(output~size,               data = df); df['linear'] = fitted(linear)
     log        <- glm(output~log(size),          data = df); df['log'] = fitted(log)
     loglinear  <- glm(output~size*log(size),     data = df); df['loglinear'] = fitted(loglinear)
@@ -21,7 +22,7 @@ asymptoticComplexityClassifier = function(df)
 
     model.list <- list()
 
-    for(complexity.class in c('log', 'linear', 'loglinear', 'quadratic'))
+    for(complexity.class in c('constant', 'log', 'linear', 'loglinear', 'quadratic'))
     {
       model.list[[complexity.class]] = eval(as.name(complexity.class))
     }
