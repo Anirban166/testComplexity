@@ -24,11 +24,6 @@ asymptoticTimings <- function(e, data.sizes, max.seconds)
     stop("data.sizes must not contain any NA/NaN/Infinite value.")
   }
 
-  if(length(data.sizes) == 0)
-  {
-    stop("Cannot run on an empty vector for 'data.sizes'.")
-  }
-
   lang.obj <- substitute(e)
 
   fun.obj  <- function(data.sizes)
@@ -38,11 +33,9 @@ asymptoticTimings <- function(e, data.sizes, max.seconds)
 
   time.limit = ifelse(missing(max.seconds), 10^8, max.seconds*10^9)
 
-  l <- length(data.sizes)
-
   timings.list <- list()
 
-  for(i in 1:l)
+  for(i in 1:seq(along = data.sizes))
   {
     benchmarked.timings <- as.data.frame(microbenchmark(fun.obj(data.sizes[i])))
 
