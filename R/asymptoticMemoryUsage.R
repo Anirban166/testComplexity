@@ -19,10 +19,7 @@
 
 asymptoticMemoryUsage <- function(e, data.sizes, max.bytes)
 {
-  if(!all(!is.infinite(data.sizes) & !is.na(data.sizes) & !is.nan(data.sizes)))
-  {
-    stop("data.sizes must not contain any NA/NaN/Infinite value.")
-  }
+  ifelse(!all(!is.infinite(data.sizes) & !is.na(data.sizes) & !is.nan(data.sizes)), stop("data.sizes must not contain any NA/NaN/Infinite value."), return)
 
   if(length(data.sizes) == 0)
   {
@@ -36,13 +33,16 @@ asymptoticMemoryUsage <- function(e, data.sizes, max.bytes)
     eval(lang.obj)
   }
 
-  memory.size.limit = ifelse(missing(max.bytes), 10^6, max.bytes)
+  if(missing(max.bytes))
+    memory.size.limit = 10^6
+  else
+    memory.size.limit = max.bytes
 
   l <- length(data.sizes)
 
   memory.metrics.list <- list()
 
-  for(i in 1:l)
+  for(i in seq(along = data.sizes))
   {
     benchmarked.memory.size <- bench_memory(fun.obj(data.sizes[i]))$mem_alloc
 
@@ -50,7 +50,10 @@ asymptoticMemoryUsage <- function(e, data.sizes, max.bytes)
 
     memory.metrics.list[[i]] <- data.frame(c(benchmarked.memory.size), c(data.size))
 
-    ifelse((benchmarked.memory.size > memory.size.limit), break, next)
+    if(benchmarked.memory.size > memory.size.limit)
+      break
+    else
+      next
   }
 
   resultant.df <- do.call(rbind, memory.metrics.list)
