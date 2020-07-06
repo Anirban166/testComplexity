@@ -3,6 +3,9 @@
 </p>
 
 <p align="center">
+    <a href="https://github.com/Anirban166/testComplexity/actions">
+    <img src="https://github.com/Anirban166/testComplexity/workflows/R-CMD-check/badge.svg"    
+         alt="RCMD check()">    
     <a href="https://travis-ci.com/github/Anirban166/testComplexity">
     <img src="https://travis-ci.com/Anirban166/testComplexity.svg?branch=master"
          alt="Build status (Travis CI)">      
@@ -15,12 +18,6 @@
     <a href="https://www.r-project.org/">
     <img src="https://img.shields.io/badge/100%25--blue?style=flat&logo=R"
          alt="The R project for statistical computing"> 
-    <a href="https://rstudio.com/"> 
-    <img src="https://img.shields.io/badge/RStudio-IDE-black?style=flat&logo=RStudio"
-         alt="RStudio IDE">   
-    <a href="https://git-scm.com/">
-    <img src="https://img.shields.io/badge/Git-VCS-orange?style=flate&logo=git"
-         alt="Git Version Control System"> 
     <a href="https://summerofcode.withgoogle.com/projects/#4887653356404736">
     <img src="https://img.shields.io/badge/Google-Funded-success?style=flat&logo=Google"
          alt="GSoC project">
