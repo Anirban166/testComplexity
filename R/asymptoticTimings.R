@@ -19,10 +19,7 @@
 
 asymptoticTimings <- function(e, data.sizes, max.seconds)
 {
-  if(!all(!is.infinite(data.sizes) & !is.na(data.sizes) & !is.nan(data.sizes)))
-  {
-    stop("data.sizes must not contain any NA/NaN/Infinite value.")
-  }
+  ifelse(!all(!is.infinite(data.sizes) & !is.na(data.sizes) & !is.nan(data.sizes)), stop("data.sizes must not contain any NA/NaN/Infinite value."), return)
 
   lang.obj <- substitute(e)
 
@@ -31,11 +28,14 @@ asymptoticTimings <- function(e, data.sizes, max.seconds)
     eval(lang.obj)
   }
 
-  time.limit = ifelse(missing(max.seconds), 10^8, max.seconds*10^9)
+  if(missing(max.seconds))
+    time.limit = 10^8
+  else
+    time.limit = max.seconds*10^9
 
   timings.list <- list()
 
-  for(i in 1:seq(along = data.sizes))
+  for(i in seq(along = data.sizes))
   {
     benchmarked.timings <- as.data.frame(microbenchmark(fun.obj(data.sizes[i])))
 
@@ -43,7 +43,10 @@ asymptoticTimings <- function(e, data.sizes, max.seconds)
 
     timings.list[[i]] <- data.frame(benchmarked.timings$time, benchmarked.timings$data.size)
 
-    ifelse((mean(benchmarked.timings$time) > time.limit), break, next)
+    if(mean(benchmarked.timings$time) > time.limit)
+      break
+    else
+      next
   }
 
   resultant.df <- do.call(rbind, timings.list)
