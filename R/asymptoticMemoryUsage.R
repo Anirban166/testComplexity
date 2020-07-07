@@ -33,10 +33,7 @@ asymptoticMemoryUsage <- function(e, data.sizes, max.bytes)
     eval(lang.obj)
   }
 
-  if(missing(max.bytes))
-    memory.size.limit = 10^6
-  else
-    memory.size.limit = max.bytes
+  memory.size.limit <- if(missing(max.bytes)) 10^6 else max.bytes
 
   l <- length(data.sizes)
 
