@@ -6,6 +6,8 @@
 #'
 #' @return A string specifying the resultant complexity class. (Eg: 'Linear', 'Log-linear', 'Quadratic')
 #'
+#' @details For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Memory-complexity-classifier/
+#'
 #' @export
 #' @importFrom boot cv.glm
 #' @importFrom stats fitted

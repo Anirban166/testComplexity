@@ -30,8 +30,6 @@ asymptoticMemoryUsage <- function(e, data.sizes, max.bytes)
 
   memory.size.limit <- if(missing(max.bytes)) 10^6 else max.bytes
 
-  l <- length(data.sizes)
-
   memory.metrics.list <- list()
 
   break.bool <- TRUE
@@ -39,12 +37,12 @@ asymptoticMemoryUsage <- function(e, data.sizes, max.bytes)
   memory.metrics.list <- lapply(seq(along = data.sizes), function(i)
   {
     if(break.bool)
-    { benchmarked.memory.size <- bench_memory(fun.obj(data.sizes[i]))$mem_alloc
+    {
+      benchmarked.memory.size <- bench_memory(fun.obj(data.sizes[i]))$mem_alloc
+
+      if(benchmarked.memory.size > memory.size.limit) break.bool <<- FALSE
 
       data.size <- data.sizes[i]
-
-      if(benchmarked.memory.size > memory.size.limit)
-        break.bool <<- FALSE
 
       return(data.frame(c(benchmarked.memory.size), c(data.size)))
     }

@@ -15,3 +15,6 @@ A string specifying the resultant complexity class. (Eg: 'Linear', 'Log-linear',
 \description{
 Function to classify the memory complexity of the expression passed onto asymptoticMemoryUsage (which outputs a data frame to be used here)
 }
+\details{
+For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Memory-complexity-classifier/
+}
