@@ -7,6 +7,7 @@
 #' @return A string specifying the resultant complexity class. (Eg: 'Linear', 'Log-linear', 'Quadratic')
 #'
 #' @export
+#' @importFrom stats glm
 #' @importFrom boot cv.glm
 #' @importFrom stats fitted
 
