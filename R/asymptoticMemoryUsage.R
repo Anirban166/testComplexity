@@ -21,11 +21,6 @@ asymptoticMemoryUsage <- function(e, data.sizes, max.bytes)
 {
   ifelse(!all(!is.infinite(data.sizes) & !is.na(data.sizes) & !is.nan(data.sizes)), stop("data.sizes must not contain any NA/NaN/Infinite value."), return)
 
-  if(length(data.sizes) == 0)
-  {
-    stop("Cannot run on an empty vector for 'data.sizes'.")
-  }
-
   lang.obj <- substitute(e)
 
   fun.obj  <- function(data.sizes)
@@ -39,19 +34,21 @@ asymptoticMemoryUsage <- function(e, data.sizes, max.bytes)
 
   memory.metrics.list <- list()
 
-  for(i in seq(along = data.sizes))
+  break.bool <- TRUE
+
+  memory.metrics.list <- lapply(seq(along = data.sizes), function(i)
   {
-    benchmarked.memory.size <- bench_memory(fun.obj(data.sizes[i]))$mem_alloc
+    if(break.bool)
+    { benchmarked.memory.size <- bench_memory(fun.obj(data.sizes[i]))$mem_alloc
 
-    data.size <- data.sizes[i]
+      data.size <- data.sizes[i]
 
-    memory.metrics.list[[i]] <- data.frame(c(benchmarked.memory.size), c(data.size))
+      if(benchmarked.memory.size > memory.size.limit)
+        break.bool <<- FALSE
 
-    if(benchmarked.memory.size > memory.size.limit)
-      break
-    else
-      next
-  }
+      return(data.frame(c(benchmarked.memory.size), c(data.size)))
+    }
+  })
 
   resultant.df <- do.call(rbind, memory.metrics.list)
 

@@ -30,6 +30,8 @@ asymptoticTimings <- function(e, data.sizes, max.seconds)
 
   time.limit <- if(missing(max.seconds)) 10^8 else max.seconds*10^9
 
+  timings.list <- list()
+
   for(i in seq(along = data.sizes))
   {
     benchmarked.timings <- as.data.frame(microbenchmark(fun.obj(data.sizes[i])))
@@ -38,10 +40,7 @@ asymptoticTimings <- function(e, data.sizes, max.seconds)
 
     timings.list[[i]] <- data.frame(benchmarked.timings$time, benchmarked.timings$data.size)
 
-    if(mean(benchmarked.timings$time) > time.limit)
-      break
-    else
-      next
+    if(mean(benchmarked.timings$time) > time.limit) break else next
   }
 
   resultant.df <- do.call(rbind, timings.list)
