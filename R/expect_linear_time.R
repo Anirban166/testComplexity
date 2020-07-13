@@ -6,7 +6,7 @@
 #'
 #' @param ... Parameters for passed function 'f'.
 #'
-#' @return null, throws error for non-linear complexity.
+#' @return null for expected complexity (linear), else throws error.
 #'
 #' @export
 

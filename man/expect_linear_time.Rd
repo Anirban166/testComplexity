@@ -12,7 +12,7 @@ expect_linear_time(f = asymptoticTimings, ...)
 \item{...}{Parameters for passed function 'f'.}
 }
 \value{
-null, throws error for non-linear complexity.
+null for expected complexity (linear), else throws error.
 }
 \description{
 Function to test if input algorithm has linear time complexity
