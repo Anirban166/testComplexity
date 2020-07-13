@@ -1,4 +1,3 @@
-library(testthat)
 
 # Tests for asymptoticTimings()
 
