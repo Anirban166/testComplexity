@@ -2,17 +2,13 @@
 #'
 #' @title Log-Linear Time Complexity Test function
 #'
-#' @param f A function which returns a data frame composed of timings and corresponding data sizes, ideally from asymptoticTimings. (can use other functions)
-#'
-#' @param ... Parameters for passed function 'f'.
+#' @param ... Parameters for the expression to be tested, which is a function of data.sizes, as in asymptoticTimings
 #'
 #' @return null, throws error if complexity is not log-linear. (i.e. O(NlogN) for size N, in Big-O notation)
 #'
 #' @export
 
-expect_loglinear_time = function(f = asymptoticTimings, ...)
+expect_loglinear_time = function(...)
 {
-  timings.df <- f(...)
-
-  stopifnot(asymptoticTimeComplexityClass(timings.df) == "loglinear")
+  expect_time_complexity("loglinear", ...)
 }

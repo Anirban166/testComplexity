@@ -4,12 +4,10 @@
 \alias{expect_loglinear_time}
 \title{Log-Linear Time Complexity Test function}
 \usage{
-expect_loglinear_time(f = asymptoticTimings, ...)
+expect_loglinear_time(...)
 }
 \arguments{
-\item{f}{A function which returns a data frame composed of timings and corresponding data sizes, ideally from asymptoticTimings. (can use other functions)}
-
-\item{...}{Parameters for passed function 'f'.}
+\item{...}{Parameters for the expression to be tested, which is a function of data.sizes, as in asymptoticTimings}
 }
 \value{
 null, throws error if complexity is not log-linear. (i.e. O(NlogN) for size N, in Big-O notation)

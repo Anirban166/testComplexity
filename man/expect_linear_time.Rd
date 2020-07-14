@@ -4,12 +4,10 @@
 \alias{expect_linear_time}
 \title{Linear Time Complexity Test function}
 \usage{
-expect_linear_time(f = asymptoticTimings, ...)
+expect_linear_time(...)
 }
 \arguments{
-\item{f}{A function which returns a data frame composed of timings and corresponding data sizes, ideally from asymptoticTimings. (can use other functions)}
-
-\item{...}{Parameters for passed function 'f'.}
+\item{...}{Parameters for the expression to be tested, which is a function of data.sizes, as in asymptoticTimings}
 }
 \value{
 null for expected complexity (linear), else throws error.

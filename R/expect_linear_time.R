@@ -2,17 +2,14 @@
 #'
 #' @title Linear Time Complexity Test function
 #'
-#' @param f A function which returns a data frame composed of timings and corresponding data sizes, ideally from asymptoticTimings. (can use other functions)
-#'
-#' @param ... Parameters for passed function 'f'.
+#' @param ... Parameters for the expression to be tested, which is a function of data.sizes, as in asymptoticTimings
 #'
 #' @return null for expected complexity (linear), else throws error.
 #'
 #' @export
 
-expect_linear_time = function(f = asymptoticTimings, ...)
+expect_linear_time = function(...)
 {
-  timings.df <- f(...)
-
-  stopifnot(asymptoticTimeComplexityClass(timings.df) == "linear")
+  expect_time_complexity("linear", ...)
 }
+

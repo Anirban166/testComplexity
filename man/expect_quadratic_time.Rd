@@ -4,12 +4,10 @@
 \alias{expect_quadratic_time}
 \title{Quadratic Time Complexity Test function}
 \usage{
-expect_quadratic_time(f = asymptoticTimings, ...)
+expect_quadratic_time(...)
 }
 \arguments{
-\item{f}{A function which returns a data frame composed of timings and corresponding data sizes, ideally from asymptoticTimings. (can use other functions)}
-
-\item{...}{Parameters for passed function 'f'.}
+\item{...}{Parameters for the expression to be tested, which is a function of data.sizes, as in asymptoticTimings}
 }
 \value{
 null for expected complexity (quadratic), else throws error.
