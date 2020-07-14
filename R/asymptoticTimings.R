@@ -34,7 +34,9 @@ asymptoticTimings <- function(e, data.sizes, max.seconds)
 
   i <- 1
 
-  while(i <= length(data.sizes))
+  continue <- TRUE
+
+  while(i <= length(data.sizes) & continue)
   {
     benchmarked.timings <- as.data.frame(microbenchmark(fun.obj(data.sizes[i])))
 
@@ -42,7 +44,7 @@ asymptoticTimings <- function(e, data.sizes, max.seconds)
 
     timings.list[[i]] <- data.frame(benchmarked.timings$time, benchmarked.timings$data.size)
 
-    if(mean(benchmarked.timings$time) > time.limit) break
+    if(mean(benchmarked.timings$time) > time.limit) continue <<- FALSE
 
     i <- i + 1
   }
