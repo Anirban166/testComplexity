@@ -1,6 +1,7 @@
 template:
   params:
-    bootswatch: slate
+    bootswatch: simplex
+    noindex: true
 
 reference:
 - title: "Quantifiers"
