@@ -16,7 +16,15 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0
-Imports: boot, microbenchmark, bench, ggplot2, stats
+URL: https://github.com/Anirban166/testComplexity
+BugReports: https://github.com/Anirban166/testComplexity/issues
+Imports: boot, 
+         microbenchmark, 
+         bench, 
+         ggplot2, 
+         stats
 Suggests: 
     testthat (>= 2.1.0),
-    covr
+    covr,
+    PeakSegOptimal,
+    PeakSegDP
