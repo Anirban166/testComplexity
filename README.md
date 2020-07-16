@@ -78,8 +78,15 @@ testComplexity                              @ returns              @ type       
 ├──> asymptoticComplexityClass            : string                 complexity classifier     Generalizedcomplexity
 │    └──> asymptoticComplexityClassifier  :   ↑ string             ↑ complexity classifier   Generalizedcomplexity
 │
-└──> testthat                                                                                All branches
-     └──> testsfortestComplexity                                   unit-tester               All branches
+├──> expect_time_complexity               : -/-                    test function             Testfunc
+│    ├──> expect_linear_time              : -/-                    ↑ test function           Testfunc
+│    ├──> expect_loglinear_time           : -/-                    ↑ test function           Testfunc
+│    └──> expect_quadratic_time           : -/-                    ↑ test function           Testfunc
+│
+└──> testthat                                                                                
+     ├──> testsfortestComplexity                                   unit-tester               All branches
+     ├──> testsforConstrainedchangepointmodelalgos                 unit-tester               Testfunc
+     └──> testsforRegularfunctions                                 unit-tester               Testfunc
 ____________________________________________________________________________________________________________________
 ```
 
