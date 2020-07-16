@@ -1,6 +1,6 @@
 template:
   params:
-    bootswatch: simplex
+    bootswatch: sandstone
     noindex: true
 
 reference:
@@ -25,3 +25,9 @@ reference:
   desc: "Functions for testing expected complexities"
 - contents:
   - starts_with("expect")
+
+repo:
+  url:
+    home: https://github.com/Anirban166/testComplexity
+    issue: https://github.com/Anirban166/testComplexity/issues
+    user: https://github.com/Anirban166
