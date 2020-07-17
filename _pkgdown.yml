@@ -1,0 +1,38 @@
+template:
+  params:
+    bootswatch: sandstone
+    noindex: true
+
+reference:
+- title: "Quantifiers"
+  desc: "Functions for quantifying time/memory via benchmarks"
+- contents:
+  - asymptoticTimings
+  - asymptoticMemoryUsage
+
+- title: "Complexity Classifiers"
+  desc: "Functions for complexity classification (time/memory/user-defined output parameter)"
+- contents:
+  - ends_with("Class")
+  - ends_with("Classifier")
+
+- title: "Plotters"
+  desc: "Functions for plotting the quantified metrics"
+- contents:
+  - starts_with("plot")
+
+- title: "Testers"
+  desc: "Functions for testing expected complexities"
+- contents:
+  - starts_with("expect")
+
+repo:
+  url:
+    home: https://github.com/Anirban166/testComplexity
+    issue: https://github.com/Anirban166/testComplexity/issues
+    user: https://github.com/Anirban166
+
+home:
+  links:
+  - text: View blogs
+    href: https://anirban166.github.io/posts/
