@@ -31,3 +31,8 @@ repo:
     home: https://github.com/Anirban166/testComplexity
     issue: https://github.com/Anirban166/testComplexity/issues
     user: https://github.com/Anirban166
+
+home:
+  links:
+  - text: View blogs
+    href: https://anirban166.github.io/posts/
