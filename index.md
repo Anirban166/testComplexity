@@ -5,30 +5,30 @@
 <p align="center">
     <a href="https://github.com/Anirban166/testComplexity/actions">
     <img src="https://github.com/Anirban166/testComplexity/workflows/R-CMD-check/badge.svg"    
-         alt="RCMD check()">    
+         alt="RCMD check()"> </a>
     <a href="https://travis-ci.com/github/Anirban166/testComplexity">
     <img src="https://travis-ci.com/Anirban166/testComplexity.svg?branch=master"
-         alt="Build status (Travis CI)">      
+         alt="Build status (Travis CI)"></a>     
     <a href="https://codecov.io/gh/Anirban166/testComplexity?branch=master">    
     <img src="https://codecov.io/gh/Anirban166/testComplexity/branch/master/graph/badge.svg"
-         alt="Code Coverage (covr/codecov)"> 
+         alt="Code Coverage (covr/codecov)">  </a>
     <a href="https://www.codacy.com/manual/bloodraven166/testComplexity?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Anirban166/testComplexity&amp;utm_campaign=Badge_Grade">
     <img src="https://app.codacy.com/project/badge/Grade/d69a466f4597434e9118ee59ae3307e3"    
-         alt="Codacy Badge"> 
+         alt="Codacy Badge"> </a>
     <a href="https://www.r-project.org/">
     <img src="https://img.shields.io/badge/100%25--blue?style=flat&logo=R"
-         alt="The R project for statistical computing"> 
+         alt="The R project for statistical computing"> </a>
     <a href="https://summerofcode.withgoogle.com/projects/#4887653356404736">
     <img src="https://img.shields.io/badge/Google-Funded-success?style=flat&logo=Google"
-         alt="GSoC project">
+         alt="GSoC project"> </a>
     <a href="https://github.com/Anirban166/testComplexity/blob/master/LICENSE.md">
     <img src="https://img.shields.io/badge/License-MIT-black?style=flat"
          alt="GitHub License"> </a>      
 </p> 
 
-| <a href="#abstract">Abstract</a> | <a href="#objectives">Objectives</a> | <a href="#setup">Setup</a> | <a href="#functional-flow">Functions</a> | <a href="#usage">Usage</a> | <a href="#plotting">Plotting</a> | <a href="#benchmarking">Benchmarking</a> | <a href="#testing">Testing</a> | <a href="#resources">Resources</a> |
+| <a href="#abstract">Abstract</a> | <a href="#objectives">Objectives</a> | <a href="#installation">Installation</a> | <a href="#functional-flow">Functions</a> | <a href="#usage">Usage</a> | <a href="#plotting">Plotting</a> | <a href="#benchmarking">Benchmarking</a> | <a href="#testing">Testing</a> | <a href="#resources">Resources</a> |
 |---|---|---|---|---|---|---|---|---|
-        
+
 ---
 <h2 align="center">
 Abstract
@@ -223,34 +223,11 @@ Anirban166 © 2020
 </h2>
 
 <p align="center">
-    <a href="mailto:bloodraven166@gmail.com"> 
-    <img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=gmail"
-         alt="Primary Email">      
-    <a href="https://stackoverflow.com/users/11422223/anirban166?tab=profile">    
-    <img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=Stack%20Overflow"
-         alt="Stack Overflow Link">
-    <a href="https://www.hackerrank.com/Bloodraven166">
-    <img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=HackerRank"
-         alt="HackerRank Link">
-    <a href="https://www.instagram.com/anirban.166/">
-    <img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=Instagram"
-         alt="Instagram Link">    
-    <a href="https://summerofcode.withgoogle.com/projects/4887653356404736"> 
-    <img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=google"
-         alt="Google Summer of Code Project Link">   
-    <a href="mailto:Anirban.code@studentpartner.com">
-    <img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=Microsoft"
-         alt="Microsoft Student Partner Email">            
-    <a href="https://github.com/Anirban166">
-    <img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=Github"
-         alt="GitHub Link">  
-    <a href="https://anirban166.github.io/posts/">
-    <img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=Google%20messages"
-         alt="Website Link">
-    <a href="https://www.linkedin.com/in/anirban166/">
-    <img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=LinkedIn"
-         alt="LinkedIn Link">
-    <a href="https://anirban166.github.io/">
-    <img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=WebStorm"
-         alt="Website Link">        
+<a href="mailto:bloodraven166@gmail.com"><img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=gmail" alt="Primary Email"> <a href="https://stackoverflow.com/users/11422223/anirban166?tab=profile"><img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=Stack%20Overflow" alt="Stack Overflow Link"> <a href="https://www.hackerrank.com/Bloodraven166"><img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=HackerRank" alt="HackerRank Link"> <a href="https://www.instagram.com/anirban.166/"><img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=Instagram" alt="Instagram Link"> <a href="https://summerofcode.withgoogle.com/projects/4887653356404736"><img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=google" alt="Google Summer of Code Project Link"> 
+</p> 
+
+<p align="center">
+<a href="mailto:Anirban.code@studentpartner.com"><img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=Microsoft" alt="Microsoft Student Partner Email"> <a href="https://github.com/Anirban166"><img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=Github" alt="GitHub Link">  
+<a href="https://anirban166.github.io/posts/"><img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=Google%20messages" alt="Website Link"> <a href="https://www.linkedin.com/in/anirban166/"><img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=LinkedIn" alt="LinkedIn Link">
+<a href="https://anirban166.github.io/"><img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=WebStorm" alt="Website Link">        
 </p> 
