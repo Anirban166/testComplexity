@@ -213,8 +213,8 @@ Resources
 <a href="https://anirban166.github.io//Time-complexity-classifier/"> <img width = "13%" src = "/Images/timecomplexityclassifierlogo.png"> 
 <a href="https://anirban166.github.io//Timings-plotting-function/"> <img width = "13%" src = "/Images/timingsplotterlogo.png"> 
 <a href="https://anirban166.github.io//Memory-usage-quantifier/"> <img width = "13%" src = "/Images/memoryquantifierlogo.png"> 
-<a href="https://anirban166.github.io/Upcoming/"> <img width = "13%" src = "/Images/memoryclassifierlogo.png">
-<a href="https://anirban166.github.io/Upcoming/"> <img width = "13%" src = "/Images/memoryplotterlogo.png"> <br>
+<a href="https://anirban166.github.io//Memory-complexity-classifier/"> <img width = "13%" src = "/Images/memoryclassifierlogo.png">
+<a href="https://anirban166.github.io//Memory-usage-plotter/"> <img width = "13%" src = "/Images/memoryplotterlogo.png"> <br>
 </p>
 
 <h2 align="center">
