@@ -26,9 +26,6 @@
          alt="GitHub License"> </a>      
 </p> 
 
-| <a href="#abstract">Abstract</a> | <a href="#objectives">Objectives</a> | <a href="#installation">Installation</a> | <a href="#functional-flow">Functions</a> | <a href="#usage">Usage</a> | <a href="#plotting">Plotting</a> | <a href="#benchmarking">Benchmarking</a> | <a href="#testing">Testing</a> | <a href="#resources">Resources</a> |
-|---|---|---|---|---|---|---|---|---|
-
 ---
 <h2 align="center">
 Abstract
