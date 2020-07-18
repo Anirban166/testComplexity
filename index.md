@@ -26,7 +26,7 @@
          alt="GitHub License"> </a>      
 </p> 
 
-| <a href="#abstract">Abstract</a> | <a href="#objectives">Objectives</a> | <a href="#installation">Installation</a> | <a href="#functional-flow">Functions</a> | <a href="#usage">Usage</a> | <a href="#plotting">Plotting</a> | <a href="#benchmarking">Benchmarking</a> | <a href="#testing">Testing</a> | <a href="#resources">Resources</a> |
+| <a href="#abstract">Abstract</a> | <a href="#objectives">Objectives</a> | <a href="#setup">Setup</a> | <a href="#functional-flow">Functions</a> | <a href="#usage">Usage</a> | <a href="#plotting">Plotting</a> | <a href="#benchmarking">Benchmarking</a> | <a href="#testing">Testing</a> | <a href="#resources">Resources</a> |
 |---|---|---|---|---|---|---|---|---|
         
 ---
@@ -47,7 +47,7 @@ Objectives
 Since algorithms are used in every sphere of research, this package potentially caters to all sorts of R-users, following different fields of study. Currently, it is being tested on changepoint detection, constrained optimal segmentation/partitioning algorithms plus a few regular ones such as substring and gregexpr.
 
 <h2 align="center">
-Installation
+Setup
 </h2>
 
 Use `devtools` or `remotes` to fetch the package from this repository:
@@ -216,15 +216,6 @@ Resources
 <a href="https://anirban166.github.io//Memory-complexity-classifier/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/memoryclassifierlogo.png">
 <a href="https://anirban166.github.io//Memory-usage-plotter/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/memoryplotterlogo.png"> <br>
 </p>
-
-<h2 align="center">
-Task List
-</h2>
-
-- [x] Time complexity testing.
-- [x] Memory complexity testing.
-- [x] Classification of user given output (output size is the metric, instead of timings/memory-usage) parameter.
-- [ ] Add testing functions, with optional packages as suggests.
     
 ---
 <h2 align="center">

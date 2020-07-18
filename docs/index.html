@@ -92,7 +92,7 @@
 <thead><tr class="header">
 <th><a href="#abstract">Abstract</a></th>
 <th><a href="#objectives">Objectives</a></th>
-<th><a href="#installation">Installation</a></th>
+<th><a href="#setup">Setup</a></th>
 <th><a href="#functional-flow">Functions</a></th>
 <th><a href="#usage">Usage</a></th>
 <th><a href="#plotting">Plotting</a></th>
@@ -119,7 +119,7 @@ Objectives
 </ul>
 <p>Since algorithms are used in every sphere of research, this package potentially caters to all sorts of R-users, following different fields of study. Currently, it is being tested on changepoint detection, constrained optimal segmentation/partitioning algorithms plus a few regular ones such as substring and gregexpr.</p>
 <h2 align="center">
-Installation
+Setup
 </h2>
 <p>Use <code>devtools</code> or <code>remotes</code> to fetch the package from this repository:</p>
 <div class="sourceCode" id="cb1"><pre class="r"><span class="kw">if</span>(!<span class="fu"><a href="https://rdrr.io/r/base/library.html">require</a></span>(<span class="no">devtools</span>)) <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)
@@ -191,7 +191,7 @@ Plotting
 &gt; df.memory &lt;- asymptoticMemoryUsage(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 5, by = 0.1))
 &gt; plotTimings(df.time, titles = list("Timings plot", "PeakSegDP::cDPA"))
 &gt; plotMemoryUsage(df.memory, titles = list("Memory usage plot", "PeakSegDP::cDPA")) </pre></div>
-<p><img width="100%" src="Images/cDPAplottimememory.png"><br></p>
+<p><img width="100%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/cDPAplottimememory.png"><br></p>
 <ul>
 <li>
 <strong>Comparison Plots</strong> <br> In order to visually compare different algorithms based on the benchmarked metrics returned as a data frame by the quantifiers, one can appropriately add a third column (to help distinguish by aesthetics based on it) with a unique value for each of the data frames, combine them using an <code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code> and then plot the resultant data frame using suitable aesthetics, geometry, scale, labels/titles etcetera via a ggplot: <br>
@@ -211,7 +211,7 @@ Plotting
 &gt; df.three$expr = "cDPA"
 &gt; plot.df &lt;- rbind(df.one, df.two, df.three)
 &gt; ggplot(plot.df, aes(x = `Data sizes`, y = Timings)) + geom_point(aes(color = expr)) + geom_line(aes(color = expr)) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings comparison plot", subtitle = "Linear vs Log-linear vs Quadratic complexities")</pre></div>
-<p><img width="100%" src="Images/Timingscomparisonplot.png"><br></p>
+<p><img width="100%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/Timingscomparisonplot.png"><br></p>
 <ul>
 <li>
 <strong>Diagnostic Plots</strong> <br><code>ggfortify</code>, an extension of <code>ggplot2</code>, can be used to produce diagnostic plots for generalized linear models with the same formulae as used in the complexity classification functions: <br>
@@ -221,7 +221,7 @@ Plotting
 &gt; df &lt;- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 5, by = 0.5))
 &gt; glm.plot.obj &lt;- glm(Timings~`Data sizes`, data = df)
 &gt; ggplot2::autoplot(stats::glm(glm.plot.obj))</pre></div>
-<p><img src="Images/glmQuadratictimecDPAfit.png"><br></p>
+<p><img src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/glmQuadratictimecDPAfit.png"><br></p>
 <h2 align="center">
 Benchmarking
 </h2>
@@ -267,24 +267,7 @@ Testing
 Resources
 </h2>
 <p align="center">
-<a href="https://anirban166.github.io//Test-functions/"> <img width="13%" src="/Images/testfunctionslogo.png"></a><a href="https://anirban166.github.io//Timings-quantifying-function/"> <img width="13%" src="/Images/timingsquantifierlogo.png"></a><a href="https://anirban166.github.io//Time-complexity-classifier/"> <img width="13%" src="/Images/timecomplexityclassifierlogo.png"></a><a href="https://anirban166.github.io//Timings-plotting-function/"> <img width="13%" src="/Images/timingsplotterlogo.png"></a><a href="https://anirban166.github.io//Memory-usage-quantifier/"> <img width="13%" src="/Images/memoryquantifierlogo.png"></a><a href="https://anirban166.github.io/Upcoming/"> <img width="13%" src="/Images/memoryclassifierlogo.png"></a><a href="https://anirban166.github.io/Upcoming/"> <img width="13%" src="/Images/memoryplotterlogo.png"><br></a></p>
-<h2 align="center">
-Task List
-</h2>
-<ul>
-<li>
-<input type="checkbox" disabled checked>
-Time complexity testing.</li>
-<li>
-<input type="checkbox" disabled checked>
-Memory complexity testing.</li>
-<li>
-<input type="checkbox" disabled checked>
-Classification of user given output (output size is the metric, instead of timings/memory-usage) parameter.</li>
-<li>
-<input type="checkbox" disabled>
-Add testing functions, with optional packages as suggests.</li>
-</ul>
+<a href="https://anirban166.github.io//Test-functions/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/testfunctionslogo.png"></a><a href="https://anirban166.github.io//Timings-quantifying-function/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/timingsquantifierlogo.png"></a><a href="https://anirban166.github.io//Time-complexity-classifier/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/timecomplexityclassifierlogo.png"></a><a href="https://anirban166.github.io//Timings-plotting-function/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/timingsplotterlogo.png"></a><a href="https://anirban166.github.io//Memory-usage-quantifier/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/memoryquantifierlogo.png"></a><a href="https://anirban166.github.io//Memory-complexity-classifier/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/memoryclassifierlogo.png"></a><a href="https://anirban166.github.io//Memory-usage-plotter/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/memoryplotterlogo.png"><br></a></p>
 <hr>
 <h2 align="center">
 Anirban166 © 2020
