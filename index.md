@@ -137,7 +137,7 @@ For obtaining a visual description of the trend followed between runtimes/memory
 > plotTimings(df.time, titles = list("Timings plot", "PeakSegDP::cDPA"))
 > plotMemoryUsage(df.memory, titles = list("Memory usage plot", "PeakSegDP::cDPA")) 
 ```
-<img width = "100%" src = "Images/cDPAplottimememory.png"> <br>
+<img width = "100%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/cDPAplottimememory.png"> <br>
 - **Comparison Plots** <br>
 In order to visually compare different algorithms based on the benchmarked metrics returned as a data frame by the quantifiers, one can appropriately add a third column (to help distinguish by aesthetics based on it) with a unique value for each of the data frames, combine them using an `rbind()` and then plot the resultant data frame using suitable aesthetics, geometry, scale, labels/titles etcetera via a ggplot: <br>
 ```r
@@ -156,7 +156,7 @@ In order to visually compare different algorithms based on the benchmarked metri
 > plot.df <- rbind(df.one, df.two, df.three)
 > ggplot(plot.df, aes(x = `Data sizes`, y = Timings)) + geom_point(aes(color = expr)) + geom_line(aes(color = expr)) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings comparison plot", subtitle = "Linear vs Log-linear vs Quadratic complexities")
 ```
-<img width = "100%" src = "Images/Timingscomparisonplot.png"> <br>
+<img width = "100%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/Timingscomparisonplot.png"> <br>
 - **Diagnostic Plots** <br>
 `ggfortify`, an extension of `ggplot2`, can be used to produce diagnostic plots for generalized linear models with the same formulae as used in the complexity classification functions: <br>
 ```r
@@ -165,7 +165,7 @@ In order to visually compare different algorithms based on the benchmarked metri
 > glm.plot.obj <- glm(Timings~`Data sizes`, data = df)
 > ggplot2::autoplot(stats::glm(glm.plot.obj))
 ```
-<img src = "Images/glmQuadratictimecDPAfit.png"> <br>
+<img src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/glmQuadratictimecDPAfit.png"> <br>
 
 <h2 align="center">
 Benchmarking
