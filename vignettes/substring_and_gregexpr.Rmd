@@ -23,6 +23,13 @@ knitr::opts_chunk$set(
 ## Issues
 Initially, the PCRE (perl set) version of regexpr repeatedly scanned the entire input string to ensure it is valid UTF-8, which accounts for the time being proportional to the square of the number of pattern matches in the input strings, resulting in quadratic complexity. (same was observed in the PCRE version of `strsplit()` as well)
 
-After this issue was resolved with a following patch to the gregexpr function by [@tdhock](https://github.com/tdhock), a similar case of quadratic time complexity over the expected linear complexity was found in `substring()` and the functions from other packages such as rex, rematch2 and namedCapture which interally use it. A figure showcasing the quadratic trend of functions from the mentioned packages which use `substring()` internally, namely `rex::re_matches`, `rematch2::re_match_all` and `namedCapture::str_match_all_named` in comparison to the linear functions such as gregexpr after the patch, can be found [here](https://github.com/tdhock/namedCapture-article/blob/master/figure-trackDb-pkgs.png).
+After this issue was resolved with a following patch for the gregexpr function, a similar case of quadratic time complexity over the expected linear complexity was observed in `substring()` and the functions from other packages such as rex, rematch2 and namedCapture which interally use it. A figure showcasing the quadratic trend of functions from the mentioned packages which use `substring()` internally, namely `rex::re_matches`, `rematch2::re_match_all` and `namedCapture::str_match_all_named` in comparison to the linear functions such as gregexpr after the patch, can be found [here](https://github.com/tdhock/namedCapture-article/blob/master/figure-trackDb-pkgs.png).
 
-After avoiding the repeated calls to `strlen`, the extra check for UTF-8 validity and buffering for the same via this [commit](https://github.com/wch/r-source/commit/4931902af83938a21f4d3f8fa0fce81ad062f2c1), `substring()` now shows linear time complexity.  
+After avoiding the repeated calls to `strlen`, the extra check for UTF-8 validity and buffering for the same via this [commit](https://github.com/wch/r-source/commit/4931902af83938a21f4d3f8fa0fce81ad062f2c1), `substring()` now shows linear time complexity. 
+
+The HTML pages which provide ready reference for the aforementioned issues can be found below. (source for extracting information on the topic)
+
+## References
+- `substring`: https://stat.ethz.ch/pipermail/r-devel/2019-February/077318.html 
+- `gregexpr`: https://stat.ethz.ch/pipermail/r-devel/2017-January/073577.html 
+

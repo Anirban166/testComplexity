@@ -104,8 +104,21 @@
 <h2 class="hasAnchor">
 <a href="#issues" class="anchor"></a>Issues</h2>
 <p>Initially, the PCRE (perl set) version of regexpr repeatedly scanned the entire input string to ensure it is valid UTF-8, which accounts for the time being proportional to the square of the number of pattern matches in the input strings, resulting in quadratic complexity. (same was observed in the PCRE version of <code><a href="https://rdrr.io/r/base/strsplit.html">strsplit()</a></code> as well)</p>
-<p>After this issue was resolved with a following patch to the gregexpr function by <span class="citation">[@tdhock]</span>(<a href="https://github.com/tdhock" class="uri">https://github.com/tdhock</a>), a similar case of quadratic time complexity over the expected linear complexity was found in <code><a href="https://rdrr.io/r/base/substr.html">substring()</a></code> and the functions from other packages such as rex, rematch2 and namedCapture which interally use it. A figure showcasing the quadratic trend of functions from the mentioned packages which use <code><a href="https://rdrr.io/r/base/substr.html">substring()</a></code> internally, namely <code><a href="https://rdrr.io/pkg/rex/man/re_matches.html">rex::re_matches</a></code>, <code><a href="https://rdrr.io/pkg/rematch2/man/re_match_all.html">rematch2::re_match_all</a></code> and <code>namedCapture::str_match_all_named</code> in comparison to the linear functions such as gregexpr after the patch, can be found <a href="https://github.com/tdhock/namedCapture-article/blob/master/figure-trackDb-pkgs.png">here</a>.</p>
+<p>After this issue was resolved with a following patch for the gregexpr function, a similar case of quadratic time complexity over the expected linear complexity was observed in <code><a href="https://rdrr.io/r/base/substr.html">substring()</a></code> and the functions from other packages such as rex, rematch2 and namedCapture which interally use it. A figure showcasing the quadratic trend of functions from the mentioned packages which use <code><a href="https://rdrr.io/r/base/substr.html">substring()</a></code> internally, namely <code><a href="https://rdrr.io/pkg/rex/man/re_matches.html">rex::re_matches</a></code>, <code><a href="https://rdrr.io/pkg/rematch2/man/re_match_all.html">rematch2::re_match_all</a></code> and <code>namedCapture::str_match_all_named</code> in comparison to the linear functions such as gregexpr after the patch, can be found <a href="https://github.com/tdhock/namedCapture-article/blob/master/figure-trackDb-pkgs.png">here</a>.</p>
 <p>After avoiding the repeated calls to <code>strlen</code>, the extra check for UTF-8 validity and buffering for the same via this <a href="https://github.com/wch/r-source/commit/4931902af83938a21f4d3f8fa0fce81ad062f2c1">commit</a>, <code><a href="https://rdrr.io/r/base/substr.html">substring()</a></code> now shows linear time complexity.</p>
+<p>The HTML pages which provide ready reference for the aforementioned issues can be found below. (source for extracting information on the topic)</p>
+</div>
+<div id="references" class="section level2">
+<h2 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h2>
+<ul>
+<li>
+<code>substring</code>: <a href="https://stat.ethz.ch/pipermail/r-devel/2019-February/077318.html" class="uri">https://stat.ethz.ch/pipermail/r-devel/2019-February/077318.html</a>
+</li>
+<li>
+<code>gregexpr</code>: <a href="https://stat.ethz.ch/pipermail/r-devel/2017-January/073577.html" class="uri">https://stat.ethz.ch/pipermail/r-devel/2017-January/073577.html</a>
+</li>
+</ul>
 </div>
   </div>
 
