@@ -51,5 +51,5 @@ asymptoticTimeComplexityClass(asymptoticTimings(gregexpr("a", paste(collapse = "
 
 <sup>Created on 2020-07-20 by the [reprex package](https://reprex.tidyverse.org) (v0.3.0)</sup>
 
-
+Do note that sometimes the predicted complexity class may be log linear instead of linear, as the complexity classification procedure relies on the least error from each of the complexity classification models, and depending on the benchmarks run (which always vary) within asymptoticTimings, it is prone to misprediction by the stochastic nature of timings obtained. It is well recieved that it never shows quadratic in any case (also, plots such as [this](https://github.com/Anirban166/testComplexity/issues/15#issuecomment-647085864) highlight the stark contrast between quadratic time algorithms and the linear ones such as substring and gregexpr), which supports the resolution of the issues. 
 
