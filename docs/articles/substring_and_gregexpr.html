@@ -100,6 +100,13 @@
 <li>They are linear in nature (time complexity wise) starting from R version 3.6.0, after the commits to <a href="https://github.com/wch/r-source/commit/4931902af83938a21f4d3f8fa0fce81ad062f2c1">substring</a> and <a href="https://github.com/wch/r-source/commit/98d247645ba95270bd14790284500a699caebf52">gregexpr</a> by Tomas Kalibera, as suggested by Toby Dylan Hocking and mentioned <a href="https://github.com/tdhock/namedCapture-article#6-mar-2019">here</a>.</li>
 </ul>
 </div>
+<div id="issues" class="section level2">
+<h2 class="hasAnchor">
+<a href="#issues" class="anchor"></a>Issues</h2>
+<p>Initially, the PCRE (perl set) version of regexpr repeatedly scanned the entire input string to ensure it is valid UTF-8, which accounts for the time being proportional to the square of the number of pattern matches in the input strings, resulting in quadratic complexity. (same was observed in the PCRE version of <code><a href="https://rdrr.io/r/base/strsplit.html">strsplit()</a></code> as well)</p>
+<p>After this issue was resolved with a following patch to the gregexpr function by <span class="citation">[@tdhock]</span>(<a href="https://github.com/tdhock" class="uri">https://github.com/tdhock</a>), a similar case of quadratic time complexity over the expected linear complexity was found in <code><a href="https://rdrr.io/r/base/substr.html">substring()</a></code> and the functions from other packages such as rex, rematch2 and namedCapture which interally use it. A figure showcasing the quadratic trend of functions from the mentioned packages which use <code><a href="https://rdrr.io/r/base/substr.html">substring()</a></code> internally, namely <code><a href="https://rdrr.io/pkg/rex/man/re_matches.html">rex::re_matches</a></code>, <code><a href="https://rdrr.io/pkg/rematch2/man/re_match_all.html">rematch2::re_match_all</a></code> and <code>namedCapture::str_match_all_named</code> in comparison to the linear functions such as gregexpr after the patch, can be found <a href="https://github.com/tdhock/namedCapture-article/blob/master/figure-trackDb-pkgs.png">here</a>.</p>
+<p>After avoiding the repeated calls to <code>strlen</code>, the extra check for UTF-8 validity and buffering for the same via this <a href="https://github.com/wch/r-source/commit/4931902af83938a21f4d3f8fa0fce81ad062f2c1">commit</a>, <code><a href="https://rdrr.io/r/base/substr.html">substring()</a></code> now shows linear time complexity.</p>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
