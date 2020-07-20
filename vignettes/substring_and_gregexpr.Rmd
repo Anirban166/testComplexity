@@ -16,6 +16,10 @@ knitr::opts_chunk$set(
 )
 ```
 
+## History
+- The functions `substring()` and `gregexpr()` (`perl = TRUE` variant) showed quadratic time complexity for R version 3.5.2.
+- They are linear in nature (time complexity wise) starting from R version 3.6.0, after the commits to [substring](https://github.com/wch/r-source/commit/4931902af83938a21f4d3f8fa0fce81ad062f2c1) and [gregexpr](https://github.com/wch/r-source/commit/98d247645ba95270bd14790284500a699caebf52) by Tomas Kalibera, as suggested by Toby Dylan Hocking and mentioned [here](https://github.com/tdhock/namedCapture-article#6-mar-2019).
+
 
 
 

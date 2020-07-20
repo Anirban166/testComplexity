@@ -92,12 +92,21 @@
 
     
     
-
+<div id="history" class="section level2">
+<h2 class="hasAnchor">
+<a href="#history" class="anchor"></a>History</h2>
+<ul>
+<li>The functions <code><a href="https://rdrr.io/r/base/substr.html">substring()</a></code> and <code><a href="https://rdrr.io/r/base/grep.html">gregexpr()</a></code> (<code>perl = TRUE</code> variant) showed quadratic time complexity for R version 3.5.2.</li>
+<li>They are linear in nature (time complexity wise) starting from R version 3.6.0, after the commits to <a href="https://github.com/wch/r-source/commit/4931902af83938a21f4d3f8fa0fce81ad062f2c1">substring</a> and <a href="https://github.com/wch/r-source/commit/98d247645ba95270bd14790284500a699caebf52">gregexpr</a> by Tomas Kalibera, as suggested by Toby Dylan Hocking and mentioned <a href="https://github.com/tdhock/namedCapture-article#6-mar-2019">here</a>.</li>
+</ul>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
