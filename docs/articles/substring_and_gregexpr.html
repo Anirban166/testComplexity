@@ -113,12 +113,30 @@
 <a href="#references" class="anchor"></a>References</h2>
 <ul>
 <li>
-<code>substring</code>: <a href="https://stat.ethz.ch/pipermail/r-devel/2019-February/077318.html" class="uri">https://stat.ethz.ch/pipermail/r-devel/2019-February/077318.html</a>
-</li>
-<li>
 <code>gregexpr</code>: <a href="https://stat.ethz.ch/pipermail/r-devel/2017-January/073577.html" class="uri">https://stat.ethz.ch/pipermail/r-devel/2017-January/073577.html</a>
 </li>
+<li>
+<code>substring</code>: <a href="https://stat.ethz.ch/pipermail/r-devel/2019-February/077318.html" class="uri">https://stat.ethz.ch/pipermail/r-devel/2019-February/077318.html</a>
+</li>
 </ul>
+</div>
+<div id="reproducibility" class="section level2">
+<h2 class="hasAnchor">
+<a href="#reproducibility" class="anchor"></a>Reproducibility</h2>
+<p><a href="https://github.com/tdhock/namedCapture-article/blob/master/figure-substring-bug.png">This figure</a> highlights the quadratic trend in the substring function (<a href="https://github.com/tdhock/namedCapture-article/blob/master/figure-substring-bug.R">source code</a>), as provided by Toby Dylan Hocking. One would require an R version prior to 3.6.0 to reproduce that, which reflects the origin of the issue with those functions. The issues and their timeline as per <a href="https://github.com/tdhock">tdhock</a>’s activity are discussed in <a href="https://github.com/tdhock/namedCapture-article">this</a> article for the package namedCapture.</p>
+</div>
+<div id="testing" class="section level2">
+<h2 class="hasAnchor">
+<a href="#testing" class="anchor"></a>Testing</h2>
+<p>This is where testComplexity can be useful, so as to verify the change in time complexity after resolution of the issues. A run with our time complexity analysis functions <code>asymptoticTimings</code> and <code>asymptoticTimeComplexityClass</code> with suitable parameters show that both substring and gregexpr yield linear time complexity:</p>
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">testComplexity</span>)
+<span class="co"># substring function test:</span>
+<span class="fu"><a href="../reference/asymptoticTimeComplexityClass.html">asymptoticTimeComplexityClass</a></span>(<span class="fu"><a href="../reference/asymptoticTimings.html">asymptoticTimings</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/substr.html">substring</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="st">"A"</span>, <span class="no">data.sizes</span>), <span class="kw">collapse</span> <span class="kw">=</span> <span class="st">""</span>), <span class="fl">1</span>:<span class="no">data.sizes</span>, <span class="fl">1</span>:<span class="no">data.sizes</span>), <span class="kw">data.sizes</span> <span class="kw">=</span> <span class="fl">10</span>^<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">1</span>, <span class="fl">5</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fl">0.5</span>), <span class="kw">max.seconds</span> <span class="kw">=</span> <span class="fl">1</span>))
+<span class="co">#&gt; linear</span>
+<span class="co"># gregexpr function test:</span>
+<span class="fu"><a href="../reference/asymptoticTimeComplexityClass.html">asymptoticTimeComplexityClass</a></span>(<span class="fu"><a href="../reference/asymptoticTimings.html">asymptoticTimings</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/grep.html">gregexpr</a></span>(<span class="st">"a"</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="kw">collapse</span> <span class="kw">=</span> <span class="st">""</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="st">"ab"</span>, <span class="no">data.sizes</span>)), <span class="kw">perl</span> <span class="kw">=</span> <span class="fl">TRUE</span>), <span class="kw">data.sizes</span> <span class="kw">=</span> <span class="fl">10</span>^<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">1</span>, <span class="fl">5</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fl">0.5</span>), <span class="kw">max.seconds</span> <span class="kw">=</span> <span class="fl">1</span>))
+<span class="co">#&gt; linear</span></pre></body></html></div>
+<p><sup>Created on 2020-07-20 by the <a href="https://reprex.tidyverse.org">reprex package</a> (v0.3.0)</sup></p>
 </div>
   </div>
 

@@ -30,6 +30,26 @@ After avoiding the repeated calls to `strlen`, the extra check for UTF-8 validit
 The HTML pages which provide ready reference for the aforementioned issues can be found below. (source for extracting information on the topic)
 
 ## References
-- `substring`: https://stat.ethz.ch/pipermail/r-devel/2019-February/077318.html 
 - `gregexpr`: https://stat.ethz.ch/pipermail/r-devel/2017-January/073577.html 
+- `substring`: https://stat.ethz.ch/pipermail/r-devel/2019-February/077318.html 
+
+## Reproducibility
+[This figure](https://github.com/tdhock/namedCapture-article/blob/master/figure-substring-bug.png) highlights the quadratic trend in the substring function ([source code](https://github.com/tdhock/namedCapture-article/blob/master/figure-substring-bug.R)), as provided by Toby Dylan Hocking.
+One would require an R version prior to 3.6.0 to reproduce that, which reflects the origin of the issue with those functions. The issues and their timeline as per [tdhock](https://github.com/tdhock)'s activity are discussed in [this](https://github.com/tdhock/namedCapture-article) article for the package namedCapture.
+
+## Testing
+This is where testComplexity can be useful, so as to verify the change in time complexity after resolution of the issues. A run with our time complexity analysis functions `asymptoticTimings` and `asymptoticTimeComplexityClass` with suitable parameters show that both substring and gregexpr yield linear time complexity:
+```r
+library(testComplexity)
+# substring function test:
+asymptoticTimeComplexityClass(asymptoticTimings(substring(paste(rep("A", data.sizes), collapse = ""), 1:data.sizes, 1:data.sizes), data.sizes = 10^seq(1, 5, by = 0.5), max.seconds = 1))
+#> linear
+# gregexpr function test:
+asymptoticTimeComplexityClass(asymptoticTimings(gregexpr("a", paste(collapse = "", rep("ab", data.sizes)), perl = TRUE), data.sizes = 10^seq(1, 5, by = 0.5), max.seconds = 1))
+#> linear
+```
+
+<sup>Created on 2020-07-20 by the [reprex package](https://reprex.tidyverse.org) (v0.3.0)</sup>
+
+
 
