@@ -28,7 +28,7 @@ asymptoticTimings <- function(e, data.sizes, max.seconds)
     eval(lang.obj)
   }
 
-  time.limit <- if(missing(max.seconds)) 10^8 else max.seconds*10^9
+  time.limit <- if(missing(max.seconds)) 10^9 else max.seconds*10^9
 
   timings.list <- list()
 
