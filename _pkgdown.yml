@@ -1,5 +1,8 @@
 template:
   params:
+    docsearch:
+      api_key: 'd84f81326b636909ead6500a3882606c'
+      index_name: 'testcomplexity'
     bootswatch: sandstone
     noindex: true
 
