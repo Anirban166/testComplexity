@@ -1,5 +1,4 @@
 
-
 if(require(PeakSegOptimal)) {
   test_that("PeakSegOptimal::PeakSegPDPA function test", {
     # Test for PeakSegOptimal::PeakSegPDPA, a log-linear time constrained changepoint detection algorithm:
