@@ -30,4 +30,5 @@ Suggests:
     knitr,
     rmarkdown,
     PeakSegOptimal,
-    PeakSegDP
+    PeakSegDP,
+    fpop
