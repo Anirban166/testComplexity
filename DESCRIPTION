@@ -32,4 +32,5 @@ Suggests:
     PeakSegOptimal,
     PeakSegDP,
     opart,
+    gfpop,
     fpop
