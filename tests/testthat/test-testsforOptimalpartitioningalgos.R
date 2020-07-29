@@ -6,12 +6,12 @@
 #  })
 #}
 
-if(require(fpop)) {
-  test_that("fpop::Fpop function test", {
-    # Test for fpop::Fpop, a loglinear time segmentation algorithm that uses optimal partitioning
-    expect_loglinear_time(Fpop(rnorm(data.sizes), 1), data.sizes = 10^seq(1, 5, by = 0.5))
-  })
-}
+#if(require(fpop)) {
+#  test_that("fpop::Fpop function test", {
+#    # Test for fpop::Fpop, a loglinear time segmentation algorithm that uses optimal partitioning
+#    expect_loglinear_time(Fpop(rnorm(data.sizes), 1), data.sizes = 10^seq(1, 5, by = 0.5))
+#  })
+#}
 
 #if(require(gfpop)) {
 #  test_that("gfpop::gfpop function test", {
