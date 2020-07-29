@@ -31,4 +31,5 @@ Suggests:
     rmarkdown,
     PeakSegOptimal,
     PeakSegDP,
-    opart
+    opart,
+    fpop
