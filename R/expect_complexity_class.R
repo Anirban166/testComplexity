@@ -16,7 +16,7 @@ expect_complexity_class <- function(object, complexity.class)
   actual.obj <- quasi_label(enquo(object), arg = "object")
 
   expect(
-    actual.obj$val %in% complexity.class,
+    actual.obj$val == complexity.class,
     sprintf("Complexity mismatch: Expected %s complexity, instead of the predicted %s complexity from %s.", complexity.class, actual.obj$val, actual.obj$lab)
   )
 
