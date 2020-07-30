@@ -24,9 +24,9 @@ Imports: boot,
          microbenchmark, 
          bench, 
          ggplot2, 
-         stats
+         stats,
+         testthat (>= 2.1.0)
 Suggests: 
-    testthat (>= 2.1.0),
     covr,
     knitr,
     rmarkdown,
