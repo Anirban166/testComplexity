@@ -18,6 +18,6 @@ expect_time_complexity = function(complexity.class, ..., f)
 
   timings.df <- f(...)
 
-  if(asymptoticTimeComplexityClass(timings.df) != complexity.class)
-    stop("Complexity mismatch: Expected ", complexity.class, " complexity, in place of the predicted complexity")
+  expect_complexity_class(asymptoticTimeComplexityClass(timings.df), complexity.class)
+
 }
