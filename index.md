@@ -47,7 +47,7 @@ Since algorithms are used in every sphere of research, this package potentially 
 Setup
 </h2>
 
-Use `devtools` or `remotes` to fetch the package from this repository:
+Use `devtools` or `remotes` to fetch the package from the [github repository](https://github.com/Anirban166/testComplexity):
 ```r
 if(!require(devtools)) install.packages("devtools")
 devtools::install_github("Anirban166/testComplexity")
@@ -75,10 +75,11 @@ testComplexity                              @ returns              @ type       
 ├──> asymptoticComplexityClass            : string                 complexity classifier     Generalizedcomplexity
 │    └──> asymptoticComplexityClassifier  :   ↑ string             ↑ complexity classifier   Generalizedcomplexity
 │
-├──> expect_time_complexity               : -/-                    test function             Testfunc
-│    ├──> expect_linear_time              : -/-                    ↑ test function           Testfunc
-│    ├──> expect_loglinear_time           : -/-                    ↑ test function           Testfunc
-│    └──> expect_quadratic_time           : -/-                    ↑ test function           Testfunc
+├──> expect_complexity_class              : -/-                    test function             Testfunc
+│    └──> expect_time_complexity          : -/-                    ↑  test function          Testfunc
+│         ├──> expect_linear_time         : -/-                    ↑↑ test function          Testfunc
+│         ├──> expect_loglinear_time      : -/-                    ↑↑ test function          Testfunc
+│         └──> expect_quadratic_time      : -/-                    ↑↑ test function          Testfunc
 │
 └──> testthat                                                                                
      ├──> testsfortestComplexity                                   unit-tester               All branches
@@ -195,9 +196,9 @@ Test cases for testComplexity functions via [testthat](https://cran.r-project.or
 Tested locally by `covr::package_coverage()` and codecov, with 100% code coverage. <br>
 - **OS Support** <br>
 Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. In addition to both, RCMD checks are run on MacOS as well. <br>
-Note that the use of `bench::bench_memory` overcomes the drawback of windows-only OS limitation for memory complexity testing in `GuessCompx::CompEst` as it successfully runs on other operating systems.
+Note that the use of `bench::bench_memory` overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in `GuessCompx::CompEst` since it successfully runs on other operating systems.
 <p align="center">
-<a href="https://www.microsoft.com/en-in/windows"> <img src="https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&logo=Windows"> <a href="https://www.linux.org/"> <img src="https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&logo=Linux"> <a href="https://developer.apple.com/macos/"> <img src="https://img.shields.io/badge/MacOS--brightgreen?style=for-the-badge&logo=Apple">
+<a href="https://www.microsoft.com/en-in/windows"> <img src="https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&logo=Windows"> <a href="https://www.linux.org/"> <img src="https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&logo=Linux"> <a href="https://developer.apple.com/macos/"> <img src="https://img.shields.io/badge/MacOS--brightgreen?style=for-the-badge&logo=Apple"> </a>
 </p> 
 
 <h2 align="center">
@@ -205,13 +206,13 @@ Resources
 </h2>
 
 <p align="center">
-<a href="https://anirban166.github.io//Test-functions/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/testfunctionslogo.png"> 
-<a href="https://anirban166.github.io//Timings-quantifying-function/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/timingsquantifierlogo.png"> 
-<a href="https://anirban166.github.io//Time-complexity-classifier/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/timecomplexityclassifierlogo.png"> 
-<a href="https://anirban166.github.io//Timings-plotting-function/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/timingsplotterlogo.png"> 
-<a href="https://anirban166.github.io//Memory-usage-quantifier/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/memoryquantifierlogo.png"> 
-<a href="https://anirban166.github.io//Memory-complexity-classifier/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/memoryclassifierlogo.png">
-<a href="https://anirban166.github.io//Memory-usage-plotter/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/memoryplotterlogo.png"> <br>
+<a href="https://anirban166.github.io//Test-functions/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TFlogo.png"> 
+<a href="https://anirban166.github.io//Timings-quantifying-function/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TQlogo.png"> 
+<a href="https://anirban166.github.io//Memory-usage-quantifier/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/MQlogo.png"> 
+<a href="https://anirban166.github.io//Complexity-classifiers/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/CClogo.png"> 
+<a href="https://anirban166.github.io//Plotters/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/PTlogo.png"> 
+<a href="https://anirban166.github.io//Generalized-complexity/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/GClogo.png">
+<a href="https://anirban166.github.io//Testing-functions/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TSlogo.png"> <br>
 </p>
     
 ---

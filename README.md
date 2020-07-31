@@ -78,10 +78,11 @@ testComplexity                              @ returns              @ type       
 ├──> asymptoticComplexityClass            : string                 complexity classifier     Generalizedcomplexity
 │    └──> asymptoticComplexityClassifier  :   ↑ string             ↑ complexity classifier   Generalizedcomplexity
 │
-├──> expect_time_complexity               : -/-                    test function             Testfunc
-│    ├──> expect_linear_time              : -/-                    ↑ test function           Testfunc
-│    ├──> expect_loglinear_time           : -/-                    ↑ test function           Testfunc
-│    └──> expect_quadratic_time           : -/-                    ↑ test function           Testfunc
+├──> expect_complexity_class              : -/-                    test function             Testfunc
+│    └──> expect_time_complexity          : -/-                    ↑  test function          Testfunc
+│         ├──> expect_linear_time         : -/-                    ↑↑ test function          Testfunc
+│         ├──> expect_loglinear_time      : -/-                    ↑↑ test function          Testfunc
+│         └──> expect_quadratic_time      : -/-                    ↑↑ test function          Testfunc
 │
 └──> testthat                                                                                
      ├──> testsfortestComplexity                                   unit-tester               All branches
@@ -198,23 +199,25 @@ Test cases for testComplexity functions via [testthat](https://cran.r-project.or
 Tested locally by `covr::package_coverage()` and codecov, with 100% code coverage. <br>
 - **OS Support** <br>
 Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. In addition to both, RCMD checks are run on MacOS as well. <br>
-Note that the use of `bench::bench_memory` overcomes the drawback of windows-only OS limitation for memory complexity testing in `GuessCompx::CompEst` as it successfully runs on other operating systems.
+Note that the use of `bench::bench_memory` overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in `GuessCompx::CompEst` since it successfully runs on other operating systems.
 <p align="center">
-<a href="https://www.microsoft.com/en-in/windows"> <img src="https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&logo=Windows"> <a href="https://www.linux.org/"> <img src="https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&logo=Linux"> <a href="https://developer.apple.com/macos/"> <img src="https://img.shields.io/badge/MacOS--brightgreen?style=for-the-badge&logo=Apple">
+<a href="https://www.microsoft.com/en-in/windows"> <img src="https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&logo=Windows"> <a href="https://www.linux.org/"> <img src="https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&logo=Linux"> <a href="https://developer.apple.com/macos/"> <img src="https://img.shields.io/badge/MacOS--brightgreen?style=for-the-badge&logo=Apple"> </a>
 </p> 
 
 <h2 align="center">
 Resources
 </h2>
 
+In addition to the readme content, the [web version](https://anirban166.github.io/testComplexity/) includes quick [reference](https://anirban166.github.io/testComplexity/reference/index.html) to functions plus vignettes for some use-cases. For blog posts, please check the links below. <br>
+
 <p align="center">
-<a href="https://anirban166.github.io//Test-functions/"> <img width = "13%" src = "/Images/testfunctionslogo.png"> 
-<a href="https://anirban166.github.io//Timings-quantifying-function/"> <img width = "13%" src = "/Images/timingsquantifierlogo.png"> 
-<a href="https://anirban166.github.io//Time-complexity-classifier/"> <img width = "13%" src = "/Images/timecomplexityclassifierlogo.png"> 
-<a href="https://anirban166.github.io//Timings-plotting-function/"> <img width = "13%" src = "/Images/timingsplotterlogo.png"> 
-<a href="https://anirban166.github.io//Memory-usage-quantifier/"> <img width = "13%" src = "/Images/memoryquantifierlogo.png"> 
-<a href="https://anirban166.github.io//Memory-complexity-classifier/"> <img width = "13%" src = "/Images/memoryclassifierlogo.png">
-<a href="https://anirban166.github.io//Memory-usage-plotter/"> <img width = "13%" src = "/Images/memoryplotterlogo.png"> <br>
+<a href="https://anirban166.github.io//Test-functions/"> <img width = "13%" src = "/Images/TFlogo.png"> 
+<a href="https://anirban166.github.io//Timings-quantifying-function/"> <img width = "13%" src = "/Images/TQlogo.png"> 
+<a href="https://anirban166.github.io//Memory-usage-quantifier/"> <img width = "13%" src = "/Images/MQlogo.png"> 
+<a href="https://anirban166.github.io//Complexity-classifiers/"> <img width = "13%" src = "/Images/CClogo.png"> 
+<a href="https://anirban166.github.io//Plotters/"> <img width = "13%" src = "/Images/PTlogo.png"> 
+<a href="https://anirban166.github.io//Generalized-complexity/"> <img width = "13%" src = "/Images/GClogo.png">
+<a href="https://anirban166.github.io//Testing-functions/"> <img width = "13%" src = "/Images/TSlogo.png"> <br>
 </p>
 
 <h2 align="center">
@@ -224,7 +227,7 @@ Task List
 - [x] Time complexity testing.
 - [x] Memory complexity testing.
 - [x] Classification of user given output (output size is the metric, instead of timings/memory-usage) parameter.
-- [ ] Add testing functions, with optional packages as suggests.
+- [x] Add testing functions, with optional packages as suggests.
     
 ---
 <h2 align="center">

@@ -17,8 +17,9 @@
 <meta property="og:description" content="It classifies the asymptotic time plus memory complexity class/trend (such as linear/log-linear/quadratic) 
              for an algorithm-based function passed to it with the help of functions asymptoticTimeComplexityClass and
              asymptoticMemoryComplexityClass, with data frames returned by asymptoticTimings and asymptoticMemoryUsage
-             as parameters. Further, the data frames can be passed onto plotTimings and plotMemoryUsage for visually
-             obtaining the results and identifying potential speed gains.">
+             as parameters. The data frames can be passed onto plotTimings and plotMemoryUsage for obtaining a visual
+             description of the benchmarked results and thereby identify potential speed gains. For testing out the
+             expected complexity of an algorithm, it is suggested to use the expect functions.">
 <meta name="robots" content="noindex">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -61,6 +62,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="articles/PELT_and_SegNeigh.html">PELT and SegNeigh algorithms for changepoint::cpt.mean()</a>
+    </li>
+    <li>
       <a href="articles/substring_and_gregexpr.html">Quadratic to linear transition for substring() and gregexpr()</a>
     </li>
   </ul>
@@ -116,7 +120,7 @@ Objectives
 <h2 align="center">
 Setup
 </h2>
-<p>Use <code>devtools</code> or <code>remotes</code> to fetch the package from this repository:</p>
+<p>Use <code>devtools</code> or <code>remotes</code> to fetch the package from the <a href="https://github.com/Anirban166/testComplexity">github repository</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="r"><span class="kw">if</span>(!<span class="fu"><a href="https://rdrr.io/r/base/library.html">require</a></span>(<span class="no">devtools</span>)) <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)
 <span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"Anirban166/testComplexity"</span>)</pre></div>
 <div class="sourceCode" id="cb2"><pre class="r"><span class="kw">if</span>(!<span class="fu"><a href="https://rdrr.io/r/base/library.html">require</a></span>(<span class="no">remotes</span>)) <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"remotes"</span>)
@@ -137,10 +141,11 @@ testComplexity                              @ returns              @ type       
 ├──&gt; asymptoticComplexityClass            : string                 complexity classifier     Generalizedcomplexity
 │    └──&gt; asymptoticComplexityClassifier  :   ↑ string             ↑ complexity classifier   Generalizedcomplexity
 │
-├──&gt; expect_time_complexity               : -/-                    test function             Testfunc
-│    ├──&gt; expect_linear_time              : -/-                    ↑ test function           Testfunc
-│    ├──&gt; expect_loglinear_time           : -/-                    ↑ test function           Testfunc
-│    └──&gt; expect_quadratic_time           : -/-                    ↑ test function           Testfunc
+├──&gt; expect_complexity_class              : -/-                    test function             Testfunc
+│    └──&gt; expect_time_complexity          : -/-                    ↑  test function          Testfunc
+│         ├──&gt; expect_linear_time         : -/-                    ↑↑ test function          Testfunc
+│         ├──&gt; expect_loglinear_time      : -/-                    ↑↑ test function          Testfunc
+│         └──&gt; expect_quadratic_time      : -/-                    ↑↑ test function          Testfunc
 │
 └──&gt; testthat                                                                                
      ├──&gt; testsfortestComplexity                                   unit-tester               All branches
@@ -253,16 +258,17 @@ Testing
 <strong>Code Coverage</strong> <br> Tested locally by <code><a href="https://rdrr.io/pkg/covr/man/package_coverage.html">covr::package_coverage()</a></code> and codecov, with 100% code coverage. <br>
 </li>
 <li>
-<strong>OS Support</strong> <br> Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. In addition to both, RCMD checks are run on MacOS as well. <br> Note that the use of <code><a href="https://rdrr.io/pkg/bench/man/bench_memory.html">bench::bench_memory</a></code> overcomes the drawback of windows-only OS limitation for memory complexity testing in <code><a href="https://rdrr.io/pkg/GuessCompx/man/CompEst.html">GuessCompx::CompEst</a></code> as it successfully runs on other operating systems.
+<strong>OS Support</strong> <br> Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. In addition to both, RCMD checks are run on MacOS as well. <br> Note that the use of <code><a href="https://rdrr.io/pkg/bench/man/bench_memory.html">bench::bench_memory</a></code> overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in <code><a href="https://rdrr.io/pkg/GuessCompx/man/CompEst.html">GuessCompx::CompEst</a></code> since it successfully runs on other operating systems.
 <p align="center">
-<a href="https://www.microsoft.com/en-in/windows"> <img src="https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&amp;logo=Windows"></a><a href="https://www.linux.org/"> <img src="https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&amp;logo=Linux"></a><a href="https://developer.apple.com/macos/"> <img src="https://img.shields.io/badge/MacOS--brightgreen?style=for-the-badge&amp;logo=Apple"></a></p>
+<a href="https://www.microsoft.com/en-in/windows"> <img src="https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&amp;logo=Windows"></a><a href="https://www.linux.org/"> <img src="https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&amp;logo=Linux"></a><a href="https://developer.apple.com/macos/"> <img src="https://img.shields.io/badge/MacOS--brightgreen?style=for-the-badge&amp;logo=Apple"></a>
+</p>
 </li>
 </ul>
 <h2 align="center">
 Resources
 </h2>
 <p align="center">
-<a href="https://anirban166.github.io//Test-functions/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/testfunctionslogo.png"></a><a href="https://anirban166.github.io//Timings-quantifying-function/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/timingsquantifierlogo.png"></a><a href="https://anirban166.github.io//Time-complexity-classifier/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/timecomplexityclassifierlogo.png"></a><a href="https://anirban166.github.io//Timings-plotting-function/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/timingsplotterlogo.png"></a><a href="https://anirban166.github.io//Memory-usage-quantifier/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/memoryquantifierlogo.png"></a><a href="https://anirban166.github.io//Memory-complexity-classifier/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/memoryclassifierlogo.png"></a><a href="https://anirban166.github.io//Memory-usage-plotter/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/memoryplotterlogo.png"><br></a></p>
+<a href="https://anirban166.github.io//Test-functions/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TFlogo.png"></a><a href="https://anirban166.github.io//Timings-quantifying-function/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TQlogo.png"></a><a href="https://anirban166.github.io//Memory-usage-quantifier/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/MQlogo.png"></a><a href="https://anirban166.github.io//Complexity-classifiers/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/CClogo.png"></a><a href="https://anirban166.github.io//Plotters/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/PTlogo.png"></a><a href="https://anirban166.github.io//Generalized-complexity/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/GClogo.png"></a><a href="https://anirban166.github.io//Testing-functions/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TSlogo.png"><br></a></p>
 <hr>
 <h2 align="center">
 Anirban166 © 2020

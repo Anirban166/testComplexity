@@ -1,7 +1,7 @@
 ---
 title: "Quadratic to linear transition for substring() and gregexpr()"
 author: "Anirban Chetia"
-date: "`r Sys.Date()`"
+date: "2020-07-20"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Quadratic to linear transition for substring() and gregexpr()}
@@ -43,10 +43,10 @@ This is where testComplexity can be useful, so as to verify the change in time c
 library(testComplexity)
 # substring function test:
 asymptoticTimeComplexityClass(asymptoticTimings(substring(paste(rep("A", data.sizes), collapse = ""), 1:data.sizes, 1:data.sizes), data.sizes = 10^seq(1, 5, by = 0.5), max.seconds = 1))
-#> linear
+#> [1] "linear"
 # gregexpr function test:
 asymptoticTimeComplexityClass(asymptoticTimings(gregexpr("a", paste(collapse = "", rep("ab", data.sizes)), perl = TRUE), data.sizes = 10^seq(1, 5, by = 0.5), max.seconds = 1))
-#> linear
+#> [1] "linear"
 ```
 
 <sup>Created on 2020-07-20 by the [reprex package](https://reprex.tidyverse.org) (v0.3.0)</sup>

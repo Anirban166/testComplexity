@@ -57,6 +57,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/PELT_and_SegNeigh.html">PELT and SegNeigh algorithms for changepoint::cpt.mean()</a>
+    </li>
+    <li>
       <a href="../articles/substring_and_gregexpr.html">Quadratic to linear transition for substring() and gregexpr()</a>
     </li>
   </ul>
@@ -91,7 +94,7 @@
       <h1 data-toc-skip>Quadratic to linear transition for substring() and gregexpr()</h1>
                         <h4 class="author">Anirban Chetia</h4>
             
-            <h4 class="date">2020-07-27</h4>
+            <h4 class="date">2020-07-20</h4>
       
       
       <div class="hidden name"><code>substring_and_gregexpr.Rmd</code></div>
@@ -140,10 +143,10 @@
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">testComplexity</span>)
 <span class="co"># substring function test:</span>
 <span class="fu"><a href="../reference/asymptoticTimeComplexityClass.html">asymptoticTimeComplexityClass</a></span>(<span class="fu"><a href="../reference/asymptoticTimings.html">asymptoticTimings</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/substr.html">substring</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="st">"A"</span>, <span class="no">data.sizes</span>), <span class="kw">collapse</span> <span class="kw">=</span> <span class="st">""</span>), <span class="fl">1</span>:<span class="no">data.sizes</span>, <span class="fl">1</span>:<span class="no">data.sizes</span>), <span class="kw">data.sizes</span> <span class="kw">=</span> <span class="fl">10</span>^<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">1</span>, <span class="fl">5</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fl">0.5</span>), <span class="kw">max.seconds</span> <span class="kw">=</span> <span class="fl">1</span>))
-<span class="co">#&gt; linear</span>
+<span class="co">#&gt; [1] "linear"</span>
 <span class="co"># gregexpr function test:</span>
 <span class="fu"><a href="../reference/asymptoticTimeComplexityClass.html">asymptoticTimeComplexityClass</a></span>(<span class="fu"><a href="../reference/asymptoticTimings.html">asymptoticTimings</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/grep.html">gregexpr</a></span>(<span class="st">"a"</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="kw">collapse</span> <span class="kw">=</span> <span class="st">""</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="st">"ab"</span>, <span class="no">data.sizes</span>)), <span class="kw">perl</span> <span class="kw">=</span> <span class="fl">TRUE</span>), <span class="kw">data.sizes</span> <span class="kw">=</span> <span class="fl">10</span>^<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">1</span>, <span class="fl">5</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fl">0.5</span>), <span class="kw">max.seconds</span> <span class="kw">=</span> <span class="fl">1</span>))
-<span class="co">#&gt; linear</span></pre></body></html></div>
+<span class="co">#&gt; [1] "linear"</span></pre></body></html></div>
 <p><sup>Created on 2020-07-20 by the <a href="https://reprex.tidyverse.org">reprex package</a> (v0.3.0)</sup></p>
 <p>Do note that sometimes the predicted complexity class may be log linear instead of linear, as the complexity classification procedure relies on the least error from each of the complexity classification models, and depending on the benchmarks run (which always vary) within asymptoticTimings, it is prone to misprediction by the stochastic nature of timings obtained. It is well recieved that it never shows quadratic in any case (also, plots such as <a href="https://github.com/Anirban166/testComplexity/issues/15#issuecomment-647085864">this</a> highlight the stark contrast between quadratic time algorithms and the linear ones such as substring and gregexpr), which supports the resolution of the issues.</p>
 </div>

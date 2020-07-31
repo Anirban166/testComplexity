@@ -1,0 +1,48 @@
+---
+title: "PELT and SegNeigh algorithms for changepoint::cpt.mean()"
+author: "Anirban Chetia"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{PELT and SegNeigh algorithms for changepoint::cpt.mean()}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Abstract
+The changepoint package implements three algorithms for multiple changepoint detection, out of which we will be discussing two of them with regards to the computational time complexity: <br>
+
+- **Segment Neighbourhood** (**SegNeigh**) algorithm: 
+This algorithm uses a dynamic programming technique to obtain the optimal segmentation for n changepoints, reusing the information that was calculated for (n-1) changepoints. This reduces the algorithmic complexity to quadratic or O(n<sup>2</sup>), from the exponential time complexity (O(2<sup>n</sup>)) given by the Binary Segmentation algorithm (not discussed here).
+- **Pruned Exact Linear Time** (**PELT**) algorithm: 
+This algorithm uses dynamic programming and pruning as well, which is computationally more efficient and can result in a linear or O(n) search algorithm, with subject to certain assumptions being satisfied, the majority of which are not particularly onerous. Indeed the main assumption that controls the computational time is that the number of changepoints increases linearly as the data.
+
+## Reference
+The pdf used as reference for obtaining the above information can be found [here](http://www.lancs.ac.uk/~killick/Pub/KillickEckley2011.pdf). 
+
+## Testing
+For testing the complexities, we will be using the function `cpt.mean()` which calculates the optimal positioning and number of changepoints for the provided data (will use `rnorm()`) with the user-specified method. <br>
+Note that `cpt` here refers to the object class introduced by the `changepoint` package to store changepoint analysis objects. <br>
+
+As expected, using the testComplexity functions with suitable parameters show the specified complexities for the PELT (linear time) and SegNeigh (quadratic time) algorithms for `changepoint::cpt.mean()`:
+```r
+library(testComplexity)
+# PELT case:
+df <- asymptoticTimings(changepoint::cpt.mean(rnorm(data.sizes), method = "PELT"), data.sizes = 10^seq(1, 4, by = 0.5))
+asymptoticTimeComplexityClass(df)
+#> [1] "linear"
+# SegNeigh case:
+df <- asymptoticTimings(changepoint::cpt.mean(rnorm(data.sizes), penalty = "Asymptotic", pen.value = 0.01, method = "SegNeigh"), data.sizes = 10^seq(1, 4, by = 0.5))
+asymptoticTimeComplexityClass(df)
+#> [1] "quadratic"
+```
+
+<sup>Created on 2020-07-31 by the [reprex package](https://reprex.tidyverse.org) (v0.3.0)</sup>
+
