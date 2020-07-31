@@ -1,0 +1,17 @@
+---
+title: "PELT and SegNeigh algorithms for changepoint::cpt.mean()"
+author: "Anirban Chetia"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{PELT and SegNeigh algorithms for changepoint::cpt.mean()}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
