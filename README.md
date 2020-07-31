@@ -78,10 +78,11 @@ testComplexity                              @ returns              @ type       
 ├──> asymptoticComplexityClass            : string                 complexity classifier     Generalizedcomplexity
 │    └──> asymptoticComplexityClassifier  :   ↑ string             ↑ complexity classifier   Generalizedcomplexity
 │
-├──> expect_time_complexity               : -/-                    test function             Testfunc
-│    ├──> expect_linear_time              : -/-                    ↑ test function           Testfunc
-│    ├──> expect_loglinear_time           : -/-                    ↑ test function           Testfunc
-│    └──> expect_quadratic_time           : -/-                    ↑ test function           Testfunc
+├──> expect_complexity_class              : -/-                    test function             Testfunc
+│    └──> expect_time_complexity          : -/-                    ↑  test function          Testfunc
+│         ├──> expect_linear_time         : -/-                    ↑↑ test function          Testfunc
+│         ├──> expect_loglinear_time      : -/-                    ↑↑ test function          Testfunc
+│         └──> expect_quadratic_time      : -/-                    ↑↑ test function          Testfunc
 │
 └──> testthat                                                                                
      ├──> testsfortestComplexity                                   unit-tester               All branches
@@ -198,7 +199,7 @@ Test cases for testComplexity functions via [testthat](https://cran.r-project.or
 Tested locally by `covr::package_coverage()` and codecov, with 100% code coverage. <br>
 - **OS Support** <br>
 Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. In addition to both, RCMD checks are run on MacOS as well. <br>
-Note that the use of `bench::bench_memory` overcomes the drawback of windows-only OS limitation for memory complexity testing in `GuessCompx::CompEst` as it successfully runs on other operating systems.
+Note that the use of `bench::bench_memory` overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in `GuessCompx::CompEst` since it successfully runs on other operating systems.
 <p align="center">
 <a href="https://www.microsoft.com/en-in/windows"> <img src="https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&logo=Windows"> <a href="https://www.linux.org/"> <img src="https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&logo=Linux"> <a href="https://developer.apple.com/macos/"> <img src="https://img.shields.io/badge/MacOS--brightgreen?style=for-the-badge&logo=Apple"> </a>
 </p> 
