@@ -47,7 +47,7 @@ Since algorithms are used in every sphere of research, this package potentially 
 Setup
 </h2>
 
-Use `devtools` or `remotes` to fetch the package from this repository:
+Use `devtools` or `remotes` to fetch the package from the [github repository](https://github.com/Anirban166/testComplexity):
 ```r
 if(!require(devtools)) install.packages("devtools")
 devtools::install_github("Anirban166/testComplexity")
