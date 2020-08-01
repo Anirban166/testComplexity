@@ -16,3 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Abstract
+The generalized functional pruning and optimal partitioning (gfpop) is a constrained changepoint detection algorithm that jointly estimates the number of peaks and their locations by minimizing a cost function which consists of a data fitting term and a penalty for each changepoint.
+
+As the name suggests, its a generalization of the FPOP algorithm which allows optimal inference in models with inequality constraints between adjacent means. It can be used to compute optimal peak models for genomic data in log-linear time, which was empirically found as discussed below.
