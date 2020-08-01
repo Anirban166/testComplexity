@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 ## Abstract
 The generalized functional pruning and optimal partitioning (gfpop) is a constrained changepoint detection algorithm that jointly estimates the number of peaks and their locations by minimizing a cost function which consists of a data fitting term and a penalty for each changepoint.
 
-As the name suggests, its a generalization of the FPOP algorithm which allows optimal inference in models with inequality constraints between adjacent means. It can be used to compute optimal peak models for genomic data in log-linear time, which was empirically found as discussed below.
+As the name suggests, its a generalization of the fpop algorithm which allows optimal inference in models with inequality constraints between adjacent means. It can be used to compute optimal peak models for genomic data in log-linear time, which was empirically found as discussed below.
 
 ## Computational complexity
 The overall theoretical time/space complexity for gfpop is O(NI), where I is the number of intervals (candidate changepoints) stored in the optimal cost functions. During test runs to estimate its complexity, it was observed that the empirical mean/max number of intervals increases logarithmically with data set size, i.e. I = O(logN) was observed.
@@ -27,10 +27,10 @@ The overall theoretical time/space complexity for gfpop is O(NI), where I is the
 This makes the overall complexity O(NlogN) or log-linear in the number of data points (N) to segment, (same for a disk-based storage as well, as found via the package PeakSegDisk) with the number of intervals in real (theoretically there could be some pathological data sets for which the algorithm computes I = O(N) intervals, which results in the worst-case complexity of O(N<sup>2</sup>)) data being found to be I = O(logN) empirically.
 
 ## Reference
-The pdf proposing the GFPOP algorithm and enacting as the source for me to extract the above information can be found [here](https://arxiv.org/pdf/1810.00117.pdf).
+The pdf proposing the algorithm and enacting as the source for me to extract the above information can be found [here](https://arxiv.org/pdf/1810.00117.pdf).
 
 ## Testing
-We can use testComplexity to verify the empirical observation of the log-linear trend followed in the number of data points to segment: 
+We can use the testComplexity functions `asymptoticTimings` and `asymptoticTimeComplexityClass` to verify the empirical observation of the log-linear trend followed in the number of data points to segment: 
 ```r
 library(testComplexity)
 df <- asymptoticTimings(gfpop(data = dataGenerator(as.integer(data.sizes), c(0.1, 0.2, 0.3, 0.4, 0.6, 0.8, 1), c(0, 0.5, 1, 1.5, 2, 2.5, 3), sigma = 1), mygraph = graph(penalty = 2*log(as.integer(data.sizes)), type = "isotonic"), type = "mean"), data.sizes = 10^seq(1, 4, by = 0.5))

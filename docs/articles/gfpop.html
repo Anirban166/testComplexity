@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PELT and SegNeigh algorithms for changepoint::cpt.mean() • testComplexity</title>
+<title>gfpop::gfpop(), a log-linear time algorithm for constrained changepoint detection • testComplexity</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/sandstone/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -13,7 +13,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="PELT and SegNeigh algorithms for changepoint::cpt.mean()">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="gfpop::gfpop(), a log-linear time algorithm for constrained changepoint detection">
 <meta property="og:description" content="testComplexity">
 <meta name="robots" content="noindex">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -94,13 +94,13 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>PELT and SegNeigh algorithms for changepoint::cpt.mean()</h1>
+      <h1 data-toc-skip>gfpop::gfpop(), a log-linear time algorithm for constrained changepoint detection</h1>
                         <h4 class="author">Anirban Chetia</h4>
             
             <h4 class="date">2020-08-01</h4>
       
       
-      <div class="hidden name"><code>PELT_and_SegNeigh.Rmd</code></div>
+      <div class="hidden name"><code>gfpop.Rmd</code></div>
 
     </div>
 
@@ -109,34 +109,29 @@
 <div id="abstract" class="section level2">
 <h2 class="hasAnchor">
 <a href="#abstract" class="anchor"></a>Abstract</h2>
-<p>The changepoint package implements three algorithms for multiple changepoint detection, out of which we will be discussing two of them with regards to the computational time complexity: <br></p>
-<ul>
-<li>
-<strong>Segment Neighbourhood</strong> (<strong>SegNeigh</strong>) algorithm: This algorithm uses a dynamic programming technique to obtain the optimal segmentation for n changepoints, reusing the information that was calculated for (n-1) changepoints. This reduces the algorithmic complexity to quadratic or O(n<sup>2</sup>), from the exponential time complexity (O(2<sup>n</sup>)) given by the Binary Segmentation algorithm (not discussed here).</li>
-<li>
-<strong>Pruned Exact Linear Time</strong> (<strong>PELT</strong>) algorithm: This algorithm uses dynamic programming and pruning as well, which is computationally more efficient and can result in a linear or O(n) search algorithm, with subject to certain assumptions being satisfied, out of which the main assumption that controls the computational time is that the number of changepoints increases linearly as the data set grows. (i.e. when the changepoints are spread throughout the data rather than being confined to one portion)</li>
-</ul>
+<p>The generalized functional pruning and optimal partitioning (gfpop) is a constrained changepoint detection algorithm that jointly estimates the number of peaks and their locations by minimizing a cost function which consists of a data fitting term and a penalty for each changepoint.</p>
+<p>As the name suggests, its a generalization of the fpop algorithm which allows optimal inference in models with inequality constraints between adjacent means. It can be used to compute optimal peak models for genomic data in log-linear time, which was empirically found as discussed below.</p>
+</div>
+<div id="computational-complexity" class="section level2">
+<h2 class="hasAnchor">
+<a href="#computational-complexity" class="anchor"></a>Computational complexity</h2>
+<p>The overall theoretical time/space complexity for gfpop is O(NI), where I is the number of intervals (candidate changepoints) stored in the optimal cost functions. During test runs to estimate its complexity, it was observed that the empirical mean/max number of intervals increases logarithmically with data set size, i.e. I = O(logN) was observed.</p>
+<p>This makes the overall complexity O(NlogN) or log-linear in the number of data points (N) to segment, (same for a disk-based storage as well, as found via the package PeakSegDisk) with the number of intervals in real (theoretically there could be some pathological data sets for which the algorithm computes I = O(N) intervals, which results in the worst-case complexity of O(N<sup>2</sup>)) data being found to be I = O(logN) empirically.</p>
 </div>
 <div id="reference" class="section level2">
 <h2 class="hasAnchor">
 <a href="#reference" class="anchor"></a>Reference</h2>
-<p>The pdf used as reference for obtaining the above information can be found <a href="http://www.lancs.ac.uk/~killick/Pub/KillickEckley2011.pdf">here</a>.</p>
+<p>The pdf proposing the algorithm and enacting as the source for me to extract the above information can be found <a href="https://arxiv.org/pdf/1810.00117.pdf">here</a>.</p>
 </div>
 <div id="testing" class="section level2">
 <h2 class="hasAnchor">
 <a href="#testing" class="anchor"></a>Testing</h2>
-<p>For testing the complexities, we will be using the function <code>cpt.mean()</code> which calculates the optimal positioning and number of changepoints for the provided data (will use <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code>) with the user-specified method. <br> Note that <code>cpt</code> here refers to the object class introduced by the <code>changepoint</code> package to store changepoint analysis objects. <br></p>
-<p>As expected, using the testComplexity functions with suitable parameters show the specified complexities for the PELT (linear time) and SegNeigh (quadratic time) algorithms for <code><a href="https://rdrr.io/pkg/changepoint/man/cpt.mean.html">changepoint::cpt.mean()</a></code>:</p>
+<p>We can use the testComplexity functions <code>asymptoticTimings</code> and <code>asymptoticTimeComplexityClass</code> to verify the empirical observation of the log-linear trend followed in the number of data points to segment:</p>
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">testComplexity</span>)
-<span class="co"># PELT case:</span>
-<span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/asymptoticTimings.html">asymptoticTimings</a></span>(<span class="kw pkg">changepoint</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/changepoint/man/cpt.mean.html">cpt.mean</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="no">data.sizes</span>), <span class="kw">method</span> <span class="kw">=</span> <span class="st">"PELT"</span>), <span class="kw">data.sizes</span> <span class="kw">=</span> <span class="fl">10</span>^<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">1</span>, <span class="fl">4</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fl">0.5</span>))
+<span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/asymptoticTimings.html">asymptoticTimings</a></span>(<span class="fu">gfpop</span>(<span class="kw">data</span> <span class="kw">=</span> <span class="fu">dataGenerator</span>(<span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span>(<span class="no">data.sizes</span>), <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>, <span class="fl">1</span>), <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">0.5</span>, <span class="fl">1</span>, <span class="fl">1.5</span>, <span class="fl">2</span>, <span class="fl">2.5</span>, <span class="fl">3</span>), <span class="kw">sigma</span> <span class="kw">=</span> <span class="fl">1</span>), <span class="kw">mygraph</span> <span class="kw">=</span> <span class="fu">graph</span>(<span class="kw">penalty</span> <span class="kw">=</span> <span class="fl">2</span>*<span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span>(<span class="no">data.sizes</span>)), <span class="kw">type</span> <span class="kw">=</span> <span class="st">"isotonic"</span>), <span class="kw">type</span> <span class="kw">=</span> <span class="st">"mean"</span>), <span class="kw">data.sizes</span> <span class="kw">=</span> <span class="fl">10</span>^<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">1</span>, <span class="fl">4</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fl">0.5</span>))
 <span class="fu"><a href="../reference/asymptoticTimeComplexityClass.html">asymptoticTimeComplexityClass</a></span>(<span class="no">df</span>)
-<span class="co">#&gt; [1] "linear"</span>
-<span class="co"># SegNeigh case:</span>
-<span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/asymptoticTimings.html">asymptoticTimings</a></span>(<span class="kw pkg">changepoint</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/changepoint/man/cpt.mean.html">cpt.mean</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="no">data.sizes</span>), <span class="kw">penalty</span> <span class="kw">=</span> <span class="st">"Asymptotic"</span>, <span class="kw">pen.value</span> <span class="kw">=</span> <span class="fl">0.01</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"SegNeigh"</span>), <span class="kw">data.sizes</span> <span class="kw">=</span> <span class="fl">10</span>^<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">1</span>, <span class="fl">4</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fl">0.5</span>))
-<span class="fu"><a href="../reference/asymptoticTimeComplexityClass.html">asymptoticTimeComplexityClass</a></span>(<span class="no">df</span>)
-<span class="co">#&gt; [1] "quadratic"</span></pre></body></html></div>
-<p><sup>Created on 2020-07-31 by the <a href="https://reprex.tidyverse.org">reprex package</a> (v0.3.0)</sup></p>
+<span class="co">#&gt; [1] "loglinear"</span></pre></body></html></div>
+<p><sup>Created on 2020-08-01 by the <a href="https://reprex.tidyverse.org">reprex package</a> (v0.3.0)</sup></p>
 </div>
   </div>
 
