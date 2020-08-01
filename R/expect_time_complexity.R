@@ -19,5 +19,4 @@ expect_time_complexity = function(complexity.class, ..., f)
   timings.df <- f(...)
 
   expect_complexity_class(asymptoticTimeComplexityClass(timings.df), complexity.class)
-
 }
