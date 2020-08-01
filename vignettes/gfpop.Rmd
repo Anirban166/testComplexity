@@ -1,0 +1,18 @@
+---
+title: "gfpop::gfpop(), a log-linear time algorithm for constrained changepoint detection"
+author: "Anirban Chetia"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{gfpop::gfpop(), a log-linear time algorithm for constrained changepoint detection}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
