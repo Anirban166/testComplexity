@@ -111,7 +111,7 @@
 <li>
 <strong>Segment Neighbourhood</strong> (<strong>SegNeigh</strong>) algorithm: This algorithm uses a dynamic programming technique to obtain the optimal segmentation for n changepoints, reusing the information that was calculated for (n-1) changepoints. This reduces the algorithmic complexity to quadratic or O(n<sup>2</sup>), from the exponential time complexity (O(2<sup>n</sup>)) given by the Binary Segmentation algorithm (not discussed here).</li>
 <li>
-<strong>Pruned Exact Linear Time</strong> (<strong>PELT</strong>) algorithm: This algorithm uses dynamic programming and pruning as well, which is computationally more efficient and can result in a linear or O(n) search algorithm, with subject to certain assumptions being satisfied, the majority of which are not particularly onerous. Indeed the main assumption that controls the computational time is that the number of changepoints increases linearly as the data.</li>
+<strong>Pruned Exact Linear Time</strong> (<strong>PELT</strong>) algorithm: This algorithm uses dynamic programming and pruning as well, which is computationally more efficient and can result in a linear or O(n) search algorithm, with subject to certain assumptions being satisfied, out of which the main assumption that controls the computational time is that the number of changepoints increases linearly as the data set grows. (i.e. when the changepoints are spread throughout the data rather than being confined to one portion)</li>
 </ul>
 </div>
 <div id="reference" class="section level2">
