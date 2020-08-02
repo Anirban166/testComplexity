@@ -22,3 +22,14 @@ Being a wrapper to a C++ implementation of the functional pruning optimal partio
 ## Reference
 The [official pdf](https://cran.r-project.org/web/packages/fpop/fpop.pdf) for the fpop package was used as reference for extracting the above information.
 
+## Testing
+The fpop algorithm is expected to possess log-linear time complexity, as empiricially derived. We can test and verify the same using testComplexity's functions:
+```r
+library(testComplexity)
+asymptoticTimeComplexityClass(asymptoticTimings(fpop::Fpop(rnorm(data.sizes), 1), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 0.1))
+#> [1] "loglinear"
+```
+
+<sup>Created on 2020-08-02 by the [reprex package](https://reprex.tidyverse.org) (v0.3.0)</sup>
+
+
