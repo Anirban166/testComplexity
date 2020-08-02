@@ -1,0 +1,43 @@
+---
+title: "opart::gaussian(), a quadratic time optimal partioning algorithm"
+author: "Anirban Chetia"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{opart::gaussian(), a quadratic time optimal partioning algorithm}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Abstract
+Being a reference implementation of the standard optimal partitioning algorithm in C, (using the square-error loss) the function `opart::gaussian` computes the optimal changepoint model for a vector of real-valued data and a non-negative real-valued penalty, given the square loss (to minimize) / gaussian likelihood (to maximize). Note that it is not available on CRAN (as far as I observed), and has to be fetched from the github repository.
+
+## Time complexity 
+The standard optimal partitioning algorithm is quadratic in time complexity, which means the resulting complexity of this algorithm (it being a reference implementation) is quadratic as well. 
+
+However, there are several ways to speed up the dynamic programming algorithms including the pruning of the solution space, and the algorithms which provide a faster (log-linear time) implementation of the same include:
+
+- `changepoint::cpt.mean`, which provides `cpt.mean` and other functions which compute the optimal solution to the penalized problem via the PELT algorithm, which is log-linear time complexity. Please check [this](https://anirban166.github.io/testComplexity/articles/PELT_and_SegNeigh.html) article for more information on the same, including complexity analysis for the PELT and SegNeigh algorithms. 
+
+- `fpop::Fpop`: computes the optimal solution to the penalized problem via the FPOP algorithm, which is also log-linear time complexity.
+
+## Reference
+Reference enacting as source for me to extract the above information can be found [here](https://www.rdocumentation.org/packages/opart/versions/2019.1.0/vignettes/opart_gaussian.Rmd).
+
+## Testing
+Using testComplexity functions we can verify the quadratic time complexity for this algorithm:
+```r
+library(testComplexity)
+df <- asymptoticTimings(opart::opart_gaussian(rnorm(data.sizes), 1), data.sizes = 10^seq(1, 4, by = 0.5))
+asymptoticTimeComplexityClass(df)
+#> [1] "quadratic"
+```
+
+<sup>Created on 2020-08-02 by the [reprex package](https://reprex.tidyverse.org) (v0.3.0)</sup>
