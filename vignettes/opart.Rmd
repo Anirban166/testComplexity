@@ -26,7 +26,7 @@ However, there are several ways to speed up the dynamic programming algorithms i
 
 - `changepoint::cpt.mean`, which provides `cpt.mean` and other functions which compute the optimal solution to the penalized problem via the PELT algorithm, which is log-linear time complexity. Please check [this](https://anirban166.github.io/testComplexity/articles/PELT_and_SegNeigh.html) article for more information on the same, including complexity analysis for the PELT and SegNeigh algorithms. 
 
-- `fpop::Fpop`: computes the optimal solution to the penalized problem via the FPOP algorithm, which has log-linear time complexity as well.
+- `fpop::Fpop`: computes the optimal solution to the penalized problem via the FPOP algorithm, which has log-linear time complexity as well. The article regarding FPOP can be found [here](https://anirban166.github.io/testComplexity/articles/fpop.html).
 
 ## Reference
 Reference enacting as the source for me to extract the above information can be found [here](https://www.rdocumentation.org/packages/opart/versions/2019.1.0/vignettes/opart_gaussian.Rmd).
