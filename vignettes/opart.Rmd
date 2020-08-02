@@ -22,5 +22,12 @@ Being a reference implementation of the standard optimal partitioning algorithm 
 ## Time complexity 
 The standard optimal partitioning algorithm is quadratic in time complexity, which means the resulting complexity of this algorithm (it being a reference implementation) is quadratic as well. 
 
-There are several ways to spped-up the dynamic programming algorithms including the pruning of the solution space, and the algorithms which provide a faster (log-linear time) implementation of the same include:
+There are several ways to speed up the dynamic programming algorithms including the pruning of the solution space, and the algorithms which provide a faster (log-linear time) implementation of the same include:
+
+- changepoint::cpt.mean, which provides `cpt.mean` and other functions which compute the optimal solution to the penalized problem via the PELT algorithm, which is log-linear time complexity.
+
+- fpop::Fpop: computes the optimal solution to the penalized problem via the FPOP algorithm, which is also log-linear time complexity.
+
+## Reference
+Reference enacting as source for me to extract the above information can be found [here](https://www.rdocumentation.org/packages/opart/versions/2019.1.0/vignettes/opart_gaussian.Rmd).
 
