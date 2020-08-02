@@ -1,0 +1,35 @@
+---
+title: "fpop::Fpop(), a log-linear time segmentation algorithm"
+author: "Anirban Chetia"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{fpop::Fpop(), a log-linear time segmentation algorithm}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Abstract
+Being a wrapper to a C++ implementation of the functional pruning optimal partioning (fpop) algorithm, the fpop package provides the function `Fpop` which is a dynamic programming algorithm for the fast segmentation of univariate signals into piecewise constant profiles. It exactly minimizes the mean squared error for a penalty linear in the number of changepoints, which solves the problem of detecting changepoints in an univariate sequence. (by minimising the mean squared error over segmentations)
+
+## Reference
+The [official pdf](https://cran.r-project.org/web/packages/fpop/fpop.pdf) for the fpop package was used as reference for extracting the above information.
+
+## Testing
+The fpop algorithm is expected to possess log-linear time complexity, as theoretically derived and empiricially observed. We can verify the same using testComplexity's functions:
+```r
+library(testComplexity)
+asymptoticTimeComplexityClass(asymptoticTimings(fpop::Fpop(rnorm(data.sizes), 1), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 0.1))
+#> [1] "loglinear"
+```
+
+<sup>Created on 2020-08-02 by the [reprex package](https://reprex.tidyverse.org) (v0.3.0)</sup>
+
+
