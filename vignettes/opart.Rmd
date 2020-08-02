@@ -15,3 +15,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
+
+## Abstract
+Being a reference implementation of the standard optimal partitioning algorithm in C, (using the square-error loss) the function opart::gaussian computes the optimal changepoint model for a vector of real-valued data and a non-negative real-valued penalty, given the square loss (to minimize) / gaussian likelihood (to maximize). Note that it is presently not available on CRAN, as far as I observed.
+
