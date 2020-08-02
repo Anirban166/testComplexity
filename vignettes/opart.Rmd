@@ -35,7 +35,7 @@ Reference enacting as the source for me to extract the above information can be 
 Using testComplexity functions we can verify the quadratic time complexity for this algorithm:
 ```r
 library(testComplexity)
-df <- asymptoticTimings(opart::opart_gaussian(rnorm(data.sizes), 1), data.sizes = 10^seq(1, 4, by = 0.5))
+df <- asymptoticTimings(opart::opart_gaussian(rnorm(data.sizes), 1), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 0.1)
 asymptoticTimeComplexityClass(df)
 #> [1] "quadratic"
 ```

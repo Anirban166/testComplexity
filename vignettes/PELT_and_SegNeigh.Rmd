@@ -1,7 +1,7 @@
 ---
 title: "PELT and SegNeigh algorithms for changepoint::cpt.mean()"
 author: "Anirban Chetia"
-date: "`r Sys.Date()`"
+date: "2020-07-31"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{PELT and SegNeigh algorithms for changepoint::cpt.mean()}
@@ -35,11 +35,11 @@ As expected, using the testComplexity functions with suitable parameters show th
 ```r
 library(testComplexity)
 # PELT case:
-df <- asymptoticTimings(changepoint::cpt.mean(rnorm(data.sizes), method = "PELT"), data.sizes = 10^seq(1, 4, by = 0.5))
+df <- asymptoticTimings(changepoint::cpt.mean(rnorm(data.sizes), method = "PELT"), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 0.1)
 asymptoticTimeComplexityClass(df)
 #> [1] "linear"
 # SegNeigh case:
-df <- asymptoticTimings(changepoint::cpt.mean(rnorm(data.sizes), penalty = "Asymptotic", pen.value = 0.01, method = "SegNeigh"), data.sizes = 10^seq(1, 4, by = 0.5))
+df <- asymptoticTimings(changepoint::cpt.mean(rnorm(data.sizes), penalty = "Asymptotic", pen.value = 0.01, method = "SegNeigh"), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 0.1)
 asymptoticTimeComplexityClass(df)
 #> [1] "quadratic"
 ```
