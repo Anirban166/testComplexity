@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 ```
 
 ## Abstract
-Peak detection is a central problem in genomic data analysis, with algorithms for this task being unsupervised and mostly effective for a single data type and pattern only. In relation to this, "PeakSeg" was proposed, which is a constrained maximum Poisson likelihood segmentation model (more information on which can be found [here](https://dl.acm.org/doi/abs/10.5555/3045118.3045154)).
+Peak detection is a central problem in genomic data analysis, with algorithms for this task being unsupervised and mostly effective for a single data type and pattern only. In response to this, "PeakSeg" was proposed, which is a constrained maximum Poisson likelihood segmentation model (more information on which can be found [here](https://dl.acm.org/doi/abs/10.5555/3045118.3045154)).
 
 The package `PeakSegDP` provides the baseline that computes an approximate solution (subject to a constraint on the number of segments) to the up-down (changes must alternate following an up-down trend) constrained problem which satisfies the PeakSeg constraints via the constrained dynamic programming algorithm (cDPA).
 
