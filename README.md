@@ -133,7 +133,7 @@ Plotting
 For obtaining a visual description of the trend followed between runtimes/memory-usage vs data sizes so as to diagnose/verify the complexity result(s), simple plots can be crafted. They are roughly grouped into: 
 
 - **Single Plots** <br>
-Individual plots can be obtained by simply passing the data frame returned by the quantifying functions to `plotTimings()`/`plotMemoryUsage()` for time/memory cases respectively: <br>
+Individual plots can be obtained by passing the data frame returned by the quantifying functions to `plotTimings()`/`plotMemoryUsage()` for time/memory cases respectively: <br>
 ```r
 # Timings plot for PeakSegDP::cDPA
 > df <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4))
