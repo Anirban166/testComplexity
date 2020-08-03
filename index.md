@@ -138,42 +138,56 @@ Individual plots can be obtained by simply passing the data frame returned by th
 # Equivalent ggplot object:
 df <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4))
 > ggplot(df, aes(x = `Data sizes`, y = Timings)) + geom_point(color = ft_cols$yellow, size = 1.5) + geom_line(color = ft_cols$yellow, size = 1) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings", "PeakSegDP::cDPA") + theme_ft_rc()
-
+```
+```r
 # Memory Usage plot for PeakSegDP::cDPA
 > df <- asymptoticMemoryUsage(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 6, by = 0.1))
 > plotMemoryUsage(df.memory, titles = list("Memory Usage", "PeakSegDP::cDPA"), line.color = "#ffec1b", point.color = "#ffec1b", line.size = 1, point.size = 2) 
-## Equivalent ggplot object:
+# Equivalent ggplot object:
 > ggplot(df, aes(x = `Data sizes`, y = `Memory usage`)) + geom_point(color = ft_cols$yellow, size = 2) + geom_line(color = ft_cols$yellow, size = 1) labs(x = "Data sizes", y = "Memory usage (in bytes)") + scale_x_log10() + scale_y_log10() + ggtitle("Memory Usage", "PeakSegDP::cDPA") + theme_ft_rc()
 ```
-<img width = "100%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/cDPAplottimememory.png"> <br>
+<img width = "100%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/timememorycDPA.png"> <br>
 - **Comparison Plots** <br>
 In order to visually compare different algorithms based on the benchmarked metrics returned as a data frame by the quantifiers, one can appropriately append a third column (to help distinguish by aesthetics based on it) with a unique value for each of the data frames, combine them using an `rbind()` and then plot the resultant data frame using suitable aesthetics, geometry, scale, labels/titles etcetera via a ggplot: <br>
 ```r
-> df.one <- asymptoticTimings(substring(paste(rep("A", data.sizes), collapse = ""), 1:data.sizes, 1:data.sizes), data.sizes = 10^seq(1, 4, by = 0.5))
-> asymptoticTimeComplexityClass(df.one)
+> df.substring <- asymptoticTimings(substring(paste(rep("A", data.sizes), collapse = ""), 1:data.sizes, 1:data.sizes), data.sizes = 10^seq(1, 4, by = 0.5))
+> asymptoticTimeComplexityClass(df.substring)
 [1] "linear"
-> df.two <- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(data.sizes, 1),rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 1)
-> asymptoticTimeComplexityClass(df.two)
-[1] "log-linear"
-> df.three <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 5)
-> asymptoticTimeComplexityClass(df.three)
+> df.PeakSegPDPA <- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(data.sizes, 1),rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 1)
+> asymptoticTimeComplexityClass(df.PeakSegPDPA)
+[1] "loglinear"
+> df.cDPA <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 5)
+> asymptoticTimeComplexityClass(df.cDPA)
 [1] "quadratic"
-> df.one$expr = "Substring"
-> df.two$expr = "PeakSegPDPA"
-> df.three$expr = "cDPA"
-> plot.df <- rbind(df.one, df.two, df.three)
-> ggplot(plot.df, aes(x = `Data sizes`, y = Timings)) + geom_point(aes(color = expr)) + geom_line(aes(color = expr)) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings comparison plot", subtitle = "Linear vs Log-linear vs Quadratic complexities")
+> df.gregexpr <- asymptoticTimings(gregexpr("a", paste(collapse = "", rep("ab", data.sizes)), perl = TRUE), data.sizes = 10^seq(1, 4, by = 0.5))
+> asymptoticTimeComplexityClass(df.gregexpr)
+[1] "linear"
+> df.fpop <- asymptoticTimings(fpop::Fpop(rnorm(data.sizes), 1), data.sizes = 10^seq(1, 4, by = 0.5))
+> asymptoticTimeComplexityClass(df.fpop)
+[1] "loglinear"
+> df.opart <- asymptoticTimings(opart::opart_gaussian(rnorm(data.sizes), 1), data.sizes = 10^seq(1, 4, by = 0.5))
+> asymptoticTimeComplexityClass(df.opart)
+[1] "quadratic"
+> df.substring$expr = "substring"
+> df.PeakSegPDPA$expr = "PeakSegPDPA"
+> df.cDPA$expr = "cDPA"
+> df.gregexpr$expr = "gregexpr"
+> df.fpop$expr = "fpop"
+> df.opart$expr = "opart"
+> plot.df <- rbind(df.substring, df.PeakSegPDPA, df.cDPA, df.gregexpr, df.fpop, df.opart)
+> ggplot(plot.df, aes(x = `Data sizes`, y = Timings)) + geom_point(aes(color = expr)) + geom_line(aes(color = expr)) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings comparison plot", subtitle = "Linear vs Log-linear vs Quadratic complexities") + theme_pander()
 ```
-<img width = "100%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/Timingscomparisonplot.png"> <br>
-- **Diagnostic Plots** <br>
+<img width = "100%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/cp2.png"> <br>
+<img width = "100%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/cp.png"> <br>
+- **Generalized Linear Model based Plots** <br>
 `ggfortify`, an extension of `ggplot2`, can be used to produce diagnostic plots for generalized linear models with the same formulae as used in the complexity classification functions: <br>
 ```r
 > library(ggfortify)
-> df <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 5, by = 0.5))
+> df <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4 by = 0.1))
 > glm.plot.obj <- glm(Timings~`Data sizes`, data = df)
-> ggplot2::autoplot(stats::glm(glm.plot.obj))
+> ggplot2::autoplot(stats::glm(glm.plot.obj)) + theme_gdocs()
 ```
-<img src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/glmQuadratictimecDPAfit.png"> <br>
+<img src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/glmplot.png"> <br>
 
 <h2 align="center">
 Benchmarking
