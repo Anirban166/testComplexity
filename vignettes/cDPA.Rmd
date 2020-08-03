@@ -1,10 +1,10 @@
 ---
-title: "PeakSegDP::cDPA, a quadratic time constrained dynamic programming algorithm "
+title: "PeakSegDP::cDPA, a quadratic time constrained dynamic programming algorithm"
 author: "Anirban Chetia"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{gfpop::gfpop(), a log-linear time algorithm for constrained changepoint detection}
+  %\VignetteIndexEntry{PeakSegDP::cDPA, a quadratic time constrained dynamic programming algorithm}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -15,4 +15,8 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
+
+## Abstract
+PeakSeg is a constrained maximum Poisson likelihood segmentation model, more information on which can be found [here](https://dl.acm.org/doi/abs/10.5555/3045118.3045154).
+The package PeakSegDP provides the baseline that computes an approximate solution (subject to a constraint on the number of segments) to the up-down (changes must alternate following an up-down trend) constrained problem which satisfies the PeakSeg constraints via the constrained dynamic programming algorithm (cDPA).
 
