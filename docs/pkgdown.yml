@@ -2,10 +2,11 @@ pandoc: '2.6'
 pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
+  cDPA: cDPA.html
   fpop: fpop.html
   gfpop: gfpop.html
   opart: opart.html
   PELT_and_SegNeigh: PELT_and_SegNeigh.html
   substring_and_gregexpr: substring_and_gregexpr.html
-last_built: 2020-08-02T10:57Z
+last_built: 2020-08-03T17:42Z
 

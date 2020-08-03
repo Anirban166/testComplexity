@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>fpop::Fpop(), a log-linear time segmentation algorithm • testComplexity</title>
+<title>PeakSegDP::cDPA, a quadratic time constrained dynamic programming algorithm • testComplexity</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/sandstone/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -13,7 +13,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="fpop::Fpop(), a log-linear time segmentation algorithm">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="PeakSegDP::cDPA, a quadratic time constrained dynamic programming algorithm">
 <meta property="og:description" content="testComplexity">
 <meta name="robots" content="noindex">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -103,13 +103,13 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>fpop::Fpop(), a log-linear time segmentation algorithm</h1>
+      <h1 data-toc-skip>PeakSegDP::cDPA, a quadratic time constrained dynamic programming algorithm</h1>
                         <h4 class="author">Anirban Chetia</h4>
             
             <h4 class="date">2020-08-03</h4>
       
       
-      <div class="hidden name"><code>fpop.Rmd</code></div>
+      <div class="hidden name"><code>cDPA.Rmd</code></div>
 
     </div>
 
@@ -118,21 +118,28 @@
 <div id="abstract" class="section level2">
 <h2 class="hasAnchor">
 <a href="#abstract" class="anchor"></a>Abstract</h2>
-<p>Being a wrapper to a C++ implementation of the functional pruning optimal partioning (fpop) algorithm, the fpop package provides the function <code>Fpop</code> which is a dynamic programming algorithm for the fast segmentation of univariate signals into piecewise constant profiles. It exactly minimizes the mean squared error for a penalty linear in the number of changepoints, which solves the problem of detecting changepoints in an univariate sequence. (by minimising the mean squared error over segmentations)</p>
+<p>Peak detection is a central problem in genomic data analysis, with algorithms for this task being unsupervised and mostly effective for a single data type and pattern only. In response to this, “PeakSeg” was proposed, which is a constrained maximum Poisson likelihood segmentation model (more information on which can be found <a href="https://dl.acm.org/doi/abs/10.5555/3045118.3045154">here</a>).</p>
+<p>The package <code>PeakSegDP</code> provides the baseline that computes an approximate solution (subject to a constraint on the number of segments) to the up-down (changes must alternate following an up-down trend) constrained problem which satisfies the PeakSeg constraints via the constrained dynamic programming algorithm (cDPA).</p>
+</div>
+<div id="time-complexity" class="section level2">
+<h2 class="hasAnchor">
+<a href="#time-complexity" class="anchor"></a>Time Complexity</h2>
+<p>cDPA is known to be a quadratic time algorithm, and the implementation for the same in <code><a href="https://rdrr.io/pkg/PeakSegDP/man/cDPA.html">PeakSegDP::cDPA</a></code> is a low-level interface to the C solver, which retains the same computational complexity.</p>
 </div>
 <div id="reference" class="section level2">
 <h2 class="hasAnchor">
 <a href="#reference" class="anchor"></a>Reference</h2>
-<p>The <a href="https://cran.r-project.org/web/packages/fpop/fpop.pdf">official pdf</a> for the fpop package was used as reference for extracting the above information.</p>
+<p>Source enacting as reference for the above information includes the <a href="https://github.com/tdhock/PeakSegDP">github repository</a> and this <a href="http://proceedings.mlr.press/v37/hocking15.pdf">pdf</a>.</p>
 </div>
 <div id="testing" class="section level2">
 <h2 class="hasAnchor">
 <a href="#testing" class="anchor"></a>Testing</h2>
-<p>The fpop algorithm is expected to possess log-linear time complexity, as theoretically derived and empiricially observed. We can verify the same using testComplexity’s functions:</p>
+<p>We can verify the quadratic time complexity for this algorithm by a run with our time complexity analysis functions <code>asymptoticTimings</code> and <code>asymptoticTimeComplexityClass</code>:</p>
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">testComplexity</span>)
-<span class="fu"><a href="../reference/asymptoticTimeComplexityClass.html">asymptoticTimeComplexityClass</a></span>(<span class="fu"><a href="../reference/asymptoticTimings.html">asymptoticTimings</a></span>(<span class="kw pkg">fpop</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/fpop/man/Fpop.html">Fpop</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="no">data.sizes</span>), <span class="fl">1</span>), <span class="kw">data.sizes</span> <span class="kw">=</span> <span class="fl">10</span>^<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">1</span>, <span class="fl">4</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fl">0.5</span>), <span class="kw">max.seconds</span> <span class="kw">=</span> <span class="fl">0.1</span>))
-<span class="co">#&gt; [1] "loglinear"</span></pre></body></html></div>
-<p><sup>Created on 2020-08-02 by the <a href="https://reprex.tidyverse.org">reprex package</a> (v0.3.0)</sup></p>
+<span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/asymptoticTimings.html">asymptoticTimings</a></span>(<span class="kw pkg">PeakSegDP</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/PeakSegDP/man/cDPA.html">cDPA</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">rpois</a></span>(<span class="no">data.sizes</span>, <span class="fl">1</span>), <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">rpois</a></span>(<span class="no">dta.sizes</span>, <span class="fl">1</span>))), <span class="fl">3L</span>), <span class="kw">data.sizes</span> <span class="kw">=</span> <span class="fl">10</span>^<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">1</span>, <span class="fl">4</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fl">0.5</span>))
+<span class="fu"><a href="../reference/asymptoticTimeComplexityClass.html">asymptoticTimeComplexityClass</a></span>(<span class="no">df</span>)
+<span class="co">#&gt; [1] "quadratic"</span></pre></body></html></div>
+<p><sup>Created on 2020-08-03 by the <a href="https://reprex.tidyverse.org">reprex package</a> (v0.3.0)</sup></p>
 </div>
   </div>
 

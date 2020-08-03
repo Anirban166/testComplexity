@@ -62,6 +62,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="articles/cDPA.html">PeakSegDP::cDPA, a quadratic time constrained dynamic programming algorithm</a>
+    </li>
+    <li>
       <a href="articles/fpop.html">fpop::Fpop(), a log-linear time segmentation algorithm</a>
     </li>
     <li>
@@ -191,46 +194,66 @@ Usage
 <h2 align="center">
 Plotting
 </h2>
+<p>For obtaining a visual description of the trend followed between runtimes/memory-usage vs data sizes so as to diagnose/verify the complexity result(s), simple plots can be crafted. They are roughly grouped into:</p>
 <ul>
 <li>
-<strong>Single Plots</strong> <br> For obtaining a visual description of the trend followed between runtimes/memory-usage vs data sizes, simply pass the data frame returned by the quantifying functions to <code><a href="reference/plotTimings.html">plotTimings()</a></code>/<code><a href="reference/plotMemoryUsage.html">plotMemoryUsage()</a></code> for time/memory cases respectively: <br>
+<strong>Single Plots</strong> <br> Individual plots can be obtained by simply passing the data frame returned by the quantifying functions to <code><a href="reference/plotTimings.html">plotTimings()</a></code>/<code><a href="reference/plotMemoryUsage.html">plotMemoryUsage()</a></code> for time/memory cases respectively: <br>
 </li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="r">&gt; df.time &lt;- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 5, by = 0.5))
-&gt; df.memory &lt;- asymptoticMemoryUsage(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 5, by = 0.1))
-&gt; plotTimings(df.time, titles = list("Timings plot", "PeakSegDP::cDPA"))
-&gt; plotMemoryUsage(df.memory, titles = list("Memory usage plot", "PeakSegDP::cDPA")) </pre></div>
-<p><img width="100%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/cDPAplottimememory.png"><br></p>
+<div class="sourceCode" id="cb7"><pre class="r"># Timings plot for PeakSegDP::cDPA
+&gt; df &lt;- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4))
+&gt; plotTimings(df.time, titles = list("Timings", "PeakSegDP::cDPA"), line.color = "#ffec1b", point.color = "#ffec1b", line.size = 1, point.size = 1.5, theme = ft_rc)
+# Equivalent ggplot object:
+df &lt;- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4))
+&gt; ggplot(df, aes(x = `Data sizes`, y = Timings)) + geom_point(color = ft_cols$yellow, size = 1.5) + geom_line(color = ft_cols$yellow, size = 1) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings", "PeakSegDP::cDPA") + theme_ft_rc()</pre></div>
+<div class="sourceCode" id="cb8"><pre class="r"># Memory Usage plot for PeakSegDP::cDPA
+&gt; df &lt;- asymptoticMemoryUsage(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 6, by = 0.1))
+&gt; plotMemoryUsage(df.memory, titles = list("Memory Usage", "PeakSegDP::cDPA"), line.color = "#ffec1b", point.color = "#ffec1b", line.size = 1, point.size = 2) 
+# Equivalent ggplot object:
+&gt; ggplot(df, aes(x = `Data sizes`, y = `Memory usage`)) + geom_point(color = ft_cols$yellow, size = 2) + geom_line(color = ft_cols$yellow, size = 1) labs(x = "Data sizes", y = "Memory usage (in bytes)") + scale_x_log10() + scale_y_log10() + ggtitle("Memory Usage", "PeakSegDP::cDPA") + theme_ft_rc()</pre></div>
+<p><img width="100%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/timememorycDPA.png"><br></p>
 <ul>
 <li>
-<strong>Comparison Plots</strong> <br> In order to visually compare different algorithms based on the benchmarked metrics returned as a data frame by the quantifiers, one can appropriately add a third column (to help distinguish by aesthetics based on it) with a unique value for each of the data frames, combine them using an <code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code> and then plot the resultant data frame using suitable aesthetics, geometry, scale, labels/titles etcetera via a ggplot: <br>
+<strong>Comparison Plots</strong> <br> In order to visually compare different algorithms based on the benchmarked metrics returned as a data frame by the quantifiers, one can appropriately append a third column (to help distinguish by aesthetics based on it) with a unique value for each of the data frames, combine them using an <code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code> and then plot the resultant data frame using suitable aesthetics, geometry, scale, labels/titles etcetera via a ggplot: <br>
 </li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="r">&gt; df.one &lt;- asymptoticTimings(substring(paste(rep("A", data.sizes), collapse = ""), 1:data.sizes, 1:data.sizes), data.sizes = 10^seq(1, 4, by = 0.5))
-&gt; asymptoticTimeComplexityClass(df.one)
+<div class="sourceCode" id="cb9"><pre class="r">&gt; df.substring &lt;- asymptoticTimings(substring(paste(rep("A", data.sizes), collapse = ""), 1:data.sizes, 1:data.sizes), data.sizes = 10^seq(1, 4, by = 0.5))
+&gt; asymptoticTimeComplexityClass(df.substring)
 [1] "linear"
-&gt; df.two &lt;- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(data.sizes, 1),rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 1)
-&gt; asymptoticTimeComplexityClass(df.two)
-[1] "log-linear"
-&gt; df.three &lt;- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 5)
-&gt; asymptoticTimeComplexityClass(df.three)
+&gt; df.PeakSegPDPA &lt;- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(data.sizes, 1),rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 1)
+&gt; asymptoticTimeComplexityClass(df.PeakSegPDPA)
+[1] "loglinear"
+&gt; df.cDPA &lt;- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 5)
+&gt; asymptoticTimeComplexityClass(df.cDPA)
 [1] "quadratic"
-&gt; df.one$expr = "Substring"
-&gt; df.two$expr = "PeakSegPDPA"
-&gt; df.three$expr = "cDPA"
-&gt; plot.df &lt;- rbind(df.one, df.two, df.three)
-&gt; ggplot(plot.df, aes(x = `Data sizes`, y = Timings)) + geom_point(aes(color = expr)) + geom_line(aes(color = expr)) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings comparison plot", subtitle = "Linear vs Log-linear vs Quadratic complexities")</pre></div>
-<p><img width="100%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/Timingscomparisonplot.png"><br></p>
+&gt; df.gregexpr &lt;- asymptoticTimings(gregexpr("a", paste(collapse = "", rep("ab", data.sizes)), perl = TRUE), data.sizes = 10^seq(1, 4, by = 0.5))
+&gt; asymptoticTimeComplexityClass(df.gregexpr)
+[1] "linear"
+&gt; df.fpop &lt;- asymptoticTimings(fpop::Fpop(rnorm(data.sizes), 1), data.sizes = 10^seq(1, 4, by = 0.5))
+&gt; asymptoticTimeComplexityClass(df.fpop)
+[1] "loglinear"
+&gt; df.opart &lt;- asymptoticTimings(opart::opart_gaussian(rnorm(data.sizes), 1), data.sizes = 10^seq(1, 4, by = 0.5))
+&gt; asymptoticTimeComplexityClass(df.opart)
+[1] "quadratic"
+&gt; df.substring$expr = "substring"
+&gt; df.PeakSegPDPA$expr = "PeakSegPDPA"
+&gt; df.cDPA$expr = "cDPA"
+&gt; df.gregexpr$expr = "gregexpr"
+&gt; df.fpop$expr = "fpop"
+&gt; df.opart$expr = "opart"
+&gt; plot.df &lt;- rbind(df.substring, df.PeakSegPDPA, df.cDPA, df.gregexpr, df.fpop, df.opart)
+&gt; ggplot(plot.df, aes(x = `Data sizes`, y = Timings)) + geom_point(aes(color = expr)) + geom_line(aes(color = expr)) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings comparison plot", subtitle = "Linear vs Log-linear vs Quadratic complexities") + theme_pander()</pre></div>
+<p><img width="100%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/cp2.png"><br><img width="100%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/cp.png"><br></p>
 <ul>
 <li>
-<strong>Diagnostic Plots</strong> <br><code>ggfortify</code>, an extension of <code>ggplot2</code>, can be used to produce diagnostic plots for generalized linear models with the same formulae as used in the complexity classification functions: <br>
+<strong>Generalized Linear Model based Plots</strong> <br><code>ggfortify</code>, an extension of <code>ggplot2</code>, can be used to produce diagnostic plots for generalized linear models with the same formulae as used in the complexity classification functions: <br>
 </li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="r">&gt; library(ggfortify)
-&gt; df &lt;- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 5, by = 0.5))
+<div class="sourceCode" id="cb10"><pre class="r">&gt; library(ggfortify)
+&gt; df &lt;- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4 by = 0.1))
 &gt; glm.plot.obj &lt;- glm(Timings~`Data sizes`, data = df)
-&gt; ggplot2::autoplot(stats::glm(glm.plot.obj))</pre></div>
-<p><img src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/glmQuadratictimecDPAfit.png"><br></p>
+&gt; ggplot2::autoplot(stats::glm(glm.plot.obj)) + theme_gdocs()</pre></div>
+<p><img src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/glmplot.png"><br></p>
 <h2 align="center">
 Benchmarking
 </h2>
@@ -250,7 +273,7 @@ Testing
 <li>
 <strong>Functions</strong> <br> Current set of functions taken into consideration for testing our functionality:</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="r"><span class="co"># packages:             # functions:</span>
+<div class="sourceCode" id="cb11"><pre class="r"><span class="co"># packages:             # functions:</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">PeakSegDP</span>)      <span class="co"># cDPA()</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">PeakSegDisk</span>)    <span class="co"># PeakSegFPOP_vec()</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">PeakSegOptimal</span>) <span class="co"># PeakSegPDPA(), PeakSegFPOP()</span>
