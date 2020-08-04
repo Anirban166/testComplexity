@@ -1,10 +1,10 @@
 ---
-title: "PeakSegOptimal::PeakSegPDPA, a log-linear time algorithm"
+title: "PeakSegOptimal::PeakSegPDPA, a log-linear time algorithm for constrained changepoint detection"
 author: "Anirban Chetia"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{}
+  %\VignetteIndexEntry{PeakSegOptimal::PeakSegPDPA, a log-linear time algorithm for constrained changepoint detection}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -15,4 +15,11 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
+
+## Abstract
+Changepoint detection is a central problem in time series and genomic data. For some applications, it is natural to impose constraints on the directions of changes. One example is ChIP-seq data, for which adding an up-down constraint improves peak detection accuracy, but makes the optimization problem more complicated. 
+
+In response to this, a new algorithm which can solve problems with arbitrary affine constraints on adjacent segment means was created, which shows that a functional pruning technique can be adapted to solve such constrained changepoint detection problems.
+
+Going by the name of `PeakSegPDPA`, this algorithm achieves state-of-the-art accuracy in a benchmark of several genomic data sets, and is orders of magnitude faster than existing algorithms that have similar accuracy.
 
