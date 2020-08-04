@@ -127,7 +127,8 @@ For obtaining the benchmarked timings/memory against specified data sizes, pass 
 19:        10256  630.95734
 20:        12224  794.32823
 21:        14696 1000.00000
-
+```
+```r
 # Example 2 | Testing PeakSegPDPA, an algorithm for constrained changepoint detection: (expected log-linear time and memory complexity)
 > df.PDPA.time <- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(data.sizes, 1),rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5))
 > data.table(df.PDPA.time)
@@ -165,7 +166,8 @@ To estimate the corresponding time/memory complexity class, pass the obtained da
 [1] "quadratic"
 > asymptoticTimeComplexityClass(df.bubble.memory)
 [1] "constant"
-
+```
+```r
 # Example 2 | Testing PeakSegPDPA, an algorithm for constrained changepoint detection: (expected log-linear time and memory complexity)
 > asymptoticTimeComplexityClass(df.PDPA.time)
 [1] "loglinear""
@@ -177,7 +179,8 @@ Combine the functions if you only require the complexity class: <br>
 # Example 3 | Testing the time complexity of quick sort algorithm: (expected log-linear time complexity)
 > asymptoticTimeComplexityClass(asymptoticTimings(sort(sample(1:100, data.sizes, replace = TRUE), method = "quick" , index.return = TRUE), data.sizes = 10^seq(1, 3, by = 0.5)))
 [1] "loglinear"
-
+```
+```r
 # Example 4 | Allocating a square matrix (N*N dimensions): (expected quadratic memory complexity)
 > asymptoticMemoryComplexityClass(asymptoticMemoryUsage(matrix(data.sizes:data.sizes, data.sizes, data.sizes), data.sizes = 10^seq(1, 3, by = 0.1)))
 [1] "quadratic"
