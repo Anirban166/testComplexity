@@ -274,13 +274,13 @@ Testing
 </h2>
 <ul>
 <li>
-<strong>Functions</strong> <br> Current set of functions taken into consideration for testing our functionality:</li>
+<strong>Functions</strong> <br> Current set of functions taken into consideration for testing our functionality, plus a dedicated vignette-based article for each can be found below:</li>
 </ul>
 <table class="table">
 <colgroup>
-<col width="14%">
-<col width="11%">
-<col width="74%">
+<col width="40%">
+<col width="25%">
+<col width="35%">
 </colgroup>
 <thead><tr class="header">
 <th>Source Package</th>
@@ -290,43 +290,43 @@ Testing
 <tbody>
 <tr class="odd">
 <td>base</td>
-<td>substring</td>
-<td><a href="https://anirban166.github.io/testComplexity/articles/substring_and_gregexpr.html" class="uri">https://anirban166.github.io/testComplexity/articles/substring_and_gregexpr.html</a></td>
+<td>gregexpr</td>
+<td><a href="https://anirban166.github.io/testComplexity/articles/substring_and_gregexpr.html">Quadratic to linear transition for substring and gregexpr</a></td>
 </tr>
 <tr class="even">
 <td>base</td>
-<td>gregexpr</td>
-<td><a href="https://anirban166.github.io/testComplexity/articles/substring_and_gregexpr.html" class="uri">https://anirban166.github.io/testComplexity/articles/substring_and_gregexpr.html</a></td>
+<td>substring</td>
+<td><a href="https://anirban166.github.io/testComplexity/articles/substring_and_gregexpr.html">Quadratic to linear transition for substring and gregexpr</a></td>
 </tr>
 <tr class="odd">
 <td>fpop</td>
 <td>Fpop</td>
-<td><a href="https://anirban166.github.io/testComplexity/articles/fpop.html" class="uri">https://anirban166.github.io/testComplexity/articles/fpop.html</a></td>
+<td><a href="https://anirban166.github.io/testComplexity/articles/fpop.html">fpop::Fpop(), a log-linear time segmentation algorithm</a></td>
 </tr>
 <tr class="even">
 <td>gfpop</td>
 <td>gfpop</td>
-<td><a href="https://anirban166.github.io/testComplexity/articles/gfpop.html" class="uri">https://anirban166.github.io/testComplexity/articles/gfpop.html</a></td>
+<td><a href="https://anirban166.github.io/testComplexity/articles/gfpop.html">gfpop::gfpop(), a log-linear time algorithm for constrained changepoint detection</a></td>
 </tr>
 <tr class="odd">
 <td>opart</td>
 <td>gaussian</td>
-<td><a href="https://anirban166.github.io/testComplexity/articles/opart.html" class="uri">https://anirban166.github.io/testComplexity/articles/opart.html</a></td>
+<td><a href="https://anirban166.github.io/testComplexity/articles/opart.html">opart::gaussian(), a quadratic time optimal partioning algorithm</a></td>
 </tr>
 <tr class="even">
 <td>PeakSegDP</td>
 <td>cDPA</td>
-<td><a href="https://anirban166.github.io/testComplexity/articles/cDPA.html" class="uri">https://anirban166.github.io/testComplexity/articles/cDPA.html</a></td>
+<td><a href="https://anirban166.github.io/testComplexity/articles/cDPA.html">PeakSegDP::cDPA, a quadratic time constrained dynamic programming algorithm</a></td>
 </tr>
 <tr class="odd">
 <td>changepoint</td>
 <td>cpt.mean</td>
-<td><a href="https://anirban166.github.io/testComplexity/articles/PELT_and_SegNeigh.html" class="uri">https://anirban166.github.io/testComplexity/articles/PELT_and_SegNeigh.html</a></td>
+<td><a href="https://anirban166.github.io/testComplexity/articles/PELT_and_SegNeigh.html">PELT and SegNeigh algorithms for changepoint::cpt.mean()</a></td>
 </tr>
 <tr class="even">
 <td>PeakSegOptimal</td>
 <td>PeakSegPDPA</td>
-<td><a href="https://anirban166.github.io/testComplexity/articles/PeakSegPDPA.html" class="uri">https://anirban166.github.io/testComplexity/articles/PeakSegPDPA.html</a></td>
+<td><a href="https://anirban166.github.io/testComplexity/articles/PeakSegPDPA.html">PeakSegOptimal::PeakSegPDPA, a log-linear time algorithm for constrained changepoint detection</a></td>
 </tr>
 </tbody>
 </table>
@@ -339,11 +339,12 @@ Testing
 <strong>Code Coverage</strong> <br> Tested locally by <code><a href="https://rdrr.io/pkg/covr/man/package_coverage.html">covr::package_coverage()</a></code> and codecov. <br>
 </li>
 <li>
-<strong>OS Support</strong> <br> Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. In addition to both, RCMD checks are run on MacOS as well. <br> Note that the use of <code><a href="https://rdrr.io/pkg/bench/man/bench_memory.html">bench::bench_memory</a></code> overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in <code><a href="https://rdrr.io/pkg/GuessCompx/man/CompEst.html">GuessCompx::CompEst</a></code> since it successfully runs on other operating systems. <br><p align="center">
-<a href="https://www.microsoft.com/en-in/windows"> <img src="https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&amp;logo=Windows"></a><a href="https://www.linux.org/"> <img src="https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&amp;logo=Linux"></a><a href="https://developer.apple.com/macos/"> <img src="https://img.shields.io/badge/MacOS--brightgreen?style=for-the-badge&amp;logo=Apple"></a>
-</p>
+<strong>OS Support</strong> <br> Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. In addition to both, RCMD checks are run on MacOS as well. <br> Note that the use of <code><a href="https://rdrr.io/pkg/bench/man/bench_memory.html">bench::bench_memory</a></code> overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in <code><a href="https://rdrr.io/pkg/GuessCompx/man/CompEst.html">GuessCompx::CompEst</a></code> since it successfully runs on other operating systems. <br>
 </li>
 </ul>
+<p align="center">
+<a href="https://www.microsoft.com/en-in/windows"> <img src="https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&amp;logo=Windows"></a><a href="https://www.linux.org/"> <img src="https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&amp;logo=Linux"></a><a href="https://developer.apple.com/macos/"> <img src="https://img.shields.io/badge/MacOS--brightgreen?style=for-the-badge&amp;logo=Apple"></a>
+</p>
 <h2 align="center">
 Blog Posts
 </h2>

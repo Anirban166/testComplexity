@@ -205,7 +205,7 @@ Testing
 </h2>
 
 - **Functions** <br>
-Current set of functions taken into consideration for testing our functionality: 
+Current set of functions taken into consideration for testing our functionality, plus a dedicated vignette-based article for each can be found below:  
 
 | Source Package | Function | Article Link |
 |----------------|----------|--------------|
@@ -225,7 +225,8 @@ Test cases for testComplexity functions via [testthat](https://cran.r-project.or
 Tested locally by `covr::package_coverage()` and codecov, with 100% code coverage. <br>
 - **OS Support** <br>
 Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. In addition to both, RCMD checks are run on MacOS as well. <br>
-Note that the use of `bench::bench_memory` overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in `GuessCompx::CompEst` since it successfully runs on other operating systems.
+Note that the use of `bench::bench_memory` overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in `GuessCompx::CompEst` since it successfully runs on other operating systems. <br>
+
 <p align="center">
 <a href="https://www.microsoft.com/en-in/windows"> <img src="https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&logo=Windows"> <a href="https://www.linux.org/"> <img src="https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&logo=Linux"> <a href="https://developer.apple.com/macos/"> <img src="https://img.shields.io/badge/MacOS--brightgreen?style=for-the-badge&logo=Apple"> </a>
 </p> 
