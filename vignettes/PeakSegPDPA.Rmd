@@ -21,13 +21,24 @@ Changepoint detection is a central problem in time series and genomic data. For 
 
 In response to this, a new algorithm which can solve problems with arbitrary affine constraints on adjacent segment means was created, which shows that a functional pruning technique can be adapted to solve such constrained changepoint detection problems.
 
-Going by the name of `PeakSegPDPA`, this algorithm achieves state-of-the-art accuracy in a benchmark of several genomic data sets, and is orders of magnitude faster than existing algorithms that have similar accuracy.
+Going by the name of `PeakSegPDPA`, this algorithm computes optimal changepoint models using the Poisson likelihood for non-negative count data, with subject to the PeakSeg constraint (first change must be up, second must be down and subsequent changes must be alternating in that manner so forth). It achieves state-of-the-art accuracy in a benchmark of several genomic data sets, and is orders of magnitude faster than existing algorithms that have similar accuracy.
 
 ## History
 `PeakSegOptimal` was previously named as `coseg`, (as can be found in research papers and articles referring the same) but due to the existence of the `CoSeg` package (which is completely unrelated to the functionality of `PeakSegOptimal`) it was renamed, in order to avoid confusion.
 
 ## Time Complexity
-The empirical time complexity is log-linear in the amount of data, as observed.
+The time complexity is log-linear in the amount of data (O(NlogN) for N), as empirically observed.
 
 ## Reference
 The above information was extracted from the [github repository](https://github.com/tdhock/PeakSegOptimal).
+
+## Testing
+The fact that it achieves log-linear computational complexity can be attested/supported by the results of running testComplexity functions to root out its time complexity:
+```r
+library(testComplexity)
+df <- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(data.sizes, 1),rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5))
+asymptoticTimeComplexityClass(df)
+#> [1] "loglinear"
+```
+
+<sup>Created on 2020-08-03 by the [reprex package](https://reprex.tidyverse.org) (v0.3.0)</sup>
