@@ -203,16 +203,18 @@ Testing
 
 - **Functions** <br>
 Current set of functions taken into consideration for testing our functionality: 
-```r
-# packages:             # functions:
-library(PeakSegDP)      # cDPA()
-library(PeakSegDisk)    # PeakSegFPOP_vec()
-library(PeakSegOptimal) # PeakSegPDPA(), PeakSegFPOP()
-library(fpop)           # fpop()
-library(gfpop)          # gfpop()
-library(opart)          # opart_gaussian()
-library(changepoint)    # cpt.mean()
-```
+
+| Source Package | Function    | Article Link                                                                      |
+|----------------|-------------|-----------------------------------------------------------------------------------|
+| base           | substring   | https://anirban166.github.io/testComplexity/articles/substring_and_gregexpr.html  |
+| base           | gregexpr    | https://anirban166.github.io/testComplexity/articles/substring_and_gregexpr.html  |
+| changepoint    | cpt.mean    | https://anirban166.github.io/testComplexity/articles/PELT_and_SegNeigh.html       |
+| opart          | gaussian    | https://anirban166.github.io/testComplexity/articles/opart.html                   |
+| gfpop          | gfpop       | https://anirban166.github.io/testComplexity/articles/gfpop.html                   |
+| fpop           | Fpop        | https://anirban166.github.io/testComplexity/articles/fpop.html                    |
+| PeakSegDP      | cDPA        | https://anirban166.github.io/testComplexity/articles/cDPA.html                    |
+| PeakSegOptimal | PeakSegPDPA | https://anirban166.github.io/testComplexity/articles/PeakSegPDPA.html             |
+
 A complexity-wise ordered list with functional instances for the aforementioned set of functions can be found [here](https://github.com/Anirban166/testComplexity/issues/2#issue-615087634). <br>
 - **Unit Testing** <br>
 Test cases for testComplexity functions via [testthat](https://cran.r-project.org/web/packages/testthat/index.html) package can be found [here](https://github.com/Anirban166/testComplexity/blob/master/tests/testthat/test-testsfortestComplexity.R). <br>
@@ -220,13 +222,13 @@ Test cases for testComplexity functions via [testthat](https://cran.r-project.or
 Tested locally by `covr::package_coverage()` and codecov. <br>
 - **OS Support** <br>
 Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. In addition to both, RCMD checks are run on MacOS as well. <br>
-Note that the use of `bench::bench_memory` overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in `GuessCompx::CompEst` since it successfully runs on other operating systems.
+Note that the use of `bench::bench_memory` overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in `GuessCompx::CompEst` since it successfully runs on other operating systems. <br>
 <p align="center">
 <a href="https://www.microsoft.com/en-in/windows"> <img src="https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&logo=Windows"> <a href="https://www.linux.org/"> <img src="https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&logo=Linux"> <a href="https://developer.apple.com/macos/"> <img src="https://img.shields.io/badge/MacOS--brightgreen?style=for-the-badge&logo=Apple"> </a>
 </p> 
 
 <h2 align="center">
-Resources
+Blog Posts
 </h2>
 
 <p align="center">

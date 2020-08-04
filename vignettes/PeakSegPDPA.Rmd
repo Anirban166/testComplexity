@@ -30,7 +30,7 @@ Going by the name of `PeakSegPDPA`, this algorithm computes optimal changepoint 
 The time complexity is log-linear in the amount of data (O(NlogN) for N), as empirically observed.
 
 ## Reference
-The above information was extracted from the [github repository](https://github.com/tdhock/PeakSegOptimal).
+The above information was extracted from the [github repository](https://github.com/tdhock/PeakSegOptimal) and [this publication](https://www.researchgate.net/publication/314433561_A_log-linear_time_algorithm_for_constrained_changepoint_detection).
 
 ## Testing
 The fact that it achieves log-linear computational complexity can be attested/supported by the results of running testComplexity functions to root out its time complexity:
@@ -41,4 +41,4 @@ asymptoticTimeComplexityClass(df)
 #> [1] "loglinear"
 ```
 
-<sup>Created on 2020-08-03 by the [reprex package](https://reprex.tidyverse.org) (v0.3.0)</sup>
+<sup>Created on 2020-08-04 by the [reprex package](https://reprex.tidyverse.org) (v0.3.0)</sup>

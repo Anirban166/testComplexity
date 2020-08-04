@@ -206,16 +206,18 @@ Testing
 
 - **Functions** <br>
 Current set of functions taken into consideration for testing our functionality: 
-```r
-# packages:             # functions:
-library(PeakSegDP)      # cDPA()
-library(PeakSegDisk)    # PeakSegFPOP_vec()
-library(PeakSegOptimal) # PeakSegPDPA(), PeakSegFPOP()
-library(fpop)           # fpop()
-library(gfpop)          # gfpop()
-library(opart)          # opart_gaussian()
-library(changepoint)    # cpt.mean()
-```
+
+| Source Package | Function    | Article Link                                                                      |
+|----------------|-------------|-----------------------------------------------------------------------------------|
+| base           | substring   | https://anirban166.github.io/testComplexity/articles/substring_and_gregexpr.html  |
+| base           | gregexpr    | https://anirban166.github.io/testComplexity/articles/substring_and_gregexpr.html  |
+| changepoint    | cpt.mean    | https://anirban166.github.io/testComplexity/articles/PELT_and_SegNeigh.html       |
+| opart          | gaussian    | https://anirban166.github.io/testComplexity/articles/opart.html                   |
+| gfpop          | gfpop       | https://anirban166.github.io/testComplexity/articles/gfpop.html                   |
+| fpop           | Fpop        | https://anirban166.github.io/testComplexity/articles/fpop.html                    |
+| PeakSegDP      | cDPA        | https://anirban166.github.io/testComplexity/articles/cDPA.html                    |
+| PeakSegOptimal | PeakSegPDPA | https://anirban166.github.io/testComplexity/articles/PeakSegPDPA.html             |
+
 A complexity-wise ordered list with functional instances for the aforementioned set of functions can be found [here](https://github.com/Anirban166/testComplexity/issues/2#issue-615087634). <br>
 - **Unit Testing** <br>
 Test cases for testComplexity functions via [testthat](https://cran.r-project.org/web/packages/testthat/index.html) package can be found [here](https://github.com/Anirban166/testComplexity/blob/master/tests/testthat/test-testsfortestComplexity.R). <br>
@@ -232,7 +234,7 @@ Note that the use of `bench::bench_memory` overcomes the drawback of windows-onl
 Resources
 </h2>
 
-In addition to the readme content, the [web version](https://anirban166.github.io/testComplexity/) includes quick [reference](https://anirban166.github.io/testComplexity/reference/index.html) to functions plus vignettes for some use-cases. For blog posts, please check the links below. <br>
+In addition to the readme content, the [web version](https://anirban166.github.io/testComplexity/) includes quick [reference](https://anirban166.github.io/testComplexity/reference/index.html) to functions plus vignettes for some use-cases. For [blog](https://anirban166.github.io/posts/) posts, please check the links below: <br>
 
 <p align="center">
 <a href="https://anirban166.github.io//Test-functions/"> <img width = "13%" src = "/Images/TFlogo.png"> 
