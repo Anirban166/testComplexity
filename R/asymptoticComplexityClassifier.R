@@ -6,6 +6,8 @@
 #'
 #' @return A string specifying the resultant complexity class. (Eg: 'Linear', 'Log-linear', 'Quadratic')
 #'
+#' @details For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Generalized-complexity/
+#'
 #' @export
 #' @importFrom stats glm
 #' @importFrom boot cv.glm

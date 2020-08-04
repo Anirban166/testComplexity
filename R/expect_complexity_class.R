@@ -8,6 +8,8 @@
 #'
 #' @return null for expected complexity, else throws error.
 #'
+#' @details For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Testing-functions/
+#'
 #' @export
 #' @import testthat
 

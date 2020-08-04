@@ -6,6 +6,8 @@
 #'
 #' @return null for expected complexity (linear), else throws error.
 #'
+#' @details For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Testing-functions/
+#'
 #' @export
 
 expect_linear_time = function(...)

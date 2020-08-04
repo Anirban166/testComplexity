@@ -6,7 +6,7 @@
 #'
 #' @return A string specifying the resultant complexity class. (Eg: 'Linear', 'Log-linear', 'Quadratic')
 #'
-#' @details For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Time-complexity-classifier/
+#' @details For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Complexity-classifiers/
 #'
 #' @export
 #' @importFrom stats glm

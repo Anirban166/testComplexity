@@ -6,6 +6,8 @@
 #'
 #' @return null, throws error if complexity is not log-linear. (i.e. O(NlogN) for size N, in Big-O notation)
 #'
+#' @details For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Testing-functions/
+#'
 #' @export
 
 expect_loglinear_time = function(...)
