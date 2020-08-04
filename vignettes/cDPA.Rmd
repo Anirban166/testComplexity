@@ -1,7 +1,7 @@
 ---
 title: "PeakSegDP::cDPA, a quadratic time constrained dynamic programming algorithm"
 author: "Anirban Chetia"
-date: "`r Sys.Date()`"
+date: "2020-08-03"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{PeakSegDP::cDPA, a quadratic time constrained dynamic programming algorithm}

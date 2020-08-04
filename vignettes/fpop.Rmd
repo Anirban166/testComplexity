@@ -1,7 +1,7 @@
 ---
 title: "fpop::Fpop(), a log-linear time segmentation algorithm"
 author: "Anirban Chetia"
-date: "`r Sys.Date()`"
+date: "2020-08-02"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{fpop::Fpop(), a log-linear time segmentation algorithm}

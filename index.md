@@ -94,34 +94,97 @@ Usage
 
 For obtaining the benchmarked timings/memory against specified data sizes, pass the required algorithm as a function of `data.sizes` to `asymptoticTimings()`/`asymptoticMemoryUsage()`: <br>
 ```r
-> library(PeakSegOptimal)
 > library(data.table)
-> df <- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(data.sizes, 1),rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5))
-> data.table(df)
+# Example 1 | Applying the bubble sort algorithm to a sample of 100 elements: (expected quadratic time complexity & constant memory complexity)
+> df.bubble.time <- asymptoticTimings(bubble.sort(sample(1:100, data.sizes, replace = TRUE)), data.sizes = 10^seq(1, 3, by = 0.5))
+> data.table(df.bubble.time)
+      Timings Data sizes
+  1:    91902         10
+  2:    39402         10
+  3:    34701         10
+  4:    33101         10
+  5:    33201         10
+ ---                    
+496: 64490501       1000
+497: 59799101       1000
+498: 63452200       1000
+499: 62807201       1000
+500: 59757102       1000
+> df.bubble.memory <- asymptoticMemoryUsage(bubble.sort(sample(1:100, data.sizes, replace = TRUE)), data.sizes = 10^seq(1, 3, by = 0.1))
+> data.table(df.bubble.memory)
+    Memory usage Data sizes
+ 1:        87800   10.00000
+ 2:         2552   12.58925
+ 3:         2552   15.84893
+ 4:         2552   19.95262
+ 5:         2552   25.11886
+ ---                    
+17:         7472  398.10717
+18:         8720  501.18723
+19:        10256  630.95734
+20:        12224  794.32823
+21:        14696 1000.00000
+```
+```r
+# Example 2 | Testing PeakSegPDPA, an algorithm for constrained changepoint detection: (expected log-linear time and memory complexity)
+> df.PDPA.time <- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(data.sizes, 1),rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5))
+> data.table(df.PDPA.time)
        Timings Data sizes
-  1:    318703     10.000
-  2:    174002     10.000
-  3:    237002     10.000
-  4:    197901     10.000
-  5:    221702     10.000
+  1:    248701         10
+  2:    120302         10
+  3:    125701         10
+  4:    133301         10
+  5:    146500         10
  ---                     
-596:  90820902   3162.278
-597:  99308102   3162.278
-598: 102231901   3162.278
-599: 118894800   3162.278
-600: 118237202   3162.278
+696: 405597501      10000
+697: 408335001      10000
+698: 338544401      10000
+699: 404081901      10000
+700: 399575501      10000
+> df.PDPA.memory <- asymptoticMemoryUsage(PeakSegOptimal::PeakSegPDPA(rpois(data.sizes, 1),rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.1))
+> data.table(df.PDPA.memory)
+    Memory usage Data sizes
+ 1:         6256   10.00000
+ 2:         7024   12.58925
+ 3:         7432   15.84893
+ 4:         8560   19.95262
+ 5:         9496   25.11886
+ --- 
+25:       447792 2511.88643
+26:       562336 3162.27766
+27:       706512 3981.07171
+28:       887792 5011.87234
+29:      1116240 6309.57344
 ```
 To estimate the corresponding time/memory complexity class, pass the obtained data frame onto `asymptoticTimeComplexityClass()`/`asymptoticMemoryComplexityClass()`: <br>
 ```r
-> asymptoticTimeComplexityClass(df)
-[1] "log-linear"
+# Example 1 | Applying the bubble sort algorithm to a sample of 100 elements: (expected quadratic time complexity & constant memory complexity)
+> asymptoticTimeComplexityClass(df.bubble.time)
+[1] "quadratic"
+> asymptoticTimeComplexityClass(df.bubble.memory)
+[1] "constant"
+```
+```r
+# Example 2 | Testing PeakSegPDPA, an algorithm for constrained changepoint detection: (expected log-linear time and memory complexity)
+> asymptoticTimeComplexityClass(df.PDPA.time)
+[1] "loglinear""
+> asymptoticTimeComplexityClass(df.PDPA.memory)
+[1] "loglinear""
 ```
 Combine the functions if you only require the complexity class: <br>
 ```r
-> library(PeakSegDP)
-> asymptoticTimeComplexityClass(asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5))
+# Example 3 | Testing the time complexity of quick sort algorithm: (expected log-linear time complexity)
+> asymptoticTimeComplexityClass(asymptoticTimings(sort(sample(1:100, data.sizes, replace = TRUE), method = "quick" , index.return = TRUE), data.sizes = 10^seq(1, 3, by = 0.5)))
+[1] "loglinear"
+```
+```r
+# Example 4 | Allocating a square matrix (N*N dimensions): (expected quadratic memory complexity)
+> asymptoticMemoryComplexityClass(asymptoticMemoryUsage(matrix(data.sizes:data.sizes, data.sizes, data.sizes), data.sizes = 10^seq(1, 3, by = 0.1)))
 [1] "quadratic"
 ```
+Check [this screencast](https://youtu.be/H4uefLb8zcQ) for a demonstration of time complexity testing on different sorting algorithms over a test session.
+
+For more examples with functions from specific packages, please check the table with relevant contents in the [testing section](#testing).
 
 <h2 align="center">
 Plotting
@@ -130,7 +193,7 @@ Plotting
 For obtaining a visual description of the trend followed between runtimes/memory-usage vs data sizes so as to diagnose/verify the complexity result(s), simple plots can be crafted. They are roughly grouped into: 
 
 - **Single Plots** <br>
-Individual plots can be obtained by simply passing the data frame returned by the quantifying functions to `plotTimings()`/`plotMemoryUsage()` for time/memory cases respectively: <br>
+Individual plots can be obtained by passing the data frame returned by the quantifying functions to `plotTimings()`/`plotMemoryUsage()` for time/memory cases respectively: <br>
 ```r
 # Timings plot for PeakSegDP::cDPA
 > df <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4))
@@ -202,17 +265,19 @@ Testing
 </h2>
 
 - **Functions** <br>
-Current set of functions taken into consideration for testing our functionality: 
-```r
-# packages:             # functions:
-library(PeakSegDP)      # cDPA()
-library(PeakSegDisk)    # PeakSegFPOP_vec()
-library(PeakSegOptimal) # PeakSegPDPA(), PeakSegFPOP()
-library(fpop)           # fpop()
-library(gfpop)          # gfpop()
-library(opart)          # opart_gaussian()
-library(changepoint)    # cpt.mean()
-```
+Current set of functions taken into consideration for testing our functionality, plus a dedicated vignette-based article for each can be found below: 
+
+| Source Package | Function | Article Link |
+|----------------|----------|--------------|
+| base           | gregexpr    | [Quadratic to linear transition for substring and gregexpr](https://anirban166.github.io/testComplexity/articles/substring_and_gregexpr.html) |
+| base           | substring   | [Quadratic to linear transition for substring and gregexpr](https://anirban166.github.io/testComplexity/articles/substring_and_gregexpr.html) |
+| fpop           | Fpop        | [fpop::Fpop(), a log-linear time segmentation algorithm](https://anirban166.github.io/testComplexity/articles/fpop.html) |
+| gfpop          | gfpop       | [gfpop::gfpop(), a log-linear time algorithm for constrained changepoint detection](https://anirban166.github.io/testComplexity/articles/gfpop.html) |
+| opart          | gaussian    | [opart::gaussian(), a quadratic time optimal partioning algorithm](https://anirban166.github.io/testComplexity/articles/opart.html) |
+| PeakSegDP      | cDPA        | [PeakSegDP::cDPA, a quadratic time constrained dynamic programming algorithm](https://anirban166.github.io/testComplexity/articles/cDPA.html) |
+| changepoint    | cpt.mean    | [PELT and SegNeigh algorithms for changepoint::cpt.mean()](https://anirban166.github.io/testComplexity/articles/PELT_and_SegNeigh.html) |
+| PeakSegOptimal | PeakSegPDPA | [PeakSegOptimal::PeakSegPDPA, a log-linear time algorithm for constrained changepoint detection](https://anirban166.github.io/testComplexity/articles/PeakSegPDPA.html) |            
+
 A complexity-wise ordered list with functional instances for the aforementioned set of functions can be found [here](https://github.com/Anirban166/testComplexity/issues/2#issue-615087634). <br>
 - **Unit Testing** <br>
 Test cases for testComplexity functions via [testthat](https://cran.r-project.org/web/packages/testthat/index.html) package can be found [here](https://github.com/Anirban166/testComplexity/blob/master/tests/testthat/test-testsfortestComplexity.R). <br>
@@ -220,13 +285,14 @@ Test cases for testComplexity functions via [testthat](https://cran.r-project.or
 Tested locally by `covr::package_coverage()` and codecov. <br>
 - **OS Support** <br>
 Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. In addition to both, RCMD checks are run on MacOS as well. <br>
-Note that the use of `bench::bench_memory` overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in `GuessCompx::CompEst` since it successfully runs on other operating systems.
+Note that the use of `bench::bench_memory` overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in `GuessCompx::CompEst` since it successfully runs on other operating systems. <br>
+
 <p align="center">
 <a href="https://www.microsoft.com/en-in/windows"> <img src="https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&logo=Windows"> <a href="https://www.linux.org/"> <img src="https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&logo=Linux"> <a href="https://developer.apple.com/macos/"> <img src="https://img.shields.io/badge/MacOS--brightgreen?style=for-the-badge&logo=Apple"> </a>
 </p> 
 
 <h2 align="center">
-Resources
+Blog Posts
 </h2>
 
 <p align="center">
