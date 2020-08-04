@@ -23,3 +23,11 @@ In response to this, a new algorithm which can solve problems with arbitrary aff
 
 Going by the name of `PeakSegPDPA`, this algorithm achieves state-of-the-art accuracy in a benchmark of several genomic data sets, and is orders of magnitude faster than existing algorithms that have similar accuracy.
 
+## History
+`PeakSegOptimal` was previously named as `coseg`, (as can be found in research papers and articles referring the same) but due to the existence of the `CoSeg` package (which is completely unrelated to the functionality of `PeakSegOptimal`) it was renamed, in order to avoid confusion.
+
+## Time Complexity
+The empirical time complexity is log-linear in the amount of data, as observed.
+
+## Reference
+The above information was extracted from the [github repository](https://github.com/tdhock/PeakSegOptimal).
