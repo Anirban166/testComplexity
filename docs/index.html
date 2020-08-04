@@ -74,6 +74,9 @@
       <a href="articles/opart.html">opart::gaussian(), a quadratic time optimal partioning algorithm</a>
     </li>
     <li>
+      <a href="articles/PeakSegPDPA.html">PeakSegOptimal::PeakSegPDPA, a log-linear time algorithm for constrained changepoint detection</a>
+    </li>
+    <li>
       <a href="articles/PELT_and_SegNeigh.html">PELT and SegNeigh algorithms for changepoint::cpt.mean()</a>
     </li>
     <li>
@@ -197,7 +200,7 @@ Plotting
 <p>For obtaining a visual description of the trend followed between runtimes/memory-usage vs data sizes so as to diagnose/verify the complexity result(s), simple plots can be crafted. They are roughly grouped into:</p>
 <ul>
 <li>
-<strong>Single Plots</strong> <br> Individual plots can be obtained by simply passing the data frame returned by the quantifying functions to <code><a href="reference/plotTimings.html">plotTimings()</a></code>/<code><a href="reference/plotMemoryUsage.html">plotMemoryUsage()</a></code> for time/memory cases respectively: <br>
+<strong>Single Plots</strong> <br> Individual plots can be obtained by passing the data frame returned by the quantifying functions to <code><a href="reference/plotTimings.html">plotTimings()</a></code>/<code><a href="reference/plotMemoryUsage.html">plotMemoryUsage()</a></code> for time/memory cases respectively: <br>
 </li>
 </ul>
 <div class="sourceCode" id="cb7"><pre class="r"># Timings plot for PeakSegDP::cDPA
@@ -273,14 +276,60 @@ Testing
 <li>
 <strong>Functions</strong> <br> Current set of functions taken into consideration for testing our functionality:</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="r"><span class="co"># packages:             # functions:</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">PeakSegDP</span>)      <span class="co"># cDPA()</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">PeakSegDisk</span>)    <span class="co"># PeakSegFPOP_vec()</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">PeakSegOptimal</span>) <span class="co"># PeakSegPDPA(), PeakSegFPOP()</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">fpop</span>)           <span class="co"># fpop()</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">gfpop</span>)          <span class="co"># gfpop()</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">opart</span>)          <span class="co"># opart_gaussian()</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">changepoint</span>)    <span class="co"># cpt.mean()</span></pre></div>
+<table class="table">
+<colgroup>
+<col width="14%">
+<col width="11%">
+<col width="74%">
+</colgroup>
+<thead><tr class="header">
+<th>Source Package</th>
+<th>Function</th>
+<th>Article Link</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>base</td>
+<td>substring</td>
+<td><a href="https://anirban166.github.io/testComplexity/articles/substring_and_gregexpr.html" class="uri">https://anirban166.github.io/testComplexity/articles/substring_and_gregexpr.html</a></td>
+</tr>
+<tr class="even">
+<td>base</td>
+<td>gregexpr</td>
+<td><a href="https://anirban166.github.io/testComplexity/articles/substring_and_gregexpr.html" class="uri">https://anirban166.github.io/testComplexity/articles/substring_and_gregexpr.html</a></td>
+</tr>
+<tr class="odd">
+<td>fpop</td>
+<td>Fpop</td>
+<td><a href="https://anirban166.github.io/testComplexity/articles/fpop.html" class="uri">https://anirban166.github.io/testComplexity/articles/fpop.html</a></td>
+</tr>
+<tr class="even">
+<td>gfpop</td>
+<td>gfpop</td>
+<td><a href="https://anirban166.github.io/testComplexity/articles/gfpop.html" class="uri">https://anirban166.github.io/testComplexity/articles/gfpop.html</a></td>
+</tr>
+<tr class="odd">
+<td>opart</td>
+<td>gaussian</td>
+<td><a href="https://anirban166.github.io/testComplexity/articles/opart.html" class="uri">https://anirban166.github.io/testComplexity/articles/opart.html</a></td>
+</tr>
+<tr class="even">
+<td>PeakSegDP</td>
+<td>cDPA</td>
+<td><a href="https://anirban166.github.io/testComplexity/articles/cDPA.html" class="uri">https://anirban166.github.io/testComplexity/articles/cDPA.html</a></td>
+</tr>
+<tr class="odd">
+<td>changepoint</td>
+<td>cpt.mean</td>
+<td><a href="https://anirban166.github.io/testComplexity/articles/PELT_and_SegNeigh.html" class="uri">https://anirban166.github.io/testComplexity/articles/PELT_and_SegNeigh.html</a></td>
+</tr>
+<tr class="even">
+<td>PeakSegOptimal</td>
+<td>PeakSegPDPA</td>
+<td><a href="https://anirban166.github.io/testComplexity/articles/PeakSegPDPA.html" class="uri">https://anirban166.github.io/testComplexity/articles/PeakSegPDPA.html</a></td>
+</tr>
+</tbody>
+</table>
 <p>A complexity-wise ordered list with functional instances for the aforementioned set of functions can be found <a href="https://github.com/Anirban166/testComplexity/issues/2#issue-615087634">here</a>. <br></p>
 <ul>
 <li>
@@ -290,14 +339,13 @@ Testing
 <strong>Code Coverage</strong> <br> Tested locally by <code><a href="https://rdrr.io/pkg/covr/man/package_coverage.html">covr::package_coverage()</a></code> and codecov. <br>
 </li>
 <li>
-<strong>OS Support</strong> <br> Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. In addition to both, RCMD checks are run on MacOS as well. <br> Note that the use of <code><a href="https://rdrr.io/pkg/bench/man/bench_memory.html">bench::bench_memory</a></code> overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in <code><a href="https://rdrr.io/pkg/GuessCompx/man/CompEst.html">GuessCompx::CompEst</a></code> since it successfully runs on other operating systems.
-<p align="center">
+<strong>OS Support</strong> <br> Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. In addition to both, RCMD checks are run on MacOS as well. <br> Note that the use of <code><a href="https://rdrr.io/pkg/bench/man/bench_memory.html">bench::bench_memory</a></code> overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in <code><a href="https://rdrr.io/pkg/GuessCompx/man/CompEst.html">GuessCompx::CompEst</a></code> since it successfully runs on other operating systems. <br><p align="center">
 <a href="https://www.microsoft.com/en-in/windows"> <img src="https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&amp;logo=Windows"></a><a href="https://www.linux.org/"> <img src="https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&amp;logo=Linux"></a><a href="https://developer.apple.com/macos/"> <img src="https://img.shields.io/badge/MacOS--brightgreen?style=for-the-badge&amp;logo=Apple"></a>
 </p>
 </li>
 </ul>
 <h2 align="center">
-Resources
+Blog Posts
 </h2>
 <p align="center">
 <a href="https://anirban166.github.io//Test-functions/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TFlogo.png"></a><a href="https://anirban166.github.io//Timings-quantifying-function/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TQlogo.png"></a><a href="https://anirban166.github.io//Memory-usage-quantifier/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/MQlogo.png"></a><a href="https://anirban166.github.io//Complexity-classifiers/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/CClogo.png"></a><a href="https://anirban166.github.io//Plotters/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/PTlogo.png"></a><a href="https://anirban166.github.io//Generalized-complexity/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/GClogo.png"></a><a href="https://anirban166.github.io//Testing-functions/"> <img width="13%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TSlogo.png"><br></a></p>

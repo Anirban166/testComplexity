@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PELT and SegNeigh algorithms for changepoint::cpt.mean() • testComplexity</title>
+<title>PeakSegOptimal::PeakSegPDPA, a log-linear time algorithm for constrained changepoint detection • testComplexity</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/sandstone/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -13,7 +13,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="PELT and SegNeigh algorithms for changepoint::cpt.mean()">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="PeakSegOptimal::PeakSegPDPA, a log-linear time algorithm for constrained changepoint detection">
 <meta property="og:description" content="testComplexity">
 <meta name="robots" content="noindex">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -106,13 +106,13 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>PELT and SegNeigh algorithms for changepoint::cpt.mean()</h1>
+      <h1 data-toc-skip>PeakSegOptimal::PeakSegPDPA, a log-linear time algorithm for constrained changepoint detection</h1>
                         <h4 class="author">Anirban Chetia</h4>
             
-            <h4 class="date">2020-07-31</h4>
+            <h4 class="date">2020-08-04</h4>
       
       
-      <div class="hidden name"><code>PELT_and_SegNeigh.Rmd</code></div>
+      <div class="hidden name"><code>PeakSegPDPA.Rmd</code></div>
 
     </div>
 
@@ -121,34 +121,34 @@
 <div id="abstract" class="section level2">
 <h2 class="hasAnchor">
 <a href="#abstract" class="anchor"></a>Abstract</h2>
-<p>The changepoint package implements three algorithms for multiple changepoint detection, out of which we will be discussing two of them with regards to the computational time complexity: <br></p>
-<ul>
-<li>
-<strong>Segment Neighbourhood</strong> (<strong>SegNeigh</strong>) algorithm: This algorithm uses a dynamic programming technique to obtain the optimal segmentation for n changepoints, reusing the information that was calculated for (n-1) changepoints. This reduces the algorithmic complexity to quadratic or O(n<sup>2</sup>), from the exponential time complexity (O(2<sup>n</sup>)) given by the Binary Segmentation algorithm (not discussed here).</li>
-<li>
-<strong>Pruned Exact Linear Time</strong> (<strong>PELT</strong>) algorithm: This algorithm uses dynamic programming and pruning as well, which is computationally more efficient and can result in a linear or O(n) search algorithm, with subject to certain assumptions being satisfied, out of which the main assumption that controls the computational time is that the number of changepoints increases linearly as the data set grows. (i.e. when the changepoints are spread throughout the data rather than being confined to one portion)</li>
-</ul>
+<p>Changepoint detection is a central problem in time series and genomic data. For some applications, it is natural to impose constraints on the directions of changes. One example is ChIP-seq data, for which adding an up-down constraint improves peak detection accuracy, but makes the optimization problem more complicated.</p>
+<p>In response to this, a new algorithm which can solve problems with arbitrary affine constraints on adjacent segment means was created, which shows that a functional pruning technique can be adapted to solve such constrained changepoint detection problems.</p>
+<p>Going by the name of <code>PeakSegPDPA</code>, this algorithm computes optimal changepoint models using the Poisson likelihood for non-negative count data, with subject to the PeakSeg constraint (first change must be up, second must be down and subsequent changes must be alternating in that manner so forth). It achieves state-of-the-art accuracy in a benchmark of several genomic data sets, and is orders of magnitude faster than existing algorithms that have similar accuracy.</p>
+</div>
+<div id="history" class="section level2">
+<h2 class="hasAnchor">
+<a href="#history" class="anchor"></a>History</h2>
+<p><code>PeakSegOptimal</code> was previously named as <code>coseg</code>, (as can be found in research papers and articles referring the same) but due to the existence of the <code>CoSeg</code> package (which is completely unrelated to the functionality of <code>PeakSegOptimal</code>) it was renamed, in order to avoid confusion.</p>
+</div>
+<div id="time-complexity" class="section level2">
+<h2 class="hasAnchor">
+<a href="#time-complexity" class="anchor"></a>Time Complexity</h2>
+<p>The time complexity is log-linear in the amount of data (O(NlogN) for N), as empirically observed.</p>
 </div>
 <div id="reference" class="section level2">
 <h2 class="hasAnchor">
 <a href="#reference" class="anchor"></a>Reference</h2>
-<p>The pdf used as reference for obtaining the above information can be found <a href="http://www.lancs.ac.uk/~killick/Pub/KillickEckley2011.pdf">here</a>.</p>
+<p>Source for extracting the above information includes the <a href="https://github.com/tdhock/PeakSegOptimal">github repository</a> and <a href="https://www.researchgate.net/publication/314433561_A_log-linear_time_algorithm_for_constrained_changepoint_detection">this publication</a>.</p>
 </div>
 <div id="testing" class="section level2">
 <h2 class="hasAnchor">
 <a href="#testing" class="anchor"></a>Testing</h2>
-<p>For testing the complexities, we will be using the function <code>cpt.mean()</code> which calculates the optimal positioning and number of changepoints for the provided data (will use <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code>) with the user-specified method. <br> Note that <code>cpt</code> here refers to the object class introduced by the <code>changepoint</code> package to store changepoint analysis objects. <br></p>
-<p>As expected, using the testComplexity functions with suitable parameters show the specified complexities for the PELT (linear time) and SegNeigh (quadratic time) algorithms for <code><a href="https://rdrr.io/pkg/changepoint/man/cpt.mean.html">changepoint::cpt.mean()</a></code>:</p>
+<p>The fact that it achieves log-linear computational complexity can be attested/supported by the results of running testComplexity functions to root out its time complexity:</p>
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">testComplexity</span>)
-<span class="co"># PELT case:</span>
-<span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/asymptoticTimings.html">asymptoticTimings</a></span>(<span class="kw pkg">changepoint</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/changepoint/man/cpt.mean.html">cpt.mean</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="no">data.sizes</span>), <span class="kw">method</span> <span class="kw">=</span> <span class="st">"PELT"</span>), <span class="kw">data.sizes</span> <span class="kw">=</span> <span class="fl">10</span>^<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">1</span>, <span class="fl">4</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fl">0.5</span>), <span class="kw">max.seconds</span> <span class="kw">=</span> <span class="fl">0.1</span>)
+<span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/asymptoticTimings.html">asymptoticTimings</a></span>(<span class="kw pkg">PeakSegOptimal</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/PeakSegOptimal/man/PeakSegPDPA.html">PeakSegPDPA</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">rpois</a></span>(<span class="no">data.sizes</span>, <span class="fl">1</span>),<span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">rpois</a></span>(<span class="no">data.sizes</span>, <span class="fl">1</span>))), <span class="fl">3L</span>), <span class="kw">data.sizes</span> <span class="kw">=</span> <span class="fl">10</span>^<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">1</span>, <span class="fl">4</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fl">0.5</span>))
 <span class="fu"><a href="../reference/asymptoticTimeComplexityClass.html">asymptoticTimeComplexityClass</a></span>(<span class="no">df</span>)
-<span class="co">#&gt; [1] "linear"</span>
-<span class="co"># SegNeigh case:</span>
-<span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/asymptoticTimings.html">asymptoticTimings</a></span>(<span class="kw pkg">changepoint</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/changepoint/man/cpt.mean.html">cpt.mean</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="no">data.sizes</span>), <span class="kw">penalty</span> <span class="kw">=</span> <span class="st">"Asymptotic"</span>, <span class="kw">pen.value</span> <span class="kw">=</span> <span class="fl">0.01</span>, <span class="kw">method</span> <span class="kw">=</span> <span class="st">"SegNeigh"</span>), <span class="kw">data.sizes</span> <span class="kw">=</span> <span class="fl">10</span>^<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">1</span>, <span class="fl">4</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fl">0.5</span>), <span class="kw">max.seconds</span> <span class="kw">=</span> <span class="fl">0.1</span>)
-<span class="fu"><a href="../reference/asymptoticTimeComplexityClass.html">asymptoticTimeComplexityClass</a></span>(<span class="no">df</span>)
-<span class="co">#&gt; [1] "quadratic"</span></pre></body></html></div>
-<p><sup>Created on 2020-07-31 by the <a href="https://reprex.tidyverse.org">reprex package</a> (v0.3.0)</sup></p>
+<span class="co">#&gt; [1] "loglinear"</span></pre></body></html></div>
+<p><sup>Created on 2020-08-04 by the <a href="https://reprex.tidyverse.org">reprex package</a> (v0.3.0)</sup></p>
 </div>
   </div>
 

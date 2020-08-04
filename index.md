@@ -204,16 +204,16 @@ Testing
 - **Functions** <br>
 Current set of functions taken into consideration for testing our functionality: 
 
-| Source Package | Function    | Article Link                                                                      |
-|----------------|-------------|-----------------------------------------------------------------------------------|
-| base           | substring   | https://anirban166.github.io/testComplexity/articles/substring_and_gregexpr.html  |
-| base           | gregexpr    | https://anirban166.github.io/testComplexity/articles/substring_and_gregexpr.html  |
-| changepoint    | cpt.mean    | https://anirban166.github.io/testComplexity/articles/PELT_and_SegNeigh.html       |
-| opart          | gaussian    | https://anirban166.github.io/testComplexity/articles/opart.html                   |
-| gfpop          | gfpop       | https://anirban166.github.io/testComplexity/articles/gfpop.html                   |
-| fpop           | Fpop        | https://anirban166.github.io/testComplexity/articles/fpop.html                    |
-| PeakSegDP      | cDPA        | https://anirban166.github.io/testComplexity/articles/cDPA.html                    |
-| PeakSegOptimal | PeakSegPDPA | https://anirban166.github.io/testComplexity/articles/PeakSegPDPA.html             |
+| Source Package | Function | Article Link |
+|----------------|----------|--------------|
+| base           | gregexpr    | [Quadratic to linear transition for substring and gregexpr](https://anirban166.github.io/testComplexity/articles/substring_and_gregexpr.html) |
+| base           | substring   | [Quadratic to linear transition for substring and gregexpr](https://anirban166.github.io/testComplexity/articles/substring_and_gregexpr.html) |
+| fpop           | Fpop        | [fpop::Fpop(), a log-linear time segmentation algorithm](https://anirban166.github.io/testComplexity/articles/fpop.html) |
+| gfpop          | gfpop       | [gfpop::gfpop(), a log-linear time algorithm for constrained changepoint detection](https://anirban166.github.io/testComplexity/articles/gfpop.html) |
+| opart          | gaussian    | [opart::gaussian(), a quadratic time optimal partioning algorithm](https://anirban166.github.io/testComplexity/articles/opart.html) |
+| PeakSegDP      | cDPA        | [PeakSegDP::cDPA, a quadratic time constrained dynamic programming algorithm](https://anirban166.github.io/testComplexity/articles/cDPA.html) |
+| changepoint    | cpt.mean    | [PELT and SegNeigh algorithms for changepoint::cpt.mean()](https://anirban166.github.io/testComplexity/articles/PELT_and_SegNeigh.html) |
+| PeakSegOptimal | PeakSegPDPA | [PeakSegOptimal::PeakSegPDPA, a log-linear time algorithm for constrained changepoint detection](https://anirban166.github.io/testComplexity/articles/PeakSegPDPA.html) |            
 
 A complexity-wise ordered list with functional instances for the aforementioned set of functions can be found [here](https://github.com/Anirban166/testComplexity/issues/2#issue-615087634). <br>
 - **Unit Testing** <br>
