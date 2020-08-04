@@ -95,10 +95,11 @@ ________________________________________________________________________________
 Usage
 </h2>
 
-For obtaining the benchmarked timings/memory against specified data sizes, pass the required algorithm as a function of `data.sizes` to `asymptoticTimings()`/`asymptoticMemoryUsage()`: <br>
+- For obtaining the benchmarked timings/memory against specified data sizes, pass the required algorithm as a function of `data.sizes` to `asymptoticTimings()`/`asymptoticMemoryUsage()`: <br>
 ```r
 > library(data.table)
 # Example 1 | Applying the bubble sort algorithm to a sample of 100 elements: (expected quadratic time complexity & constant memory complexity)
+# Code for bubble.sort can be found in my contributions to TheAlgorithms/R repo : https://github.com/TheAlgorithms/R/tree/master/sorting
 > df.bubble.time <- asymptoticTimings(bubble.sort(sample(1:100, data.sizes, replace = TRUE)), data.sizes = 10^seq(1, 3, by = 0.5))
 > data.table(df.bubble.time)
       Timings Data sizes
@@ -159,7 +160,7 @@ For obtaining the benchmarked timings/memory against specified data sizes, pass 
 28:       887792 5011.87234
 29:      1116240 6309.57344
 ```
-To estimate the corresponding time/memory complexity class, pass the obtained data frame onto `asymptoticTimeComplexityClass()`/`asymptoticMemoryComplexityClass()`: <br>
+- To estimate the corresponding time/memory complexity class, pass the obtained data frame onto `asymptoticTimeComplexityClass()`/`asymptoticMemoryComplexityClass()`: <br>
 ```r
 # Example 1 | Applying the bubble sort algorithm to a sample of 100 elements: (expected quadratic time complexity & constant memory complexity)
 > asymptoticTimeComplexityClass(df.bubble.time)
@@ -170,11 +171,11 @@ To estimate the corresponding time/memory complexity class, pass the obtained da
 ```r
 # Example 2 | Testing PeakSegPDPA, an algorithm for constrained changepoint detection: (expected log-linear time and memory complexity)
 > asymptoticTimeComplexityClass(df.PDPA.time)
-[1] "loglinear""
+[1] "loglinear"
 > asymptoticTimeComplexityClass(df.PDPA.memory)
-[1] "loglinear""
+[1] "loglinear"
 ```
-Combine the functions if you only require the complexity class: <br>
+- Combine the functions if you only require the complexity class: <br>
 ```r
 # Example 3 | Testing the time complexity of quick sort algorithm: (expected log-linear time complexity)
 > asymptoticTimeComplexityClass(asymptoticTimings(sort(sample(1:100, data.sizes, replace = TRUE), method = "quick" , index.return = TRUE), data.sizes = 10^seq(1, 3, by = 0.5)))
