@@ -15,3 +15,6 @@ null for expected complexity (linear), else throws error.
 \description{
 Function to test if input algorithm has linear time complexity
 }
+\details{
+For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Testing-functions/
+}

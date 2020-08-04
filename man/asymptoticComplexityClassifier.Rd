@@ -15,3 +15,6 @@ A string specifying the resultant complexity class. (Eg: 'Linear', 'Log-linear',
 \description{
 Function to classify the complexity trend between the two parameters as provided by asymptoticComplexityClass
 }
+\details{
+For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Generalized-complexity/
+}

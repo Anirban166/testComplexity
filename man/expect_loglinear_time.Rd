@@ -15,3 +15,6 @@ null, throws error if complexity is not log-linear. (i.e. O(NlogN) for size N, i
 \description{
 Function to test if input algorithm has log-linear time complexity
 }
+\details{
+For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Testing-functions/
+}

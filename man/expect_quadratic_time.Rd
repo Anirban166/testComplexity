@@ -15,3 +15,6 @@ null for expected complexity (quadratic), else throws error.
 \description{
 Function to test if input algorithm has quadratic time complexity
 }
+\details{
+For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Testing-functions/
+}

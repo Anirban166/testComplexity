@@ -16,5 +16,5 @@ A string specifying the resultant complexity class. (Eg: 'Linear', 'Log-linear',
 Function to classify the time complexity of the expression passed onto asymptoticTimings (which outputs a data frame to be used here)
 }
 \details{
-For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Time-complexity-classifier/
+For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Complexity-classifiers/
 }

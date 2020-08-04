@@ -19,3 +19,6 @@ null for expected complexity, else throws error.
 \description{
 Function to test if input algorithm has the specified time complexity
 }
+\details{
+For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Testing-functions/
+}

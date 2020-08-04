@@ -30,7 +30,7 @@
 #'
 #' @return A ggplot object.
 #'
-#' @details For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Timings-plotting-function/
+#' @details For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Plotters/
 #'
 #' @export
 #' @import ggplot2

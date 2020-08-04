@@ -17,3 +17,6 @@ null for expected complexity, else throws error.
 \description{
 Function to test if object returning/printing a string matches with a specified string
 }
+\details{
+For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Testing-functions/
+}
