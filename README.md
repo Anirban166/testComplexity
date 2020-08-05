@@ -99,7 +99,7 @@ Usage
 ```r
 > library(data.table)
 # Example 1 | Applying the bubble sort algorithm to a sample of 100 elements: (expected quadratic time complexity & constant memory complexity)
-# Code for bubble.sort can be found in my contributions to TheAlgorithms/R repo : https://github.com/TheAlgorithms/R/tree/master/sorting
+# Code for bubble.sort and other sorting algorithms can be found in my contributions to TheAlgorithms/R repo : https://github.com/TheAlgorithms/R/tree/master/sorting
 > df.bubble.time <- asymptoticTimings(bubble.sort(sample(1:100, data.sizes, replace = TRUE)), data.sizes = 10^seq(1, 3, by = 0.5))
 > data.table(df.bubble.time)
       Timings Data sizes
@@ -165,14 +165,14 @@ Usage
 # Example 1 | Applying the bubble sort algorithm to a sample of 100 elements: (expected quadratic time complexity & constant memory complexity)
 > asymptoticTimeComplexityClass(df.bubble.time)
 [1] "quadratic"
-> asymptoticTimeComplexityClass(df.bubble.memory)
+> asymptoticMemoryComplexityClass(df.bubble.memory)
 [1] "constant"
 ```
 ```r
 # Example 2 | Testing PeakSegPDPA, an algorithm for constrained changepoint detection: (expected log-linear time and memory complexity)
 > asymptoticTimeComplexityClass(df.PDPA.time)
 [1] "loglinear"
-> asymptoticTimeComplexityClass(df.PDPA.memory)
+> asymptoticMemoryComplexityClass(df.PDPA.memory)
 [1] "loglinear"
 ```
 - Combine the functions if you only require the complexity class: <br>
