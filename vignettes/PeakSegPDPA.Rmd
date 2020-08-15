@@ -1,10 +1,10 @@
 ---
-title: "PeakSegOptimal::PeakSegPDPA, a log-linear time algorithm for constrained changepoint detection"
+title: "PeakSegOptimal::PeakSegPDPA(), a log-linear time algorithm for constrained changepoint detection"
 author: "Anirban Chetia"
 date: "2020-08-04"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{PeakSegOptimal::PeakSegPDPA, a log-linear time algorithm for constrained changepoint detection}
+  %\VignetteIndexEntry{PeakSegOptimal::PeakSegPDPA(), a log-linear time algorithm for constrained changepoint detection}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

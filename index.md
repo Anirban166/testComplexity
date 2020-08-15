@@ -201,14 +201,14 @@ Individual plots can be obtained by passing the data frame returned by the quant
 > plotTimings(df.time, titles = list("Timings", "PeakSegDP::cDPA"), line.color = "#ffec1b", point.color = "#ffec1b", line.size = 1, point.size = 1.5)
 # Equivalent ggplot object:
 df <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4))
-> ggplot(df, aes(x = `Data sizes`, y = Timings)) + geom_point(color = ft_cols$yellow, size = 1.5) + geom_line(color = ft_cols$yellow, size = 1) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings", "PeakSegDP::cDPA") + theme_ft_rc()
+> ggplot(df, aes(x = `Data sizes`, y = Timings)) + geom_point(color = ft_cols$yellow, size = 1.5) + geom_line(color = ft_cols$yellow, size = 1) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings", "PeakSegDP::cDPA") + hrbrthemes::theme_ft_rc()
 ```
 ```r
 # Memory Usage plot for PeakSegDP::cDPA
 > df <- asymptoticMemoryUsage(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 6, by = 0.1))
 > plotMemoryUsage(df.memory, titles = list("Memory Usage", "PeakSegDP::cDPA"), line.color = "#ffec1b", point.color = "#ffec1b", line.size = 1, point.size = 2) 
 # Equivalent ggplot object:
-> ggplot(df, aes(x = `Data sizes`, y = `Memory usage`)) + geom_point(color = ft_cols$yellow, size = 2) + geom_line(color = ft_cols$yellow, size = 1) labs(x = "Data sizes", y = "Memory usage (in bytes)") + scale_x_log10() + scale_y_log10() + ggtitle("Memory Usage", "PeakSegDP::cDPA") + theme_ft_rc()
+> ggplot(df, aes(x = `Data sizes`, y = `Memory usage`)) + geom_point(color = ft_cols$yellow, size = 2) + geom_line(color = ft_cols$yellow, size = 1) labs(x = "Data sizes", y = "Memory usage (in bytes)") + scale_x_log10() + scale_y_log10() + ggtitle("Memory Usage", "PeakSegDP::cDPA") + hrbrthemes::theme_ft_rc()
 ```
 <img width = "100%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/timememorycDPA.png"> <br>
 - **Comparison Plots** <br>
@@ -286,7 +286,7 @@ Test cases for testComplexity functions via [testthat](https://cran.r-project.or
 Tested locally by `covr::package_coverage()` and codecov. <br>
 - **OS Support** <br>
 Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. In addition to both, RCMD checks are run on MacOS as well. <br>
-Note that the use of `bench::bench_memory` overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in `GuessCompx::CompEst` since it successfully runs on other operating systems. <br>
+Note that the use of `bench::bench_memory()` overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in `GuessCompx::CompEst()` since it successfully runs on other operating systems. <br>
 
 <p align="center">
 <a href="https://www.microsoft.com/en-in/windows"> <img src="https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&logo=Windows"> <a href="https://www.linux.org/"> <img src="https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&logo=Linux"> <a href="https://developer.apple.com/macos/"> <img src="https://img.shields.io/badge/MacOS--brightgreen?style=for-the-badge&logo=Apple"> </a>

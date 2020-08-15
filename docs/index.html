@@ -62,7 +62,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/cDPA.html">PeakSegDP::cDPA, a quadratic time constrained dynamic programming algorithm</a>
+      <a href="articles/cDPA.html">PeakSegDP::cDPA(), a quadratic time constrained dynamic programming algorithm</a>
     </li>
     <li>
       <a href="articles/fpop.html">fpop::Fpop(), a log-linear time segmentation algorithm</a>
@@ -74,7 +74,7 @@
       <a href="articles/opart.html">opart::gaussian(), a quadratic time optimal partioning algorithm</a>
     </li>
     <li>
-      <a href="articles/PeakSegPDPA.html">PeakSegOptimal::PeakSegPDPA, a log-linear time algorithm for constrained changepoint detection</a>
+      <a href="articles/PeakSegPDPA.html">PeakSegOptimal::PeakSegPDPA(), a log-linear time algorithm for constrained changepoint detection</a>
     </li>
     <li>
       <a href="articles/PELT_and_SegNeigh.html">PELT and SegNeigh algorithms for changepoint::cpt.mean()</a>
@@ -274,12 +274,12 @@ Plotting
 &gt; plotTimings(df.time, titles = list("Timings", "PeakSegDP::cDPA"), line.color = "#ffec1b", point.color = "#ffec1b", line.size = 1, point.size = 1.5)
 # Equivalent ggplot object:
 df &lt;- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4))
-&gt; ggplot(df, aes(x = `Data sizes`, y = Timings)) + geom_point(color = ft_cols$yellow, size = 1.5) + geom_line(color = ft_cols$yellow, size = 1) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings", "PeakSegDP::cDPA") + theme_ft_rc()</pre></div>
+&gt; ggplot(df, aes(x = `Data sizes`, y = Timings)) + geom_point(color = ft_cols$yellow, size = 1.5) + geom_line(color = ft_cols$yellow, size = 1) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings", "PeakSegDP::cDPA") + hrbrthemes::theme_ft_rc()</pre></div>
 <div class="sourceCode" id="cb11"><pre class="r"># Memory Usage plot for PeakSegDP::cDPA
 &gt; df &lt;- asymptoticMemoryUsage(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 6, by = 0.1))
 &gt; plotMemoryUsage(df.memory, titles = list("Memory Usage", "PeakSegDP::cDPA"), line.color = "#ffec1b", point.color = "#ffec1b", line.size = 1, point.size = 2) 
 # Equivalent ggplot object:
-&gt; ggplot(df, aes(x = `Data sizes`, y = `Memory usage`)) + geom_point(color = ft_cols$yellow, size = 2) + geom_line(color = ft_cols$yellow, size = 1) labs(x = "Data sizes", y = "Memory usage (in bytes)") + scale_x_log10() + scale_y_log10() + ggtitle("Memory Usage", "PeakSegDP::cDPA") + theme_ft_rc()</pre></div>
+&gt; ggplot(df, aes(x = `Data sizes`, y = `Memory usage`)) + geom_point(color = ft_cols$yellow, size = 2) + geom_line(color = ft_cols$yellow, size = 1) labs(x = "Data sizes", y = "Memory usage (in bytes)") + scale_x_log10() + scale_y_log10() + ggtitle("Memory Usage", "PeakSegDP::cDPA") + hrbrthemes::theme_ft_rc()</pre></div>
 <p><img width="100%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/timememorycDPA.png"><br></p>
 <ul>
 <li>
@@ -405,7 +405,7 @@ Testing
 <strong>Code Coverage</strong> <br> Tested locally by <code><a href="https://rdrr.io/pkg/covr/man/package_coverage.html">covr::package_coverage()</a></code> and codecov. <br>
 </li>
 <li>
-<strong>OS Support</strong> <br> Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. In addition to both, RCMD checks are run on MacOS as well. <br> Note that the use of <code><a href="https://rdrr.io/pkg/bench/man/bench_memory.html">bench::bench_memory</a></code> overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in <code><a href="https://rdrr.io/pkg/GuessCompx/man/CompEst.html">GuessCompx::CompEst</a></code> since it successfully runs on other operating systems. <br>
+<strong>OS Support</strong> <br> Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. In addition to both, RCMD checks are run on MacOS as well. <br> Note that the use of <code><a href="https://rdrr.io/pkg/bench/man/bench_memory.html">bench::bench_memory()</a></code> overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in <code><a href="https://rdrr.io/pkg/GuessCompx/man/CompEst.html">GuessCompx::CompEst()</a></code> since it successfully runs on other operating systems. <br>
 </li>
 </ul>
 <p align="center">

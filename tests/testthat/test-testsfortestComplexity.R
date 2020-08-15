@@ -103,6 +103,9 @@ test_that("Return value (ggplot object) test for plotMemoryUsage", {
 
 test_that("data.df parameter test for asymptoticComplexityClass", {
   expect_error(asymptoticComplexityClass(c(10)))
+  df <- data.frame(c(1000, 2000), c(10, 20))
+  colnames(df) <- c("X", "Y")
+  expect_error(asymptoticComplexityClass(df, "Y", "Z"))
 })
 
 test_that("Return value test for asymptoticComplexityClass", {
