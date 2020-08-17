@@ -100,7 +100,7 @@ Usage
 > library(data.table)
 # Example 1 | Applying the bubble sort algorithm to a sample of 100 elements: (expected quadratic time complexity & constant memory complexity)
 # Code for bubble.sort and other sorting algorithms can be found in my contributions to TheAlgorithms/R repo : https://github.com/TheAlgorithms/R/tree/master/sorting
-> df.bubble.time <- asymptoticTimings(bubble.sort(sample(1:100, data.sizes, replace = TRUE)), data.sizes = 10^seq(1, 3, by = 0.5))
+> df.bubble.time <- asymptoticTimings(bubble.sort(sample(1:100, N, replace = TRUE)), data.sizes = 10^seq(1, 3, by = 0.5))
 > data.table(df.bubble.time)
       Timings Data sizes
   1:    91902         10
@@ -114,7 +114,7 @@ Usage
 498: 63452200       1000
 499: 62807201       1000
 500: 59757102       1000
-> df.bubble.memory <- asymptoticMemoryUsage(bubble.sort(sample(1:100, data.sizes, replace = TRUE)), data.sizes = 10^seq(1, 3, by = 0.1))
+> df.bubble.memory <- asymptoticMemoryUsage(bubble.sort(sample(1:100, N, replace = TRUE)), data.sizes = 10^seq(1, 3, by = 0.1))
 > data.table(df.bubble.memory)
     Memory usage Data sizes
  1:        87800   10.00000
@@ -131,7 +131,8 @@ Usage
 ```
 ```r
 # Example 2 | Testing PeakSegPDPA, an algorithm for constrained changepoint detection: (expected log-linear time and memory complexity)
-> df.PDPA.time <- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(data.sizes, 1),rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5))
+> data.vec <- rpois(N, 1)
+> df.PDPA.time <- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(count.vec = data.vec, max.segments = 3L), data.sizes = 10^seq(1, 4, by = 0.1))
 > data.table(df.PDPA.time)
        Timings Data sizes
   1:    248701         10
@@ -145,7 +146,7 @@ Usage
 698: 338544401      10000
 699: 404081901      10000
 700: 399575501      10000
-> df.PDPA.memory <- asymptoticMemoryUsage(PeakSegOptimal::PeakSegPDPA(rpois(data.sizes, 1),rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.1))
+> df.PDPA.memory <- asymptoticMemoryUsage(PeakSegOptimal::PeakSegPDPA(count.vec = data.vec, max.segments = 3L), data.sizes = 10^seq(1, 4, by = 0.1))
 > data.table(df.PDPA.memory)
     Memory usage Data sizes
  1:         6256   10.00000
@@ -178,12 +179,12 @@ Usage
 - Combine the functions if you only require the complexity class: <br>
 ```r
 # Example 3 | Testing the time complexity of quick sort algorithm: (expected log-linear time complexity)
-> asymptoticTimeComplexityClass(asymptoticTimings(sort(sample(1:100, data.sizes, replace = TRUE), method = "quick" , index.return = TRUE), data.sizes = 10^seq(1, 3, by = 0.5)))
+> asymptoticTimeComplexityClass(asymptoticTimings(sort(sample(1:100, N, replace = TRUE), method = "quick" , index.return = TRUE), data.sizes = 10^seq(1, 3, by = 0.5)))
 [1] "loglinear"
 ```
 ```r
 # Example 4 | Allocating a square matrix (N*N dimensions): (expected quadratic memory complexity)
-> asymptoticMemoryComplexityClass(asymptoticMemoryUsage(matrix(data.sizes:data.sizes, data.sizes, data.sizes), data.sizes = 10^seq(1, 3, by = 0.1)))
+> asymptoticMemoryComplexityClass(asymptoticMemoryUsage(matrix(data = N:N, nrow = N, ncol = N), data.sizes = 10^seq(1, 3, by = 0.1)))
 [1] "quadratic"
 ```
 Check [this screencast](https://youtu.be/H4uefLb8zcQ) for a demonstration of time complexity testing on different sorting algorithms over a test session.
@@ -200,7 +201,7 @@ For obtaining a visual description of the trend followed between runtimes/memory
 Individual plots can be obtained by passing the data frame returned by the quantifying functions to `plotTimings()`/`plotMemoryUsage()` for time/memory cases respectively: <br>
 ```r
 # Timings plot for PeakSegDP::cDPA
-> df <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4))
+> df <- asymptoticTimings(PeakSegDP::cDPA(rpois(N, 1), rep(1, length(rpois(N, 1))), 3L), data.sizes = 10^seq(1, 4))
 > plotTimings(df.time, titles = list("Timings", "PeakSegDP::cDPA"), line.color = "#ffec1b", point.color = "#ffec1b", line.size = 1, point.size = 1.5)
 # Equivalent ggplot object:
 df <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4))
@@ -208,7 +209,7 @@ df <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpoi
 ```
 ```r
 # Memory Usage plot for PeakSegDP::cDPA
-> df <- asymptoticMemoryUsage(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 6, by = 0.1))
+> df <- asymptoticMemoryUsage(PeakSegDP::cDPA(rpois(N, 1), rep(1, length(rpois(N, 1))), 3L), data.sizes = 10^seq(1, 6, by = 0.1))
 > plotMemoryUsage(df.memory, titles = list("Memory Usage", "PeakSegDP::cDPA"), line.color = "#ffec1b", point.color = "#ffec1b", line.size = 1, point.size = 2) 
 # Equivalent ggplot object:
 > ggplot(df, aes(x = `Data sizes`, y = `Memory usage`)) + geom_point(color = ft_cols$yellow, size = 2) + geom_line(color = ft_cols$yellow, size = 1) labs(x = "Data sizes", y = "Memory usage (in bytes)") + scale_x_log10() + scale_y_log10() + ggtitle("Memory Usage", "PeakSegDP::cDPA") + hrbrthemes::theme_ft_rc()
@@ -217,22 +218,22 @@ df <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpoi
 - **Comparison Plots** <br>
 In order to visually compare different algorithms based on the benchmarked metrics returned as a data frame by the quantifiers, one can appropriately add a third column (to help distinguish by aesthetics based on it) with a unique value for each of the data frames, combine them using an `rbind()` and then plot the resultant data frame using suitable aesthetics, geometry, scale, labels/titles etcetera via a ggplot: <br>
 ```r
-> df.substring <- asymptoticTimings(substring(paste(rep("A", data.sizes), collapse = ""), 1:data.sizes, 1:data.sizes), data.sizes = 10^seq(1, 4, by = 0.5))
+> df.substring <- asymptoticTimings(substring(paste(rep("A", N), collapse = ""), 1:N, 1:N), data.sizes = 10^seq(1, 4, by = 0.5))
 > asymptoticTimeComplexityClass(df.substring)
 [1] "linear"
-> df.PeakSegPDPA <- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(data.sizes, 1),rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 1)
+> df.PeakSegPDPA <- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(N, 1),rep(1, length(rpois(N, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 1)
 > asymptoticTimeComplexityClass(df.PeakSegPDPA)
 [1] "loglinear"
-> df.cDPA <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 5)
+> df.cDPA <- asymptoticTimings(PeakSegDP::cDPA(rpois(N, 1), rep(1, length(rpois(N, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 5)
 > asymptoticTimeComplexityClass(df.cDPA)
 [1] "quadratic"
-> df.gregexpr <- asymptoticTimings(gregexpr("a", paste(collapse = "", rep("ab", data.sizes)), perl = TRUE), data.sizes = 10^seq(1, 4, by = 0.5))
+> df.gregexpr <- asymptoticTimings(gregexpr("a", paste(collapse = "", rep("ab", N)), perl = TRUE), data.sizes = 10^seq(1, 4, by = 0.5))
 > asymptoticTimeComplexityClass(df.gregexpr)
 [1] "linear"
-> df.fpop <- asymptoticTimings(fpop::Fpop(rnorm(data.sizes), 1), data.sizes = 10^seq(1, 4, by = 0.5))
+> df.fpop <- asymptoticTimings(fpop::Fpop(rnorm(N), 1), data.sizes = 10^seq(1, 4, by = 0.5))
 > asymptoticTimeComplexityClass(df.fpop)
 [1] "loglinear"
-> df.opart <- asymptoticTimings(opart::opart_gaussian(rnorm(data.sizes), 1), data.sizes = 10^seq(1, 4, by = 0.5))
+> df.opart <- asymptoticTimings(opart::opart_gaussian(rnorm(N), 1), data.sizes = 10^seq(1, 4, by = 0.5))
 > asymptoticTimeComplexityClass(df.opart)
 [1] "quadratic"
 > df.substring$expr = "substring"
@@ -242,7 +243,7 @@ In order to visually compare different algorithms based on the benchmarked metri
 > df.fpop$expr = "fpop"
 > df.opart$expr = "opart"
 > plot.df <- rbind(df.substring, df.PeakSegPDPA, df.cDPA, df.gregexpr, df.fpop, df.opart)
-> ggplot(plot.df, aes(x = `Data sizes`, y = Timings)) + geom_point(aes(color = expr)) + geom_line(aes(color = expr)) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings comparison plot", subtitle = "Linear vs Log-linear vs Quadratic complexities") + theme_pander()
+> ggplot(plot.df, aes(x = `Data sizes`, y = Timings)) + geom_point(aes(color = expr)) + geom_line(aes(color = expr)) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings comparison plot", subtitle = "Linear vs Log-linear vs Quadratic complexities") + ggthemes::theme_pander()
 ```
 <img width = "100%" src = "Images/cp2.png"> <br>
 <img width = "100%" src = "Images/cp.png"> <br>
@@ -250,9 +251,9 @@ In order to visually compare different algorithms based on the benchmarked metri
 `ggfortify`, an extension of `ggplot2`, can be used to produce diagnostic plots for generalized linear models with the same formulae as used in the complexity classification functions: <br>
 ```r
 > library(ggfortify)
-> df <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4 by = 0.1))
+> df <- asymptoticTimings(PeakSegDP::cDPA(rpois(N, 1), rep(1, length(rpois(N, 1))), 3L), data.sizes = 10^seq(1, 4 by = 0.1))
 > glm.plot.obj <- glm(Timings~`Data sizes`, data = df)
-> ggplot2::autoplot(stats::glm(glm.plot.obj)) + theme_gdocs()
+> ggplot2::autoplot(stats::glm(glm.plot.obj)) + ggthemes::theme_gdocs()
 ```
 <img src = "Images/glmplot.png"> <br>
 

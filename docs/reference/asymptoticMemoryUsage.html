@@ -166,12 +166,12 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>e</th>
-      <td><p>An expression which is in the form of a function operating on the parameter 'data.sizes' given by the user.</p></td>
+      <td><p>An expression which is in the form of a function operating on 'N' (as the data size for the algorithm to be tested against for a run), which takes values from the used-supplied parameter data.sizes.</p></td>
     </tr>
     <tr>
       <th>data.sizes</th>
-      <td><p>Set of data sizes, which should preferably be a sequence of powers of ten, with a multitude of mid-values included.
-# Example: data.sizes = 10^(1, 5, by = 0.1)</p></td>
+      <td><p>A vector/set of data sizes, which should preferably be a sequence in powers of ten, with mid-values included.
+# Example: data.sizes = 10^seq(1, 5, by = 0.5)</p></td>
     </tr>
     <tr>
       <th>max.bytes</th>

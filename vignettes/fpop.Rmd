@@ -26,10 +26,10 @@ The [official pdf](https://cran.r-project.org/web/packages/fpop/fpop.pdf) for th
 The fpop algorithm is expected to possess log-linear time complexity, as theoretically derived and empiricially observed. We can verify the same using testComplexity's functions:
 ```r
 library(testComplexity)
-asymptoticTimeComplexityClass(asymptoticTimings(fpop::Fpop(rnorm(data.sizes), 1), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 0.1))
+asymptoticTimeComplexityClass(asymptoticTimings(fpop::Fpop(rnorm(N), 1), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 0.1))
 #> [1] "loglinear"
 ```
 
-<sup>Created on 2020-08-02 by the [reprex package](https://reprex.tidyverse.org) (v0.3.0)</sup>
+<sup>Created on 2020-08-17 by the [reprex package](https://reprex.tidyverse.org) (v0.3.0)</sup>
 
 

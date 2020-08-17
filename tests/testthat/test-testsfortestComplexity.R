@@ -19,7 +19,7 @@ test_that("Inf test for data.sizes", {
 })
 
 test_that("Return value test for asymptoticTimings", {
-  df <- asymptoticTimings(rpois(data.sizes, 10), data.sizes = 10)
+  df <- asymptoticTimings(rpois(N, 10), data.sizes = 10)
   expect_that(df, is_a("data.frame") )
   expect_equal(dim(df), c(100, 2))
   expect_equal(attributes(df)$names, c("Timings", "Data sizes"))
@@ -32,7 +32,7 @@ test_that("model.df parameter test for asymptoticTimeComplexityClass", {
 })
 
 test_that("Return value test for asymptoticTimeComplexityClass", {
-  df <- asymptoticTimings(rpois(data.sizes, 10), data.sizes = 10)
+  df <- asymptoticTimings(rpois(N, 10), data.sizes = 10)
   complexity.classes <- c("constant", "log", "linear", "loglinear", "quadratic")
   expect_true(asymptoticTimeComplexityClass(df) %in% complexity.classes)
 })
@@ -69,7 +69,7 @@ test_that("Inf test for data.sizes", {
 })
 
 test_that("Return value test for asymptoticMemoryUsage", {
-  df <- asymptoticMemoryUsage(rpois(data.sizes, 10), data.sizes = 10)
+  df <- asymptoticMemoryUsage(rpois(N, 10), data.sizes = 10)
   expect_that(df, is_a("data.frame") )
   expect_equal(dim(df), c(1, 2))
   expect_equal(attributes(df)$names, c("Memory usage", "Data sizes"))
@@ -82,7 +82,7 @@ test_that("model.df parameter test for asymptoticMemoryComplexityClass", {
 })
 
 test_that("Return value test for asymptoticMemoryComplexityClass", {
-  df <- asymptoticMemoryUsage(rpois(data.sizes, 10), data.sizes = 10^seq(1, 4, by = 0.1))
+  df <- asymptoticMemoryUsage(rpois(N, 10), data.sizes = 10^seq(1, 4, by = 0.1))
   complexity.classes <- c("constant", "log", "linear", "loglinear", "quadratic")
   expect_true(asymptoticMemoryComplexityClass(df) %in% complexity.classes)
 })
@@ -109,7 +109,7 @@ test_that("data.df parameter test for asymptoticComplexityClass", {
 })
 
 test_that("Return value test for asymptoticComplexityClass", {
-  df <- asymptoticTimings(substring(paste(rep("A", data.sizes), collapse = ""), 1:data.sizes, 1:data.sizes), data.sizes = 10^seq(1, 3, by = 0.5))
+  df <- asymptoticTimings(substring(paste(rep("A", N), collapse = ""), 1:N, 1:N), data.sizes = 10^seq(1, 3, by = 0.5))
   complexity.classes <- c("constant", "log", "linear", "loglinear", "quadratic")
   expect_true(asymptoticComplexityClass(df, output.size = "Timings", data.size = "Data sizes") %in% complexity.classes)
 })
@@ -121,7 +121,7 @@ test_that("data.df parameter test for asymptoticComplexityClassifier", {
 })
 
 test_that("Return value test for asymptoticComplexityClassifier", {
-  df <- asymptoticTimings(substring(paste(rep("A", data.sizes), collapse = ""), 1:data.sizes, 1:data.sizes), data.sizes = 10^seq(1, 3, by = 0.5))
+  df <- asymptoticTimings(substring(paste(rep("A", N), collapse = ""), 1:N, 1:N), data.sizes = 10^seq(1, 3, by = 0.5))
   f <- function(df, col1, col2)
   {
     d <- data.frame('output' = df[[col1]], 'size' = df[[col2]])

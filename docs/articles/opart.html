@@ -143,10 +143,10 @@
 <a href="#testing" class="anchor"></a>Testing</h2>
 <p>Using testComplexity functions we can verify the quadratic time complexity for this algorithm:</p>
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">testComplexity</span>)
-<span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/asymptoticTimings.html">asymptoticTimings</a></span>(<span class="kw pkg">opart</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/opart/man/opart_gaussian.html">opart_gaussian</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="no">data.sizes</span>), <span class="fl">1</span>), <span class="kw">data.sizes</span> <span class="kw">=</span> <span class="fl">10</span>^<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">1</span>, <span class="fl">4</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fl">0.5</span>), <span class="kw">max.seconds</span> <span class="kw">=</span> <span class="fl">0.1</span>)
+<span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/asymptoticTimings.html">asymptoticTimings</a></span>(<span class="kw pkg">opart</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/opart/man/opart_gaussian.html">opart_gaussian</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="no">N</span>), <span class="fl">1</span>), <span class="kw">data.sizes</span> <span class="kw">=</span> <span class="fl">10</span>^<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">1</span>, <span class="fl">4</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fl">0.5</span>), <span class="kw">max.seconds</span> <span class="kw">=</span> <span class="fl">0.1</span>)
 <span class="fu"><a href="../reference/asymptoticTimeComplexityClass.html">asymptoticTimeComplexityClass</a></span>(<span class="no">df</span>)
 <span class="co">#&gt; [1] "quadratic"</span></pre></body></html></div>
-<p><sup>Created on 2020-08-02 by the <a href="https://reprex.tidyverse.org">reprex package</a> (v0.3.0)</sup></p>
+<p><sup>Created on 2020-08-17 by the <a href="https://reprex.tidyverse.org">reprex package</a> (v0.3.0)</sup></p>
 </div>
   </div>
 

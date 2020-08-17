@@ -35,14 +35,14 @@ As expected, using the testComplexity functions with suitable parameters show th
 ```r
 library(testComplexity)
 # PELT case:
-df <- asymptoticTimings(changepoint::cpt.mean(rnorm(data.sizes), method = "PELT"), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 0.1)
+df <- asymptoticTimings(changepoint::cpt.mean(rnorm(N), method = "PELT"), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 0.1)
 asymptoticTimeComplexityClass(df)
 #> [1] "linear"
 # SegNeigh case:
-df <- asymptoticTimings(changepoint::cpt.mean(rnorm(data.sizes), penalty = "Asymptotic", pen.value = 0.01, method = "SegNeigh"), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 0.1)
+df <- asymptoticTimings(changepoint::cpt.mean(rnorm(N), penalty = "Asymptotic", pen.value = 0.01, method = "SegNeigh"), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 0.1)
 asymptoticTimeComplexityClass(df)
 #> [1] "quadratic"
 ```
 
-<sup>Created on 2020-07-31 by the [reprex package](https://reprex.tidyverse.org) (v0.3.0)</sup>
+<sup>Created on 2020-08-17 by the [reprex package](https://reprex.tidyverse.org) (v0.3.0)</sup>
 

@@ -33,9 +33,9 @@ The pdf proposing the algorithm and enacting as the source for me to extract the
 We can use the testComplexity functions `asymptoticTimings` and `asymptoticTimeComplexityClass` to verify the empirical observation of the log-linear trend followed in the number of data points to segment: 
 ```r
 library(testComplexity)
-df <- asymptoticTimings(gfpop::gfpop(data = dataGenerator(as.integer(data.sizes), c(0.1, 0.2, 0.3, 0.4, 0.6, 0.8, 1), c(0, 0.5, 1, 1.5, 2, 2.5, 3), sigma = 1), mygraph = graph(penalty = 2*log(as.integer(data.sizes)), type = "isotonic"), type = "mean"), data.sizes = 10^seq(1, 4, by = 0.5))
+df <- asymptoticTimings(gfpop::gfpop(data = dataGenerator(as.integer(N), c(0.1, 0.2, 0.3, 0.4, 0.6, 0.8, 1), c(0, 0.5, 1, 1.5, 2, 2.5, 3), sigma = 1), mygraph = graph(penalty = 2*log(as.integer(N)), type = "isotonic"), type = "mean"), data.sizes = 10^seq(1, 4, by = 0.5))
 asymptoticTimeComplexityClass(df)
 #> [1] "loglinear"
 ```
 
-<sup>Created on 2020-08-02 by the [reprex package](https://reprex.tidyverse.org) (v0.3.0)</sup>
+<sup>Created on 2020-08-17 by the [reprex package](https://reprex.tidyverse.org) (v0.3.0)</sup>

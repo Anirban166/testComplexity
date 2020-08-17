@@ -31,9 +31,10 @@ Source enacting as reference for the above information includes the [github repo
 We can verify the quadratic time complexity for this algorithm by a run with our time complexity analysis functions `asymptoticTimings` and `asymptoticTimeComplexityClass`:
 ```r
 library(testComplexity)
-df <- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(dta.sizes, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5))
+data.vec <- rpois(N, 1)
+df <- asymptoticTimings(PeakSegDP::cDPA(data.vec, maxSegments = 3L), data.sizes = 10^seq(1, 4, by = 0.5))
 asymptoticTimeComplexityClass(df)
 #> [1] "quadratic"
 ```
 
-<sup>Created on 2020-08-03 by the [reprex package](https://reprex.tidyverse.org) (v0.3.0)</sup>
+<sup>Created on 2020-08-17 by the [reprex package](https://reprex.tidyverse.org) (v0.3.0)</sup>
