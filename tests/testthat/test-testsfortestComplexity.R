@@ -131,3 +131,9 @@ test_that("Return value test for asymptoticComplexityClassifier", {
   complexity.classes <- c("constant", "log", "linear", "loglinear", "quadratic")
   expect_true(asymptoticComplexityClassifier(x) %in% complexity.classes)
 })
+
+# Tests for expect_linear_time()
+
+test_that("Misprediction test", {
+  expect_error(expect_linear_time(N, data.sizes = 10^seq(1, 3, by = 0.5)))
+})

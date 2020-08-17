@@ -42,7 +42,7 @@ asymptoticMemoryUsage <- function(e, data.sizes, max.bytes)
     {
       benchmarked.memory.size <- bench_memory(fun.obj(data.sizes[i]))$mem_alloc
 
-      if(benchmarked.memory.size > memory.size.limit) break.bool <<- FALSE
+      if(benchmarked.memory.size > memory.size.limit) break.bool <<- FALSE else TRUE
 
       data.size <- data.sizes[i]
 

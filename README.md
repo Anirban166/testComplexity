@@ -95,7 +95,7 @@ ________________________________________________________________________________
 Usage
 </h2>
 
-- For obtaining the benchmarked timings/memory against specified data sizes, pass the required algorithm as a function of `data.sizes` to `asymptoticTimings()`/`asymptoticMemoryUsage()`: <br>
+- For obtaining the benchmarked timings/memory against specified data sizes, pass the required algorithm as a function of `N` to `asymptoticTimings()`/`asymptoticMemoryUsage()`: <br>
 ```r
 > library(data.table)
 # Example 1 | Applying the bubble sort algorithm to a sample of 100 elements: (expected quadratic time complexity & constant memory complexity)
@@ -287,7 +287,7 @@ A complexity-wise ordered list with functional instances for the aforementioned 
 - **Unit Testing** <br>
 Test cases for testComplexity functions via [testthat](https://cran.r-project.org/web/packages/testthat/index.html) package can be found [here](https://github.com/Anirban166/testComplexity/blob/master/tests/testthat/test-testsfortestComplexity.R). <br>
 - **Code Coverage** <br>
-Tested locally by `covr::package_coverage()` and codecov, with 100% code coverage. <br>
+Tested locally by `covr::package_coverage()` and codecov, with [100% code coverage](https://codecov.io/gh/Anirban166/testComplexity?branch=master). <br>
 - **OS Support** <br>
 Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. In addition to both, RCMD checks are run on MacOS as well. <br>
 Note that the use of `bench::bench_memory()` overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in `GuessCompx::CompEst()` since it successfully runs on other operating systems. <br>
