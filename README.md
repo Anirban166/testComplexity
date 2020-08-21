@@ -307,8 +307,7 @@ In addition to the readme content, the [web version](https://anirban166.github.i
 <a href="https://anirban166.github.io//Timings-quantifying-function/"> <img width = "12%" src = "/Images/TQlogo.png"> 
 <a href="https://anirban166.github.io//Memory-usage-quantifier/"> <img width = "12%" src = "/Images/MQlogo.png"> 
 <a href="https://anirban166.github.io//Complexity-classifiers/"> <img width = "12%" src = "/Images/CClogo.png"> 
-<a href="https://anirban166.github.io//Plotters/"> <img width = "12%" src = "/Images/PTlogo.png"> <br>
-    
+<a href="https://anirban166.github.io//Plotters/"> <img width = "12%" src = "/Images/PTlogo.png"> </a> <br>
 <a href="https://anirban166.github.io//Generalized-complexity/"> <img width = "12%" src = "/Images/GClogo.png">
 <a href="https://anirban166.github.io//Testing-functions/"> <img width = "12%" src = "/Images/TSlogo.png"> 
 <a href="https://anirban166.github.io//Website/"> <img width = "12%" src = "/Images/WEBlogo.png"> 
@@ -327,38 +326,38 @@ Task List
     
 ---
 <h2 align="center">
-© 2020
+©2020
 </h2>
 
 <p align="center">
     <a href="mailto:bloodraven166@gmail.com"> 
-    <img height="59" src="https://img.shields.io/badge/--white?style=flat&logo=gmail"
+    <img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=gmail"
          alt="Primary Email">      
     <a href="https://stackoverflow.com/users/11422223/anirban166?tab=profile">    
-    <img height="59" src="https://img.shields.io/badge/--white?style=flat&logo=Stack%20Overflow"
+    <img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=Stack%20Overflow"
          alt="Stack Overflow Link">
     <a href="https://www.hackerrank.com/Bloodraven166">
-    <img height="59" src="https://img.shields.io/badge/--white?style=flat&logo=HackerRank"
+    <img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=HackerRank"
          alt="HackerRank Link">
     <a href="https://www.instagram.com/anirban.166/">
-    <img height="59" src="https://img.shields.io/badge/--white?style=flat&logo=Instagram"
+    <img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=Instagram"
          alt="Instagram Link">    
     <a href="https://summerofcode.withgoogle.com/projects/4887653356404736"> 
-    <img height="59" src="https://img.shields.io/badge/--white?style=flat&logo=google"
+    <img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=google"
          alt="Google Summer of Code Project Link">   
     <a href="mailto:Anirban.code@studentpartner.com">
-    <img height="59" src="https://img.shields.io/badge/--black?style=flat&logo=Microsoft"
+    <img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=Microsoft"
          alt="Microsoft Student Partner Email">            
     <a href="https://github.com/Anirban166">
-    <img height="59" src="https://img.shields.io/badge/--black?style=flat&logo=Github"
+    <img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=Github"
          alt="GitHub Link">  
     <a href="https://anirban166.github.io/posts/">
-    <img height="59" src="https://img.shields.io/badge/--black?style=flat&logo=Google%20messages"
+    <img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=Google%20messages"
          alt="Website Link">
     <a href="https://www.linkedin.com/in/anirban166/">
-    <img height="59" src="https://img.shields.io/badge/--black?style=flat&logo=LinkedIn"
+    <img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=LinkedIn"
          alt="LinkedIn Link">
     <a href="https://anirban166.github.io/">
-    <img height="59" src="https://img.shields.io/badge/--black?style=flat&logo=WebStorm"
+    <img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=WebStorm"
          alt="Website Link">        
 </p> 
