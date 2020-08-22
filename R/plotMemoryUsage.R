@@ -35,7 +35,7 @@
 #' @export
 #' @import ggplot2
 
-plotMemoryUsage = function(data.df, titles = list("", ""), labels = list("Data sizes", "Memory size (in bytes)"), point.alpha = 1, line.alpha = 1, point.color = "black", line.color = "black", point.size = 1.3, line.size = 0.7)
+plotMemoryUsage = function(data.df, titles = list("", ""), labels = list("Data sizes", "Memory usage (in bytes)"), point.alpha = 1, line.alpha = 1, point.color = "black", line.color = "black", point.size = 1.3, line.size = 0.7)
 {
   if(class(data.df) == "data.frame" & "Memory usage" %in% colnames(data.df) & "Data sizes" %in% colnames(data.df))
   {
