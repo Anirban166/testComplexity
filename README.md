@@ -314,15 +314,6 @@ In addition to the readme content, the [web version](https://anirban166.github.i
 <a href="https://anirban166.github.io//Software-Development/"> <img width = "13%" src = "/Images/WSlogo.png"> 
 <a href="https://anirban166.github.io//CRAN-release/"> <img width = "13%" src = "/Images/PKGlogo.png"> <br>
 </p>
-
-<h2 align="center">
-Task List
-</h2>
-
-- [x] Time complexity testing.
-- [x] Memory complexity testing.
-- [x] Classification of user given output (output size is the metric, instead of timings/memory-usage) parameter.
-- [x] Add testing functions, with optional packages as suggests.
     
 ---
 <h2 align="center">
