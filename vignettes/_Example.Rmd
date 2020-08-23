@@ -196,3 +196,21 @@ PeakSegOptimal::PeakSegPDPA(data.vec, max.segments = 3L)}, data.sizes = 10^seq(1
 ```
 The call stack (sequence of calls that lead to the error) is returned via a call to `traceback()` as well, although the user doesn't need to exemplify the verification through that, since the error message itself clearly states the inequality between the expected and predicted complexity classes, which can be used to prove by contradiction. 
 
+### [Plotters](https://anirban166.github.io/testComplexity/reference/index.html#section-plotters):
+These functions are for plotting the metrics returned by the quantifiers, in case the user still prefers to diagnose the obtained complexity result via the traditional method, with a visual representation of the benchmarked data. Considering the columns from the data frames returned by the quantiftying functions, the user can create plots for:
+
+- Timings vs Data sizes, via `plotTimings`:
+```{r echo=TRUE, fig.show='hold', warning=FALSE}
+library(testComplexity)
+df <- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(N, 1), max.segments = 3L), data.sizes = 10^seq(1, 4))
+plotTimings(df, titles = list("Timings", "PeakSegOptimal::PeakSegPDPA"), line.color = "#ffec1b", point.color = "#ffec1b", line.size = 1, point.size = 1.5) + hrbrthemes::theme_ft_rc() 
+```
+- Memory Allocations vs Data sizes, via `plotMemoryUsage`:
+```{r echo=TRUE, fig.show='hold', warning=FALSE}
+library(testComplexity)
+df <- asymptoticMemoryUsage(PeakSegOptimal::PeakSegPDPA(rpois(N, 1), max.segments = 3L), data.sizes = 10^seq(1, 4, by = 0.1))
+plotMemoryUsage(df, titles = list("Memory usage", "PeakSegOptimal::PeakSegPDPA"), line.color = "#ffec1b", point.color = "#ffec1b", line.size = 1, point.size = 1.5) + hrbrthemes::theme_ft_rc() 
+```
+
+-------------------------------------------------------------------------------------------------
+That sums up the functionality offered by testComplexity `0.0.0.9000`. For more examples, please check the articles section of the [website](https://anirban166.github.io/testComplexity/).
