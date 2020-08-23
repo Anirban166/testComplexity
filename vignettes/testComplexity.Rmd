@@ -202,17 +202,18 @@ The call stack (sequence of calls that lead to the error) is returned via a call
 ### [Plotters](https://anirban166.github.io/testComplexity/reference/index.html#section-plotters)
 These functions are for plotting the metrics returned by the quantifiers, in case the user still prefers to diagnose the obtained complexity result via the traditional method, with a visual representation of the benchmarked data. Considering the columns from the data frames returned by the quantiftying functions, the user can create plots for:
 
-- Timings vs Data sizes, via `plotTimings`:
+- Timings vs Data sizes, via `plotTimings`: <br>
 ```{r echo=TRUE, fig.show='hold', warning=FALSE}
 library(testComplexity)
 df <- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(N, 1), max.segments = 3L), data.sizes = 10^seq(1, 4))
-plotTimings(df, titles = list("Timings", "PeakSegOptimal::PeakSegPDPA"), line.color = "#ffec1b", point.color = "#ffec1b", line.size = 1, point.size = 1.5) + hrbrthemes::theme_ft_rc() 
+plotTimings(df, titles = list("Timings", "PeakSegOptimal::PeakSegPDPA"), line.color = "orange", point.color = "black", line.size = 1, point.size = 1.5)  
 ```
-- Memory Allocations vs Data sizes, via `plotMemoryUsage`:
+
+- Memory Allocations vs Data sizes, via `plotMemoryUsage`: <br>
 ```{r echo=TRUE, fig.show='hold', warning=FALSE}
 library(testComplexity)
 df <- asymptoticMemoryUsage(PeakSegOptimal::PeakSegPDPA(rpois(N, 1), max.segments = 3L), data.sizes = 10^seq(1, 4, by = 0.1))
-plotMemoryUsage(df, titles = list("Memory usage", "PeakSegOptimal::PeakSegPDPA"), line.color = "#ffec1b", point.color = "#ffec1b", line.size = 1, point.size = 1.5) + hrbrthemes::theme_ft_rc() 
+plotMemoryUsage(df, titles = list("Memory usage", "PeakSegOptimal::PeakSegPDPA"), line.color = "orange", point.color = "black", line.size = 1, point.size = 1.5)  
 ```
 
 -------------------------------------------------------------------------------------------------
