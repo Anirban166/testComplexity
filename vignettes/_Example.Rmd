@@ -160,3 +160,39 @@ asymptoticComplexityClass(df, output.size = "Timings", data.size = "Data sizes")
 ```
 As expected, it classifies the correct complexity just like `asymptoticTimeComplexityClass()` did, as because the complexity classification procedure is same, its just that the parameters are customizable, which leads to a wider use-case scenario than just classifying the trend for time/memory cases.
 
+### [Testers](https://anirban166.github.io/testComplexity/reference/index.html#section-testers):
+These are the functions used to test the user-provided algorithm against an expected complexity class. They can be used to verify the theoretically derived or empirically observed complexities either directly or by disregarding the remaining complexity classes to prove the same via contradiction. 
+
+There are three surface level functions meant for the user, namely `expect_linear_time`, `expect_loglinear_time` and `expect_quadratic_time`, all of which as their respective names suggest can be used to test an algorithm against the named complexity class. If the algorithm shows the expected complexity, it doesn't throw any error. Otherwise a complexity mismatch error is thrown with a traceback from the calling point to the inner functions.
+Other complexity classes such as `constant` and `log` were not taken into account for the moment since these three tend to cover all cases for our test functions. Also note that variants of these functions for dealing with memory have not been implemented since they are not a part of the base objective plus for the fact that the memory quantifier deals with memory *allocations* at the moment, and might not be fit for all cases.
+
+These functions accept the same parameters as the ones used in `asymptoticTimings`, so they provide a suitable alternative to the user in place of using the time quantifier and complexity classifier in conjunction.
+
+As an example, lets take our function `PeakSegPDPA` and test it against different complexity classes:
+```r
+expect_loglinear_time({
+data.vec <- rpois(N, 1)
+PeakSegOptimal::PeakSegPDPA(data.vec, max.segments = 3L)}, data.sizes = 10^seq(1, 4, by = 0.5))
+# or:
+# expect_loglinear_time(PeakSegOptimal::PeakSegPDPA(rpois(N, 1), max.segments = 3L), data.sizes = 10^seq(1, 4, by = 0.5))
+#> [1] "loglinear"
+```
+The above function throws no error, which means that our algorithm does follow a log-linear trend. On the other hand, if we test for the same against the linear or quadratic variants, we would get errors: (as expected)
+```r
+expect_linear_time({
+data.vec <- rpois(N, 1)
+PeakSegOptimal::PeakSegPDPA(data.vec, max.segments = 3L)}, data.sizes = 10^seq(1, 4, by = 0.5))
+})
+#> [1] "loglinear"
+#> Error: Complexity mismatch: Expected linear complexity, instead of the predicted loglinear complexity from asymptoticTimeComplexityClass(timings.df). 
+```
+```r
+expect_quadratic_time({
+data.vec <- rpois(N, 1)
+PeakSegOptimal::PeakSegPDPA(data.vec, max.segments = 3L)}, data.sizes = 10^seq(1, 4, by = 0.5))
+})
+#> [1] "loglinear"
+#> Error: Complexity mismatch: Expected quadratic complexity, instead of the predicted loglinear complexity from asymptoticTimeComplexityClass(timings.df). 
+```
+The call stack (sequence of calls that lead to the error) is returned via a call to `traceback()` as well, although the user doesn't need to exemplify the verification through that, since the error message itself clearly states the inequality between the expected and predicted complexity classes, which can be used to prove by contradiction. 
+
