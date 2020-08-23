@@ -16,13 +16,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-<p style="font-family: times, serif; font-size:25pt; font-style: italic" align="center">
-Welcome to testComplexity
+<p style="font-family: times, serif; font-size:25pt; font-style: bold" align="center">
+Welcome to testComplexity!
 </p>
 
 -------------------------------------------------------------------------------------------------
 
-This vignette is written to give the user a general introduction to the features and functionality of the package, via a set of textual illustrations and one example.
+This vignette is written to give the user a general introduction to the features and functionality of the package, via a set of textual elucidations and one example discussed throughout for each of the user-oriented functions.
 
 ## Brief Overview
 
@@ -37,11 +37,14 @@ Going by the base objectives stated [here](https://github.com/rstats-gsoc/gsoc20
 - Testing functions, to test for an expected time complexity class directly.
 
 In addition to these, a few more features have been implemented:
+
 - Memory variants for the time quantifier and complexity classifier.
 - Plotting functions for both time and memory cases.
 - A complexity classifier for a generalized use in asymptotic trend classification among any two parameters, not being restricted to time/memory cases.
 
 -------------------------------------------------------------------------------------------------
+
+### Usage Notes
 
 Based on whether the user has an idea of the complexity class the input algorithm falls in, two scenarios are possible:
 
@@ -63,9 +66,9 @@ This in turn could potentially lead to improvements in code performance, if such
 
 To demonstrate the functionality of our package, I'll be taking the function [`PeakSegPDPA`](https://github.com/tdhock/PeakSegOptimal/blob/master/R/PeakSegPDPA.R) from the [`PeakSegOptimal`](https://github.com/tdhock/PeakSegOptimal) package as an example for each of the functions stated below. Note that it is empirically observed to be a log-linear time and memory algorithm, or the expected complexity classes for both time and memory cases is $O(NlogN)$ for input size `N`. This fact here is essential to know before-hand as you'll see<sup>1</sup> that testComplexity's functions obtain the same result, demonstrating its accuracy.
 
-## Function Categories
+### Function Categories
 
-Based on the different aspects of functionality, the functions in this package can be grouped into four different categories:
+Based on the different aspects of functionality, the functions in this package can be grouped into four distinct categories:
 
 ### [Quantifiers](https://anirban166.github.io/testComplexity/reference/index.html#section-quantifiers): 
 These are the quantifying functions which compute the empirical benchmarks for runtimes (via the `asymptoticTimings` function) and memory allocations (via the `asymptoticMemoryUsage` function) against allotted data sizes.
