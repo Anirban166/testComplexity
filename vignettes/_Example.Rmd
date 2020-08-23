@@ -28,3 +28,18 @@ This vignette is written to give the user a general introduction to the features
 
 As can be guessed from the name itself, this package provides a suite of functions to test the asymptotic complexities of R functions/algorithms, where the term "complexity" here refers to the *time* complexity, as per the initial idea. (and hence a relevant logo with the stopwatch was designed early on!) 
 
+### Features
+
+Going by the base objectives stated [here](https://github.com/rstats-gsoc/gsoc2020/wiki/Asymptotic-complexity-testing#details-of-your-coding-project), this package provides:
+
+- A function for quantifying the empirical time complexity of any R expression. 
+- A time complexity classifying function which operates on the result (a data frame) of the previous function.
+- Testing functions, to test for an expected time complexity class directly.
+
+In addition to these, a few more features have been implemented:
+- Memory variants for the time quantifier and complexity classifier.
+- Plotting functions for both time and memory cases.
+- A complexity classifier for a generalized use in asymptotic trend classification among any two parameters, not being restricted to time/memory cases.
+
+-------------------------------------------------------------------------------------------------
+
