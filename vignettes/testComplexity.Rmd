@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-<p style="font-family: times, serif; font-size:25pt; font-style: bold" align="center">
+<p style="font-family: times, serif; font-size:25pt; font-style: italic" align="center">
 Welcome to testComplexity!
 </p>
 
@@ -26,21 +26,21 @@ This vignette is written to give the user a general introduction to the features
 
 ## Brief Overview
 
-As can be guessed from the name itself, this package provides a suite of functions to test the asymptotic complexities of R functions/algorithms, where the term "complexity" here refers to the *time* complexity, as per the initial idea. (and hence a relevant logo with the stopwatch was designed early on!) 
+As can be guessed from the name itself, this package provides a suite of functions to systematically test the asymptotic complexities of R functions/algorithms, where the term "complexity" here refers to the **time** complexity, as per the initial idea. (and hence a relevant logo with the stopwatch was designed early on!) 
 
 ### Features
 
 Going by the base objectives stated [here](https://github.com/rstats-gsoc/gsoc2020/wiki/Asymptotic-complexity-testing#details-of-your-coding-project), this package provides:
 
-- A function for quantifying the empirical time complexity of any R expression. 
-- A time complexity classifying function which operates on the result (a data frame) of the previous function.
-- Testing functions, to test for an expected time complexity class directly.
+- A [function](https://anirban166.github.io/testComplexity/reference/asymptoticTimings.html) for quantifying the empirical time complexity of any R expression. 
+- A time complexity classifying [function](https://anirban166.github.io/testComplexity/reference/asymptoticTimeComplexityClass.html) which operates on the result (a data frame) of the previous function.
+- Testing [functions](https://anirban166.github.io/testComplexity/reference/index.html#section-testers), to test for an expected time complexity class directly.
 
 In addition to these, a few more features have been implemented:
 
-- Memory variants for the time quantifier and complexity classifier.
-- Plotting functions for both time and memory cases.
-- A complexity classifier for a generalized use in asymptotic trend classification among any two parameters, not being restricted to time/memory cases.
+- A [function](https://anirban166.github.io/testComplexity/reference/asymptoticMemoryUsage.html) for quantifying memory allocations and [one](https://anirban166.github.io/testComplexity/reference/asymptoticMemoryComplexityClass.html) for subsequently classifying the space/memory complexity.
+- Plotting [functions](https://anirban166.github.io/testComplexity/reference/index.html#section-plotters) for both time and memory cases.
+- A complexity [classifier](https://anirban166.github.io/testComplexity/reference/asymptoticComplexityClass.html) for generalized use in asymptotic trend classification among any two parameters, not being restricted to time/memory cases.
 
 -------------------------------------------------------------------------------------------------
 
@@ -64,17 +64,17 @@ This in turn could potentially lead to improvements in code performance, if such
 
 ## Examples
 
-To demonstrate the functionality of our package, I'll be taking the function [`PeakSegPDPA`](https://github.com/tdhock/PeakSegOptimal/blob/master/R/PeakSegPDPA.R) from the [`PeakSegOptimal`](https://github.com/tdhock/PeakSegOptimal) package as an example for each of the functions stated below. Note that it is empirically observed to be a log-linear time and memory algorithm, or the expected complexity classes for both time and memory cases is $O(NlogN)$ for input size `N`. This fact here is essential to know before-hand as you'll see<sup>1</sup> that testComplexity's functions obtain the same result, demonstrating its accuracy.
+To demonstrate the functionality of our package, I'll be taking the function [`PeakSegPDPA`](https://github.com/tdhock/PeakSegOptimal/blob/master/R/PeakSegPDPA.R) from the [`PeakSegOptimal`](https://github.com/tdhock/PeakSegOptimal) package as an example for each of the functions stated below. Note that it is empirically observed to be a log-linear time and memory algorithm, or the expected complexity classes for both time and memory cases is $O(NlogN)$ for input size $N$. This fact here is essential to know before-hand as you'll see<sup>1</sup> that testComplexity's functions obtain the same result, demonstrating its accuracy.
 
 ### Function Categories
 
 Based on the different aspects of functionality, the functions in this package can be grouped into four distinct categories:
 
 ### [Quantifiers](https://anirban166.github.io/testComplexity/reference/index.html#section-quantifiers)
-These are the quantifying functions which compute the empirical benchmarks for runtimes (via the `asymptoticTimings` function) and memory allocations (via the `asymptoticMemoryUsage` function) against allotted data sizes.
+These are the quantifying functions which compute the empirical benchmarks for runtimes (via the `asymptoticTimings()` function) and memory allocations (via the `asymptoticMemoryUsage()` function) against allotted data sizes.
 For user convenience, a few points have been taken note of with respect to the parameters:
 
-- The user-supplied algorithm is ideally accepted as an expression, which would be a function that scales with `N` (as a parameter) so as to comply with the general notation of `N` resembling the input size when we refer to asymptotic complexity classes (such as $O(N)$ denoting the linear variant, or a linear asymptotic trend in `N`). The values which `N` can take are seperately specified by the vector/set of user-provided values for the argument `data.sizes`. 
+- The user-supplied algorithm is ideally accepted as an expression, which would be a function that scales with `N` (as a parameter) so as to comply with the general notation of `N` resembling the input size when we refer to asymptotic complexity classes (such as $O(N)$ denoting the linear variant, or a linear asymptotic trend in $N$). The values which `N` can take are seperately specified by the vector/set of user-provided values for the argument `data.sizes`. 
 
 - Parameters such as `max.bytes` and `max.seconds` are introduced to put a desirable restriction on the time invested and memory allocated respectively, thereby saving resources (time/memory) for the otherwise possible further computation once the limit has been breached. 
 The default values have been set taking into account the correct prediction for different test-cases, and should enact as an appropriate threshold for most algorithms. 
@@ -156,22 +156,22 @@ The function accepts a data frame along with the two columnar parameters which t
 
 Note that since the computed data is already prevalent in the specified output parameter column of the data frame, we don’t need to use our quantifying functions or perform any benchmarks.
 
-As a recurring example, consider passing the column names `Timings` and `Data sizes` along with the data frame returned by the time quantifier: (it consists of those two columns)
+As a recurring example, consider passing the column names 'Timings' and 'Data sizes' along with the data frame returned by the time quantifier: (it consists of those two columns)
 ```r
 asymptoticComplexityClass(df, output.size = "Timings", data.size = "Data sizes")
 #> [1] "loglinear"
 ```
-As expected, it classifies the correct complexity just like `asymptoticTimeComplexityClass()` did, as because the complexity classification procedure is same, its just that the parameters are customizable, which leads to a wider use-case scenario than just classifying the trend for time/memory cases.
+As expected, it classifies the correct complexity just like `asymptoticTimeComplexityClass()` did, as because the underlying complexity classification procedure is same. Its just that the parameters are customizable, which leads to a wider use-case scenario than just classifying the trend for time/memory cases.
 
 ### [Testers](https://anirban166.github.io/testComplexity/reference/index.html#section-testers)
 These are the functions used to test the user-provided algorithm against an expected complexity class. They can be used to verify the theoretically derived or empirically observed complexities either directly or by disregarding the remaining complexity classes to prove the same via contradiction. 
 
-There are three surface level functions meant for the user, namely `expect_linear_time`, `expect_loglinear_time` and `expect_quadratic_time`, all of which as their respective names suggest can be used to test an algorithm against the named complexity class. If the algorithm shows the expected complexity, it doesn't throw any error. Otherwise a complexity mismatch error is thrown with a traceback from the calling point to the inner functions.
+There are three surface level functions meant for the user, namely `expect_linear_time()`, `expect_loglinear_time()` and `expect_quadratic_time()`, all of which as their respective names suggest can be used to test an algorithm against the named complexity class. If the algorithm shows the expected complexity, it doesn't throw any error. Otherwise a complexity mismatch error is thrown with a traceback from the calling point to the inner functions.
 Other complexity classes such as `constant` and `log` were not taken into account for the moment since these three tend to cover all cases for our test functions. Also note that variants of these functions for dealing with memory have not been implemented since they are not a part of the base objective plus for the fact that the memory quantifier deals with memory *allocations* at the moment, and might not be fit for all cases.
 
-These functions accept the same parameters as the ones used in `asymptoticTimings`, so they provide a suitable alternative to the user in place of using the time quantifier and complexity classifier in conjunction.
+These functions accept the same parameters as the ones used in `asymptoticTimings()`, so they provide a suitable alternative to the user in place of using the time quantifier and complexity classifier in conjunction.
 
-As an example, lets take our function `PeakSegPDPA` and test it against different complexity classes:
+As an example, lets take our function `PeakSegPDPA()` and test it against different complexity classes: <br>
 ```r
 expect_loglinear_time({
 data.vec <- rpois(N, 1)
@@ -180,7 +180,8 @@ PeakSegOptimal::PeakSegPDPA(data.vec, max.segments = 3L)}, data.sizes = 10^seq(1
 # expect_loglinear_time(PeakSegOptimal::PeakSegPDPA(rpois(N, 1), max.segments = 3L), data.sizes = 10^seq(1, 4, by = 0.5))
 #> [1] "loglinear"
 ```
-The above function throws no error, which means that our algorithm does follow a log-linear trend. On the other hand, if we test for the same against the linear or quadratic variants, we would get errors: (as expected)
+
+The above function throws no error, which means that our algorithm does follow a log-linear trend. On the other hand, if we test for the same against the linear or quadratic variants, we would get errors: (as expected) <br>
 ```r
 expect_linear_time({
 data.vec <- rpois(N, 1)
@@ -197,6 +198,7 @@ PeakSegOptimal::PeakSegPDPA(data.vec, max.segments = 3L)}, data.sizes = 10^seq(1
 #> [1] "loglinear"
 #> Error: Complexity mismatch: Expected quadratic complexity, instead of the predicted loglinear complexity from asymptoticTimeComplexityClass(timings.df). 
 ```
+
 The call stack (sequence of calls that lead to the error) is returned via a call to `traceback()` as well, although the user doesn't need to exemplify the verification through that, since the error message itself clearly states the inequality between the expected and predicted complexity classes, which can be used to prove by contradiction. 
 
 ### [Plotters](https://anirban166.github.io/testComplexity/reference/index.html#section-plotters)
@@ -205,25 +207,26 @@ These functions are for plotting the metrics returned by the quantifiers, in cas
 Considering the columns from the data frames returned by the quantiftying functions, the user can create plots for 'Timings' vs 'Data sizes' via `plotTimings()` and for 'Memory usage' vs 'Data sizes' via `plotMemoryUsage()`:  <br>
 
 ```r
-library(testComplexity)
 # plot the trend between benchmarked timings and data sizes:
-df <- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(N, 1), max.segments = 3L), data.sizes = 10^seq(1, 4))
-plotTimings(df, titles = list("Timings", "PeakSegOptimal::PeakSegPDPA"), line.color = "orange", point.color = "orange", line.size = 1, point.size = 1.5)  
+df.time <- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(N, 1), max.segments = 3L), data.sizes = 10^seq(1, 4, by = 0.5))
+plotTimings(df.time, titles = list("Timings plot", "PeakSegOptimal::PeakSegPDPA"), labels = list("Data size", "Runtime (in nanoseconds)"), point.alpha = 1, line.alpha = 0.8, point.color = "tomato", line.color = "#43464B", point.size = 2, line.size = 1)
+```
+```r
 # plot the trend between computed memory allocations vs data sizes:
-df <- asymptoticMemoryUsage(PeakSegOptimal::PeakSegPDPA(rpois(N, 1), max.segments = 3L), data.sizes = 10^seq(1, 4, by = 0.1))
-plotMemoryUsage(df, titles = list("Memory usage", "PeakSegOptimal::PeakSegPDPA"), line.color = "orange", point.color = "orange", line.size = 1, point.size = 1.5)  
+df.memory <- asymptoticMemoryUsage(PeakSegOptimal::PeakSegPDPA(rpois(N, 1), max.segments = 3L), data.sizes = 10^seq(1, 4, by = 0.1))
+plotMemoryUsage(df.memory, titles = list("Memory usage plot", "PeakSegOptimal::PeakSegPDPA"), labels = list("Data size", "Memory size (in bytes)"), point.alpha = 1, line.alpha = 0.8, point.color = "tomato", line.color = "#43464B", point.size = 2, line.size = 1)
+
 ```
-The user can add themes to the function itself (since it returns a ggplot object) to suit his/her aesthetics: <br>
+```{r echo=FALSE}
+knitr::include_graphics("https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/timememoryPeakSegPDPA.png")
+```
+
+
+For the users relatively new to such diagnostic plots for benchmarking/profiling, it might seem hard to figure the trend just by looking at such individual plots. By testing with more functions, the graphical trends for quadratic/log-linear/linear classes become more clearly distinguishable over time. But for a quicker alternative, comparison plots can be created. For instance, the function we considered in our examples here (`PeakSegPDPA()`) follows a log-linear trend (as proven above), so we can consider another function with either a lower or higher complexity class, and test for our function's plot-line to be above or lower respectively.
+As an example, consider comparing the trends in timings versus data sizes of `PeakSegOptimal::PeakSegPDPA()` with the function [`PeakSegDP::cDPA()`](https://github.com/tdhock/PeakSegDP/blob/master/R/cDPA.R), which is [found](https://anirban166.github.io/testComplexity/articles/cDPA.html) to be quadratic in nature: <br>
 
 ```{r echo=FALSE}
-knitr::include_graphics("https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/timememorycDPA.png")
-```
-
-For the users relatively new to such diagnostic plots for benchmarking/profiling, it might seem hard to figure the trend just by looking at such individual plots. By testing with more functions, the graphical trends for quadratic/log-linear/linear classes become more clearly distinguishable over time. But for a quicker alternative, comparison plots can be created. For instance, the function we considered in our examples here (`PeakSegPDPA`) follows a log-linear trend (as proven above), so we can consider another function with either a lower or higher complexity class, and test for our function's plot-line to be above or lower respectively.
-As an example, consider comparing the trends of `PeakSegOptimal::PeakSegPDPA()` with the function [`PeakSegDP::cDPA()`](https://github.com/tdhock/PeakSegDP/blob/master/R/cDPA.R), which is [found](https://anirban166.github.io/testComplexity/articles/cDPA.html) to be quadratic in nature: <br>
-
-```{r echo=FALSE}
-knitr::include_graphics("https://raw.githubusercontent.com/Anirban166/RGSOC20_Tests/master/Images/finalplot.png")
+knitr::include_graphics("https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/cDPAvsPeakSegPDPA.png")
 ```
 
 By observing the above figure, the user can tell that `PeakSegPDPA()` would fall in a lower complexity class in comparison to `cDPA()` (provided we know the later follows a quadratic trend), with the difference scaling asymptotically. However, it might not be clear whether it falls in the log-linear or linear zone by just looking at this comparison, (visually diagnosing a distinct complexity class from benchmarked data is difficult) which is the reason why our package thrives to provide a much more convenient alternative via the use of testers and complexity classifiers (operating on data supplied from the quantifiers).   
