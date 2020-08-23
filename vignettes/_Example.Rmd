@@ -63,3 +63,65 @@ This in turn could potentially lead to improvements in code performance, if such
 
 To demonstrate the functionality of our package, I'll be taking the function [`PeakSegPDPA`](https://github.com/tdhock/PeakSegOptimal/blob/master/R/PeakSegPDPA.R) from the [`PeakSegOptimal`](https://github.com/tdhock/PeakSegOptimal) package as an example for each of the functions stated below. Note that it is empirically observed to be a log-linear time and memory algorithm, or the expected complexity classes for both time and memory cases is $O(NlogN)$ for input size `N`. This fact here is essential to know before-hand as you'll see<sup>1</sup> that testComplexity's functions obtain the same result, demonstrating its accuracy.
 
+## Function Categories
+
+Based on the different aspects of functionality, the functions in this package can be grouped into four different categories:
+
+### [Quantifiers](https://anirban166.github.io/testComplexity/reference/index.html#section-quantifiers): 
+These are the quantifying functions which compute the empirical benchmarks for runtimes (via the `asymptoticTimings` function) and memory allocations (via the `asymptoticMemoryUsage` function) against allotted data sizes.
+For user convenience, a few points have been taken note of with respect to the parameters:
+
+- The user-supplied algorithm is ideally accepted as an expression, which would be a function that scales with `N` (as a parameter) so as to comply with the general notation of `N` resembling the input size when we refer to asymptotic complexity classes (such as $O(N)$ denoting the linear variant, or a linear asymptotic trend in `N`). The values which `N` can take are seperately specified by the vector/set of user-provided values for the argument `data.sizes`. 
+
+- Parameters such as `max.bytes` and `max.seconds` are introduced to put a desirable restriction on the time invested and memory allocated respectively, thereby saving resources (time/memory) for the otherwise possible further computation once the limit has been breached. 
+The default values have been set taking into account the correct prediction for different test-cases, and should enact as an appropriate threshold for most algorithms. 
+
+The only requirement for the user is to be able to identify the parameter in his/her *own* function/algorithm which can scale asymptotically for different data sizes, or in simple terms the parameter which can contain different values and the function's resource utilization varies depending on that. (which is fairly easy to figure out and is expected from the user)
+
+To demonstrate the working, let us consider the example function `PeakSegOptimal::PeakSegPDPA()` and its parameters:
+
+- `count.vec`: It should be an integer vector of count data.
+- `weight.vec`: Its a numeric vector of positive weights, which would be computed via `count.vec` automatically from the default assignment. (doesn't need to be specified)
+- `max.integer`: Maximum number of integer segments, which should be >=2 in value.
+
+From the list of parameters above, the `count.vec` parameter is the one which when adjusted with higher values results in greater resource (time/memory) consumption, scaling asymptotically. Now in accordance with the first point mentioned above, we need to have that input vector of data as a function of `N`, which is relatively straight-forward depending on what type of data the function operates on. As per the function's description, it states that the algorithm computes optimal changepoint models using the *Poisson* likelihood for non-negative count data, which means we need to create a vector of poisson data in `N`, which is as simple as:
+```r
+data.vec = rpois(N, 1)
+```
+Now we simply emplace that function with its parameters for our expression argument in `asymptoticTimings()` and `asymptoticMemoryUsage()`, along with suitable data sizes to obtain the quantified timings/memory allocations respectively:
+```r
+df.time <- asymptoticTimings(e = PeakSegOptimal::PeakSegPDPA(count.vec = data.vec, max.segments = 3L), data.sizes = 10^seq(1, 4, by = 0.1))
+data.table(df.time)
+#>       Timings Data sizes
+#>  1:    248701         10
+#>  2:    120302         10
+#>  3:    125701         10
+#>  4:    133301         10
+#>  5:    146500         10
+#> ---                     
+#> 696: 405597501      10000
+#> 697: 408335001      10000
+#> 698: 338544401      10000
+#> 699: 404081901      10000
+#> 700: 399575501      10000
+```
+```r
+df.memory <- asymptoticMemoryUsage(PeakSegOptimal::PeakSegPDPA(count.vec = data.vec, max.segments = 3L), data.sizes = 10^seq(1, 4, by = 0.1))
+data.table(df.memory)
+#>    Memory usage Data sizes
+#> 1:         6256   10.00000
+#> 2:         7024   12.58925
+#> 3:         7432   15.84893
+#> 4:         8560   19.95262
+#> 5:         9496   25.11886
+#> --- 
+#> 25:       447792 2511.88643
+#> 26:       562336 3162.27766
+#> 27:       706512 3981.07171
+#> 28:       887792 5011.87234
+#> 29:      1116240 6309.57344
+```
+If the seperate use of `N` in the step-wise argument construction for the above demonstration seems confusing, one can simply pass the parameters directly like `count.vec = rpois(N, 1)` (avoiding use of `data.vec`) or just `rpois(N, 1)` (passing arguments in order). 
+
+Now that we have obtained our benchmarked data (consisting of runtimes and memory allocations) in a convienent `data.frame` format, we can proceed to find out the complexity class as demonstrated below. 
+
