@@ -16,3 +16,15 @@ knitr::opts_chunk$set(
 )
 ```
 
+<p style="font-family: times, serif; font-size:25pt; font-style: italic" align="center">
+Welcome to testComplexity
+</p>
+
+-------------------------------------------------------------------------------------------------
+
+This vignette is written to give the user a general introduction to the features and functionality of the package, via a set of textual illustrations and one example.
+
+## Brief Overview
+
+As can be guessed from the name itself, this package provides a suite of functions to test the asymptotic complexities of R functions/algorithms, where the term "complexity" here refers to the *time* complexity, as per the initial idea. (and hence a relevant logo with the stopwatch was designed early on!) 
+
