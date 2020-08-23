@@ -125,3 +125,38 @@ If the seperate use of `N` in the step-wise argument construction for the above 
 
 Now that we have obtained our benchmarked data (consisting of runtimes and memory allocations) in a convienent `data.frame` format, we can proceed to find out the complexity class as demonstrated below. 
 
+### [Complexity Classifiers](https://anirban166.github.io/testComplexity/reference/index.html#section-complexity-classifiers):
+These are the complexity classification functions which internally use different stochastic procedures (such as cross-validation on different glm models, as derived from GuessCompx) to compute the complexity class for the user-provided algorithm via a best model match. Using them is relatively quite simple, as one just needs to pass the data frame obtained from the quantifiers to the appropriate complexity classifier. 
+
+As an example, consider the data frames we obtained above for our function `PeakSegOptimal::PeakSegPDPA()` and pass them onto the complexity classifiers `asymptoticTimeComplexityClass()` and `asymptoticMemoryComplexityClass()` for time and memory cases respectively:
+```r
+asymptoticTimeComplexityClass(df.time)
+#> [1] "loglinear"
+```
+```r
+asymptoticMemoryComplexityClass(df.memory)
+#> [1] "loglinear"
+```
+The resulting complexity classes turned out to be log-linear for both time and memory cases, (coincidentally for this function they are the same) which are exactly<sup>1</sup> the expected complexity classes. 
+
+Note that you can chain the quantifiers with them, or call them and operate on their returned data frames directly:
+```r
+asymptoticTimeComplexityClass(asymptoticTimings(e = PeakSegOptimal::PeakSegPDPA(count.vec = data.vec, max.segments = 3L), data.sizes = 10^seq(1, 4, by = 0.1)))
+#> [1] "loglinear"
+asymptoticMemoryComplexityClass(asymptoticMemoryUsage(PeakSegOptimal::PeakSegPDPA(count.vec = data.vec, max.segments = 3L), data.sizes = 10^seq(1, 4, by = 0.1)))
+#> [1] "loglinear"
+```
+
+Furthermore, if the user wants to classify the asymptotic trend between two custom parameters (which are not subject to being only runtimes/memory-allocations), they can use the `asymptoticComplexityClass()` function which as intended, computes the complexity class based on the trend followed between any two parameters of user-provided data which are contained in a data frame. 
+
+The function accepts a data frame along with the two columnar parameters which the user needs to specify (as to which designates the output metric and which designates the data sizes, or something to relatively measure the trend against).
+
+Note that since the computed data is already prevalent in the specified output parameter column of the data frame, we don’t need to use our quantifying functions or perform any benchmarks.
+
+As a recurring example, consider passing the column names `Timings` and `Data sizes` along with the data frame returned by the time quantifier: (it consists of those two columns)
+```r
+asymptoticComplexityClass(df, output.size = "Timings", data.size = "Data sizes")
+#> [1] "loglinear"
+```
+As expected, it classifies the correct complexity just like `asymptoticTimeComplexityClass()` did, as because the complexity classification procedure is same, its just that the parameters are customizable, which leads to a wider use-case scenario than just classifying the trend for time/memory cases.
+
