@@ -10,10 +10,10 @@ asymptoticMemoryUsage(e, data.sizes, max.bytes)
 \item{e}{An expression which is in the form of a function operating on 'N' (as the data size for the algorithm to be tested against for a run), which takes values from the used-supplied parameter data.sizes.}
 
 \item{data.sizes}{A vector/set of data sizes, which should preferably be a sequence in powers of ten, with mid-values included.
-# Example: data.sizes = 10^seq(1, 5, by = 0.5)}
+Example: data.sizes = 10^seq(1, 4, by = 0.1)}
 
 \item{max.bytes}{The maximum number of allocated bytes an iteration would be limited upto for the passed expression. (once the limit has been exceeded, further computations on incrementally larger dataset sizes won't be done)
-# Optional, with default value set to 10^6 bytes. (1 Megabyte/MB)}
+Optional, with default value set to 10^6 bytes. (1 Megabyte/MB)}
 }
 \value{
 A data frame comprising of the memory usage (in megabytes) computed by bench and the corresponding dataset sizes.

@@ -20,28 +20,28 @@ plotTimings(
 \item{data.df}{A data frame composed of columns 'Timings' and 'Data sizes', which can be obtained by asymptoticTimings()}
 
 \item{titles}{A list of two elements consisting of strings for the plot title and subtitle.
-# Optional, with default values set to empty strings. (no titles/subtitles)}
+Optional, with default values set to empty strings. (no titles/subtitles)}
 
 \item{labels}{A list of two elements containing strings for x and y labels respectively.
-# Optional, with default values set to appropriate labels.}
+Optional, with default values set to appropriate labels.}
 
 \item{point.alpha}{A numeric value denoting transparency level (in the range 0 to 1) for point geometry.
-# Optional, with the default value set to 1. (no transparentness)}
+Optional, with the default value set to 1. (no transparentness)}
 
 \item{line.alpha}{A numeric value denoting transparency level (in the range 0 to 1) for line geometry.
-# Optional, with the default value set to 1. (no transparentness)}
+Optional, with the default value set to 1. (no transparentness)}
 
 \item{point.color}{A string specifying a known color or a representation in hexcode for point geometry.
-# Optional, with the default color set as black. (Hex equivalent: #000000)}
+Optional, with the default color set as black. (Hex equivalent: #000000)}
 
 \item{line.color}{A string specifying a known color or a representation in hexcode for line geometry.
-# Optional, with the default color set as black. (Hex equivalent: #000000)}
+Optional, with the default color set as black. (Hex equivalent: #000000)}
 
 \item{point.size}{A numeric value denoting the size of point geometry.
-# Optional, with the default value set to (1.3).}
+Optional, with the default value set to (1.3).}
 
 \item{line.size}{A numeric value denoting the size of line geometry.
-# Optional, with the default value set to (0.7).}
+Optional, with the default value set to (0.7).}
 }
 \value{
 A ggplot object.
