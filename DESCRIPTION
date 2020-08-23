@@ -25,7 +25,8 @@ Imports: boot,
          bench, 
          ggplot2, 
          stats,
-         testthat (>= 2.1.0)
+         testthat (>= 2.1.0),
+         hrbrthemes
 Suggests: 
     covr,
     knitr,
