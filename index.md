@@ -288,14 +288,17 @@ Blog Posts
 <a href="https://anirban166.github.io//Timings-quantifying-function/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TQlogo.png"> 
 <a href="https://anirban166.github.io//Memory-usage-quantifier/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/MQlogo.png"> 
 <a href="https://anirban166.github.io//Complexity-classifiers/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/CClogo.png"> 
-<a href="https://anirban166.github.io//Plotters/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/PTlogo.png"> 
+<a href="https://anirban166.github.io//Plotters/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/PTlogo.png"> <br> 
 <a href="https://anirban166.github.io//Generalized-complexity/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/GClogo.png">
-<a href="https://anirban166.github.io//Testing-functions/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TSlogo.png"> <br>
+<a href="https://anirban166.github.io//Testing-functions/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TSlogo.png"> 
+<a href="https://anirban166.github.io//Website/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/WEBlogo.png"> 
+<a href="https://anirban166.github.io//Software-Development/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/WSlogo.png"> 
+<a href="https://anirban166.github.io//CRAN-release/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/PKGlogo.png"> <br>
 </p>
     
 ---
 <h2 align="center">
-Anirban166 © 2020
+©2020
 </h2>
 
 <p align="center">
@@ -303,7 +306,7 @@ Anirban166 © 2020
 </p> 
 
 <p align="center">
-<a href="mailto:Anirban.code@studentpartner.com"><img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=Microsoft" alt="Microsoft Student Partner Email"> <a href="https://github.com/Anirban166"><img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=Github" alt="GitHub Link">  
-<a href="https://anirban166.github.io/posts/"><img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=Google%20messages" alt="Website Link"> <a href="https://www.linkedin.com/in/anirban166/"><img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=LinkedIn" alt="LinkedIn Link">
+<a href="mailto:Anirban.code@studentambassadors.com"><img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=Microsoft" alt="Microsoft Student Ambassador Email"> <a href="https://github.com/Anirban166"><img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=Github" alt="GitHub Link">  
+<a href="https://anirban166.github.io/posts/"><img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=Google%20messages" alt="Blog Link"> <a href="https://www.linkedin.com/in/anirban166/"><img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=LinkedIn" alt="LinkedIn Link">
 <a href="https://anirban166.github.io/"><img height="60" src="https://img.shields.io/badge/--black?style=flat&logo=WebStorm" alt="Website Link">        
 </p> 

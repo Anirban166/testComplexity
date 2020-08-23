@@ -10,10 +10,10 @@ asymptoticTimings(e, data.sizes, max.seconds)
 \item{e}{An expression which is in the form of a function operating on 'N' (as the data size for the algorithm to be tested against for a run), which takes values from the used-supplied parameter data.sizes.}
 
 \item{data.sizes}{A vector/set of data sizes, which should preferably be a sequence in powers of ten, with mid-values included.
-# Example: data.sizes = 10^seq(1, 5, by = 0.5)}
+Example: data.sizes = 10^seq(1, 4, by = 0.5)}
 
 \item{max.seconds}{The maximum number of seconds an iteration would be limited upto. (once the limit has been exceeded, further computations on incrementally larger dataset sizes won't be done)
-# Optional, with the default value set to 1 second.}
+Optional, with the default value set to 1 second.}
 }
 \value{
 A data frame comprising of the timings computed by microbenchmark and the corresponding dataset sizes.
