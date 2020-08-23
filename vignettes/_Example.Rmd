@@ -59,3 +59,7 @@ This in turn could potentially lead to improvements in code performance, if such
 
 -------------------------------------------------------------------------------------------------
 
+## Examples
+
+To demonstrate the functionality of our package, I'll be taking the function [`PeakSegPDPA`](https://github.com/tdhock/PeakSegOptimal/blob/master/R/PeakSegPDPA.R) from the [`PeakSegOptimal`](https://github.com/tdhock/PeakSegOptimal) package as an example for each of the functions stated below. Note that it is empirically observed to be a log-linear time and memory algorithm, or the expected complexity classes for both time and memory cases is $O(NlogN)$ for input size `N`. This fact here is essential to know before-hand as you'll see<sup>1</sup> that testComplexity's functions obtain the same result, demonstrating its accuracy.
+
