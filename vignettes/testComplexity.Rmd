@@ -200,21 +200,33 @@ PeakSegOptimal::PeakSegPDPA(data.vec, max.segments = 3L)}, data.sizes = 10^seq(1
 The call stack (sequence of calls that lead to the error) is returned via a call to `traceback()` as well, although the user doesn't need to exemplify the verification through that, since the error message itself clearly states the inequality between the expected and predicted complexity classes, which can be used to prove by contradiction. 
 
 ### [Plotters](https://anirban166.github.io/testComplexity/reference/index.html#section-plotters)
-These functions are for plotting the metrics returned by the quantifiers, in case the user still prefers to diagnose the obtained complexity result via the traditional method, with a visual representation of the benchmarked data. Considering the columns from the data frames returned by the quantiftying functions, the user can create plots for:
+These functions are for plotting the metrics returned by the quantifiers, in case the user still prefers to diagnose the obtained complexity result via the traditional method, i.e. with a visual representation of the benchmarked data. 
 
-- Timings vs Data sizes, via `plotTimings`: <br>
-```{r echo=TRUE, fig.show='hold', warning=FALSE}
+Considering the columns from the data frames returned by the quantiftying functions, the user can create plots for 'Timings' vs 'Data sizes' via `plotTimings()` and for 'Memory usage' vs 'Data sizes' via `plotMemoryUsage()`:  <br>
+
+```r
 library(testComplexity)
+# plot the trend between benchmarked timings and data sizes:
 df <- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(N, 1), max.segments = 3L), data.sizes = 10^seq(1, 4))
-plotTimings(df, titles = list("Timings", "PeakSegOptimal::PeakSegPDPA"), line.color = "orange", point.color = "black", line.size = 1, point.size = 1.5)  
+plotTimings(df, titles = list("Timings", "PeakSegOptimal::PeakSegPDPA"), line.color = "orange", point.color = "orange", line.size = 1, point.size = 1.5)  
+# plot the trend between computed memory allocations vs data sizes:
+df <- asymptoticMemoryUsage(PeakSegOptimal::PeakSegPDPA(rpois(N, 1), max.segments = 3L), data.sizes = 10^seq(1, 4, by = 0.1))
+plotMemoryUsage(df, titles = list("Memory usage", "PeakSegOptimal::PeakSegPDPA"), line.color = "orange", point.color = "orange", line.size = 1, point.size = 1.5)  
+```
+The user can add themes to the function itself (since it returns a ggplot object) to suit his/her aesthetics: <br>
+
+```{r echo=FALSE}
+knitr::include_graphics("https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/timememorycDPA.png")
 ```
 
-- Memory Allocations vs Data sizes, via `plotMemoryUsage`: <br>
-```{r echo=TRUE, fig.show='hold', warning=FALSE}
-library(testComplexity)
-df <- asymptoticMemoryUsage(PeakSegOptimal::PeakSegPDPA(rpois(N, 1), max.segments = 3L), data.sizes = 10^seq(1, 4, by = 0.1))
-plotMemoryUsage(df, titles = list("Memory usage", "PeakSegOptimal::PeakSegPDPA"), line.color = "orange", point.color = "black", line.size = 1, point.size = 1.5)  
+For the users relatively new to such diagnostic plots for benchmarking/profiling, it might seem hard to figure the trend just by looking at such individual plots. By testing with more functions, the graphical trends for quadratic/log-linear/linear classes become more clearly distinguishable over time. But for a quicker alternative, comparison plots can be created. For instance, the function we considered in our examples here (`PeakSegPDPA`) follows a log-linear trend (as proven above), so we can consider another function with either a lower or higher complexity class, and test for our function's plot-line to be above or lower respectively.
+As an example, consider comparing the trends of `PeakSegOptimal::PeakSegPDPA()` with the function [`PeakSegDP::cDPA()`](https://github.com/tdhock/PeakSegDP/blob/master/R/cDPA.R), which is [found](https://anirban166.github.io/testComplexity/articles/cDPA.html) to be quadratic in nature: <br>
+
+```{r echo=FALSE}
+knitr::include_graphics("https://raw.githubusercontent.com/Anirban166/RGSOC20_Tests/master/Images/finalplot.png")
 ```
+
+By observing the above figure, the user can tell that `PeakSegPDPA()` would fall in a lower complexity class in comparison to `cDPA()` (provided we know the later follows a quadratic trend), with the difference scaling asymptotically. However, it might not be clear whether it falls in the log-linear or linear zone by just looking at this comparison, (visually diagnosing a distinct complexity class from benchmarked data is difficult) which is the reason why our package thrives to provide a much more convenient alternative via the use of testers and complexity classifiers (operating on data supplied from the quantifiers).   
 
 -------------------------------------------------------------------------------------------------
-That sums up the functionality offered by testComplexity `0.0.0.9000`. For more examples, please check the articles section of the [website](https://anirban166.github.io/testComplexity/).
+That sums up the functionality offered by testComplexity `0.0.0.9000`. For more examples, please check the articles section from the navigation bar of the [website](https://anirban166.github.io/testComplexity/).
