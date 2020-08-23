@@ -1,10 +1,10 @@
 ---
-title: "Example vignette"
+title: "testComplexity vignette"
 author: "Anirban Chetia"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Example vignette}
+  %\VignetteIndexEntry{testComplexity vignette}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
