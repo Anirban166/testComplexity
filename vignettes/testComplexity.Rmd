@@ -1,10 +1,10 @@
 ---
-title: "testComplexity vignette"
+title: "General Vignette"
 author: "Anirban Chetia"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{testComplexity vignette}
+  %\VignetteIndexEntry{General Vignette}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -70,7 +70,7 @@ To demonstrate the functionality of our package, I'll be taking the function [`P
 
 Based on the different aspects of functionality, the functions in this package can be grouped into four distinct categories:
 
-### [Quantifiers](https://anirban166.github.io/testComplexity/reference/index.html#section-quantifiers): 
+### [Quantifiers](https://anirban166.github.io/testComplexity/reference/index.html#section-quantifiers)
 These are the quantifying functions which compute the empirical benchmarks for runtimes (via the `asymptoticTimings` function) and memory allocations (via the `asymptoticMemoryUsage` function) against allotted data sizes.
 For user convenience, a few points have been taken note of with respect to the parameters:
 
@@ -128,7 +128,7 @@ If the seperate use of `N` in the step-wise argument construction for the above 
 
 Now that we have obtained our benchmarked data (consisting of runtimes and memory allocations) in a convienent `data.frame` format, we can proceed to find out the complexity class as demonstrated below. 
 
-### [Complexity Classifiers](https://anirban166.github.io/testComplexity/reference/index.html#section-complexity-classifiers):
+### [Complexity Classifiers](https://anirban166.github.io/testComplexity/reference/index.html#section-complexity-classifiers)
 These are the complexity classification functions which internally use different stochastic procedures (such as cross-validation on different glm models, as derived from GuessCompx) to compute the complexity class for the user-provided algorithm via a best model match. Using them is relatively quite simple, as one just needs to pass the data frame obtained from the quantifiers to the appropriate complexity classifier. 
 
 As an example, consider the data frames we obtained above for our function `PeakSegOptimal::PeakSegPDPA()` and pass them onto the complexity classifiers `asymptoticTimeComplexityClass()` and `asymptoticMemoryComplexityClass()` for time and memory cases respectively:
@@ -163,7 +163,7 @@ asymptoticComplexityClass(df, output.size = "Timings", data.size = "Data sizes")
 ```
 As expected, it classifies the correct complexity just like `asymptoticTimeComplexityClass()` did, as because the complexity classification procedure is same, its just that the parameters are customizable, which leads to a wider use-case scenario than just classifying the trend for time/memory cases.
 
-### [Testers](https://anirban166.github.io/testComplexity/reference/index.html#section-testers):
+### [Testers](https://anirban166.github.io/testComplexity/reference/index.html#section-testers)
 These are the functions used to test the user-provided algorithm against an expected complexity class. They can be used to verify the theoretically derived or empirically observed complexities either directly or by disregarding the remaining complexity classes to prove the same via contradiction. 
 
 There are three surface level functions meant for the user, namely `expect_linear_time`, `expect_loglinear_time` and `expect_quadratic_time`, all of which as their respective names suggest can be used to test an algorithm against the named complexity class. If the algorithm shows the expected complexity, it doesn't throw any error. Otherwise a complexity mismatch error is thrown with a traceback from the calling point to the inner functions.
@@ -199,7 +199,7 @@ PeakSegOptimal::PeakSegPDPA(data.vec, max.segments = 3L)}, data.sizes = 10^seq(1
 ```
 The call stack (sequence of calls that lead to the error) is returned via a call to `traceback()` as well, although the user doesn't need to exemplify the verification through that, since the error message itself clearly states the inequality between the expected and predicted complexity classes, which can be used to prove by contradiction. 
 
-### [Plotters](https://anirban166.github.io/testComplexity/reference/index.html#section-plotters):
+### [Plotters](https://anirban166.github.io/testComplexity/reference/index.html#section-plotters)
 These functions are for plotting the metrics returned by the quantifiers, in case the user still prefers to diagnose the obtained complexity result via the traditional method, with a visual representation of the benchmarked data. Considering the columns from the data frames returned by the quantiftying functions, the user can create plots for:
 
 - Timings vs Data sizes, via `plotTimings`:
