@@ -1,5 +1,5 @@
 Package: testComplexity
-Title: Asymptotic complexity classifier
+Title: Asymptotic complexity testing framework
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Anirban",
@@ -7,12 +7,14 @@ Authors@R:
            role = c("aut", "cre"),
            email = "bloodraven166@gmail.com",
            comment = c(ORCID = "NA"))
-Description: It classifies the asymptotic time plus memory complexity class/trend (such as linear/log-linear/quadratic) 
-             for an algorithm-based function passed to it with the help of functions asymptoticTimeComplexityClass and
-             asymptoticMemoryComplexityClass, with data frames returned by asymptoticTimings and asymptoticMemoryUsage
-             as parameters. The data frames can be passed onto plotTimings and plotMemoryUsage for obtaining a visual
-             description of the benchmarked results and thereby identify potential speed gains. For testing out the
-             expected complexity of an algorithm, it is suggested to use the expect functions.
+Maintainer: Anirban Cheta <bloodraven166@gmail.com>
+Description: It classifies the asymptotic time/memory complexity class (one among constant/log/linear/log-linear/quadratic) 
+             for an algorithm/function passed to the functions asymptoticTimeComplexityClass and asymptoticMemoryComplexityClass, 
+             with data frames returned by asymptoticTimings and asymptoticMemoryUsage as parameters for time and memory
+             cases respectively. The data frames can be passed onto plotTimings and plotMemoryUsage for obtaining a visual
+             description of the benchmarked results if the user intends to diagnose the trend via the traditional method. 
+             For testing the algorithm against an expected time complexity class, the user can directly use the expect functions
+             following the syntax of 'expect_x_time', where x denotes the time complexity class. (linear/loglinear/quadratic)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -30,6 +32,5 @@ Suggests:
     covr,
     knitr,
     rmarkdown,
-    PeakSegOptimal,
     PeakSegDP,
-    fpop
+    PeakSegOptimal
