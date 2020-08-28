@@ -8,13 +8,17 @@ Authors@R:
            email = "bloodraven166@gmail.com",
            comment = c(ORCID = "NA"))
 Maintainer: Anirban Cheta <bloodraven166@gmail.com>
-Description: It classifies the asymptotic time/memory complexity class (one among constant/log/linear/log-linear/quadratic) 
-             for an algorithm/function passed to the functions asymptoticTimeComplexityClass and asymptoticMemoryComplexityClass, 
-             with data frames returned by asymptoticTimings and asymptoticMemoryUsage as parameters for time and memory
-             cases respectively. The data frames can be passed onto plotTimings and plotMemoryUsage for obtaining a visual
-             description of the benchmarked results if the user intends to diagnose the trend via the traditional method. 
-             For testing the algorithm against an expected time complexity class, the user can directly use the expect functions
-             following the syntax of 'expect_x_time', where x denotes the time complexity class. (linear/loglinear/quadratic)
+Description: It classifies the asymptotic time/memory complexity class for an 
+             algorithm/function passed to it with the help of functions 
+             asymptoticTimeComplexityClass and asymptoticMemoryComplexityClass, 
+             with data frames returned by asymptoticTimings and asymptoticMemoryUsage.
+             The data frames can be passed onto plotTimings and plotMemoryUsage 
+             for obtaining a visual description of the benchmarked results if the
+             user intends to diagnose the trend via the traditional method. 
+             For testing the algorithm against an expected time complexity class, 
+             the user can directly use the expect functions. Please check
+             https://anirban166.github.io/testComplexity/articles/testComplexity 
+             to get started.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
