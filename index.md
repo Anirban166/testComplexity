@@ -92,7 +92,11 @@ ________________________________________________________________________________
 Usage
 </h2>
 
-- For obtaining the benchmarked timings/memory against specified data sizes, pass the required algorithm as a function of `N` to `asymptoticTimings()`/`asymptoticMemoryUsage()`: <br>
+To get started, please check the [general vignette](https://anirban166.github.io/testComplexity/articles/testComplexity.html) which highlights all the features, enlists the different types of function categories existent in the package and describes the functionality offered by the underlying user-oriented functions via a set of textual elucidations with one example taken to be discussed throughout for each of them. 
+
+For a quick overview of the main functionality (obtaining quantified benchmarks & subsequently computing the time/memory complexity class), please check the examples below.
+
+- To obtain the benchmarked timings/memory-allocations against specified data sizes, pass the required algorithm as a function of `N` to `asymptoticTimings()`/`asymptoticMemoryUsage()`: <br>
 ```r
 > library(data.table)
 # Example 1 | Applying the bubble sort algorithm to a sample of 100 elements: (expected quadratic time complexity & constant memory complexity)
@@ -190,7 +194,7 @@ Check [this screencast](https://youtu.be/H4uefLb8zcQ) for a demonstration of tim
 Plotting
 </h2>
 
-For obtaining a visual description of the trend followed between runtimes/memory-usage vs data sizes so as to diagnose/verify the complexity result(s), simple plots can be crafted. They are roughly grouped into: 
+For obtaining a visual description of the trend followed between runtimes/memory-usage vs data sizes so as to diagnose the complexity result(s), simple plots can be crafted. They are roughly grouped into: 
 
 - **Single Plots** <br>
 Individual plots can be obtained by passing the data frame returned by the quantifying functions to `plotTimings()`/`plotMemoryUsage()` for time/memory cases respectively: <br>
@@ -241,6 +245,9 @@ In order to visually compare different algorithms based on the benchmarked metri
 > ggplot(plot.df, aes(x = `Data sizes`, y = Timings)) + geom_point(aes(color = expr)) + geom_line(aes(color = expr)) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings comparison plot", subtitle = "Linear vs Log-linear vs Quadratic complexities") + ggthemes::theme_pander()
 ```
 <img width = "100%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/cp2.png"> <br>
+
+Feel free to include more functions and increase the number of data sizes for a more comprehensive outlook: <br>
+
 <img width = "100%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/cp.png"> <br>
 - **Generalized Linear Model based Plots** <br>
 `ggfortify`, an extension of `ggplot2`, can be used to produce diagnostic plots for generalized linear models with the same formulae as used in the complexity classification functions: <br>
@@ -293,7 +300,7 @@ Blog Posts
 <a href="https://anirban166.github.io//Testing-functions/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TSlogo.png"> 
 <a href="https://anirban166.github.io//Website/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/WEBlogo.png"> 
 <a href="https://anirban166.github.io//Software-Development/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/WSlogo.png"> 
-<a href="https://anirban166.github.io//CRAN-release/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/PKGlogo.png"> <br>
+<a href="https://anirban166.github.io//Packing-up/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/PKGlogo.png"> <br>
 </p>
     
 ---
