@@ -248,7 +248,7 @@ In order to visually compare different algorithms based on the benchmarked metri
 > plot.df <- rbind(df.substring, df.PeakSegPDPA, df.cDPA, df.gregexpr, df.fpop, df.opart)
 > ggplot(plot.df, aes(x = `Data sizes`, y = Timings)) + geom_point(aes(color = expr)) + geom_line(aes(color = expr)) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings comparison plot", subtitle = "Linear vs Log-linear vs Quadratic complexities") + ggthemes::theme_pander()
 ```
-<img width = "100%" src = "Images/cp2.png"> <br
+<img width = "100%" src = "Images/cp2.png"> <br>
 
 Feel free to include more functions and increase the number of data sizes for a more comprehensive outlook: <br>
 

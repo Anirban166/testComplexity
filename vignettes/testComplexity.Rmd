@@ -1,7 +1,7 @@
 ---
 title: "General Vignette"
 author: "Anirban Chetia"
-date: "`r Sys.Date()`"
+date: "2020-08-29"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{General Vignette}
@@ -250,7 +250,7 @@ Without this added convenience or a good visual diagnosis capability, the user m
 knitr::include_graphics("https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/ComplexitiesVSPeakSegPDPA.png")
 ```
 
-It is clear that our algorithm `PeakSegPDPA()` falls under the log-linear asymptotic trend as can be observed from the above plot, with the plotline for the function being in close proximity to (or having the least deviation from) the log-linear line. 
+It is clear that our algorithm `PeakSegPDPA()` follows a log-linear asymptotic trend as can be observed from the above plot, with the plotline for the function being in close proximity to (or having the least deviation from) the log-linear line. 
 
 -------------------------------------------------------------------------------------------------
 That sums up the functionality offered by testComplexity `0.0.0.9000`. For more examples, please check the articles section from the navigation bar of the [website](https://anirban166.github.io/testComplexity/).
