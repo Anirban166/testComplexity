@@ -192,7 +192,6 @@ For a quick overview of the main functionality (obtaining quantified benchmarks 
 [1] "quadratic"
 ```
 Check [this screencast](https://youtu.be/H4uefLb8zcQ) for a demonstration of time complexity testing on different sorting algorithms over a test session.
-
 For more examples with functions from specific packages, please check the table with relevant contents in the [testing section](#testing).
 
 <h2 align="center">
