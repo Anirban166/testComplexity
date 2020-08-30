@@ -40,11 +40,11 @@ R package developers currently use ad-hoc tests of asymptotic computational comp
 Objectives
 </h2>
 
-- Primary objectives include classification of an algorithm’s time complexity trends, quantifying the runtimes and plotting the same which helps to visually conceive the complexity results, based upon the initial idea as staged [here](https://github.com/rstats-gsoc/gsoc2020/wiki/Asymptotic-complexity-testing#details-of-your-coding-project). <br>
-- Additionally, I thought of covering memory complexity testing as well, which goes hand-in-hand when we are dealing with the term complexity in computer science. <br>
+- Primary objectives include quantification of runtimes for an algorithm/function (against a set of user-provided data sizes), classification of the corresponding asymptotic time complexity class it belongs to (based on the computed benchmarks) and testing for the same against an expected time complexity class for verification of empirically observed results, based upon the initial idea as staged [here](https://github.com/rstats-gsoc/gsoc2020/wiki/Asymptotic-complexity-testing#details-of-your-coding-project). <br>
+- As per my proposal, a simple plot functionality was incorporated which helps to visually diagnose/conceive the benchmarked results. Additionally, I thought of covering memory complexity testing as well, which goes hand-in-hand when we are dealing with the term complexity in computer science. <br>
 - Furthermore, [@tdhock](https://github.com/tdhock) suggested classifying complexity for user-defined output parameters (i.e. a measure of a parameter apart from timings/memory), which would eventually make the package more flexible in terms of use-cases.
 
-Since algorithms are used in every sphere of research, this package potentially caters to all sorts of R-users, following different fields of study. Currently, it is being tested on changepoint detection, constrained optimal segmentation/partitioning algorithms plus a few regular ones such as substring and gregexpr.
+Since algorithms are used in every sphere of research, this package potentially caters to all sorts of R-users, following different fields of study/research. At its current state, it has been tested on algorithms pertaining to changepoint detection, sorting, constrained optimal segmentation/partitioning, plus a few common ones from base R such as substring and gregexpr.
 
 <h2 align="center">
 Installation
