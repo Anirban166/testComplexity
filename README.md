@@ -318,7 +318,7 @@ In addition to the readme content, the [web version](https://anirban166.github.i
 <a href="https://anirban166.github.io//Testing-functions/"> <img width = "13%" src = "/Images/TSlogo.png"> 
 <a href="https://anirban166.github.io//Website/"> <img width = "13%" src = "/Images/WEBlogo.png"> 
 <a href="https://anirban166.github.io//Software-Development/"> <img width = "13%" src = "/Images/WSlogo.png"> 
-<a href="https://anirban166.github.io//Packing-up/"> <img width = "13%" src = "/Images/PKGlogo.png"> <br>
+<a href="https://anirban166.github.io//GSoC-2020-Summary/"> <img width = "13%" src = "/Images/PKGlogo.png"> <br>
 </p>
     
 ---

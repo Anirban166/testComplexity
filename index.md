@@ -300,7 +300,7 @@ Blog Posts
 <a href="https://anirban166.github.io//Testing-functions/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TSlogo.png"> 
 <a href="https://anirban166.github.io//Website/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/WEBlogo.png"> 
 <a href="https://anirban166.github.io//Software-Development/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/WSlogo.png"> 
-<a href="https://anirban166.github.io//Packing-up/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/PKGlogo.png"> <br>
+<a href="https://anirban166.github.io//GSoC-2020-Summary/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/PKGlogo.png"> <br>
 </p>
     
 ---
