@@ -221,18 +221,24 @@ gridExtra::grid.arrange(time.plot, memory.plot, ncol = 2)
 ```
 
 ```{r echo=FALSE}
-knitr::include_graphics("https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/PeakSegPDPAtimememoryWT.png")
+knitr::include_graphics("https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/PDPAtimememoryWT.png")
 ```
 
 Themes can be directly appended to the ggplot object returned by the plotters:
 ```r
+time.plot <- plotTimings(df.time, titles = list("Timings plot", "PeakSegOptimal::PeakSegPDPA"), labels = list("Data size", "Runtime (in nanoseconds)"), point.color = "#ffec1b", line.color = "#ffec1b", point.size = 1.5, line.size = 1.1)
+memory.plot <- plotMemoryUsage(df.memory, titles = list("Memory usage plot", "PeakSegOptimal::PeakSegPDPA"), labels = list("Data size", "Memory size (in bytes)"), point.alpha = 1, line.alpha = 0.8, point.color = "#ffec1b", line.color = "#ffec1b", point.size = 2, line.size = 1)
+```
+```r
 themed.time.plot <- time.plot + hrbrthemes::theme_ft_rc()
 themed.memory.plot <- memory.plot + hrbrthemes::theme_ft_rc()
+```
+```r
 gridExtra::grid.arrange(themed.time.plot, themed.memory.plot, ncol = 2)
 ```
 
 ```{r echo=FALSE}
-knitr::include_graphics("https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/PeakSegPDPAtimememoryPT.png")
+knitr::include_graphics("https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/PDPAtimememoryPT.png")
 ```
 
 For the users relatively new to such diagnostic plots for benchmarking/profiling, it might seem hard to figure the trend just by looking at such individual plots. By testing with more functions, the graphical trends for the complexity classes become more clearly distinguishable over time. But for a quicker alternative, comparison plots can be created. For instance, the function we considered in our examples here (`PeakSegPDPA()`) follows a log-linear trend (as proven above), so we can consider another function with either a lower or higher complexity class, and test for our function's plot-line to be above or lower respectively.
