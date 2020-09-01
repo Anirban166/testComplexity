@@ -49,9 +49,9 @@ In addition to these, a few more features have been implemented:
 Based on whether the user has an idea of the complexity class the input algorithm falls in, two scenarios are possible:
 
 - The complexity class of the algorithm is *not known*, or diagnostic tests to estimate it have not been performed yet. 
-In this case, the user could directly use the [quantifiers](https://anirban166.github.io/testComplexity/articles/Example.html#quantifiers) and [complexity classifiers](https://anirban166.github.io/testComplexity/articles/Example.html#complexity-classifiers) to obtain the asymptotic complexity class. 
+In this case, the user could directly use the [quantifiers](https://anirban166.github.io/testComplexity/articles/testComplexity.html#quantifiers) and [complexity classifiers](https://anirban166.github.io/testComplexity/articles/testComplexity.html#complexity-classifiers) to obtain the asymptotic complexity class. 
 - The complexity class is *known* via theoretical proof/empirical observation. 
-For this case, the user can directly proceed to use the [testers](https://anirban166.github.io/testComplexity/articles/Example.html#testers) for verifying the theoretically-derived/empirically-obtained result, apart from using the previous method.
+For this case, the user can directly proceed to use the [testers](https://anirban166.github.io/testComplexity/articles/testComplexity.html#testers) for verifying the theoretically-derived/empirically-obtained result, apart from using the previous method.
 
 Note that the worst-case complexity class is currently set to quadratic. Cubic and exponential classes were initially thought of to be included, but since a $O(N^2)$ approach is the limit in practically used algorithms, subsequently higher complexity classes were discarded.
 
@@ -259,4 +259,4 @@ knitr::include_graphics("https://raw.githubusercontent.com/Anirban166/testComple
 It is clear that our algorithm `PeakSegPDPA()` follows a log-linear asymptotic trend as can be observed from the above plot, with the plotline for the function being in close proximity to (or having the least deviation from) the log-linear line. 
 
 -------------------------------------------------------------------------------------------------
-That sums up the functionality offered by testComplexity `0.0.0.9000`. For more examples, please check the articles section from the navigation bar of the [website](https://anirban166.github.io/testComplexity/).
+That sums up the functionality offered by testComplexity `0.1.0`. For more examples, please check the articles section from the navigation bar of the [website](https://anirban166.github.io/testComplexity/).
