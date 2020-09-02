@@ -37,16 +37,16 @@
 
 plotTimings = function(data.df, titles = list("", ""), labels = list("Data size", "Runtime (in nanoseconds)"), point.alpha = 1, line.alpha = 1, point.color = "black", line.color = "black", point.size = 1.3, line.size = 0.7)
 {
- if(class(data.df) == "data.frame" & "Timings" %in% colnames(data.df) & "Data sizes" %in% colnames(data.df))
- {
-   plot.obj <- ggplot(data.df, aes(x = `Data sizes`, y = Timings)) +
-               geom_point(alpha = point.alpha, color = point.color, size = point.size) +
-               geom_line(alpha = line.alpha, color = line.color, size = line.size) +
-               labs(x = labels[[1]], y = labels[[2]]) +
-               scale_x_log10() + scale_y_log10() +
-               ggtitle(titles[[1]], subtitle = titles[[2]])
+  if(class(data.df) == "data.frame" & "Timings" %in% colnames(data.df) & "Data sizes" %in% colnames(data.df))
+  {
+    plot.obj <- ggplot(data.df, aes(x = `Data sizes`, y = Timings)) +
+                geom_point(alpha = point.alpha, color = point.color, size = point.size) +
+                geom_line(alpha = line.alpha, color = line.color, size = line.size) +
+                labs(x = labels[[1]], y = labels[[2]]) +
+                scale_x_log10() + scale_y_log10() +
+                ggtitle(titles[[1]], subtitle = titles[[2]])
 
-   return(plot.obj)
- }
- else stop("Input parameter must be a data frame with columns 'Timings' and 'Data sizes'")
+    return(plot.obj)
+  }
+  else stop("Input parameter must be a data frame with columns 'Timings' and 'Data sizes'")
 }
