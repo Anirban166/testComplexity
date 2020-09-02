@@ -7,3 +7,6 @@
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^Images$
+^_config\.yml$
+^index\.md$
