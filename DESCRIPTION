@@ -7,10 +7,10 @@ Description: It classifies the asymptotic time/memory complexity class for an
              algorithm/function through the complexity classifiers, with data 
              frames returned by the quantifiers. The data frames can be passed 
              onto the plotting functions for obtaining a visual description of
-             the benchmarked results if the user intends to diagnose the trend
-             via the traditional method. For testing the algorithm against an
-             expected time complexity class, the user can directly use the expect
-             functions. Please check 
+             the benchmarks against data sizes if the user intends to diagnose
+             the trend via the traditional method. For testing the algorithm 
+             against an expected time complexity class, the user can directly
+             use the expect functions. Please check 
              <https://anirban166.github.io/testComplexity/articles/testComplexity> 
              to get started.
 License: MIT + file LICENSE

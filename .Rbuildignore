@@ -10,3 +10,6 @@
 ^Images$
 ^_config\.yml$
 ^index\.md$
+^CRAN-RELEASE$
+^cran-comments\.md$
+^README\.md$
