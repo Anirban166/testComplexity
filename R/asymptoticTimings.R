@@ -19,7 +19,8 @@
 
 asymptoticTimings <- function(e, data.sizes, max.seconds)
 {
-  ifelse(!all(!is.infinite(data.sizes) & !is.na(data.sizes) & !is.nan(data.sizes)), stop("data.sizes must not contain any NA/NaN/Infinite value."), return)
+  if(!all(!is.infinite(data.sizes) & !is.na(data.sizes) & !is.nan(data.sizes)))
+    stop("data.sizes must not contain any NA/NaN/Infinite value.")
 
   lang.obj <- substitute(e)
 
