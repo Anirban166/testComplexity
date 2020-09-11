@@ -16,6 +16,11 @@
 #'
 #' @export
 #' @import microbenchmark
+#'
+#' @examples
+#' # Quantifying the runtimes for the substring function against a set of input data sizes:
+#' input.sizes = 10^seq(1, 5, by = 0.5)
+#' asymptoticTimings(substring(paste(rep("A", N), collapse = ""), 1:N, 1:N), input.sizes)
 
 asymptoticTimings <- function(e, data.sizes, max.seconds)
 {

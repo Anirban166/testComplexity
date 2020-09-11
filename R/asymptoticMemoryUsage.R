@@ -16,6 +16,12 @@
 #'
 #' @export
 #' @import bench
+#'
+#' @examples
+#' # Quantifying the memory usage for the allocation of a square matrix (N*N dimensions)
+#' # against a set of input data sizes:
+#' input.sizes = 10^seq(1, 3, by = 0.1)
+#' asymptoticMemoryUsage(matrix(data = N:N, nrow = N, ncol = N), input.sizes)
 
 asymptoticMemoryUsage <- function(e, data.sizes, max.bytes)
 {
