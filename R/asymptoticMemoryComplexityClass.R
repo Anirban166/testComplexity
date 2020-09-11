@@ -12,6 +12,14 @@
 #' @importFrom stats glm
 #' @importFrom boot cv.glm
 #' @importFrom stats fitted
+#'
+#' @examples
+#' # Allocating a square matrix of N*N dimensions against a set of increasing input data sizes:
+#' input.sizes = 10^seq(1, 3, by = 0.1)
+#' memory.usage.data <- asymptoticMemoryUsage(matrix(data = N:N, nrow = N, ncol = N), input.sizes)
+#' # Computing its memory complexity class based on the benchmarked data obtained above:
+#' asymptoticMemoryComplexityClass(memory.usage.data)
+#' # Expected complexity class: quadratic
 
 asymptoticMemoryComplexityClass = function(model.df)
 {

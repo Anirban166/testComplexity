@@ -18,3 +18,11 @@ Function to classify the time complexity of the expression passed onto asymptoti
 \details{
 For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Complexity-classifiers/
 }
+\examples{
+# Running the substring function against a set of increasing input data sizes:
+input.sizes = 10^seq(1, 4, by = 0.5)
+timings.df <- asymptoticTimings(substring(paste(rep("A", N), collapse = ""), 1:N, 1:N), input.sizes)
+# Classifying the time complexity trend based on the benchmarked data obtained above:
+asymptoticTimeComplexityClass(timings.df)
+# Expected complexity class: linear
+}
