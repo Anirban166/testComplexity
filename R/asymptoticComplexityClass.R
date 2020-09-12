@@ -13,6 +13,15 @@
 #' @details For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Generalized-complexity/
 #'
 #' @export
+#'
+#' @examples
+#' # Quantifying timings for the substring function against a set of increasing input data sizes:
+#' input.sizes = 10^seq(1, 4, by = 0.5)
+#' timings.df <- asymptoticTimings(substring(paste(rep("A", N), collapse = ""), 1:N, 1:N), input.sizes)
+#' # Classifying the complexity trend between the data contained in the columns
+#' # 'Timings' and 'Data sizes' from the data frame obtained above:
+#' asymptoticComplexityClass(timings.df, output.size = "Timings", data.size = "Data sizes")
+#' # Expected complexity class: linear
 
 asymptoticComplexityClass = function(df, output.size, data.size)
 {

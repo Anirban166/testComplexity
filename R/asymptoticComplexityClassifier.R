@@ -12,6 +12,16 @@
 #' @importFrom stats glm
 #' @importFrom boot cv.glm
 #' @importFrom stats fitted
+#'
+#' @examples
+#' # Quantifying timings for the substring function against a set of increasing input data sizes:
+#' input.sizes = 10^seq(1, 4, by = 0.5)
+#' timings.df <- asymptoticTimings(substring(paste(rep("A", N), collapse = ""), 1:N, 1:N), input.sizes)
+#' # Classifying the complexity trend between the data contained in the columns
+#' # 'Timings' and 'Data sizes' from the data frame obtained above:
+#' df <- data.frame('output' = timings.df$Timings, 'size' = timings.df$`Data sizes`)
+#' asymptoticComplexityClassifier(df)
+#' # Expected complexity class: linear
 
 asymptoticComplexityClassifier = function(df)
 {
