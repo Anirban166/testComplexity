@@ -19,7 +19,6 @@
 #' memory.usage.data <- asymptoticMemoryUsage(matrix(data = N:N, nrow = N, ncol = N), input.sizes)
 #' # Computing its memory complexity class based on the benchmarked data obtained above:
 #' asymptoticMemoryComplexityClass(memory.usage.data)
-#' # Expected complexity class: quadratic
 
 asymptoticMemoryComplexityClass = function(model.df)
 {
