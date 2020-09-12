@@ -52,3 +52,10 @@ Function to plot timings vs data sizes from the data frame returned by asymptoti
 \details{
 For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Plotters/
 }
+\examples{
+# Quantifying the runtimes for the substring function against a set of input data sizes:
+input.sizes = 10^seq(1, 4, by = 0.5)
+timings.df <- asymptoticTimings(substring(paste(rep("A", N), collapse = ""), 1:N, 1:N), input.sizes)
+# Plotting the trend between benchmarked timings and data sizes:
+plotTimings(timings.df)
+}

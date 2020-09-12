@@ -34,6 +34,14 @@
 #'
 #' @export
 #' @import ggplot2
+#'
+#' @examples
+#' # Quantifying the memory usage for the allocation of a square matrix (N*N dimensions)
+#' # against a set of input data sizes:
+#' input.sizes = 10^seq(1, 3, by = 0.1)
+#' memory.usage.data <- asymptoticMemoryUsage(matrix(data = N:N, nrow = N, ncol = N), input.sizes)
+#' # Plotting the trend between computed memory allocations and data sizes:
+#' plotMemoryUsage(memory.usage.data)
 
 plotMemoryUsage = function(data.df, titles = list("", ""), labels = list("Data sizes", "Memory usage (in bytes)"), point.alpha = 1, line.alpha = 1, point.color = "black", line.color = "black", point.size = 1.3, line.size = 0.7)
 {

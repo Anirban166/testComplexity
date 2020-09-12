@@ -52,3 +52,11 @@ Function to plot timings vs data sizes from the data frame returned by asymptoti
 \details{
 For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Plotters/
 }
+\examples{
+# Quantifying the memory usage for the allocation of a square matrix (N*N dimensions)
+# against a set of input data sizes:
+input.sizes = 10^seq(1, 3, by = 0.1)
+memory.usage.data <- asymptoticMemoryUsage(matrix(data = N:N, nrow = N, ncol = N), input.sizes)
+# Plotting the trend between computed memory allocations and data sizes:
+plotMemoryUsage(memory.usage.data)
+}
