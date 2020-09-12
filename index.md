@@ -309,7 +309,7 @@ Blog Posts
 </h2>
 
 <p align="center">
-<a href="mailto:bloodraven166@gmail.com"><img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=gmail" alt="Primary Email"> <a href="https://stackoverflow.com/users/11422223/anirban166?tab=profile"><img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=Stack%20Overflow" alt="Stack Overflow Link"> <a href="https://www.hackerrank.com/Bloodraven166"><img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=HackerRank" alt="HackerRank Link"> <a href="https://www.instagram.com/anirban.166/"><img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=Instagram" alt="Instagram Link"> <a href="https://summerofcode.withgoogle.com/projects/4887653356404736"><img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=google" alt="Google Summer of Code Project Link"> 
+<a href="mailto:bloodraven166@gmail.com"><img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=gmail" alt="Primary Email"> <a href="https://stackoverflow.com/users/11422223/anirban166?tab=profile"><img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=Stack%20Overflow" alt="Stack Overflow Link"> <a href="https://www.hackerrank.com/Anirban166"><img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=HackerRank" alt="HackerRank Link"> <a href="https://www.instagram.com/anirban.166/"><img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=Instagram" alt="Instagram Link"> <a href="https://summerofcode.withgoogle.com/projects/4887653356404736"><img height="60" src="https://img.shields.io/badge/--white?style=flat&logo=google" alt="Google Summer of Code Project Link"> 
 </p> 
 
 <p align="center">

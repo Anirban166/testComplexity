@@ -15,11 +15,10 @@
 #'
 #' @examples
 #' # Running the substring function against a set of increasing input data sizes:
-#' input.sizes = 10^seq(1, 4, by = 0.5)
+#' input.sizes = 10^seq(1, 2, by = 0.3)
 #' timings.df <- asymptoticTimings(substring(paste(rep("A", N), collapse = ""), 1:N, 1:N), input.sizes)
 #' # Classifying the time complexity trend based on the benchmarked data obtained above:
 #' asymptoticTimeComplexityClass(timings.df)
-#' # Expected complexity class: linear
 
 asymptoticTimeComplexityClass = function(model.df)
 {

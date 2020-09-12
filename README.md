@@ -333,7 +333,7 @@ In addition to the readme content, the [web version](https://anirban166.github.i
     <a href="https://stackoverflow.com/users/11422223/anirban166?tab=profile">    
     <img width = "8.5%" src="https://img.shields.io/badge/--white?style=flat&logo=Stack%20Overflow"
          alt="Stack Overflow Link">
-    <a href="https://www.hackerrank.com/Bloodraven166">
+    <a href="https://www.hackerrank.com/Anirban166">
     <img width = "8.5%" src="https://img.shields.io/badge/--white?style=flat&logo=HackerRank"
          alt="HackerRank Link">
     <a href="https://www.instagram.com/anirban.166/">
