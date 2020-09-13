@@ -13,6 +13,15 @@
 #' @details For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Testing-functions/
 #'
 #' @export
+#'
+#' @examples
+#' \donttest{ # Avoiding for CRAN since computation time exceeds 5 seconds
+#' # Testing the PeakSegOptimal::PeakSegPDPA() function, expecting log-linear time complexity:
+#' func <- PeakSegOptimal::PeakSegPDPA(rpois(N, 1), max.segments = 3L)
+#' input.sizes <- 10^seq(1, 4, by = 0.5)
+#' expect_time_complexity("loglinear", func, input.sizes)
+#' # The above code will throw an error if the function does not follow a log-linear trend.
+#' }
 
 expect_time_complexity = function(complexity.class, ..., f)
 {

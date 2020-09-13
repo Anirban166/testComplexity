@@ -12,6 +12,10 @@
 #'
 #' @export
 #' @import testthat
+#'
+#' @examples
+#' # Testing for equality two string objects (denoting complexity classes):
+#' expect_complexity_class("linear", "linear")
 
 expect_complexity_class <- function(object, complexity.class)
 {

@@ -9,6 +9,14 @@
 #' @details For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Testing-functions/
 #'
 #' @export
+#'
+#' @examples
+#' \donttest{ # Avoiding for CRAN since computation time can exceeds 5 seconds in some runs:
+#' # Testing the substring function, expecting the linear time complexity class:
+#' input.sizes <- 10^seq(1, 5, by = 0.5)
+#' expect_linear_time(substring(paste(rep("A", N), collapse = ""), 1:N, 1:N), input.sizes)
+#' # The above code will throw an error if the function does not follow a linear trend.
+#' }
 
 expect_linear_time = function(...)
 {
