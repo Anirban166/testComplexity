@@ -19,11 +19,11 @@ Function to test if input algorithm has log-linear time complexity
 For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Testing-functions/
 }
 \examples{
-\donttest{ # Avoiding for CRAN since computation time exceeds 5 seconds
-# Testing the PeakSegOptimal::PeakSegPDPA() function, expecting log-linear time complexity:
-expect_loglinear_time({
-    data.vec <- rpois(N, 1)
-   PeakSegOptimal::PeakSegPDPA(data.vec, max.segments = 3L)}, data.sizes = 10^seq(1, 4, by = 0.5))
+\donttest{
+# Avoiding for CRAN since computation time can exceeds 5 seconds in some runs:
+# Testing a simple expression:
+input.sizes <- 10^seq(1, 4, by = 0.5)
+expect_loglinear_time(N, input.sizes)
 # The above code will throw an error if the function does not follow a log-linear trend.
 }
 }
