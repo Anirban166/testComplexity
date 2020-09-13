@@ -186,7 +186,6 @@ The above function throws no error, which means that our algorithm does follow a
 expect_linear_time({
 data.vec <- rpois(N, 1)
 PeakSegOptimal::PeakSegPDPA(data.vec, max.segments = 3L)}, data.sizes = 10^seq(1, 4, by = 0.5))
-})
 #> [1] "loglinear"
 #> Error: Complexity mismatch: Expected linear complexity, instead of the predicted loglinear complexity from asymptoticTimeComplexityClass(timings.df). 
 ```
@@ -194,7 +193,6 @@ PeakSegOptimal::PeakSegPDPA(data.vec, max.segments = 3L)}, data.sizes = 10^seq(1
 expect_quadratic_time({
 data.vec <- rpois(N, 1)
 PeakSegOptimal::PeakSegPDPA(data.vec, max.segments = 3L)}, data.sizes = 10^seq(1, 4, by = 0.5))
-})
 #> [1] "loglinear"
 #> Error: Complexity mismatch: Expected quadratic complexity, instead of the predicted loglinear complexity from asymptoticTimeComplexityClass(timings.df). 
 ```
