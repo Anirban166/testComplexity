@@ -20,3 +20,7 @@ Function to test if object returning/printing a string matches with a specified 
 \details{
 For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Testing-functions/
 }
+\examples{
+# Testing for equality two string objects (denoting complexity classes):
+expect_complexity_class("linear", "linear")
+}

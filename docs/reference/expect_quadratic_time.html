@@ -180,6 +180,14 @@
 
     <p>For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Testing-functions/</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'> <span class='co'># Avoiding for CRAN since computation time exceeds 5 seconds</span>
+<span class='co'># Testing the PeakSegDP::cDPA() function, expecting quadratic time complexity:</span>
+<span class='fu'>expect_quadratic_time</span>({
+    <span class='no'>data.vec</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Poisson.html'>rpois</a></span>(<span class='no'>N</span>, <span class='fl'>1</span>)
+   <span class='kw pkg'>PeakSegOptimal</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/PeakSegOptimal/man/PeakSegPDPA.html'>PeakSegPDPA</a></span>(<span class='no'>data.vec</span>, <span class='kw'>max.segments</span> <span class='kw'>=</span> <span class='fl'>3L</span>)}, <span class='kw'>data.sizes</span> <span class='kw'>=</span> <span class='fl'>10</span>^<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>1</span>, <span class='fl'>4</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fl'>0.5</span>))</div><div class='output co'>#&gt; [1] "linear"</div><div class='output co'>#&gt; <span class='error'>Error: Complexity mismatch: Expected quadratic complexity, instead of the predicted linear complexity from asymptoticTimeComplexityClass(timings.df).</span></div><div class='input'># The above code will throw an error if the function does not follow a quadratic trend.
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
