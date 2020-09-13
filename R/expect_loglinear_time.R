@@ -11,11 +11,11 @@
 #' @export
 #'
 #' @examples
-#' \donttest{ # Avoiding for CRAN since computation time exceeds 5 seconds
-#' # Testing the PeakSegOptimal::PeakSegPDPA() function, expecting log-linear time complexity:
-#' expect_loglinear_time({
-#'     data.vec <- rpois(N, 1)
-#'    PeakSegOptimal::PeakSegPDPA(data.vec, max.segments = 3L)}, data.sizes = 10^seq(1, 4, by = 0.5))
+#' \donttest{
+#' # Avoiding for CRAN since computation time exceeds 5 seconds
+#' # Testing the substring function, which belongs to the linear time complexity class:
+#' input.sizes <- 10^seq(1, 5, by = 0.5)
+#' expect_loglinear_time(substring(paste(rep("A", N), collapse = ""), 1:N, 1:N), input.sizes)
 #' # The above code will throw an error if the function does not follow a log-linear trend.
 #' }
 
