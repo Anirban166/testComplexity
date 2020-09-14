@@ -189,12 +189,15 @@
     <p>For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Testing-functions/</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'> <span class='co'># Avoiding for CRAN since computation time exceeds 5 seconds</span>
-<span class='co'># Testing the PeakSegOptimal::PeakSegPDPA() function, expecting log-linear time complexity:</span>
-<span class='no'>func</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>PeakSegOptimal</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/PeakSegOptimal/man/PeakSegPDPA.html'>PeakSegPDPA</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Poisson.html'>rpois</a></span>(<span class='no'>N</span>, <span class='fl'>1</span>), <span class='kw'>max.segments</span> <span class='kw'>=</span> <span class='fl'>3L</span>)</div><div class='output co'>#&gt; <span class='error'>Error in rpois(N, 1): object 'N' not found</span></div><div class='input'><span class='no'>input.sizes</span> <span class='kw'>&lt;-</span> <span class='fl'>10</span>^<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>1</span>, <span class='fl'>4</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fl'>0.5</span>)
-<span class='fu'>expect_time_complexity</span>(<span class='st'>"loglinear"</span>, <span class='no'>func</span>, <span class='no'>input.sizes</span>)</div><div class='output co'>#&gt; <span class='error'>Error in eval(lang.obj): object 'func' not found</span></div><div class='input'># The above code will throw an error if the function does not follow a log-linear trend.
-
-</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'># Running the quick sort algorithm with sampling against a set of increasing input data sizes:</span>
+<span class='no'>ds</span> <span class='kw'>=</span> <span class='fl'>10</span>^<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>1</span>, <span class='fl'>3</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fl'>0.5</span>)
+<span class='co'># Assigning a complexity class to test against:</span>
+<span class='no'>cc</span> <span class='kw'>=</span> <span class='st'>"loglinear"</span>
+<span class='co'># Note: short variable names are used to avoid exceeding the character limit in the line below.</span>
+<span class='fu'>expect_time_complexity</span>(<span class='no'>cc</span>, <span class='fu'><a href='https://rdrr.io/r/base/sort.html'>sort</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span>:<span class='fl'>100</span>, <span class='no'>data.sizes</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"quick"</span>), <span class='no'>ds</span>)
+<span class='co'># The code above will throw an error if the function does not follow a log-linear trend.</span>
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

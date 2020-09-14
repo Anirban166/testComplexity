@@ -25,7 +25,8 @@ Function to compute benchmarked timings with different data sizes for an R expre
 For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Timings-function/
 }
 \examples{
-# Quantifying the runtimes for the substring function against a set of input data sizes:
-input.sizes = 10^seq(1, 4, by = 0.5)
-asymptoticTimings(substring(paste(rep("A", N), collapse = ""), 1:N, 1:N), input.sizes)
+# Quantifying the runtimes for the quick sort algorithm (with sampling performed)
+# against a set of increasing input data sizes:
+input.sizes = 10^seq(1, 3, by = 0.5)
+asymptoticTimings(sort(sample(1:100, data.sizes, replace = TRUE), method = "quick"), input.sizes)
 }

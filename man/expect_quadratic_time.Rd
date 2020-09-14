@@ -19,11 +19,10 @@ Function to test if input algorithm has quadratic time complexity
 For more information regarding its implementation or functionality/usage, please check https://anirban166.github.io//Testing-functions/
 }
 \examples{
-\donttest{
-# Avoiding for CRAN since computation time can exceeds 5 seconds in some runs:
-# Testing a simple expression:
-input.sizes <- 10^seq(1, 4, by = 0.5)
-expect_quadratic_time(N, input.sizes)
-# The above code will throw an error if the function does not follow a quadratic trend.
+\dontrun{
+# Running the quick sort algorithm with sampling against a set of increasing input data sizes:
+sizes = 10^seq(1, 3, by = 0.5)
+expect_quadratic_time(sort(sample(1:100, data.sizes, replace = TRUE), method = "quick"), sizes)
+# The code above will throw an error if the function does not follow a quadratic trend.
 }
 }

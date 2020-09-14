@@ -185,7 +185,8 @@
 <span class='no'>input.sizes</span> <span class='kw'>=</span> <span class='fl'>10</span>^<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>1</span>, <span class='fl'>3</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fl'>0.1</span>)
 <span class='no'>memory.usage.data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='asymptoticMemoryUsage.html'>asymptoticMemoryUsage</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>N</span>:<span class='no'>N</span>, <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='no'>N</span>, <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='no'>N</span>), <span class='no'>input.sizes</span>)
 <span class='co'># Computing its memory complexity class based on the benchmarked data obtained above:</span>
-<span class='fu'>asymptoticMemoryComplexityClass</span>(<span class='no'>memory.usage.data</span>)</div><div class='output co'>#&gt; [1] "quadratic"</div></pre>
+<span class='fu'>asymptoticMemoryComplexityClass</span>(<span class='no'>memory.usage.data</span>)</div><div class='output co'>#&gt; [1] "quadratic"</div><div class='input'># For allocating a square matrix, the quadratic space/memory complexity class is expected.
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
