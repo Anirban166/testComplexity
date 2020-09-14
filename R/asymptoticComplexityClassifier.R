@@ -14,15 +14,16 @@
 #' @importFrom stats fitted
 #'
 #' @examples
-#' \donttest{
-#' # Avoiding for CRAN since computation time exceeds 5 seconds:
-#' # Quantifying timings for the substring function against a set of increasing input data sizes:
-#' input.sizes = 10^seq(1, 4, by = 0.5)
-#' timings.df <- asymptoticTimings(substring(paste(rep("A", N), collapse = ""), 1:N, 1:N), input.sizes)
+#' # Avoiding for CRAN since computation time might exceed 5 seconds sometimes:
+#' \dontrun{
+#' # Running the quick sort algorithm with sampling against a set of increasing input data sizes:
+#' sizes = 10^seq(1, 3, by = 0.5)
+#' df <- asymptoticTimings(sort(sample(1:100, data.sizes, replace = TRUE), method = "quick"), sizes)
 #' # Classifying the complexity trend between the data contained in the columns
 #' # 'Timings' and 'Data sizes' from the data frame obtained above:
-#' df <- data.frame('output' = timings.df$Timings, 'size' = timings.df$`Data sizes`)
-#' asymptoticComplexityClassifier(df)
+#' resultant.df <- data.frame('output' = df$Timings, 'size' = df$`Data sizes`)
+#' asymptoticComplexityClassifier(resultant.df)
+#' # For quick sort, the log-linear time complexity class is expected.
 #' }
 
 asymptoticComplexityClassifier = function(df)
