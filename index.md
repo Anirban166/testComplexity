@@ -2,6 +2,7 @@
 <img width = "95%" height = "auto" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TransparentLogo.png">
 </p>
 
+<!-- badges: start -->
 <p align="center">
     <a href="https://github.com/Anirban166/testComplexity/actions">
     <img src="https://github.com/Anirban166/testComplexity/workflows/R-CMD-check/badge.svg"    
@@ -23,8 +24,9 @@
          alt="GSoC project"> </a>
     <a href="https://github.com/Anirban166/testComplexity/blob/master/LICENSE.md">
     <img src="https://img.shields.io/badge/License-MIT-black?style=flat"
-         alt="GitHub License"> </a>      
+         alt="GitHub License"> </a>   
 </p> 
+<!-- badges: end -->    
 
 ---
 <h2 align="center">
@@ -55,6 +57,10 @@ devtools::install_github("Anirban166/testComplexity")
 ```r
 if(!require(remotes)) install.packages("remotes")
 remotes::install_github("Anirban166/testComplexity")
+```
+Alternatively, opt for the CRAN-stable version using:
+```r
+install.packages("testComplexity")
 ```
 
 <h2 align="center">

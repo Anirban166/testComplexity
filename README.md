@@ -59,6 +59,10 @@ devtools::install_github("Anirban166/testComplexity")
 if(!require(remotes)) install.packages("remotes")
 remotes::install_github("Anirban166/testComplexity")
 ```
+Alternatively, opt for the CRAN-stable version using:
+```r
+install.packages("testComplexity")
+```
 
 <h2 align="center">
 Functional Flow
