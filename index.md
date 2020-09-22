@@ -291,16 +291,16 @@ Blog Posts
 </h2>
 
 <p align="center">
-<a href="https://anirban166.github.io//Test-functions/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TFlogo.png"> 
-<a href="https://anirban166.github.io//Timings-quantifying-function/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TQlogo.png"> 
-<a href="https://anirban166.github.io//Memory-usage-quantifier/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/MQlogo.png"> 
-<a href="https://anirban166.github.io//Complexity-classifiers/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/CClogo.png"> 
-<a href="https://anirban166.github.io//Plotters/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/PTlogo.png"> <br> 
-<a href="https://anirban166.github.io//Generalized-complexity/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/GClogo.png">
-<a href="https://anirban166.github.io//Testing-functions/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TSlogo.png"> 
-<a href="https://anirban166.github.io//Website/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/WEBlogo.png"> 
-<a href="https://anirban166.github.io//Software-Development/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/WSlogo.png"> 
-<a href="https://anirban166.github.io//GSoC-2020-Summary/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/PKGlogo.png"> <br>
+<a href="https://anirban166.github.io//Test-functions/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/LogoTF.png"> 
+<a href="https://anirban166.github.io//Timings-quantifying-function/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/LogoTQ.png"> 
+<a href="https://anirban166.github.io//Memory-usage-quantifier/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/LogoMQ.png"> 
+<a href="https://anirban166.github.io//Complexity-classifiers/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/LogoCC.png"> 
+<a href="https://anirban166.github.io//Plotters/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/LogoPT.png"> <br> 
+<a href="https://anirban166.github.io//Generalized-complexity/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/LogoGC.png">
+<a href="https://anirban166.github.io//Testing-functions/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/LogoTS.png"> 
+<a href="https://anirban166.github.io//Website/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/LogoWS.png"> 
+<a href="https://anirban166.github.io//Software-Development/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/LogoSD.png"> 
+<a href="https://anirban166.github.io//GSoC-2020-Summary/"> <img width = "13%" src = "https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/LogoPKG.png"> <br>
 </p>
     
 ---

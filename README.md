@@ -309,16 +309,16 @@ Resources
 In addition to the readme content, the [web version](https://anirban166.github.io/testComplexity/) includes quick [reference](https://anirban166.github.io/testComplexity/reference/index.html) to functions plus vignettes for some use-cases. For [blog](https://anirban166.github.io/posts/) posts, please check the links below: <br>
 
 <p align="center">
-<a href="https://anirban166.github.io//Test-functions/"> <img width = "13%" src = "/Images/TFlogo.png"> 
-<a href="https://anirban166.github.io//Timings-quantifying-function/"> <img width = "13%" src = "/Images/TQlogo.png"> 
-<a href="https://anirban166.github.io//Memory-usage-quantifier/"> <img width = "13%" src = "/Images/MQlogo.png"> 
-<a href="https://anirban166.github.io//Complexity-classifiers/"> <img width = "13%" src = "/Images/CClogo.png"> 
-<a href="https://anirban166.github.io//Plotters/"> <img width = "13%" src = "/Images/PTlogo.png"> </a> <br>
-<a href="https://anirban166.github.io//Generalized-complexity/"> <img width = "13%" src = "/Images/GClogo.png">
-<a href="https://anirban166.github.io//Testing-functions/"> <img width = "13%" src = "/Images/TSlogo.png"> 
-<a href="https://anirban166.github.io//Website/"> <img width = "13%" src = "/Images/WEBlogo.png"> 
-<a href="https://anirban166.github.io//Software-Development/"> <img width = "13%" src = "/Images/WSlogo.png"> 
-<a href="https://anirban166.github.io//GSoC-2020-Summary/"> <img width = "13%" src = "/Images/PKGlogo.png"> <br>
+<a href="https://anirban166.github.io//Test-functions/"> <img width = "13%" src = "/Images/LogoTF.png"> 
+<a href="https://anirban166.github.io//Timings-quantifying-function/"> <img width = "13%" src = "/Images/LogoTQ.png"> 
+<a href="https://anirban166.github.io//Memory-usage-quantifier/"> <img width = "13%" src = "/Images/LogoMQ.png"> 
+<a href="https://anirban166.github.io//Complexity-classifiers/"> <img width = "13%" src = "/Images/LogoCC.png"> 
+<a href="https://anirban166.github.io//Plotters/"> <img width = "13%" src = "/Images/LogoPT.png"> </a> <br>
+<a href="https://anirban166.github.io//Generalized-complexity/"> <img width = "13%" src = "/Images/LogoGC.png">
+<a href="https://anirban166.github.io//Testing-functions/"> <img width = "13%" src = "/Images/LogoTS.png"> 
+<a href="https://anirban166.github.io//Website/"> <img width = "13%" src = "/Images/LogoWS.png"> 
+<a href="https://anirban166.github.io//Software-Development/"> <img width = "13%" src = "/Images/LogoSD.png"> 
+<a href="https://anirban166.github.io//GSoC-2020-Summary/"> <img width = "13%" src = "/Images/LogoPKG.png"> <br>
 </p>
     
 ---
