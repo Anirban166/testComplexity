@@ -69,10 +69,12 @@ test_that("Inf test for data.sizes", {
 })
 
 test_that("Return value test for asymptoticMemoryUsage", {
-  df <- asymptoticMemoryUsage(rpois(N, 10), data.sizes = 10)
-  expect_that(df, is_a("data.frame") )
-  expect_equal(dim(df), c(1, 2))
-  expect_equal(attributes(df)$names, c("Memory usage", "Data sizes"))
+  if(capabilities("profmem")) {
+    df <- asymptoticMemoryUsage(rpois(N, 10), data.sizes = 10)
+    expect_that(df, is_a("data.frame") )
+    expect_equal(dim(df), c(1, 2))
+    expect_equal(attributes(df)$names, c("Memory usage", "Data sizes"))
+  }
 })
 
 # Tests for asymptoticMemoryComplexityClass()
@@ -82,9 +84,11 @@ test_that("model.df parameter test for asymptoticMemoryComplexityClass", {
 })
 
 test_that("Return value test for asymptoticMemoryComplexityClass", {
-  df <- asymptoticMemoryUsage(rpois(N, 10), data.sizes = 10^seq(1, 4, by = 0.1))
-  complexity.classes <- c("constant", "log", "linear", "loglinear", "quadratic")
-  expect_true(asymptoticMemoryComplexityClass(df) %in% complexity.classes)
+  if(capabilities("profmem")) {
+    df <- asymptoticMemoryUsage(rpois(N, 10), data.sizes = 10^seq(1, 4, by = 0.1))
+    complexity.classes <- c("constant", "log", "linear", "loglinear", "quadratic")
+    expect_true(asymptoticMemoryComplexityClass(df) %in% complexity.classes)
+  }
 })
 
 # Tests for plotMemoryUsage()
