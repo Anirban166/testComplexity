@@ -21,8 +21,11 @@ For more information regarding its implementation or functionality/usage, please
 \examples{
 # Allocating a square matrix of N*N dimensions against a set of increasing input data sizes:
 input.sizes = 10^seq(1, 3, by = 0.1)
+# Memory profiling must be available in the running system:
+if(capabilities("profmem")) {
 memory.usage.data <- asymptoticMemoryUsage(matrix(data = N:N, nrow = N, ncol = N), input.sizes)
 # Computing its memory complexity class based on the benchmarked data obtained above:
 asymptoticMemoryComplexityClass(memory.usage.data)
 # For allocating a square matrix, the quadratic space/memory complexity class is expected.
+}
 }

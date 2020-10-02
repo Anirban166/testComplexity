@@ -28,5 +28,7 @@ For more information regarding its implementation or functionality/usage, please
 # Quantifying the memory usage for the allocation of a square matrix (N*N dimensions)
 # against a set of input data sizes:
 input.sizes = 10^seq(1, 3, by = 0.1)
+# Memory profiling must be available in the running system:
+if(capabilities("profmem"))
 asymptoticMemoryUsage(matrix(data = N:N, nrow = N, ncol = N), input.sizes)
 }

@@ -167,8 +167,7 @@
 <li>Notes:
 <ul>
 <li>Please check the <a href="https://anirban166.github.io/testComplexity/articles/testComplexity.html">General Vignette</a> for an introduction to the functionality offered by this version of testComplexity.</li>
-<li>Memory profiling is unavailable on Linux-x86_64-fedora (Clang/GCC) and Solaris-x86 platforms, due to which quantifying memory allocations and subsequently classifying the memory complexity class on these platforms will be made unavailable soon.</li>
-<li>Feel free to add themes to the ggplot objects returned by calls to the plotters. A future version will add support for a custom dark theme.</li>
+<li>Quantifying memory allocations (and subsequently obtaining the memory complexity class) is made unavailable for systems without memory profiling functionality since this is required in order to use <code><a href="https://rdrr.io/pkg/bench/man/bench_memory.html">bench::bench_memory()</a></code>, which is internally called via <code><a href="../reference/asymptoticMemoryUsage.html">testComplexity::asymptoticMemoryUsage()</a></code>.</li>
 </ul>
 </li>
 </ul>
