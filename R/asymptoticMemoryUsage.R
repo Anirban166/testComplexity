@@ -18,12 +18,13 @@
 #' @import bench
 #'
 #' @examples
+#' # Memory profiling must be available in the running system:
+#' if(capabilities("profmem")) {
 #' # Quantifying the memory usage for the allocation of a square matrix (N*N dimensions)
 #' # against a set of input data sizes:
 #' input.sizes = 10^seq(1, 3, by = 0.1)
-#' # Memory profiling must be available in the running system:
-#' if(capabilities("profmem"))
 #' asymptoticMemoryUsage(matrix(data = N:N, nrow = N, ncol = N), input.sizes)
+#' }
 
 asymptoticMemoryUsage <- function(e, data.sizes, max.bytes)
 {
