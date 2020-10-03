@@ -1,6 +1,6 @@
 Package: testComplexity
 Title: Asymptotic Complexity Testing Framework
-Version: 0.1.0
+Version: 0.1.1
 Author: Anirban Chetia <bloodraven166@gmail.com> 
 Maintainer: Anirban Cheta <bloodraven166@gmail.com>
 Description: It classifies the asymptotic time/memory complexity class for an 
