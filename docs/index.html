@@ -14,15 +14,15 @@
 <script src="pkgdown.js"></script><!-- docsearch --><script src="docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Asymptotic Complexity Testing Framework">
-<meta property="og:description" content="It classifies the asymptotic time/memory complexity class for an 
-             algorithm/function through the complexity classifiers, with data 
-             frames returned by the quantifiers. The data frames can be passed 
+<meta property="og:description" content="It classifies the asymptotic time/memory complexity class for an
+             algorithm/function through the complexity classifiers, with data
+             frames returned by the quantifiers. The data frames can be passed
              onto the plotting functions for obtaining a visual description of
              the benchmarks against data sizes if the user intends to diagnose
-             the trend via the traditional method. For testing the algorithm 
+             the trend via the traditional method. For testing the algorithm
              against an expected time complexity class, the user can directly
-             use the expect functions. Please check 
-             &lt;https://anirban166.github.io/testComplexity/articles/testComplexity&gt; 
+             use the expect functions. Please check
+             &lt;https://anirban166.github.io/testComplexity/articles/testComplexity&gt;
              to get started.">
 <meta name="robots" content="noindex">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -52,7 +52,7 @@
 <li>
   <a href="index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
-     
+
   </a>
 </li>
 <li>
@@ -64,7 +64,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -99,7 +99,7 @@
 <li>
   <a href="https://github.com/Anirban166/testComplexity">
     <span class="fab fa fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -108,7 +108,7 @@
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
       </form>
-      
+
     </div>
 <!--/.nav-collapse -->
   </div>
@@ -116,7 +116,7 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="contents col-md-9">
@@ -156,7 +156,7 @@ Setup
 Functional Flow
 </h2>
 <div class="sourceCode" id="cb4"><pre class="r">__________________ R Files _______________________________________ Additional Details _____________________________
-testComplexity                              @ returns              @ type                    @ commit-branch(es) 
+testComplexity                              @ returns              @ type                    @ commit-branch(es)
 ├──&gt; asymptoticTimings                    : data.frame             timings quantifier        master
 │    ├──&gt; asymptoticTimeComplexityClass   :   ├──&gt; string          ↑ complexity classifier   master
 │    └──&gt; plotTimings                     :   └──&gt; ggplot object   ↑ plotter                 master/Plotfunc
@@ -174,7 +174,7 @@ testComplexity                              @ returns              @ type       
 │         ├──&gt; expect_loglinear_time      : -/-                    ↑↑ test function          Testfunc
 │         └──&gt; expect_quadratic_time      : -/-                    ↑↑ test function          Testfunc
 │
-└──&gt; testthat                                                                                
+└──&gt; testthat
      ├──&gt; testsfortestComplexity                                   unit-tester               All branches
      ├──&gt; testsforConstrainedchangepointmodelalgos                 unit-tester               Testfunc
      └──&gt; testsforRegularfunctions                                 unit-tester               Testfunc
@@ -199,7 +199,7 @@ Usage
   3:    34701         10
   4:    33101         10
   5:    33201         10
- ---                    
+ ---
 496: 64490501       1000
 497: 59799101       1000
 498: 63452200       1000
@@ -213,7 +213,7 @@ Usage
  3:         2552   15.84893
  4:         2552   19.95262
  5:         2552   25.11886
- ---                    
+ ---
 17:         7472  398.10717
 18:         8720  501.18723
 19:        10256  630.95734
@@ -229,7 +229,7 @@ Usage
   3:    125701         10
   4:    133301         10
   5:    146500         10
- ---                     
+ ---
 696: 405597501      10000
 697: 408335001      10000
 698: 338544401      10000
@@ -243,7 +243,7 @@ Usage
  3:         7432   15.84893
  4:         8560   19.95262
  5:         9496   25.11886
- --- 
+ ---
 25:       447792 2511.88643
 26:       562336 3162.27766
 27:       706512 3981.07171
@@ -291,7 +291,7 @@ df &lt;- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(r
 &gt; ggplot(df, aes(x = `Data sizes`, y = Timings)) + geom_point(color = ft_cols$yellow, size = 1.5) + geom_line(color = ft_cols$yellow, size = 1) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings", "PeakSegDP::cDPA") + hrbrthemes::theme_ft_rc()</pre></div>
 <div class="sourceCode" id="cb12"><pre class="r"># Memory Usage plot for PeakSegDP::cDPA
 &gt; df &lt;- asymptoticMemoryUsage(PeakSegDP::cDPA(rpois(N, 1), rep(1, length(rpois(N, 1))), 3L), data.sizes = 10^seq(1, 6, by = 0.1))
-&gt; plotMemoryUsage(df.memory, titles = list("Memory Usage", "PeakSegDP::cDPA"), line.color = "#ffec1b", point.color = "#ffec1b", line.size = 1, point.size = 2) 
+&gt; plotMemoryUsage(df.memory, titles = list("Memory Usage", "PeakSegDP::cDPA"), line.color = "#ffec1b", point.color = "#ffec1b", line.size = 1, point.size = 2)
 # Equivalent ggplot object:
 &gt; ggplot(df, aes(x = `Data sizes`, y = `Memory usage`)) + geom_point(color = ft_cols$yellow, size = 2) + geom_line(color = ft_cols$yellow, size = 1) labs(x = "Data sizes", y = "Memory usage (in bytes)") + scale_x_log10() + scale_y_log10() + ggtitle("Memory Usage", "PeakSegDP::cDPA") + hrbrthemes::theme_ft_rc()</pre></div>
 <p><img width="100%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/timememorycDPA.png"><br></p>
@@ -423,7 +423,7 @@ Blog Posts
 <li><a href="https://codecov.io/gh/Anirban166/testComplexity?branch=master"><br><img src="https://codecov.io/gh/Anirban166/testComplexity/branch/master/graph/badge.svg" alt="Code Coverage (covr/codecov)"></a></li>
 <li><a href="https://www.codacy.com/manual/bloodraven166/testComplexity?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Anirban166/testComplexity&amp;utm_campaign=Badge_Grade"> <img src="https://app.codacy.com/project/badge/Grade/d69a466f4597434e9118ee59ae3307e3" alt="Codacy Badge"></a></li>
 <li><a href="https://www.r-project.org/"> <img src="https://img.shields.io/badge/100%25--blue?style=flat&amp;logo=R" alt="The R project for statistical computing"></a></li>
-<li><a href="https://summerofcode.withgoogle.com/projects/#4887653356404736"> <img src="https://img.shields.io/badge/Google-Funded-success?style=flat&amp;logo=Google" alt="GSoC project"></a></li>
+<li><a href="https://summerofcode.withgoogle.com/archive/2020/projects/5767451238727680/"> <img src="https://img.shields.io/badge/Google-Funded-success?style=flat&amp;logo=Google" alt="GSoC project"></a></li>
 <li><a href="https://github.com/Anirban166/testComplexity/blob/master/LICENSE.md"> <img src="https://img.shields.io/badge/License-MIT-black?style=flat" alt="GitHub License"></a></li>
 </ul>
 </div>
@@ -442,11 +442,11 @@ Blog Posts
       </footer>
 </div>
 
-  
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script><script>
   docsearch({
-    
-    
+
+
     apiKey: 'd84f81326b636909ead6500a3882606c',
     indexName: 'testcomplexity',
     inputSelector: 'input#search-input.form-control',

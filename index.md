@@ -19,7 +19,7 @@
     <a href="https://www.r-project.org/">
     <img src="https://img.shields.io/badge/100%25--blue?style=flat&logo=R"
          alt="The R project for statistical computing"> </a>
-    <a href="https://summerofcode.withgoogle.com/projects/#4887653356404736">
+    <a href="https://summerofcode.withgoogle.com/archive/2020/projects/5767451238727680/">
     <img src="https://img.shields.io/badge/Google-Funded-success?style=flat&logo=Google"
          alt="GSoC project"> </a>
     <a href="https://github.com/Anirban166/testComplexity/blob/master/LICENSE.md">
