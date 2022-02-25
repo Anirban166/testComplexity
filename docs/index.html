@@ -131,16 +131,7 @@
 Abstract
 </h2>
 <p>R package developers currently use ad-hoc tests of asymptotic computational complexity via empirical timings of functions and visual diagnostic plots. However, there is no framework in R for systematically testing the empirical computational complexity of functions, which tends to be a problem because such a testing framework could be essential for identifying big speed gains in R code as well. In response to this, <strong>testComplexity</strong> provides a suite of <a href="https://github.com/Anirban166/testComplexity/tree/master/R">functions</a> that will be useful for testing and thereby improving the speed of various algorithms/functions in R.</p>
-<h2 align="center">
-Objectives
-</h2>
-<ul>
-<li>Primary objectives include classification of an algorithm’s time complexity trends, quantifying the runtimes and plotting the same which helps to visually conceive the complexity results, based upon the initial idea as staged <a href="https://github.com/rstats-gsoc/gsoc2020/wiki/Asymptotic-complexity-testing#details-of-your-coding-project">here</a>. <br>
-</li>
-<li>Additionally, I thought of covering memory complexity testing as well, which goes hand-in-hand when we are dealing with the term complexity in computer science. <br>
-</li>
-<li>Furthermore, <a href="https://github.com/tdhock">@tdhock</a> suggested classifying complexity for user-defined output parameters (i.e. a measure of a parameter apart from timings/memory), which would eventually make the package more flexible in terms of use-cases.</li>
-</ul>
+<br>
 <p>Since algorithms are used in every sphere of research, this package potentially caters to all sorts of R-users, following different fields of study. Currently, it is being tested on changepoint detection, constrained optimal segmentation/partitioning algorithms plus a few regular ones such as substring and gregexpr.</p>
 <h2 align="center">
 Setup
@@ -150,8 +141,6 @@ Setup
 <span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"Anirban166/testComplexity"</span>)</pre></div>
 <div class="sourceCode" id="cb2"><pre class="r"><span class="kw">if</span>(!<span class="fu"><a href="https://rdrr.io/r/base/library.html">require</a></span>(<span class="no">remotes</span>)) <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"remotes"</span>)
 <span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"Anirban166/testComplexity"</span>)</pre></div>
-<p>Alternatively, opt for the CRAN-stable version using:</p>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"testComplexity"</span>)</pre></div>
 <h2 align="center">
 Functional Flow
 </h2>
@@ -183,16 +172,30 @@ ________________________________________________________________________________
 Usage
 </h2>
 <p>To get started, please check the <a href="https://anirban166.github.io/testComplexity/articles/testComplexity.html">general vignette</a> which highlights all the features, enlists the different types of function categories existent in the package and describes the functionality offered by the underlying user-oriented functions via a set of textual elucidations with one example taken to be discussed throughout for each of them.</p>
-<p>For a quick overview of the main functionality (obtaining quantified benchmarks &amp; subsequently computing the time/memory complexity class), please check the examples below.</p>
+<p>For a quick overview of the main functionality (obtaining quantified benchmarks and subsequently computing the time/memory complexity class), please check the examples below.</p>
 <ul>
 <li>To obtain the benchmarked timings/memory-allocations against specified data sizes, pass the required algorithm as a function of <code>N</code> to <code><a href="reference/asymptoticTimings.html">asymptoticTimings()</a></code>/<code><a href="reference/asymptoticMemoryUsage.html">asymptoticMemoryUsage()</a></code>: <br>
 </li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="r">&gt; library(data.table)
 # Example 1 | Applying the bubble sort algorithm to a sample of 100 elements: (expected quadratic time complexity &amp; constant memory complexity)
-# Code for bubble.sort and other sorting algorithms can be found in my contributions to TheAlgorithms/R repo : https://github.com/TheAlgorithms/R/tree/master/sorting
-&gt; df.bubble.time &lt;- asymptoticTimings(bubble.sort(sample(1:100, N, replace = TRUE)), data.sizes = 10^seq(1, 3, by = 0.5))
-&gt; data.table(df.bubble.time)
+# Implementations of various sorting algorithms can be found in my contributions to TheAlgorithms/R repository: https://github.com/TheAlgorithms/R/tree/master/Sorting-Algorithms
+bubble.sort &lt;- function(elements.vec) { 
+  n &lt;- length(elements.vec)
+  for(i in 1:(n - 1)) {
+    for(j in 1:(n - i)) {
+      if(elements.vec[j + 1] &lt; elements.vec[j]) { 
+        temp &lt;- elements.vec[j]
+        elements.vec[j] &lt;- elements.vec[j + 1]
+        elements.vec[j + 1] &lt;- temp
+      }
+    }
+  }
+  return(elements.vec)
+}
+
+df.bubble.time &lt;- asymptoticTimings(bubble.sort(sample(1:100, N, replace = TRUE)), data.sizes = 10^seq(1, 3, by = 0.5))
+data.table(df.bubble.time)
       Timings Data sizes
   1:    91902         10
   2:    39402         10
@@ -205,8 +208,9 @@ Usage
 498: 63452200       1000
 499: 62807201       1000
 500: 59757102       1000
-&gt; df.bubble.memory &lt;- asymptoticMemoryUsage(bubble.sort(sample(1:100, N, replace = TRUE)), data.sizes = 10^seq(1, 3, by = 0.1))
-&gt; data.table(df.bubble.memory)
+
+df.bubble.memory &lt;- asymptoticMemoryUsage(bubble.sort(sample(1:100, N, replace = TRUE)), data.sizes = 10^seq(1, 3, by = 0.1))
+data.table(df.bubble.memory)
     Memory usage Data sizes
  1:        87800   10.00000
  2:         2552   12.58925
@@ -220,9 +224,9 @@ Usage
 20:        12224  794.32823
 21:        14696 1000.00000</pre></div>
 <div class="sourceCode" id="cb6"><pre class="r"># Example 2 | Testing PeakSegPDPA, an algorithm for constrained changepoint detection: (expected log-linear time and memory complexity)
-&gt; data.vec &lt;- rpois(N, 1)
-&gt; df.PDPA.time &lt;- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(count.vec = data.vec, max.segments = 3L), data.sizes = 10^seq(1, 4, by = 0.1))
-&gt; data.table(df.PDPA.time)
+data.vec &lt;- rpois(N, 1)
+df.PDPA.time &lt;- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(count.vec = data.vec, max.segments = 3L), data.sizes = 10^seq(1, 4, by = 0.1))
+&data.table(df.PDPA.time)
        Timings Data sizes
   1:    248701         10
   2:    120302         10
@@ -235,8 +239,9 @@ Usage
 698: 338544401      10000
 699: 404081901      10000
 700: 399575501      10000
-&gt; df.PDPA.memory &lt;- asymptoticMemoryUsage(PeakSegOptimal::PeakSegPDPA(count.vec = data.vec, max.segments = 3L), data.sizes = 10^seq(1, 4, by = 0.1))
-&gt; data.table(df.PDPA.memory)
+
+df.PDPA.memory &lt;- asymptoticMemoryUsage(PeakSegOptimal::PeakSegPDPA(count.vec = data.vec, max.segments = 3L), data.sizes = 10^seq(1, 4, by = 0.1))
+data.table(df.PDPA.memory)
     Memory usage Data sizes
  1:         6256   10.00000
  2:         7024   12.58925
@@ -254,24 +259,24 @@ Usage
 </li>
 </ul>
 <div class="sourceCode" id="cb7"><pre class="r"># Example 1 | Applying the bubble sort algorithm to a sample of 100 elements: (expected quadratic time complexity &amp; constant memory complexity)
-&gt; asymptoticTimeComplexityClass(df.bubble.time)
+asymptoticTimeComplexityClass(df.bubble.time)
 [1] "quadratic"
-&gt; asymptoticMemoryComplexityClass(df.bubble.memory)
+asymptoticMemoryComplexityClass(df.bubble.memory)
 [1] "constant"</pre></div>
 <div class="sourceCode" id="cb8"><pre class="r"># Example 2 | Testing PeakSegPDPA, an algorithm for constrained changepoint detection: (expected log-linear time and memory complexity)
-&gt; asymptoticTimeComplexityClass(df.PDPA.time)
+asymptoticTimeComplexityClass(df.PDPA.time)
 [1] "loglinear"
-&gt; asymptoticMemoryComplexityClass(df.PDPA.memory)
+asymptoticMemoryComplexityClass(df.PDPA.memory)
 [1] "loglinear"</pre></div>
 <ul>
 <li>Combine the functions if you only require the complexity class: <br>
 </li>
 </ul>
 <div class="sourceCode" id="cb9"><pre class="r"># Example 3 | Testing the time complexity of quick sort algorithm: (expected log-linear time complexity)
-&gt; asymptoticTimeComplexityClass(asymptoticTimings(sort(sample(1:100, N, replace = TRUE), method = "quick" , index.return = TRUE), data.sizes = 10^seq(1, 3, by = 0.5)))
+asymptoticTimeComplexityClass(asymptoticTimings(sort(sample(1:100, N, replace = TRUE), method = "quick" , index.return = TRUE), data.sizes = 10^seq(1, 3, by = 0.5)))
 [1] "loglinear"</pre></div>
 <div class="sourceCode" id="cb10"><pre class="r"># Example 4 | Allocating a square matrix (N*N dimensions): (expected quadratic memory complexity)
-&gt; asymptoticMemoryComplexityClass(asymptoticMemoryUsage(matrix(data = N:N, nrow = N, ncol = N), data.sizes = 10^seq(1, 3, by = 0.1)))
+asymptoticMemoryComplexityClass(asymptoticMemoryUsage(matrix(data = N:N, nrow = N, ncol = N), data.sizes = 10^seq(1, 3, by = 0.1)))
 [1] "quadratic"</pre></div>
 <p>Check <a href="https://youtu.be/H4uefLb8zcQ">this screencast</a> for a demonstration of time complexity testing on different sorting algorithms over a test session.</p>
 <h2 align="center">
@@ -284,16 +289,16 @@ Plotting
 </li>
 </ul>
 <div class="sourceCode" id="cb11"><pre class="r"># Timings plot for PeakSegDP::cDPA
-&gt; df &lt;- asymptoticTimings(PeakSegDP::cDPA(rpois(N, 1), rep(1, length(rpois(N, 1))), 3L), data.sizes = 10^seq(1, 4))
-&gt; plotTimings(df.time, titles = list("Timings", "PeakSegDP::cDPA"), line.color = "#ffec1b", point.color = "#ffec1b", line.size = 1, point.size = 1.5)
+df &lt;- asymptoticTimings(PeakSegDP::cDPA(rpois(N, 1), rep(1, length(rpois(N, 1))), 3L), data.sizes = 10^seq(1, 4))
+plotTimings(df.time, titles = list("Timings", "PeakSegDP::cDPA"), line.color = "#ffec1b", point.color = "#ffec1b", line.size = 1, point.size = 1.5)
 # Equivalent ggplot object:
 df &lt;- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(rpois(data.sizes, 1))), 3L), data.sizes = 10^seq(1, 4))
-&gt; ggplot(df, aes(x = `Data sizes`, y = Timings)) + geom_point(color = ft_cols$yellow, size = 1.5) + geom_line(color = ft_cols$yellow, size = 1) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings", "PeakSegDP::cDPA") + hrbrthemes::theme_ft_rc()</pre></div>
+ggplot(df, aes(x = `Data sizes`, y = Timings)) + geom_point(color = ft_cols$yellow, size = 1.5) + geom_line(color = ft_cols$yellow, size = 1) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings", "PeakSegDP::cDPA") + hrbrthemes::theme_ft_rc()</pre></div>
 <div class="sourceCode" id="cb12"><pre class="r"># Memory Usage plot for PeakSegDP::cDPA
-&gt; df &lt;- asymptoticMemoryUsage(PeakSegDP::cDPA(rpois(N, 1), rep(1, length(rpois(N, 1))), 3L), data.sizes = 10^seq(1, 6, by = 0.1))
-&gt; plotMemoryUsage(df.memory, titles = list("Memory Usage", "PeakSegDP::cDPA"), line.color = "#ffec1b", point.color = "#ffec1b", line.size = 1, point.size = 2)
+df &lt;- asymptoticMemoryUsage(PeakSegDP::cDPA(rpois(N, 1), rep(1, length(rpois(N, 1))), 3L), data.sizes = 10^seq(1, 6, by = 0.1))
+plotMemoryUsage(df.memory, titles = list("Memory Usage", "PeakSegDP::cDPA"), line.color = "#ffec1b", point.color = "#ffec1b", line.size = 1, point.size = 2)
 # Equivalent ggplot object:
-&gt; ggplot(df, aes(x = `Data sizes`, y = `Memory usage`)) + geom_point(color = ft_cols$yellow, size = 2) + geom_line(color = ft_cols$yellow, size = 1) labs(x = "Data sizes", y = "Memory usage (in bytes)") + scale_x_log10() + scale_y_log10() + ggtitle("Memory Usage", "PeakSegDP::cDPA") + hrbrthemes::theme_ft_rc()</pre></div>
+ggplot(df, aes(x = `Data sizes`, y = `Memory usage`)) + geom_point(color = ft_cols$yellow, size = 2) + geom_line(color = ft_cols$yellow, size = 1) labs(x = "Data sizes", y = "Memory usage (in bytes)") + scale_x_log10() + scale_y_log10() + ggtitle("Memory Usage", "PeakSegDP::cDPA") + hrbrthemes::theme_ft_rc()</pre></div>
 <p><img width="100%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/timememorycDPA.png"><br></p>
 <ul>
 <li>
@@ -301,31 +306,33 @@ df &lt;- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(r
 </li>
 </ul>
 <div class="sourceCode" id="cb13"><pre class="r">&gt; df.substring &lt;- asymptoticTimings(substring(paste(rep("A", N), collapse = ""), 1:N, 1:N), data.sizes = 10^seq(1, 4, by = 0.5))
-&gt; asymptoticTimeComplexityClass(df.substring)
+asymptoticTimeComplexityClass(df.substring)
 [1] "linear"
-&gt; df.PeakSegPDPA &lt;- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(N, 1),rep(1, length(rpois(N, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 1)
-&gt; asymptoticTimeComplexityClass(df.PeakSegPDPA)
+df.PeakSegPDPA &lt;- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(N, 1),rep(1, length(rpois(N, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 1)
+asymptoticTimeComplexityClass(df.PeakSegPDPA)
 [1] "loglinear"
-&gt; df.cDPA &lt;- asymptoticTimings(PeakSegDP::cDPA(rpois(N, 1), rep(1, length(rpois(N, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 5)
-&gt; asymptoticTimeComplexityClass(df.cDPA)
+df.cDPA &lt;- asymptoticTimings(PeakSegDP::cDPA(rpois(N, 1), rep(1, length(rpois(N, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 5)
+asymptoticTimeComplexityClass(df.cDPA)
 [1] "quadratic"
-&gt; df.gregexpr &lt;- asymptoticTimings(gregexpr("a", paste(collapse = "", rep("ab", N)), perl = TRUE), data.sizes = 10^seq(1, 4, by = 0.5))
-&gt; asymptoticTimeComplexityClass(df.gregexpr)
+df.gregexpr &lt;- asymptoticTimings(gregexpr("a", paste(collapse = "", rep("ab", N)), perl = TRUE), data.sizes = 10^seq(1, 4, by = 0.5))
+asymptoticTimeComplexityClass(df.gregexpr)
 [1] "linear"
-&gt; df.fpop &lt;- asymptoticTimings(fpop::Fpop(rnorm(N), 1), data.sizes = 10^seq(1, 4, by = 0.5))
-&gt; asymptoticTimeComplexityClass(df.fpop)
+df.fpop &lt;- asymptoticTimings(fpop::Fpop(rnorm(N), 1), data.sizes = 10^seq(1, 4, by = 0.5))
+asymptoticTimeComplexityClass(df.fpop)
 [1] "loglinear"
-&gt; df.opart &lt;- asymptoticTimings(opart::opart_gaussian(rnorm(N), 1), data.sizes = 10^seq(1, 4, by = 0.5))
-&gt; asymptoticTimeComplexityClass(df.opart)
+df.opart &lt;- asymptoticTimings(opart::opart_gaussian(rnorm(N), 1), data.sizes = 10^seq(1, 4, by = 0.5))
+asymptoticTimeComplexityClass(df.opart)
 [1] "quadratic"
-&gt; df.substring$expr = "substring"
-&gt; df.PeakSegPDPA$expr = "PeakSegPDPA"
-&gt; df.cDPA$expr = "cDPA"
-&gt; df.gregexpr$expr = "gregexpr"
-&gt; df.fpop$expr = "fpop"
-&gt; df.opart$expr = "opart"
-&gt; plot.df &lt;- rbind(df.substring, df.PeakSegPDPA, df.cDPA, df.gregexpr, df.fpop, df.opart)
-&gt; ggplot(plot.df, aes(x = `Data sizes`, y = Timings)) + geom_point(aes(color = expr)) + geom_line(aes(color = expr)) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings comparison plot", subtitle = "Linear vs Log-linear vs Quadratic complexities") + ggthemes::theme_pander()</pre></div>
+
+df.substring$expr = "substring"
+df.PeakSegPDPA$expr = "PeakSegPDPA"
+df.cDPA$expr = "cDPA"
+df.gregexpr$expr = "gregexpr"
+df.fpop$expr = "fpop"
+df.opart$expr = "opart"
+
+plot.df &lt;- rbind(df.substring, df.PeakSegPDPA, df.cDPA, df.gregexpr, df.fpop, df.opart)
+ggplot(plot.df, aes(x = `Data sizes`, y = Timings)) + geom_point(aes(color = expr)) + geom_line(aes(color = expr)) + labs(x = "Data sizes", y = "Runtime (in nanoseconds)") + scale_x_log10() + scale_y_log10() + ggtitle("Timings comparison plot", subtitle = "Linear vs Log-linear vs Quadratic complexities") + ggthemes::theme_pander()</pre></div>
 <p><img width="100%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/cp2.png"><br></p>
 <p>Feel free to include more functions and increase the number of data sizes for a more comprehensive outlook: <br></p>
 <p><img width="100%" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/cp.png"><br></p>
@@ -335,9 +342,9 @@ df &lt;- asymptoticTimings(PeakSegDP::cDPA(rpois(data.sizes, 1), rep(1, length(r
 </li>
 </ul>
 <div class="sourceCode" id="cb14"><pre class="r">&gt; library(ggfortify)
-&gt; df &lt;- asymptoticTimings(PeakSegDP::cDPA(rpois(N, 1), rep(1, length(rpois(N, 1))), 3L), data.sizes = 10^seq(1, 4 by = 0.1))
-&gt; glm.plot.obj &lt;- glm(Timings~`Data sizes`, data = df)
-&gt; ggplot2::autoplot(stats::glm(glm.plot.obj)) + ggthemes::theme_gdocs()</pre></div>
+df &lt;- asymptoticTimings(PeakSegDP::cDPA(rpois(N, 1), rep(1, length(rpois(N, 1))), 3L), data.sizes = 10^seq(1, 4 by = 0.1))
+glm.plot.obj &lt;- glm(Timings~`Data sizes`, data = df)
+ggplot2::autoplot(stats::glm(glm.plot.obj)) + ggthemes::theme_gdocs()</pre></div>
 <p><img src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/glmplot.png"><br></p>
 <h2 align="center">
 Benchmarking
@@ -380,24 +387,23 @@ Blog Posts
 <h2 align="center">
 ©2020
 </h2>
-<p align="center">
-<a href="mailto:bloodraven166@gmail.com"><img height="60" src="https://img.shields.io/badge/--white?style=flat&amp;logo=gmail" alt="Primary Email"></a><a href="https://stackoverflow.com/users/11422223/anirban166?tab=profile"><img height="60" src="https://img.shields.io/badge/--white?style=flat&amp;logo=Stack%20Overflow" alt="Stack Overflow Link"></a><a href="https://www.hackerrank.com/Anirban166"><img height="60" src="https://img.shields.io/badge/--white?style=flat&amp;logo=HackerRank" alt="HackerRank Link"></a><a href="https://www.instagram.com/anirban.166/"><img height="60" src="https://img.shields.io/badge/--white?style=flat&amp;logo=Instagram" alt="Instagram Link"></a><a href="https://summerofcode.withgoogle.com/projects/4887653356404736"><img height="60" src="https://img.shields.io/badge/--white?style=flat&amp;logo=google" alt="Google Summer of Code Project Link"></a></p>
-<p align="center">
-<a href="mailto:Anirban.code@studentambassadors.com"><img height="60" src="https://img.shields.io/badge/--black?style=flat&amp;logo=Microsoft" alt="Microsoft Student Ambassador Email"></a><a href="https://github.com/Anirban166"><img height="60" src="https://img.shields.io/badge/--black?style=flat&amp;logo=Github" alt="GitHub Link"><br></a><a href="https://anirban166.github.io/posts/"><img height="60" src="https://img.shields.io/badge/--black?style=flat&amp;logo=Google%20messages" alt="Blog Link"></a><a href="https://www.linkedin.com/in/anirban166/"><img height="60" src="https://img.shields.io/badge/--black?style=flat&amp;logo=LinkedIn" alt="LinkedIn Link"></a><a href="https://anirban166.github.io/"><img height="60" src="https://img.shields.io/badge/--black?style=flat&amp;logo=WebStorm" alt="Website Link"></a></p>
-
+<p align="center">    
+<a href="mailto:bloodraven166@gmail.com"><img height="60" src="https://img.shields.io/badge/--black?style=flat&amp;logo=gmail" alt="Primary Email"></a>     
+<a href="https://summerofcode.withgoogle.com/projects/4887653356404736"><img height="60" src="https://img.shields.io/badge/--black?style=flat&amp;logo=google" alt="Google Summer of Code Project Link"></a>
+<a href="https://www.linkedin.com/in/anirban166/"><img height="60" src="https://img.shields.io/badge/--black?style=flat&amp;logo=LinkedIn" alt="LinkedIn Link"></a>
+<a href="https://anirban166.github.io/"><img height="60" src="https://img.shields.io/badge/--black?style=flat&amp;logo=Internet%20Explorer" alt="Website Link"></a></p>       
+      
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=testComplexity">https://​cloud.r-project.org/​package=testComplexity</a>
+<li>Browse source code at: <br><a href="https://github.com/Anirban166/testComplexity">https://​github.com/​Anirban166/​testComplexity</a>
 </li>
-<li>Browse source code at <br><a href="https://github.com/Anirban166/testComplexity">https://​github.com/​Anirban166/​testComplexity</a>
+<li>Report a bug at: <br><a href="https://github.com/Anirban166/testComplexity/issues">https://​github.com/​Anirban166/​testComplexity/​issues</a>
 </li>
-<li>Report a bug at <br><a href="https://github.com/Anirban166/testComplexity/issues">https://​github.com/​Anirban166/​testComplexity/​issues</a>
-</li>
-<li>View blogs at <br><a href="https://anirban166.github.io/posts/">https://​anirban166.github.io/​posts/​</a>
+<li>View blog posts at: <br><a href="https://anirban166.github.io/posts/">https://​anirban166.github.io/​posts/​</a> <br><a href="https://anirban166.github.io/tags/#GSoC'20">https://​anirban166.github.io/​tags/​#GSoC'20</a>
 </li>
 </ul>
 </div>
@@ -430,7 +436,6 @@ Blog Posts
 </div>
 </div>
 
-
       <footer><div class="copyright">
   <p>Developed by Anirban Cheta.</p>
 </div>
@@ -438,15 +443,11 @@ Blog Posts
 <div class="pkgdown">
   <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
-
       </footer>
 </div>
 
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script><script>
   docsearch({
-
-
     apiKey: 'd84f81326b636909ead6500a3882606c',
     indexName: 'testcomplexity',
     inputSelector: 'input#search-input.form-control',
