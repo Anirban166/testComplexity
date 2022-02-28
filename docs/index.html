@@ -122,7 +122,7 @@
   <div class="contents col-md-9">
 
 <p align="center">
-<img width="95%" height="auto" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TransparentLogo.png"></p>
+<img width="95%" height="auto" src="https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TransparentLogoV4.png"></p>
 <!-- badges: start -->
 
 <!-- badges: end -->
@@ -136,7 +136,7 @@ Abstract
 <h2 align="center">
 Setup
 </h2>
-<p>Use <code>devtools</code> or <code>remotes</code> to fetch the package from the <a href="https://github.com/Anirban166/testComplexity">github repository</a>:</p>
+<p>Use <code>devtools</code> or <code>remotes</code> to fetch the package from the <a href="https://github.com/Anirban166/testComplexity">GitHub repository</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="r"><span class="kw">if</span>(!<span class="fu"><a href="https://rdrr.io/r/base/library.html">require</a></span>(<span class="no">devtools</span>)) <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)
 <span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"Anirban166/testComplexity"</span>)</pre></div>
 <div class="sourceCode" id="cb2"><pre class="r"><span class="kw">if</span>(!<span class="fu"><a href="https://rdrr.io/r/base/library.html">require</a></span>(<span class="no">remotes</span>)) <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"remotes"</span>)
@@ -177,7 +177,7 @@ Usage
 <li>To obtain the benchmarked timings/memory-allocations against specified data sizes, pass the required algorithm as a function of <code>N</code> to <code><a href="reference/asymptoticTimings.html">asymptoticTimings()</a></code>/<code><a href="reference/asymptoticMemoryUsage.html">asymptoticMemoryUsage()</a></code>: <br>
 </li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="r">&gt; library(data.table)
+<div class="sourceCode" id="cb5"><pre class="r">library(data.table)
 # Example 1 | Applying the bubble sort algorithm to a sample of 100 elements: (expected quadratic time complexity &amp; constant memory complexity)
 # Implementations of various sorting algorithms can be found in my contributions to TheAlgorithms/R repository: https://github.com/TheAlgorithms/R/tree/master/Sorting-Algorithms
 bubble.sort &lt;- function(elements.vec) { 
@@ -305,7 +305,7 @@ ggplot(df, aes(x = `Data sizes`, y = `Memory usage`)) + geom_point(color = ft_co
 <strong>Comparison Plots</strong> <br> In order to visually compare different algorithms based on the benchmarked metrics returned as a data frame by the quantifiers, one can appropriately add a third column (to help distinguish by aesthetics based on it) with a unique value for each of the data frames, combine them using an <code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code> and then plot the resultant data frame using suitable aesthetics, geometry, scale, labels/titles etcetera via a ggplot: <br>
 </li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="r">&gt; df.substring &lt;- asymptoticTimings(substring(paste(rep("A", N), collapse = ""), 1:N, 1:N), data.sizes = 10^seq(1, 4, by = 0.5))
+<div class="sourceCode" id="cb13"><pre class="r">df.substring &lt;- asymptoticTimings(substring(paste(rep("A", N), collapse = ""), 1:N, 1:N), data.sizes = 10^seq(1, 4, by = 0.5))
 asymptoticTimeComplexityClass(df.substring)
 [1] "linear"
 df.PeakSegPDPA &lt;- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(rpois(N, 1),rep(1, length(rpois(N, 1))), 3L), data.sizes = 10^seq(1, 4, by = 0.5), max.seconds = 1)
@@ -341,7 +341,7 @@ ggplot(plot.df, aes(x = `Data sizes`, y = Timings)) + geom_point(aes(color = exp
 <strong>Generalized Linear Model based Plots</strong> <br><code>ggfortify</code>, an extension of <code>ggplot2</code>, can be used to produce diagnostic plots for generalized linear models with the same formulae as used in the complexity classification functions: <br>
 </li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="r">&gt; library(ggfortify)
+<div class="sourceCode" id="cb14"><pre class="r">library(ggfortify)
 df &lt;- asymptoticTimings(PeakSegDP::cDPA(rpois(N, 1), rep(1, length(rpois(N, 1))), 3L), data.sizes = 10^seq(1, 4 by = 0.1))
 glm.plot.obj &lt;- glm(Timings~`Data sizes`, data = df)
 ggplot2::autoplot(stats::glm(glm.plot.obj)) + ggthemes::theme_gdocs()</pre></div>
@@ -369,10 +369,10 @@ Testing
 <strong>Unit Testing</strong> <br> Test cases for testComplexity functions via <a href="https://cran.r-project.org/web/packages/testthat/index.html">testthat</a> package can be found <a href="https://github.com/Anirban166/testComplexity/blob/master/tests/testthat/test-testsfortestComplexity.R">here</a>. <br>
 </li>
 <li>
-<strong>Code Coverage</strong> <br> Tested locally by <code><a href="https://rdrr.io/pkg/covr/man/package_coverage.html">covr::package_coverage()</a></code> and codecov, with <a href="https://codecov.io/gh/Anirban166/testComplexity?branch=master">100% code coverage</a>. <br>
+<strong>Code Coverage</strong> <br> Tested using <code><a href="https://rdrr.io/pkg/covr/man/package_coverage.html">covr::package_coverage()</a></code> both locally and via codecov, with <a href="https://codecov.io/gh/Anirban166/testComplexity?branch=master">100% coverage attained</a>. <br>
 </li>
 <li>
-<strong>OS Support</strong> <br> Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. In addition to both, RCMD checks are run on MacOS as well. <br> Note that the use of <code><a href="https://rdrr.io/pkg/bench/man/bench_memory.html">bench::bench_memory()</a></code> overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in <code><a href="https://rdrr.io/pkg/GuessCompx/man/CompEst.html">GuessCompx::CompEst()</a></code> since it successfully runs on other operating systems. <br>
+<strong>OS Support</strong> <br> Windows is the native OS this package is developed and tested on, but in addition to that, RCMD checks are run on latest versions of Ubuntu and MacOS as well. <br> Note that the use of <code><a href="https://rdrr.io/pkg/bench/man/bench_memory.html">bench::bench_memory()</a></code> overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in <code><a href="https://rdrr.io/pkg/GuessCompx/man/CompEst.html">GuessCompx::CompEst()</a></code> since it successfully runs on other operating systems. <br>
 </li>
 </ul>
 <p align="center">

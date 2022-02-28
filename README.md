@@ -1,5 +1,5 @@
 <p align = "center">
-<img width = "95%" height = "auto" src = "Images/TransparentLogoV2.png">
+<img width = "95%" height = "auto" src = "Images/TransparentLogoV4.png">
 </p>
 
 <p align="center">
@@ -58,10 +58,6 @@ devtools::install_github("Anirban166/testComplexity")
 ```r
 if(!require(remotes)) install.packages("remotes")
 remotes::install_github("Anirban166/testComplexity")
-```
-Alternatively, opt for the CRAN-stable version using:
-```r
-install.packages("testComplexity")
 ```
 
 <h2 align="center">
@@ -315,9 +311,9 @@ A complexity-wise ordered list with functional instances for the aforementioned 
 - **Unit Testing** <br>
 Test cases for testComplexity functions via [testthat](https://cran.r-project.org/web/packages/testthat/index.html) package can be found [here](https://github.com/Anirban166/testComplexity/blob/master/tests/testthat/test-testsfortestComplexity.R). <br>
 - **Code Coverage** <br>
-Tested locally by `covr::package_coverage()` and codecov, with [100% code coverage](https://codecov.io/gh/Anirban166/testComplexity?branch=master). <br>
+Tested using `covr::package_coverage()` both locally and via codecov, with [100% coverage](https://codecov.io/gh/Anirban166/testComplexity?branch=master) attained. <br>
 - **OS Support** <br>
-Travis-CI builds are tested on Linux machines, whereas Windows is the native OS this package is developed and tested on. In addition to both, RCMD checks are run on MacOS as well. <br>
+Windows is the native OS this package is developed and tested on, but in addition to that, RCMD checks are run on latest versions of [MacOS](https://github.com/Anirban166/testComplexity/blob/cdb771a040e77ac02e715f033a7debf889a8efa2/.github/workflows/R-CMD-check.yaml#L21) and [Ubuntu](https://github.com/Anirban166/testComplexity/blob/cdb771a040e77ac02e715f033a7debf889a8efa2/.github/workflows/R-CMD-check.yaml#L22) as well. <br>
 Note that the use of `bench::bench_memory()` overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in `GuessCompx::CompEst()` since it successfully runs on other operating systems. <br>
 
 <p align="center">
