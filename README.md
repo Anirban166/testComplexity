@@ -1,5 +1,5 @@
 <p align = "center">
-<img width = "95%" height = "auto" src = "Images/TransparentLogoV4.png">
+<img width = "95%" height = "auto" src = "Images/TransparentLogoV5.png">
 </p>
 
 <p align="center">
