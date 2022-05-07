@@ -2,51 +2,51 @@
 <img width = "95%" height = "auto" src = "Images/TransparentLogoV5.png">
 </p>
 
-<p align="center">
-    <a href="https://github.com/Anirban166/testComplexity/actions">
-    <img src="https://github.com/Anirban166/testComplexity/workflows/R-CMD-check/badge.svg"    
-         alt="RCMD check()">    
-    <a href="https://travis-ci.com/github/Anirban166/testComplexity">
-    <img src="https://travis-ci.com/Anirban166/testComplexity.svg?branch=master"
-         alt="Build status (Travis CI)">      
-    <a href="https://codecov.io/gh/Anirban166/testComplexity?branch=master">    
-    <img src="https://codecov.io/gh/Anirban166/testComplexity/branch/master/graph/badge.svg"
-         alt="Code Coverage (covr/codecov)"> 
-    <a href="https://www.codacy.com/manual/bloodraven166/testComplexity?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Anirban166/testComplexity&amp;utm_campaign=Badge_Grade">
-    <img src="https://app.codacy.com/project/badge/Grade/d69a466f4597434e9118ee59ae3307e3"    
-         alt="Codacy Badge"> 
-    <a href="https://www.r-project.org/">
-    <img src="https://img.shields.io/badge/100%25--blue?style=flat&logo=R"
-         alt="The R project for statistical computing"> 
-    <a href="https://summerofcode.withgoogle.com/archive/2020/projects/5767451238727680/">
-    <img src="https://img.shields.io/badge/Google-Funded-success?style=flat&logo=Google"
-         alt="GSoC project">
-    <a href="https://github.com/Anirban166/testComplexity/blob/master/LICENSE.md">
-    <img src="https://img.shields.io/badge/License-MIT-black?style=flat"
-         alt="GitHub License"> </a>      
+<p align = "center">
+    <a href = "https://github.com/Anirban166/testComplexity/actions">
+    <img src = "https://github.com/Anirban166/testComplexity/workflows/R-CMD-check/badge.svg"    
+         alt = "RCMD check()">    
+    <a href = "https://travis-ci.com/github/Anirban166/testComplexity">
+    <img src = "https://travis-ci.com/Anirban166/testComplexity.svg?branch=master"
+         alt = "Build status (Travis CI)">      
+    <a href = "https://codecov.io/gh/Anirban166/testComplexity?branch=master">    
+    <img src = "https://codecov.io/gh/Anirban166/testComplexity/branch/master/graph/badge.svg"
+         alt = "Code Coverage (covr/codecov)"> 
+    <a href = "https://www.codacy.com/manual/bloodraven166/testComplexity?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Anirban166/testComplexity&amp;utm_campaign=Badge_Grade">
+    <img src = "https://app.codacy.com/project/badge/Grade/d69a466f4597434e9118ee59ae3307e3"    
+         alt = "Codacy Badge"> 
+    <a href = "https://www.r-project.org/">
+    <img src = "https://img.shields.io/badge/100%25--blue?style=flat&logo=R"
+         alt = "The R project for statistical computing"> 
+    <a href = "https://summerofcode.withgoogle.com/archive/2020/projects/5767451238727680/">
+    <img src = "https://img.shields.io/badge/Google-Funded-success?style=flat&logo=Google"
+         alt = "GSoC project">
+    <a href = "https://github.com/Anirban166/testComplexity/blob/master/LICENSE.md">
+    <img src = "https://img.shields.io/badge/License-MIT-black?style=flat"
+         alt = "GitHub License"> </a>      
 </p> 
 
-| <a href="#abstract">Abstract</a> | <a href="#objectives">Objectives</a> | <a href="#installation">Installation</a> | <a href="#functional-flow">Functions</a> | <a href="#usage">Usage</a> | <a href="#plotting">Plotting</a> | <a href="#benchmarking">Benchmarking</a> | <a href="#testing">Testing</a> | <a href="#resources">Resources</a> |
+| <a href = "#abstract">Abstract</a> | <a href = "#objectives">Objectives</a> | <a href = "#installation">Installation</a> | <a href = "#functional-flow">Functions</a> | <a href = "#usage">Usage</a> | <a href = "#plotting">Plotting</a> | <a href = "#benchmarking">Benchmarking</a> | <a href = "#testing">Testing</a> | <a href = "#resources">Resources</a> |
 |---|---|---|---|---|---|---|---|---|
         
 ---
-<h2 align="center">
+<h2 align = "center">
 Abstract
 </h2>
 
 R package developers currently use ad-hoc tests of asymptotic computational complexity via empirical timings of functions and visual diagnostic plots. However, there is no framework in R for systematically testing the empirical computational complexity of functions, which tends to be a problem because such a testing framework could be essential for identifying big speed gains in R code as well. In response to this, **testComplexity** provides a suite of [functions](https://github.com/Anirban166/testComplexity/tree/master/R) that will be useful for testing and thereby improving the speed of various algorithms/functions in R.
 
-<h2 align="center">
+<h2 align = "center">
 Objectives
 </h2>
 
 - Primary objectives include quantification of runtimes for an algorithm/function (against a set of user-provided data sizes), classification of the corresponding asymptotic time complexity class it belongs to (based on the computed benchmarks) and testing for the same against an expected time complexity class for verification of empirically observed results, based upon the initial idea as staged [here](https://github.com/rstats-gsoc/gsoc2020/wiki/Asymptotic-complexity-testing#details-of-your-coding-project). <br>
-- As per my proposal, a simple plot functionality was incorporated which helps to visually diagnose/conceive the benchmarked results. Additionally, I thought of covering memory complexity testing as well, which goes hand-in-hand when we are dealing with the term complexity in computer science. <br>
+- Additionally (or as per my proposal), I thought of covering memory complexity testing as well, which in terms of resources, goes hand-in-hand when dealing with 'complexity' in Computer Science. <br>
 - Furthermore, [@tdhock](https://github.com/tdhock) suggested classifying complexity for user-defined output parameters (i.e. a measure of a parameter apart from timings/memory), which would eventually make the package more flexible in terms of use-cases.
 
-Since algorithms are used in every sphere of research, this package potentially caters to all sorts of R-users, following different fields of study/research. At its current state, it has been tested on algorithms pertaining to changepoint detection, sorting, constrained optimal segmentation/partitioning, plus a few common ones from base R such as substring and gregexpr.
+Since algorithms are used in every sphere of research, this package potentially caters to all sorts of R-users, following different fields of study. At its current state, it has been tested on algorithms pertaining to changepoint detection, sorting, constrained optimal segmentation/partitioning, plus a few common ones from base R such as substring and gregexpr.
 
-<h2 align="center">
+<h2 align = "center">
 Installation
 </h2>
 
@@ -60,7 +60,7 @@ if(!require(remotes)) install.packages("remotes")
 remotes::install_github("Anirban166/testComplexity")
 ```
 
-<h2 align="center">
+<h2 align = "center">
 Functional Flow
 </h2>
 
@@ -91,7 +91,7 @@ testComplexity                              @ returns              @ type       
 ____________________________________________________________________________________________________________________
 ```
 
-<h2 align="center">
+<h2 align = "center">
 Usage
 </h2>
 
@@ -103,7 +103,6 @@ For a quick overview of the main functionality (obtaining quantified benchmarks 
 ```r
 library(data.table)
 # Example 1 | Applying the bubble sort algorithm to a sample of 100 elements: (expected quadratic time complexity & constant memory complexity)
-# Implementations of various sorting algorithms can be found in my contributions to TheAlgorithms/R repository: https://github.com/TheAlgorithms/R/tree/master/Sorting-Algorithms
 bubble.sort <- function(elements.vec) { 
   n <- length(elements.vec)
   for(i in 1:(n - 1)) {
@@ -198,7 +197,7 @@ asymptoticMemoryComplexityClass(df.PDPA.memory)
 ```
 - Combine the functions if you only require the complexity class: <br>
 ```r
-# Example 3 | Testing the time complexity of quick sort algorithm: (expected log-linear time complexity)
+# Example 3 | Testing the time complexity of the quick sort algorithm: (expected log-linear time complexity)
 asymptoticTimeComplexityClass(asymptoticTimings(sort(sample(1:100, N, replace = TRUE), method = "quick" , index.return = TRUE), data.sizes = 10^seq(1, 3, by = 0.5)))
 [1] "loglinear"
 ```
@@ -210,11 +209,11 @@ asymptoticMemoryComplexityClass(asymptoticMemoryUsage(matrix(data = N:N, nrow = 
 Check [this screencast](https://youtu.be/H4uefLb8zcQ) for a demonstration of time complexity testing on different sorting algorithms over a test session.
 For more examples with functions from specific packages, please check the table with relevant contents in the [testing section](#testing).
 
-<h2 align="center">
+<h2 align = "center">
 Plotting
 </h2>
 
-For obtaining a visual description of the trend followed between runtimes/memory-usage vs data sizes so as to diagnose the complexity result(s), simple plots can be crafted. They are roughly grouped into: 
+For obtaining a visual description of the trend followed between runtimes/memory-usage vs data sizes so as to diagnose the complexity result(s) (the traditional method, for visual verification say), simple plots can be crafted. They are roughly grouped into: 
 
 - **Single Plots** <br>
 Individual plots can be obtained by passing the data frame returned by the quantifying functions to `plotTimings()`/`plotMemoryUsage()` for time/memory cases respectively: <br>
@@ -281,7 +280,7 @@ ggplot2::autoplot(stats::glm(glm.plot.obj)) + ggthemes::theme_gdocs()
 ```
 <img src = "Images/glmplot.png"> <br>
 
-<h2 align="center">
+<h2 align = "center">
 Benchmarking
 </h2>
 
@@ -289,7 +288,7 @@ Among a few [options](https://anirban166.github.io//Benchmarking/),
 - `microbenchmark::microbenchmark()` is used to compute the benchmarks to obtain the time results in `testComplexity::asymptoticTimings()`, for the added convenience of having the benchmarked results as a data frame plus for the precision or time scale it produces the results on. (usually in nanoseconds, as can be found from [here](https://cran.r-project.org/web/packages/microbenchmark/microbenchmark.pdf)) <br>
 - `bench::bench_memory()` is used to compute the allocated memory size in order to obtain the memory use metrics in `testComplexity::asymptoticMemoryUsage()`. <br>
             
-<h2 align="center">
+<h2 align = "center">
 Testing
 </h2>
 
@@ -316,8 +315,8 @@ Tested using `covr::package_coverage()` both locally and via codecov, with [100%
 Windows is the native OS this package is developed and tested on, but in addition to that, RCMD checks are run on latest versions of [MacOS](https://github.com/Anirban166/testComplexity/blob/cdb771a040e77ac02e715f033a7debf889a8efa2/.github/workflows/R-CMD-check.yaml#L21) and [Ubuntu](https://github.com/Anirban166/testComplexity/blob/cdb771a040e77ac02e715f033a7debf889a8efa2/.github/workflows/R-CMD-check.yaml#L22) as well. <br>
 Note that the use of `bench::bench_memory()` overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in `GuessCompx::CompEst()` since it successfully runs on other operating systems. <br>
 
-<p align="center">
-<a href="https://www.microsoft.com/en-in/windows"> <img src="https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&logo=Windows"> <a href="https://www.linux.org/"> <img src="https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&logo=Linux"> <a href="https://developer.apple.com/macos/"> <img src="https://img.shields.io/badge/MacOS--brightgreen?style=for-the-badge&logo=Apple"> </a>
+<p align = "center">
+<a href = "https://www.microsoft.com/en-in/windows"> <img src = "https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&logo=Windows"> <a href = "https://www.linux.org/"> <img src = "https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&logo=Linux"> <a href = "https://developer.apple.com/macos/"> <img src = "https://img.shields.io/badge/MacOS--brightgreen?style=for-the-badge&logo=Apple"> </a>
 </p> 
 
 <h2 align="center">
@@ -326,40 +325,31 @@ Resources
 
 In addition to the readme content, the [web version](https://anirban166.github.io/testComplexity/) includes quick [reference](https://anirban166.github.io/testComplexity/reference/index.html) to functions plus vignettes for some use-cases. For [blog](https://anirban166.github.io/posts/) posts, please check the links below: <br>
 
-<p align="center">
-<a href="https://anirban166.github.io//Test-functions/"> <img width = "12.5%" src = "/Images/LogoTF.png"> 
-<a href="https://anirban166.github.io//Timings-quantifying-function/"> <img width = "12.5%" src = "/Images/LogoTQ.png"> 
-<a href="https://anirban166.github.io//Memory-usage-quantifier/"> <img width = "12.5%" src = "/Images/LogoMQ.png"> 
+<p align = "center">
+<a href = "https://anirban166.github.io//Test-functions/"> <img width = "12.5%" src = "/Images/LogoTF.png"> 
+<a href = "https://anirban166.github.io//Timings-quantifying-function/"> <img width = "12.5%" src = "/Images/LogoTQ.png"> 
+<a href = "https://anirban166.github.io//Memory-usage-quantifier/"> <img width = "12.5%" src = "/Images/LogoMQ.png"> 
 <a href="https://anirban166.github.io//Complexity-classifiers/"> <img width = "12.5%" src = "/Images/LogoCC.png"> 
-<a href="https://anirban166.github.io//Plotters/"> <img width = "12.5%" src = "/Images/LogoPT.png"> </a> <br>
-<a href="https://anirban166.github.io//Generalized-complexity/"> <img width = "12.5%" src = "/Images/LogoGC.png">
-<a href="https://anirban166.github.io//Testing-functions/"> <img width = "12.5%" src = "/Images/LogoTS.png"> 
-<a href="https://anirban166.github.io//Website/"> <img width = "12.5%" src = "/Images/LogoWS.png"> 
-<a href="https://anirban166.github.io//Software-Development/"> <img width = "12.5%" src = "/Images/LogoSD.png"> 
-<a href="https://anirban166.github.io//GSoC-2020-Summary/"> <img width = "12.5%" src = "/Images/LogoPKG.png"> <br>
+<a href = "https://anirban166.github.io//Plotters/"> <img width = "12.5%" src = "/Images/LogoPT.png"> </a> <br>
+<a href = "https://anirban166.github.io//Generalized-complexity/"> <img width = "12.5%" src = "/Images/LogoGC.png">
+<a href = "https://anirban166.github.io//Testing-functions/"> <img width = "12.5%" src = "/Images/LogoTS.png"> 
+<a href = "https://anirban166.github.io//Website/"> <img width = "12.5%" src = "/Images/LogoWS.png"> 
+<a href = "https://anirban166.github.io//Software-Development/"> <img width = "12.5%" src = "/Images/LogoSD.png"> 
+<a href = "https://anirban166.github.io//GSoC-2020-Summary/"> <img width = "12.5%" src = "/Images/LogoPKG.png"> <br>
 </p>
     
 ---
-<h2 align="center">
-©2020
-</h2>        
-<p align="center">
-    <a href="mailto:bloodraven166@gmail.com"> 
-    <img width = "10%" src="https://img.shields.io/badge/--black?style=flat&logo=gmail"
-         alt="Email">      
-    <a href="https://stackoverflow.com/users/11422223/anirban166?tab=profile">    
-    <img width = "10%" src="https://img.shields.io/badge/--black?style=flat&logo=Stack%20Overflow"
-         alt="Stack Overflow Link">
-    <a href="https://summerofcode.withgoogle.com/projects/4887653356404736"> 
-    <img width = "10%" src="https://img.shields.io/badge/--black?style=flat&logo=google"
-         alt="Google Summer of Code Project Link">             
-    <a href="https://github.com/Anirban166">
-    <img width = "10%" src="https://img.shields.io/badge/--black?style=flat&logo=Github"
-         alt="GitHub Link">  
-    <a href="https://www.linkedin.com/in/anirban166/">
-    <img width = "10%" src="https://img.shields.io/badge/--black?style=flat&logo=LinkedIn"
-         alt="LinkedIn Link">
-    <a href="https://anirban166.github.io/">
-    <img width = "10%" src="https://img.shields.io/badge/--black?style=flat&logo=Internet%20Explorer"
-         alt="Website Link">
+<p align = "center">
+    <a href = "https://summerofcode.withgoogle.com/projects/4887653356404736"> 
+    <img width = "15%" src = "https://img.shields.io/badge/--black?style=flat&logo=google"
+         alt = "Google Summer of Code Project Link"> 
+    <a href = "mailto:bloodraven166@gmail.com"> 
+    <img width = "15%" src = "https://img.shields.io/badge/--black?style=flat&logo=gmail"
+         alt = "Email">
+    <a href = "https://github.com/Anirban166">
+    <img width = "15%" src = "https://img.shields.io/badge/--black?style=flat&logo=Github"
+         alt = "GitHub Link">                  
+    <a href = "https://www.linkedin.com/in/anirban166/">
+    <img width = "15%" src = "https://img.shields.io/badge/--black?style=flat&logo=LinkedIn"
+         alt = "LinkedIn Link">
 </p>         

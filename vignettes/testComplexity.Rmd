@@ -16,13 +16,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r echo=FALSE}
-knitr::include_graphics("https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/TransparentLogoV5.png")
-```
+<p style="font-family: times, serif; font-size:25pt; font-style: italic" align="center">
+Welcome to testComplexity!
+</p>
 
 -------------------------------------------------------------------------------------------------
 
-This segment has been written with the intent to provide the user a general introduction to the features and functionality of the package via a set of textual elucidations and with an example discussed throughout for each of the user-oriented functions.
+This section has been written with the intent to provide the user a general introduction to the features and functionality of the package via a set of textual elucidations and with an example discussed throughout for each of the user-oriented functions.
 
 ## Brief Overview
 
@@ -216,10 +216,6 @@ memory.plot <- plotMemoryUsage(df.memory, titles = list("Memory usage plot", "Pe
 ```
 ```r
 gridExtra::grid.arrange(time.plot, memory.plot, ncol = 2)
-```
-
-```{r echo=FALSE}
-knitr::include_graphics("https://raw.githubusercontent.com/Anirban166/testComplexity/master/Images/PDPAtimememoryWT.png")
 ```
 
 Themes can be directly appended to the ggplot object returned by the plotters:

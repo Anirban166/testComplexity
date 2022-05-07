@@ -18,10 +18,12 @@
 #' @import microbenchmark
 #'
 #' @examples
+#' \dontrun{
 #' # Quantifying the runtimes for the quick sort algorithm (with sampling performed)
 #' # against a set of increasing input data sizes:
 #' input.sizes = 10^seq(1, 3, by = 0.5)
 #' asymptoticTimings(sort(sample(1:100, data.sizes, replace = TRUE), method = "quick"), input.sizes)
+#' }
 
 asymptoticTimings <- function(e, data.sizes, max.seconds)
 {
