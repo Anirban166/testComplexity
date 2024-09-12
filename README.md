@@ -3,9 +3,6 @@
 </p>
 
 <p align = "center">
-    <a href = "https://github.com/Anirban166/testComplexity/actions">
-    <img src = "https://github.com/Anirban166/testComplexity/workflows/R-CMD-check/badge.svg"    
-         alt = "RCMD check()"></a>
     <a href = "https://travis-ci.com/github/Anirban166/testComplexity">
     <img src = "https://api.travis-ci.com/Anirban166/testComplexity.svg?branch=master"
          alt = "Build status (Travis CI)"></a>
