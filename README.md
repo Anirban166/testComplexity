@@ -9,39 +9,40 @@
     <a href = "https://codecov.io/gh/Anirban166/testComplexity?branch=master">    
     <img src = "https://codecov.io/gh/Anirban166/testComplexity/branch/master/graph/badge.svg"
          alt = "Code Coverage (covr/codecov)"></a>
-    <a href = "https://www.codacy.com/manual/bloodraven166/testComplexity?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Anirban166/testComplexity&amp;utm_campaign=Badge_Grade">
-    <img src = "https://app.codacy.com/project/badge/Grade/d69a466f4597434e9118ee59ae3307e3"    
-         alt = "Codacy Badge"></a>
-    <a href = "https://www.r-project.org/">
-    <img src = "https://img.shields.io/badge/100%25--blue?style=flat&logo=R"
-         alt = "The R project for statistical computing"></a>
     <a href = "https://summerofcode.withgoogle.com/archive/2020/projects/5767451238727680/">
     <img src = "https://img.shields.io/badge/Google-Funded-success?style=flat&logo=Google"
          alt = "GSoC project"></a>
+    <a href = "https://anirban166.github.io/testComplexity/">
+    <img src = "https://img.shields.io/badge/Website-pkgdown-green?style=flat"
+         alt = "Website"></a>
+    <a href = "https://youtu.be/H4uefLb8zcQ">
+    <img src = "https://img.shields.io/badge/Demo-red?style=flat&logo=YouTube"
+         alt = "YouTube screencast"></a>   
+    <a href = "https://www.r-project.org/">
+    <img src = "https://img.shields.io/badge/100%25--blue?style=flat&logo=R"
+         alt = "The R project for statistical computing"></a>
     <a href = "https://github.com/Anirban166/testComplexity/blob/master/LICENSE.md">
     <img src = "https://img.shields.io/badge/License-MIT-black?style=flat"
          alt = "GitHub License"></a>
 </p> 
 
-| <a href = "#abstract">Abstract</a> | <a href = "#objectives">Objectives</a> | <a href = "#installation">Installation</a> | <a href = "#functional-flow">Functions</a> | <a href = "#usage">Usage</a> | <a href = "#plotting">Plotting</a> | <a href = "#benchmarking">Benchmarking</a> | <a href = "#testing">Testing</a> | <a href = "#resources">Resources</a> |
-|---|---|---|---|---|---|---|---|---|
+<div align="center">
+    
+| <a href = "#abstract">Abstract</a> | <a href = "#installation">Installation</a> | <a href = "#function-map">Functions</a> | <a href = "#usage">Usage</a> | <a href = "#plotting">Plotting</a> | <a href = "#benchmarking">Benchmarking</a> | <a href = "#testing">Testing</a> |
+|---|---|---|---|---|---|---|
+
+</div>
         
 ---
 <h2 align = "center">
 Abstract
 </h2>
 
-R package developers currently use ad-hoc tests of asymptotic computational complexity via empirical timings of functions and visual diagnostic plots. However, there is no framework in R for systematically testing the empirical computational complexity of functions, which tends to be a problem because such a testing framework could be essential for identifying big speed gains in R code as well. In response to this, **testComplexity** provides a suite of [functions](https://github.com/Anirban166/testComplexity/tree/master/R) that will be useful for testing and thereby improving the speed of various algorithms/functions in R.
+R package developers traditionally rely on ad-hoc benchmarking (empirical timings and visual plots) to understand their code's asymptotic performance. We lack a framework for systematically testing the computational complexity of a function, which is crucial for identifying and implementing speed improvements in R code.
 
-<h2 align = "center">
-Objectives
-</h2>
+**testComplexity** attempts to address this by providing a suite of [functions](https://github.com/Anirban166/testComplexity/tree/master/R) for asymptotic complexity classification.
 
-- Primary objectives include quantification of runtimes for an algorithm/function (against a set of user-provided data sizes), classification of the corresponding asymptotic time complexity class it belongs to (based on the computed benchmarks) and testing for the same against an expected time complexity class for verification of empirically observed results, based upon the initial idea as staged [here](https://github.com/rstats-gsoc/gsoc2020/wiki/Asymptotic-complexity-testing#details-of-your-coding-project). <br>
-- Additionally (or as per my proposal), I thought of covering memory complexity testing as well, which in terms of resources, goes hand-in-hand when dealing with 'complexity' in Computer Science. <br>
-- Furthermore, [@tdhock](https://github.com/tdhock) suggested classifying complexity for user-defined output parameters (i.e. a measure of a parameter apart from timings/memory), which would eventually make the package more flexible in terms of use-cases.
-
-Since algorithms are used in every sphere of research, this package potentially caters to all sorts of R-users, following different fields of study. At its current state, it has been tested on algorithms pertaining to changepoint detection, sorting, constrained optimal segmentation/partitioning, plus a few common ones from base R such as substring and gregexpr.
+Since algorithms are used in every sphere of research, this package potentially caters to all variants of R-users. It has been specifically tested on ones ranging from changepoint detection and sorting to constrained optimal segmentation and partitioning, besides common base R functions such as `substring` and `gregexpr`.
 
 <h2 align = "center">
 Installation
@@ -58,11 +59,10 @@ remotes::install_github("Anirban166/testComplexity")
 ```
 
 <h2 align = "center">
-Functional Flow
+Function Map
 </h2>
 
 ```r
-__________________ R Files _______________________________________ Additional Details _____________________________
 testComplexity                              @ returns              @ type                    @ commit-branch(es) 
 ├──> asymptoticTimings                    : data.frame             timings quantifier        master
 │    ├──> asymptoticTimeComplexityClass   :   ├──> string          ↑ complexity classifier   master
@@ -85,21 +85,20 @@ testComplexity                              @ returns              @ type       
      ├──> testsfortestComplexity                                   unit-tester               All branches
      ├──> testsforConstrainedchangepointmodelalgos                 unit-tester               Testfunc
      └──> testsforRegularfunctions                                 unit-tester               Testfunc
-____________________________________________________________________________________________________________________
 ```
 
 <h2 align = "center">
 Usage
 </h2>
 
-To get started, please check the [general vignette](https://anirban166.github.io/testComplexity/articles/testComplexity.html) which highlights all the features, enlists the different types of function categories existent in the package and describes the functionality offered by the underlying user-oriented functions via a set of textual elucidations with one example taken to be discussed throughout for each of them. 
+To get started, please check the [general vignette](https://anirban166.github.io/testComplexity/articles/testComplexity.html) which highlights all features, categorizes the different functions available, and describes their functionality through textual elucidations and a running example case.
 
 For a quick overview of the main functionality (obtaining quantified benchmarks and subsequently computing the time/memory complexity class), please check the examples below.
 
 - To obtain the benchmarked timings/memory-allocations against specified data sizes, pass the required algorithm as a function of `N` to `asymptoticTimings()`/`asymptoticMemoryUsage()`: <br>
 ```r
 library(data.table)
-# Example 1 | Applying the bubble sort algorithm to a sample of 100 elements: (expected quadratic time complexity & constant memory complexity)
+# Example 1 | Applying the bubble sort algorithm to a sample of 100 elements: (expected -> quadratic time & constant memory complexity)
 bubble.sort <- function(elements.vec) { 
   n <- length(elements.vec)
   for(i in 1:(n - 1)) {
@@ -145,7 +144,7 @@ data.table(df.bubble.memory)
 21:        14696 1000.00000
 ```
 ```r
-# Example 2 | Testing PeakSegPDPA, an algorithm for constrained changepoint detection: (expected log-linear time and memory complexity)
+# Example 2 | Testing PeakSegPDPA, an algorithm for constrained changepoint detection: (expected -> log-linear time and memory complexity)
 data.vec <- rpois(N, 1)
 df.PDPA.time <- asymptoticTimings(PeakSegOptimal::PeakSegPDPA(count.vec = data.vec, max.segments = 3L), data.sizes = 10^seq(1, 4, by = 0.1))
 data.table(df.PDPA.time)
@@ -179,14 +178,14 @@ data.table(df.PDPA.memory)
 ```
 - To estimate the corresponding time/memory complexity class, pass the obtained data frame onto `asymptoticTimeComplexityClass()`/`asymptoticMemoryComplexityClass()`: <br>
 ```r
-# Example 1 | Applying the bubble sort algorithm to a sample of 100 elements: (expected quadratic time complexity & constant memory complexity)
+# Example 1 | Applying the bubble sort algorithm to a sample of 100 elements: (expected -> quadratic time & constant memory complexity)
 asymptoticTimeComplexityClass(df.bubble.time)
 [1] "quadratic"
 asymptoticMemoryComplexityClass(df.bubble.memory)
 [1] "constant"
 ```
 ```r
-# Example 2 | Testing PeakSegPDPA, an algorithm for constrained changepoint detection: (expected log-linear time and memory complexity)
+# Example 2 | Testing PeakSegPDPA, an algorithm for constrained changepoint detection: (expected -> log-linear time and memory complexity)
 asymptoticTimeComplexityClass(df.PDPA.time)
 [1] "loglinear"
 asymptoticMemoryComplexityClass(df.PDPA.memory)
@@ -194,23 +193,24 @@ asymptoticMemoryComplexityClass(df.PDPA.memory)
 ```
 - Combine the functions if you only require the complexity class: <br>
 ```r
-# Example 3 | Testing the time complexity of the quick sort algorithm: (expected log-linear time complexity)
+# Example 3 | Testing the time complexity of the quick sort algorithm: (expected -> log-linear time complexity)
 asymptoticTimeComplexityClass(asymptoticTimings(sort(sample(1:100, N, replace = TRUE), method = "quick" , index.return = TRUE), data.sizes = 10^seq(1, 3, by = 0.5)))
 [1] "loglinear"
 ```
 ```r
-# Example 4 | Allocating a square matrix (N*N dimensions): (expected quadratic memory complexity)
+# Example 4 | Allocating a square matrix (N*N dimensions): (expected -> quadratic memory complexity)
 asymptoticMemoryComplexityClass(asymptoticMemoryUsage(matrix(data = N:N, nrow = N, ncol = N), data.sizes = 10^seq(1, 3, by = 0.1)))
 [1] "quadratic"
 ```
 Check [this screencast](https://youtu.be/H4uefLb8zcQ) for a demonstration of time complexity testing on different sorting algorithms over a test session.
-For more examples with functions from specific packages, please check the table with relevant contents in the [testing section](#testing).
+
+For examples with functions from selected packages, please check the table in the [testing section](#testing).
 
 <h2 align = "center">
 Plotting
 </h2>
 
-For obtaining a visual description of the trend followed between runtimes/memory-usage vs data sizes so as to diagnose the complexity result(s) (the traditional method, for visual verification say), simple plots can be crafted. They are roughly grouped into: 
+For obtaining a visual description of the trends followed between runtimes/memory-usage vs data sizes in order to visually diagnose/verify the complexity result(s), simple plots can be crafted. They are roughly grouped into:
 
 - **Single Plots** <br>
 Individual plots can be obtained by passing the data frame returned by the quantifying functions to `plotTimings()`/`plotMemoryUsage()` for time/memory cases respectively: <br>
@@ -231,7 +231,7 @@ ggplot(df, aes(x = `Data sizes`, y = `Memory usage`)) + geom_point(color = ft_co
 ```
 <img width = "100%" src = "Images/timememorycDPA.png"> <br>
 - **Comparison Plots** <br>
-In order to visually compare different algorithms based on the benchmarked metrics returned as a data frame by the quantifiers, one can appropriately add a third column (to help distinguish by aesthetics based on it) with a unique value for each of the data frames, combine them using an `rbind()` and then plot the resultant data frame using suitable aesthetics, geometry, scale, labels/titles etcetera via a ggplot: <br>
+In order to visually compare different algorithms based on the benchmarked metrics returned as a data frame by the quantifiers, one can appropriately add a third column (to help distinguish by aesthetics based on it) with a unique value for each of the data frames, combine them using an `rbind()` and then plot the resultant data frame using suitable aesthetics, geometry, scale, labels/titles etc. via a ggplot: <br>
 ```r
 df.substring <- asymptoticTimings(substring(paste(rep("A", N), collapse = ""), 1:N, 1:N), data.sizes = 10^seq(1, 4, by = 0.5))
 asymptoticTimeComplexityClass(df.substring)
@@ -264,11 +264,11 @@ ggplot(plot.df, aes(x = `Data sizes`, y = Timings)) + geom_point(aes(color = exp
 ```
 <img width = "100%" src = "Images/cp2.png"> <br>
 
-Feel free to include more functions and increase the number of data sizes for a more comprehensive outlook: <br>
+Including more functions (if applicable) and increasing the number of data sizes can lead to a more comprehensive outlook: <br>
 
 <img width = "100%" src = "Images/cp.png"> <br>
 - **Generalized Linear Model based Plots** <br>
-`ggfortify`, an extension of `ggplot2`, can be used to produce diagnostic plots for generalized linear models with the same formulae as used in the complexity classification functions: <br>
+`ggfortify` (an extension of `ggplot2`) can be used to produce diagnostic plots for generalized linear models with the same formulae as used in the complexity classification functions: <br>
 ```r
 library(ggfortify)
 df <- asymptoticTimings(PeakSegDP::cDPA(rpois(N, 1), rep(1, length(rpois(N, 1))), 3L), data.sizes = 10^seq(1, 4 by = 0.1))
@@ -281,16 +281,15 @@ ggplot2::autoplot(stats::glm(glm.plot.obj)) + ggthemes::theme_gdocs()
 Benchmarking
 </h2>
 
-Among a few [options](https://anirban166.github.io//Benchmarking/), 
-- `microbenchmark::microbenchmark()` is used to compute the benchmarks to obtain the time results in `testComplexity::asymptoticTimings()`, for the added convenience of having the benchmarked results as a data frame plus for the precision or time scale it produces the results on. (usually in nanoseconds, as can be found from [here](https://cran.r-project.org/web/packages/microbenchmark/microbenchmark.pdf)) <br>
-- `bench::bench_memory()` is used to compute the allocated memory size in order to obtain the memory use metrics in `testComplexity::asymptoticMemoryUsage()`. <br>
-            
+- `microbenchmark::microbenchmark()` is used to obtain the time results in `testComplexity::asymptoticTimings()` for precision and convenience of having the benchmarks as a data frame. <br>
+- `bench::bench_memory()` is used to compute the size of memory allocation in `testComplexity::asymptoticMemoryUsage()`. <br>
+
 <h2 align = "center">
 Testing
 </h2>
 
 - **Functions** <br>
-Current set of functions taken into consideration for testing our functionality, plus a dedicated vignette-based article for each can be found below:  
+The routines considered for testing the package's functionality along with a dedicated vignette-based article for each are listed below:  
 
 | Source Package | Function | Article Link |
 |----------------|----------|--------------|
@@ -303,50 +302,14 @@ Current set of functions taken into consideration for testing our functionality,
 | changepoint    | cpt.mean    | [PELT and SegNeigh algorithms for changepoint::cpt.mean()](https://anirban166.github.io/testComplexity/articles/PELT_and_SegNeigh.html) |
 | PeakSegOptimal | PeakSegPDPA | [PeakSegOptimal::PeakSegPDPA, a log-linear time algorithm for constrained changepoint detection](https://anirban166.github.io/testComplexity/articles/PeakSegPDPA.html) |
 
-A complexity-wise ordered list with functional instances for the aforementioned set of functions can be found [here](https://github.com/Anirban166/testComplexity/issues/2#issue-615087634). <br>
 - **Unit Testing** <br>
-Test cases for testComplexity functions via [testthat](https://cran.r-project.org/web/packages/testthat/index.html) package can be found [here](https://github.com/Anirban166/testComplexity/blob/master/tests/testthat/test-testsfortestComplexity.R). <br>
+Test cases for testComplexity functions that utilize [testthat](https://cran.r-project.org/web/packages/testthat/index.html) can be found [here](https://github.com/Anirban166/testComplexity/blob/master/tests/testthat/test-testsfortestComplexity.R). <br>
 - **Code Coverage** <br>
 Tested using `covr::package_coverage()` both locally and via codecov, with [100% coverage](https://codecov.io/gh/Anirban166/testComplexity?branch=master) attained. <br>
 - **OS Support** <br>
-Windows is the native OS this package is developed and tested on, but in addition to that, RCMD checks are run on latest versions of [MacOS](https://github.com/Anirban166/testComplexity/blob/cdb771a040e77ac02e715f033a7debf889a8efa2/.github/workflows/R-CMD-check.yaml#L21) and [Ubuntu](https://github.com/Anirban166/testComplexity/blob/cdb771a040e77ac02e715f033a7debf889a8efa2/.github/workflows/R-CMD-check.yaml#L22) as well. <br>
-Note that the use of `bench::bench_memory()` overcomes the drawback of windows-only OS limitation for memory complexity testing as observed in `GuessCompx::CompEst()` since it successfully runs on other operating systems. <br>
+Windows is the native OS this package is developed and tested on. However, RCMD checks are run on latest versions of [MacOS](https://github.com/Anirban166/testComplexity/blob/cdb771a040e77ac02e715f033a7debf889a8efa2/.github/workflows/R-CMD-check.yaml#L21) and [Ubuntu](https://github.com/Anirban166/testComplexity/blob/cdb771a040e77ac02e715f033a7debf889a8efa2/.github/workflows/R-CMD-check.yaml#L22) as well. <br>
+Note that the use of `bench::bench_memory()` overcomes the Windows-only OS limitation for memory complexity testing observed in `GuessCompx::CompEst()` as it successfully runs on other operating systems. <br>
 
 <p align = "center">
-<a href = "https://www.microsoft.com/en-in/windows"> <img src = "https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&logo=Windows"> <a href = "https://www.linux.org/"> <img src = "https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&logo=Linux"> <a href = "https://developer.apple.com/macos/"> <img src = "https://img.shields.io/badge/MacOS--brightgreen?style=for-the-badge&logo=Apple"> </a>
-</p> 
-
-<h2 align="center">
-Resources
-</h2>
-
-In addition to the readme content, the [web version](https://anirban166.github.io/testComplexity/) includes quick [reference](https://anirban166.github.io/testComplexity/reference/index.html) to functions plus vignettes for some use-cases. For [blog](https://anirban166.github.io/posts/) posts, please check the links below: <br>
-
-<p align = "center">
-<a href = "https://anirban166.github.io//Test-functions/"> <img width = "12.5%" src = "/Images/LogoTF.png"> 
-<a href = "https://anirban166.github.io//Timings-quantifying-function/"> <img width = "12.5%" src = "/Images/LogoTQ.png"> 
-<a href = "https://anirban166.github.io//Memory-usage-quantifier/"> <img width = "12.5%" src = "/Images/LogoMQ.png"> 
-<a href="https://anirban166.github.io//Complexity-classifiers/"> <img width = "12.5%" src = "/Images/LogoCC.png"> 
-<a href = "https://anirban166.github.io//Plotters/"> <img width = "12.5%" src = "/Images/LogoPT.png"> </a> <br>
-<a href = "https://anirban166.github.io//Generalized-complexity/"> <img width = "12.5%" src = "/Images/LogoGC.png">
-<a href = "https://anirban166.github.io//Testing-functions/"> <img width = "12.5%" src = "/Images/LogoTS.png"> 
-<a href = "https://anirban166.github.io//Website/"> <img width = "12.5%" src = "/Images/LogoWS.png"> 
-<a href = "https://anirban166.github.io//Software-Development/"> <img width = "12.5%" src = "/Images/LogoSD.png"> 
-<a href = "https://anirban166.github.io//GSoC-2020-Summary/"> <img width = "12.5%" src = "/Images/LogoPKG.png"> <br>
+<a href = "https://www.microsoft.com/en-in/windows"><img src = "https://img.shields.io/badge/Windows--brightgreen?style=for-the-badge&logo=Windows"></a> <a href = "https://www.linux.org/"><img src = "https://img.shields.io/badge/Linux--brightgreen?style=for-the-badge&logo=Linux"></a> <a href = "https://developer.apple.com/macos/"> <img src = "https://img.shields.io/badge/MacOS--brightgreen?style=for-the-badge&logo=Apple"> </a>
 </p>
-    
----
-<p align = "center">
-    <a href = "https://summerofcode.withgoogle.com/projects/4887653356404736"> 
-    <img width = "15%" src = "https://img.shields.io/badge/--black?style=flat&logo=google"
-         alt = "Google Summer of Code Project Link"> 
-    <a href = "mailto:bloodraven166@gmail.com"> 
-    <img width = "15%" src = "https://img.shields.io/badge/--black?style=flat&logo=gmail"
-         alt = "Email">
-    <a href = "https://github.com/Anirban166">
-    <img width = "15%" src = "https://img.shields.io/badge/--black?style=flat&logo=Github"
-         alt = "GitHub Link">                  
-    <a href = "https://www.linkedin.com/in/anirban166/">
-    <img width = "15%" src = "https://img.shields.io/badge/--black?style=flat&logo=LinkedIn"
-         alt = "LinkedIn Link">
-</p>         
